@@ -1,0 +1,13 @@
+todo:
+  name: todo
+  pattern: TODO
+  active: true
+config:
+  ignore:
+  - venv/*
+  - todoget.md
+  - _book/*
+  - _freeze/*
+  - renv/*
+  - chapters/00-deprecated/*
+  - README.qmd
