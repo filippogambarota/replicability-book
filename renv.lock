@@ -931,11 +931,13 @@
     "emo": {
       "Package": "emo",
       "Version": "0.0.0.9000",
-      "Source": "GitHub",
-      "RemoteType": "github",
+      "Source": "git",
+      "RemoteType": "git",
+      "RemoteUrl": "https://github.com/hadley/emo",
       "RemoteHost": "api.github.com",
-      "RemoteRepo": "emo",
       "RemoteUsername": "hadley",
+      "RemoteRepo": "emo",
+      "RemoteRef": "master",
       "RemoteSha": "3f03b11491ce3d6fc5601e210927eff73bf8e350",
       "Requirements": [
         "R",
@@ -949,7 +951,7 @@
         "stringr",
         "utils"
       ],
-      "Hash": "10f2391a926b0087a671ed9965ea30a3"
+      "Hash": "eb32b8f0bb50621ad498f5d836b546a4"
     },
     "evaluate": {
       "Package": "evaluate",
@@ -993,9 +995,9 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteRepo": "filor",
       "RemoteUsername": "filippogambarota",
-      "RemotePkgRef": "filippogambarota/filor",
+      "RemoteRepo": "filor",
+      "RemoteRef": "main",
       "RemoteSha": "19fa1b20139c274144832225c29acbb6940e6346",
       "Requirements": [
         "MASS",
@@ -1012,7 +1014,7 @@
         "rmarkdown",
         "stringr"
       ],
-      "Hash": "fb7195db4eb929d538c3e37bb06fe3bf"
+      "Hash": "1cc1ed91a38deefa73a9b5f37e4d4435"
     },
     "fontawesome": {
       "Package": "fontawesome",
@@ -1495,8 +1497,9 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteRepo": "icons",
       "RemoteUsername": "mitchelloharawild",
+      "RemoteRepo": "icons",
+      "RemoteRef": "master",
       "RemoteSha": "18ffa115f4053485900c4aed2ba7a67b07d9fbe9",
       "Requirements": [
         "R",
@@ -1513,7 +1516,7 @@
         "utils",
         "xml2"
       ],
-      "Hash": "a9d3e960f08bd58c486eab7c65366986"
+      "Hash": "04c99d5fef12986b9bfc5f66c8e50d2f"
     },
     "ids": {
       "Package": "ids",
@@ -1782,8 +1785,9 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteRepo": "ltxplot",
       "RemoteUsername": "alicewchen",
+      "RemoteRepo": "ltxplot",
+      "RemoteRef": "main",
       "RemoteSha": "ec46de57de5c0bc7b8ebda7ee834464c192729aa",
       "Requirements": [
         "R",
@@ -1791,7 +1795,7 @@
         "showtext",
         "sysfonts"
       ],
-      "Hash": "03345f08018ef6d1b788a44b01e603a0"
+      "Hash": "4b76e85bc6af66616cfc529ddae290f1"
     },
     "lubridate": {
       "Package": "lubridate",
