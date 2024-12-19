@@ -4,7 +4,7 @@ project:
     - "*.qmd"
     - "!README.qmd"
   post-render: 
-    - quarto-scripts/post.R
+    - quarto-scripts/post-render.R
 
 book:
   title: "The three Rs of trustworthy science"
