@@ -28,6 +28,24 @@ If you want to render the book the best option is to:
 The `renv` package is a way to manage and install all the R packages
 used in a project and should install all the required packages.
 
+To re-render the book you can open a terminal within the book folder and
+run:
+
+``` bash
+quarto render
+```
+
+This should render all chapters within the `_book` folder. Then you can
+run:
+
+``` bash
+quarto preview
+```
+
+To open a live preview of the book. The first time will be slow the
+rendering process but given the cache system, the next rendering will be
+done only for changed files.
+
 ## Preview the book
 
 The last updated version of the book can be found at:
@@ -38,7 +56,7 @@ integrated.
 
 # Todoget Report
 
-last update: 2024-12-19 (12:09)
+last update: 2024-12-19 (12:28)
 
 ## index.qmd
 
