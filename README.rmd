@@ -113,7 +113,7 @@ knitr::opts_chunk$set(
 - Hedges, L. V., & Schauer, J. M. (2021). The Design of Replication Studies. Journal of the Royal Statistical Society. Series A, , 184(3), 868–886. https://doi.org/10.1111/rssa.12688
 
 ```{r, results = "asis"}
-system("todoget scan")
+system("sh quarto-scripts/safe-todoget.sh")
 todo <- readLines("todoget.md")
 cat(todo, sep = "\n")
 ```
