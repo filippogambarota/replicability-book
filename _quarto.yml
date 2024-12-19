@@ -1,0 +1,58 @@
+project:
+  type: book
+  render:
+    - "*.qmd"
+
+book:
+  title: "The three Rs of trustworthy science"
+  subtitle: "Replicability, Reproducibility and Robustness"
+  author:
+    - name: Filippo Gambarota
+      id: fg
+      orcid: 0000-0002-6666-1747
+      email: filippo.gambarota@unipd.it
+      url: https://filippogambarota.github.io/
+      affiliation:
+        - name: University of Padova
+    - name: Branden Fitelson
+      id: bf
+      orcid: 0000-0002-8847-220X
+      email: branden@fitelson.org
+      url: https://fitelson.org/
+      affiliation:
+        - name: Northeastern University
+    - name: Giovanni Parmigiani
+      id: gp
+      orcid: 0000-0002-8783-5961
+      email: gp@jimmy.harvard.edu
+      url: https://scholar.harvard.edu/parmigiani
+      affiliation:
+        - name: Harvard T.H. Chan School of Public Health
+        - name: Dana Farber Cancer Institute
+  date: "11/6/2024"
+  chapters:
+    - index.qmd
+    - chapters/chapter1.qmd
+    - chapters/chapter2.qmd
+    - chapters/chapter3.qmd
+    - chapters/chapter4.qmd
+    - chapters/chapter5.qmd
+    - chapters/chapter6.qmd
+    - chapters/chapter7.qmd
+
+bibliography: "https://raw.githubusercontent.com/filippogambarota/bib-database/main/references.bib"
+csl: "https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl"
+
+format:
+  html:
+    theme: cosmo
+    code-link: true
+  # pdf:
+  #   documentclass: scrreprt
+
+execute:
+  echo: false
+  warning: false
+  message: false
+  freeze: auto
+

@@ -1,0 +1,1392 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "The three Rs of trustworthy science",
+    "section": "",
+    "text": "Welcome\nThe aim of the book is to provide un updated (and continuously evolving) overview of the replication in science from a theoretical and statistical point of view. The book is not supposed to be exaustive but providing a general framework for learning and teaching the problem of replication in the era of the reproducibility and replicability crisis.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#contents",
+    "href": "index.html#contents",
+    "title": "The three Rs of trustworthy science",
+    "section": "Contents",
+    "text": "Contents",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#book-structure",
+    "href": "index.html#book-structure",
+    "title": "The three Rs of trustworthy science",
+    "section": "Book structure",
+    "text": "Book structure\nThe book is written in Quarto. All materials and source code GitHub. The main language used in the statistical part of the book is R. In addition, we wrote several functions used in the examples collected into an R package  used through the book. You are free to fork, share and reuse contents. In addition, we consider the book as a shared resources thus if you have some suggestions, additions or any way to extend or improve the content you can submit a pull request on Github or contact the author (see the Contributing section).",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#sec-contributing",
+    "href": "index.html#sec-contributing",
+    "title": "The three Rs of trustworthy science",
+    "section": "Contributing",
+    "text": "Contributing\nFor contributing submit a PR on Github or write an email to Filippo Gambarota (filippo.gambarota@unipd.it).\n\nciao",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter1.html",
+    "href": "chapters/chapter1.html",
+    "title": "1  What is a replication",
+    "section": "",
+    "text": "Key Readings\nKey readings:\nOptional readings:",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is a replication</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter1.html#key-readings",
+    "href": "chapters/chapter1.html#key-readings",
+    "title": "1  What is a replication",
+    "section": "",
+    "text": "Machery (2020): What is a replication?\nNosek & Errington (2020): What is replication?\n\n\n\nRosenthal (1990): Replication in behavioral research. Especially for the concepts of precision and the idea of weighting replication studies according to qualitative and quantitative factors.\nNational Academies of Sciences, Engineering, and Medicine et al. (2019) National Academies report on Reproducibility and Replicability in Science",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is a replication</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter1.html#replication-robustness-and-reproducibility",
+    "href": "chapters/chapter1.html#replication-robustness-and-reproducibility",
+    "title": "1  What is a replication",
+    "section": "1.1 Replication, Robustness and Reproducibility",
+    "text": "1.1 Replication, Robustness and Reproducibility\nThis book is concerned with what we call the three “R”’s of trustworthy science: Replication, Robustness and Reproducibility. We begin by sketching a definition of each. This first Chapter then elaborates on the definition of replicability more specifically.\nIn 2019 the USA’s National Academies published a report on Reproducibility and Replicability in Science (National Academies of Sciences, Engineering, and Medicine et al., 2019) which we strongly recommend as a complementary reading to this document. They propose to define Replicability as “obtaining consistent results across studies aimed at answering the same scientific question, each of which has obtained its own data”. This will be our first “R”. The NAS definition is also endorsed by the American Statistical Association (Broman et al., 2017) and generally adopted in statistics (for example (Heller et al., 2014) add a couple of review papers).\nThe second “R” is Reproducibility, defined by NAS as “obtaining consistent results using the same input data, computational steps, methods, and code, and conditions of analysis” (National Academies of Sciences, Engineering, and Medicine et al., 2019). Here the experimental design, data and methodologies of analysis are all fixed. A reproducible research paper should provide enough information to obtain the results originally reported, starting from the same raw data. Raw data are data in a form as close as possible to what generated the experimental source. Defining precisely what raw data is can be complex both conceptually and practically, but a digression on this would take us too far astray. Nowadays it is becoming more common to supplement a paper with analysis code, raw data (if possible) and details or materials (e.g., experimental stimuli, biological reagents, questionnaires) about the experimental setup. Reproducibility can be considered as the most fundamental pre-requisite of replication in science. Chapter XXX will provide a more detailed explaination of the concept with an overview of tools for doing reproducible science.\nOur third “R” also involves keeping the raw data fixed, and focuses on changing parts of the analysis method. This is different from the previous two, as it investigates the robustness of the results to the many judgment calls that typically need to be made in the implementation of a statistical analysis. Chapter XXX will present some methods for investigating robustness. For example, multiverse analysis is a way to systematically sample different plausible analytical strategies and see their impact on the final conclusions.\nUsage of the first two “R” terms is often inconsistent and is reversed in computer science. (Barba, 2018; Goodman et al., 2016; Kenett & Shmueli, 2015) review these terminologies and their usage.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is a replication</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter1.html#defining-replication",
+    "href": "chapters/chapter1.html#defining-replication",
+    "title": "1  What is a replication",
+    "section": "1.2 Defining Replication",
+    "text": "1.2 Defining Replication\n\n1.2.1 Challenges\nWhen studying, planning or conducting studies about replication in science, it is essential to start from a clear definition and formalization of replication. First we need to define when an experiment or study constitutes a replication attempt of another.\nA greay area often arises where scientists attempt to replicate the results of a study using a similar but not identical scientific methodology. If they obtain a different result, should they conclude that the new study did not replicate the original? To answer, the replication needs to be evaluated not only in terms of result but also with regard to the study design, for example with regard to whether experimental factors, approaches and conditions are the same or different. In this first chapter we discuss the design of a replication study from both an empirical and a philosophical perspective.\nThe statistical analysis and the evaluation of whether replication was successful will be covered in Chapter XXX, we’re we will discover that there can be several different definitions of what a successful replication is. Anderson & Kelley (2024) reviewed more than 20 different replication criteria and Heyard et al. (2024) indentified more than 50 published statistical approaches to assess a replication experiment.\nWe begin by reviewing concepts that in our view are general enough to be applied to multiple research areas and translated into an empirically testable statistical framework. The bibliography chapter contains a selected list of theoretical papers on replication.\n\n\n1.2.2 Cronbach’s essential components of an experiment\nWe start by defining the essential components of an experiment as proposed by Cronbach & Shapiro (1982)1 His framework is concisely referred to as UTOS because it consisted of these components:\n\n\n\n\n\n\nUTOS Framework\n\n\n\n\nUnits: the elements of the population from which the study sample has been drawn; the term population is used here in its statistical meaning: a real or hypothetical universe of units (not necessarily persons) to which the inferential conclusions of the study should apply;\nTreatments: the independent variables, for example experimental interventions, or population subgroups of interest;\nOutcomes: the dependent variables on which the study is focused\nSetting: the remainder of factors that can affect the experimental outcome and its relation to treatments. For example the factors defining the “environment” where a psychological experiment takes place (lab vs online experiment, cultural aspects, etc.)\n\n\n\nSome initial comments:\n\nU: this component positions us unequivocally in the territory of statistical inference, where we posit a population of reference consisting of distinct units, and we are interested in generalizing from an observed sample to the entire population. Naturally not all science aligns with this paradigm. Before reading further, try to think about important scientific studies you may have come across recently that do not fit with this paradigm.\nT & O: these components implicitly assume that the goal of the study was to elucidate how, in the population of interest, the outcomes relate to the independent variables, perhaps causally if the experiment is controlled. Again, this is an important subset of science, but is by no means exhaustive. Clustering, discovery of latent dimensions in high dimensional data, segmentation of images, and a number of other exceptions come to mind. Add your own. Also, important science can be simply exploratory and descriptive, but replicability questions are relevant there as well.\nS: By changing settings “minimally” you get “essentially” the same experiments. For example you may change the temperature in the lab for an experiment where temperature is a negligible factor. On the other hand if you change the temperature in a chemistry experiment where a certain reaction is very sensitive to temperature, you may get a completely different experiment and arguably a different study: skating on ice vs water, so to speak. So it takes a little sprinkle of common sense for this to be a useful definition. Be alert.\n\n\n\n1.2.3 Machery’s definition of a replication experiment\nMachery (2020) proposed a simple and flexible perspective on replication called the resampling account.\nConsider an original experiment in the UTOS framework, and imagine we can sharply specify fixed and random factors in the following sense: a random factor can be thought of as sampled from the population of interest, while a fixed factor is not sampled, but rather determined by design. For example, participants (Units) can be assumed to be random when the study samples a group of participants according to a well defined sampling scheme. In contrast, an experimental manipulation is generally fixed. Random sampling affords to option to use statistical inference to learn parameters of the population of interest (see also Yarkoni, 2020 for the idea of generalizability). Stricltly speaking, inference using a fixed factor is limited only to the tested condition. Defining fixed and random factors in real settings can be complex. Challenges and approaches are extensively debated in the literature (e.g., Clark & Linzer, 2015).\nReturning to replication, according to Machery, a replication experiment is an experiment created by sampling from the random factors (e.g., new group of participants), and keeping the non-random factors fixed (e.g., same type of drug or treatment). In this definition, population parameters of interest are identical between an original study and its replication. We will return on this point in Chapter XXX.\nA replication experiment is meant to assess what Machery calls reliability. Machery (2020) uses the term reliability as in measurement theory [] where a reliable instrument (in this case the experiment is seen as the instrument) produces consistent 2 results across different replications of the measurement. When replicating a whole experiment, say sampling a new sample of participants, we are similarly interested in evaluating whether the experimental setup is reliable in the sense of producing consistent results.\nAlong the line of the measurement methaphor, let’s imagine a treatment for depression that have been evaluated in an original study. The researchers developed a protocol, defined the concept of depression, administered the treatment and chosen some depression self-report measures finding a decreasing level of depression compared to the control group. Another group of researchers decided to replicate this original experiment. They adopted the same protocol, definitions and measures but collected another sample of participants from the same population. The results of the replication experiment, for example the magnitude of the effect of the treatment on the depression level as defined by the protocol, may or may not be close to the original. If they are close, this provides evidence in favor of the reliability of the original experiment, as defined above (Nosek & Errington, 2017). Here, we are not questioning the definition or the measures used in the study.\nTo recap the progress made so far, if you can frame a study as UTOS, and clearly separate the random and fixed factors, you know how to design a replication study!",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is a replication</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter1.html#validity-and-extensions",
+    "href": "chapters/chapter1.html#validity-and-extensions",
+    "title": "1  What is a replication",
+    "section": "1.3 Validity and Extensions",
+    "text": "1.3 Validity and Extensions\n\n1.3.1 Conceptual Replication\nDoes is make sense to compare experiments when fixed factors have changed? In many cases it does, and this type of analysis still falls under the purview of replication, broadly understood. Readers familiar with the replication literature may have noticed that we did not use concepts such as direct or conceptual replication yet. Briefly, a direct replication is usually defined as an experiment that tries to recreate the original experiment as closely as possible. While this can be done in certain fields, most of the time this objective is empirically difficult to achieve to due uncontrollable factors (Nosek & Errington, 2017, 2020). Examples include replicating effects that are strongly culturally related, or experiments that used a completely outdated technology for the experimental setup.\nIn contrast, conceptual replication is a broad term defining a replication experiment with similar aims and methodology but with important differences (e.g., Crandall & Sherman, 2016). In Machery’s terms, a conceptual replication changes some of the fixed factors. In the depression example above, a conceptual replication might be a second experiment using another theoretical definition or measure of depression. Here, the goal is still within the broad umbrella of understanding the effect of the treatment on depression, but the experiment is not a strict replication in the Machery sense, because the outcome measurement methodology has changed. For this reason Machery (2020) uses the term extension. Extensions may include a methodological change but also a more profound philosophical change, for example using a scale motivated by a different theoretical framework for defining depression. An extension experiment is not assessing the reliability, but rather the validity of the original experiment and in a broader sense the theory underlying the original experiment. Similarly to reliability, the term validity is used with measurement theory in mind. The validity of an instrument is the link with the true phenomenon being assessed (for example the actual weight of an object being weighed).\nIn the depression example, if the researchers want to see whether the treatment is effective also using other measures of depression they are extending the original results testing the validity of the result about the treatment.\n\n\n1.3.2 Precision of Replication\nIn practice we can often design a variety of replication / extension experiments, with varying degrees of similarity with the original one. Rosenthal (1990) defines the important concept of precision as the degree of similarity between the replication and the original experiment. The most precise is a Machery replication. Generally, very precise experiments lack external validity (they are not able to extend) but they can directly speak to the reliability of the original experimental setup and results. Less precise experiments reduce the amount of information for assessing the confidence in the original experiment, shifting the focus on the underlying theory. For example, we may say that the treatment reduces also physiological indexes of depression or works also in a different population of patients.\n\n\n1.3.3 Replication vs Extension: different scientific value?\nWe have seen that a precise replication experiment is an attempt to ask again the same inferential question in as close a way as possible. Variations in setting and fixed factors can generate experiments that probe the trustworthiness of the conclusions further. These slight variations are can be successfully analyzed together with replicability in mind, for example in a meta-analysis (see Chapter XXX), even though they do not constitute a strict replication by Machery’s exacting standards.\nAs settings are varied further and the replication becomes less precise, we eventually found ourselves having extended the experimental paradigm beyond the initial goals and populations. When is this line crossed? The answer is dependent on the context and reasonable scientists may disagree about it. An important debate in the literature regards the value of a replication compared to an extension experiment. Crandall & Sherman (2016) considers extensions as more valuable while Simons (2014) argues in favor of focusing on replications experiment. Clearly both have a place in science. If the main aim is to test the reliability of the original experiment one should reduce as much as possible the heterogeneity (i.e., increase the precision). On the other hand, if the aim is to explore different instances of the same effect or theory one should extend the experimental setup. Often an extension experiment is the natural continuation of the scientific line of inquiry opened by a reliable original, possibly with its replication experiment.\nIn the remainder of the discussion we will use precise replication to denote a replication experiment in the strict sense of Machery, or a sufficiently close approximation, while we use the word extension to describe replication settings where the precision is lower. Defining a successful replication, and choosing the appropriate statistical approach for analyzing data can be very different along the precision continuum.\n\n\n1.3.4 Contextual dependency\ncontextual dependency (Gollwitzer & Schwabe, 2022; Inbar, 2016; Van Bavel et al., 2016) further develops the Machery (2020) framework by considering specific weights assigned to each UTOS element. Without going into details, the impact of the different UTOS elements on the actual experiment could differ according to the type of research question. For example, consider a social psychology experiment originally conducted on Western American participants and later extended to European or Asian participants. If the psychological construct of interest is strongly affected by cultural aspects, the impact of changing the ethnicity can be considerable. In contrast a lab-based experiment about low-level perceptual effects may be more portable across the same two population. Our expectations about the replication/extension outcome need to be calibrated on the specific research question and the impact of each experiment element.\n\n\n1.3.5 Investigators as a Factor\nAs a final note, one important but often underestimated problem concerns the investigators conducting the replication study or studies. They can legitimately be considered part of the setting in some cases and random or irrelevant in others. Rosenthal (1990) cleary described the problem of correlated replicators and proposed different weighting approaches, based on the design of the replication study, to replication/extension studies conducted from authors that are orthogonal in terms of background theory and methods. Authors sharing a theory or a strict network of co-authorhips are likely to create experiments and data that are more similar compared to independent authors. A replication or extension study conducted by an independent, and possibly skeptical, researcher should have a greater impact on increasing or decreasing confidence in the original findings compared to a study conducted by the original author.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is a replication</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter1.html#references",
+    "href": "chapters/chapter1.html#references",
+    "title": "1  What is a replication",
+    "section": "References",
+    "text": "References\n\n\n\n\nAnderson, S. F., & Kelley, K. (2024). Sample size planning for replication studies: The devil is in the design. Psychological Methods, 29, 844–867. https://doi.org/10.1037/met0000520\n\n\nBarba, L. A. (2018). Terminologies for reproducible research. arXiv [Cs.DL], arXiv:1802.03311. http://arxiv.org/abs/1802.03311\n\n\nBroman, K., Cetinkaya-Rundel, M., Nussbaum, A., Paciorek, C., Peng, R., Turek, D., & Wickham, H. (2017, January 18). Recommendations to funding agencies for supporting reproducible research. https://www.amstat.org/asa/files/pdfs/POL-ReproducibleResearchRecommendations.pdf\n\n\nClark, T. S., & Linzer, D. A. (2015). Should i use fixed or random effects? Political Science Research and Methods, 3, 399–408. https://doi.org/10.1017/psrm.2014.32\n\n\nCrandall, C. S., & Sherman, J. W. (2016). On the scientific superiority of conceptual replications for scientific progress. Journal of Experimental Social Psychology, 66, 93–99. https://doi.org/10.1016/j.jesp.2015.10.002\n\n\nCronbach, L. J., & Shapiro, K. (1982). Designing evaluations of educational and social programs. https://eduq.info/xmlui/handle/11515/9106\n\n\nGollwitzer, M., & Schwabe, J. (2022). Context dependency as a predictor of replicability. Review of General Psychology: Journal of Division 1, of the American Psychological Association, 26, 241–249. https://doi.org/10.1177/10892680211015635\n\n\nGoodman, S. N., Fanelli, D., & Ioannidis, J. P. A. (2016). What does research reproducibility mean? Science Translational Medicine, 8, 341ps12. https://doi.org/10.1126/scitranslmed.aaf5027\n\n\nHeller, R., Bogomolov, M., & Benjamini, Y. (2014). Deciding whether follow-up studies have replicated findings in a preliminary large-scale omics study. Proceedings of the National Academy of Sciences of the United States of America, 111, 16262–16267. https://doi.org/10.1073/pnas.1314814111\n\n\nHeyard, R., Pawel, S., Frese, J., Voelkl, B., Würbel, H., McCann, S., Held, L., Wever, K. E., Hartmann, H., Townsin, L., & Zellers, S. (2024). A scoping review on metrics to quantify reproducibility: A multitude of questions leads to a multitude of metrics. https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=JAb7P1QAAAAJ:ldfaerwXgEUC\n\n\nInbar, Y. (2016). Association between contextual dependence and replicability in psychology may be spurious. Proceedings of the National Academy of Sciences of the United States of America, 113, E4933–4. https://doi.org/10.1073/pnas.1608676113\n\n\nKenett, R. S., & Shmueli, G. (2015). Clarifying the terminology that describes scientific reproducibility. Nature Methods, 12, 699. https://doi.org/10.1038/nmeth.3489\n\n\nMachery, E. (2020). What is a replication? Philosophy of Science, 87, 545–567. https://doi.org/10.1086/709701\n\n\nNational Academies of Sciences, Engineering, and Medicine, Policy and Global Affairs, Committee on Science, Engineering, Medicine, and Public Policy, Board on Research Data and Information, Division on Engineering and Physical Sciences, Committee on Applied and Theoretical Statistics, Board on Mathematical Sciences and Analytics, Division on Earth and Life Studies, Nuclear and Radiation Studies Board, & Division of Behavioral and Social Sciences and Education. (2019). Reproducibility and replicability in science. National Academies Press. https://doi.org/10.17226/25303\n\n\nNosek, B. A., & Errington, T. M. (2017). Making sense of replications. eLife, 6, e23383. https://doi.org/10.7554/eLife.23383\n\n\nNosek, B. A., & Errington, T. M. (2020). What is replication? PLoS Biology, 18, e3000691. https://doi.org/10.1371/journal.pbio.3000691\n\n\nParmigiani, G. (2023). Defining replicability of prediction rules. Statistical Science: A Review Journal of the Institute of Mathematical Statistics, 38. https://doi.org/10.1214/23-sts891\n\n\nRosenthal, R. (1990). Replication in behavioral research. Journal of Social Behavior and Personality. https://search.proquest.com/openview/5ccc3a267139968c18c0d7ce1a1c09f6/1?pq-origsite=gscholar&cbl=1819046\n\n\nSimons, D. J. (2014). The value of direct replication. Perspectives on Psychological Science: A Journal of the Association for Psychological Science, 9, 76–80. https://doi.org/10.1177/1745691613514755\n\n\nVan Bavel, J. J., Mende-Siedlecki, P., Brady, W. J., & Reinero, D. A. (2016). Contextual sensitivity in scientific reproducibility. Proceedings of the National Academy of Sciences of the United States of America, 113, 6454–6459. https://doi.org/10.1073/pnas.1521897113\n\n\nYarkoni, T. (2020). The generalizability crisis. The Behavioral and Brain Sciences, 45, e1. https://doi.org/10.1017/S0140525X20001685",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is a replication</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter1.html#footnotes",
+    "href": "chapters/chapter1.html#footnotes",
+    "title": "1  What is a replication",
+    "section": "",
+    "text": "This framework has been proposed for social science and psychology but can be easily applied to different fields. For example see Parmigiani (2023) for a more detailed taxonomy applied to biomedical studies.↩︎\ne.g. close in some quantiative metric if they are real numbers↩︎",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>What is a replication</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html",
+    "href": "chapters/chapter2.html",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "",
+    "text": "3 Doing research is hard…",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#doing-research-is-hard-1",
+    "href": "chapters/chapter2.html#doing-research-is-hard-1",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n3.1 Doing research is hard…",
+    "text": "3.1 Doing research is hard…\n. . .\n\nyou have to read papers, textbooks, slides and track information\n\n. . .\n\nyou have to plan your experiment or research\n\n. . .\n\nyou have to collect, organize and manage the research data\n\n\n. . .\n\nyou have to analyze data, create figures and tables\n\n\n. . .\n\nyou have to write reports, papers, slides, etc.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#doing-research-is-hard-2",
+    "href": "chapters/chapter2.html#doing-research-is-hard-2",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n3.2 Doing research is hard…",
+    "text": "3.2 Doing research is hard…",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#doing-reproducible-research-is-even-harder",
+    "href": "chapters/chapter2.html#doing-reproducible-research-is-even-harder",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n3.3 Doing reproducible research is even harder… 😱",
+    "text": "3.3 Doing reproducible research is even harder… 😱\n. . .\n\norganize data in a sharable and comprehensible format\n\n. . .\n\nchoose a future-proof place to share data along the research paper\n\n. . .\n\nanalyze data using a reproducible framework: code, programming language, scripting\n\n. . .\n\nreport data (papers, slides, etc.) using a reproducible framework",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#reproducibility-starter-pack-construction_worker",
+    "href": "chapters/chapter2.html#reproducibility-starter-pack-construction_worker",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n4.1 Reproducibility starter pack :construction_worker:",
+    "text": "4.1 Reproducibility starter pack :construction_worker:\n. . .\n\n\n4.1.1 A general purpose (or flexible enough) programming language such as  or \n\n\n. . .\n\n\n4.1.2 A literate programming framework to integrate code and text\n\n. . .\n\n\n4.1.3 A version control system to track projects\n\n. . .\n\n\n4.1.4 An online repository to store the project and sharing with others",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#r",
+    "href": "chapters/chapter2.html#r",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.1 R",
+    "text": "5.1 R\n\nR is a free software environment for statistical computing and graphics.\n\n\n(TBH) Is not a proper general purpose programming language (such as C++ or Python).\nNew extensions (packages) allow R to do pretty everything (file manager, image processing, webscraping, etc.)\nIt is free and open-source\nThe community is extremely active and keep growing",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#r---cran",
+    "href": "chapters/chapter2.html#r---cran",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.2 R - CRAN",
+    "text": "5.2 R - CRAN\nThe CRAN is the repository where package developers upload their packages and other users can install them.\n\n\n\n\n\n\n. . .\nAs the saying goes: if something exist, there is for sure an R package for doing it! :smile:",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#r---pypl-index",
+    "href": "chapters/chapter2.html#r---pypl-index",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.3 R - PYPL Index",
+    "text": "5.3 R - PYPL Index\n\n\nSource: https://pypl.github.io/PYPL.html\n\n\nRank\nLanguage\nShare\n1-year.trend\n\n\n\n1\nPython\n28.04%\n0.30%\n\n\n2\nJava\n15.78%\n-1.30%\n\n\n3\nJavaScript\n9.27%\n-0.20%\n\n\n4\nC#\n6.77%\n-0.20%\n\n\n5\nC/C++\n6.59%\n0.40%\n\n\n6\nPHP\n5.01%\n-0.40%\n\n\n7\nR\n4.35%\n0.00%\n\n\n8\nTypeScript\n3.09%\n0.30%\n\n\n9\nSwift\n2.54%\n0.50%\n\n\n10\nObjective-C\n2.15%\n0.10%\n\n\n11\nRust\n2.14%\n0.50%",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#r---pypl-index-1",
+    "href": "chapters/chapter2.html#r---pypl-index-1",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.4 R - PYPL Index",
+    "text": "5.4 R - PYPL Index\nThe popularity is on a different scale compared to Python but still increasing:\n\n\nSource: https://pypl.github.io/PYPL.html",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#r-or-python",
+    "href": "chapters/chapter2.html#r-or-python",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.5 R or Python?",
+    "text": "5.5 R or Python?\n\nPython is a good alternative. Personally, I use and enjoy python but I do most of my work in R.\nPython is a very general-purpose language more powerful for general tasks.\nI find python very useful for programming cognitive experiments, image processing, automatizing tasks and interacting with the operating system\nR is still a little bit superior in terms of data manipulation and visualization. Python is faster and more powerful for complex machine learning.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#modern-r",
+    "href": "chapters/chapter2.html#modern-r",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.6 Modern R",
+    "text": "5.6 Modern R\n. . .\n\nFor purist programmers, R is somehow weird: arrays starts with 1, object-oriented programming is hidden, a lot of built-in vectorized functions, etc. See The R Inferno book for an overview.\n\n. . .\n\nDespite the weirdness, R have the majority of common programming paradigms (functions, conditionals, iterations, etc.).\n\n. . .\n\nThe scope of this week is not providing an introduction to R but I would put the focus on two topics for a modern usage of R:\n\nfunctional programming\nthe tidy approach",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#functional-programming",
+    "href": "chapters/chapter2.html#functional-programming",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.7 Functional Programming",
+    "text": "5.7 Functional Programming\n\nIn computer science, functional programming is a programming paradigm where programs are constructed by applying and composing functions.\n\nDespite R can be used both with an imperative and object-oriented approach, the functional side is quite powerful.\nActually, functional programming is quite complex. Here we refer to breaking down our code into small functions. These functions can be function from packages, custom or anonymous functions.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#functional-programming-example",
+    "href": "chapters/chapter2.html#functional-programming-example",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.8 Functional Programming, example…",
+    "text": "5.8 Functional Programming, example…\nWe have a dataset (mtcars) and we want to calculate the mean, median, standard deviation, minimum and maximum of each column and store the result in a table.\n\nhead(mtcars)\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\nstr(mtcars)\n\n'data.frame':   32 obs. of  11 variables:\n $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...\n $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...\n $ disp: num  160 160 108 258 360 ...\n $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...\n $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...\n $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...\n $ qsec: num  16.5 17 18.6 19.4 17 ...\n $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...\n $ am  : num  1 1 1 0 0 0 0 0 0 0 ...\n $ gear: num  4 4 4 3 3 3 3 4 4 4 ...\n $ carb: num  4 4 1 1 2 1 4 2 2 4 ...",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#functional-programming-1",
+    "href": "chapters/chapter2.html#functional-programming-1",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.9 Functional Programming",
+    "text": "5.9 Functional Programming\nThe standard (~imperative) option is using a for loop, iterating through columns, calculate the values and store into another data structure.\n\nncols &lt;- ncol(mtcars)\nmeans &lt;- medians &lt;- mins &lt;- maxs &lt;- rep(0, ncols)\n\nfor(i in 1:ncols){\n  means[i] &lt;- mean(mtcars[[i]])\n  medians[i] &lt;- mean(mtcars[[i]])\n  mins[i] &lt;- mean(mtcars[[i]])\n  maxs[i] &lt;- mean(mtcars[[i]])\n}\n\nresults &lt;- data.frame(means, medians, mins, maxs)\nresults$col &lt;- names(mtcars)\n\nresults\n\n        means    medians       mins       maxs  col\n1   20.090625  20.090625  20.090625  20.090625  mpg\n2    6.187500   6.187500   6.187500   6.187500  cyl\n3  230.721875 230.721875 230.721875 230.721875 disp\n4  146.687500 146.687500 146.687500 146.687500   hp\n5    3.596563   3.596563   3.596563   3.596563 drat\n6    3.217250   3.217250   3.217250   3.217250   wt\n7   17.848750  17.848750  17.848750  17.848750 qsec\n8    0.437500   0.437500   0.437500   0.437500   vs\n9    0.406250   0.406250   0.406250   0.406250   am\n10   3.687500   3.687500   3.687500   3.687500 gear\n11   2.812500   2.812500   2.812500   2.812500 carb",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#functional-programming-2",
+    "href": "chapters/chapter2.html#functional-programming-2",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.10 Functional Programming",
+    "text": "5.10 Functional Programming\nWe can decompose (and symplify the problem) by writing a function and looping through columns.\n. . .\n\nsumm &lt;- function(x){\n  data.frame(means = mean(x), medians = median(x), mins = min(x), maxs = max(x))\n}\nncols &lt;- ncol(mtcars)\ndfs &lt;- vector(mode = \"list\", length = ncols)\n\nfor(i in 1:ncols){\n  dfs[[i]] &lt;- summ(mtcars[[i]])\n}\n\nresults &lt;- do.call(rbind, dfs)\nresults\n\n        means medians   mins    maxs\n1   20.090625  19.200 10.400  33.900\n2    6.187500   6.000  4.000   8.000\n3  230.721875 196.300 71.100 472.000\n4  146.687500 123.000 52.000 335.000\n5    3.596563   3.695  2.760   4.930\n6    3.217250   3.325  1.513   5.424\n7   17.848750  17.710 14.500  22.900\n8    0.437500   0.000  0.000   1.000\n9    0.406250   0.000  0.000   1.000\n10   3.687500   4.000  3.000   5.000\n11   2.812500   2.000  1.000   8.000",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#functional-programming-3",
+    "href": "chapters/chapter2.html#functional-programming-3",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.11 Functional Programming",
+    "text": "5.11 Functional Programming\n. . .\nWe can be even more minimalistic by removing the for loop and using the *apply family that provide a series of compact iterative method.\n. . .\n\nresults &lt;- lapply(mtcars, summ)\nresults &lt;- do.call(rbind, results)\nresults\n\n          means medians   mins    maxs\nmpg   20.090625  19.200 10.400  33.900\ncyl    6.187500   6.000  4.000   8.000\ndisp 230.721875 196.300 71.100 472.000\nhp   146.687500 123.000 52.000 335.000\ndrat   3.596563   3.695  2.760   4.930\nwt     3.217250   3.325  1.513   5.424\nqsec  17.848750  17.710 14.500  22.900\nvs     0.437500   0.000  0.000   1.000\nam     0.406250   0.000  0.000   1.000\ngear   3.687500   4.000  3.000   5.000\ncarb   2.812500   2.000  1.000   8.000",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#functional-programming-apply",
+    "href": "chapters/chapter2.html#functional-programming-apply",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.12 Functional Programming, *apply\n",
+    "text": "5.12 Functional Programming, *apply\n\n. . .\nThe *apply family is one of the best tool in R. The idea is pretty simple: apply a function to each element of a list.\n. . .\nThe powerful side is that in R everything can be considered as a list. A vector is a list of single elements, a dataframe is a list of columns etc.\n. . .\nInternally, R is still using a for loop but the verbose part (preallocation, choosing the iterator, indexing) is encapsulated into the *apply function.\n. . .\n\nmeans &lt;- rep(0, ncol(mtcars))\nfor(i in 1:length(means)){\n  means[i] &lt;- mean(mtcars[[i]])\n}\n\n# the same with sapply\nmeans &lt;- sapply(mtcars, mean)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#for-loops-are-bad",
+    "href": "chapters/chapter2.html#for-loops-are-bad",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.13 for loops are bad?",
+    "text": "5.13 for loops are bad?\nfor loops are the core of each operation in R (and in every programming language). For complex operation thery are more readable and effective compared to *apply. In R we need extra care for writing efficent for loops.\nExtremely slow, no preallocation:\n\nres &lt;- c()\nfor(i in 1:1000){\n  # do something\n  res[i] &lt;- x\n}\n\nVery fast, no difference compared to *apply\n\nres &lt;- rep(0, 1000)\nfor(i in 1:length(res)){\n  # do something\n  res[i] &lt;- x\n}",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#why-functional-programming",
+    "href": "chapters/chapter2.html#why-functional-programming",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.14 Why functional programming?",
+    "text": "5.14 Why functional programming?\n. . .\n\nWe can write less and reusable code that can be shared\n\n. . .\n\nThe scripts are more compact, less errors prone and more flexible (imagine that you want to improve the summ function, you only need to change it once instead of touching the for loop)\n\n. . .\n\nFunctions can be easily and consistently documented (see roxygen documentation) improving the reproducibility and clarity of the code",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#more-about-functional-programming-in-r",
+    "href": "chapters/chapter2.html#more-about-functional-programming-in-r",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.15 More about functional programming in R",
+    "text": "5.15 More about functional programming in R\n\nAdvanced R by Hadley Wickham, section on Functional Programming (https://adv-r.hadley.nz/fp.html)\nHands-On Programming with R by Garrett Grolemund https://rstudio-education.github.io/hopr/\n\nHadley Wickham: The Joy of Functional Programming (for Data Science)\n\nBruno Rodrigues Youtube Channel",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#the-tidy-approach",
+    "href": "chapters/chapter2.html#the-tidy-approach",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.16 The Tidy approach",
+    "text": "5.16 The Tidy approach\nThe tidyverse is a series of high-quality R packages to do modern data science:\n\ndata manipulation (dplyr, tidyr)\nplotting (ggplot2)\nreporting (rmarkdown)\nstring manipulation (stringr)\nfunctionals (purrr)\n…",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#the-tidy-approach---pipes",
+    "href": "chapters/chapter2.html#the-tidy-approach---pipes",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.17 The Tidy approach - Pipes",
+    "text": "5.17 The Tidy approach - Pipes\nOne of the great improvement from the tidyverse is the usage of the pipe %&gt;% now introduced in base R as |&gt;. You will se these symbols a lot when looking at modern R code.\n. . .\nThe idea is very simple, the standard pattern to apply a function is function(argument). The pipe can reverse the pattern as argument |&gt; function(). Normally when we apply multiple functions progressively the pattern is this:\n. . .\n\nx &lt;- rnorm(100)\nx &lt;- round(x, 3)\nx &lt;- abs(x)\nx &lt;- as.character(x)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#the-tidy-approach---pipes-1",
+    "href": "chapters/chapter2.html#the-tidy-approach---pipes-1",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.18 The Tidy approach - Pipes",
+    "text": "5.18 The Tidy approach - Pipes\nWhen using the pipe, we remove the redundand assignment &lt;- pattern:\n\nx &lt;- rnorm(100)\nx |&gt;\n  round(3) |&gt;\n  abs() |&gt;\n  as.character()\n\nThe pipe can be read as “from x apply round, then abs, etc.”. The first argument of the piped function is assumed to be the result of the previus call.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#more-about-the-tidy-approach",
+    "href": "chapters/chapter2.html#more-about-the-tidy-approach",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.19 More about the Tidy approach",
+    "text": "5.19 More about the Tidy approach\nThe tidy approach contains tons of functions and packages. The overall philosopgy can be deepen in the R for Data Science book.\n\n\nhttps://r4ds.hadley.nz/",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#ggplot2",
+    "href": "chapters/chapter2.html#ggplot2",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.20 ggplot2",
+    "text": "5.20 ggplot2\n\n\nCode\nResult\nBase R Code\nBase R Result\n\n\n\nOnly an honour mention to ggplot2 https://ggplot2-book.org/ (part of the tidyverse) that is an amazing package for data visualization following the piping and tidy approach. Is the implementation of the grammar of graphics idea.\n\nlibrary(tidyverse)\niris |&gt;\n  mutate(wi = runif(n())) |&gt;\n  ggplot(aes(x = Sepal.Length, y = Petal.Width, color = Species)) +\n  geom_point(aes(size = wi)) +\n  geom_smooth(method = \"lm\", se = FALSE)\n  guides(size = \"none\") +\n  theme_minimal(15)\n\n\n\n\n\n\n\n\n\n\n\n\n\nMore verbose, more hard coding, more steps and intermidiate objects.\n\niris_l &lt;- split(iris, iris$Species)\nlms &lt;- lapply(iris_l, function(x) lm(Petal.Width ~ Sepal.Length, data = x))\n\nplot(iris$Sepal.Length, iris$Petal.Width, col = as.numeric(iris$Species), pch = 19)\nabline(lms[[1]], col = 1, lwd = 2)\nabline(lms[[2]], col = 2, lwd = 2)\nabline(lms[[3]], col = 3, lwd = 2)\nlegend(\"topleft\", legend = levels(iris$Species), fill = 1:3)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#ggplot2-1",
+    "href": "chapters/chapter2.html#ggplot2-1",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n5.21 ggplot2",
+    "text": "5.21 ggplot2\nThe ggplot2 book https://ggplot2-book.org/ is a great resource to produce high-quality, publication ready plots. Clearly, the advantage of producing the figures entirely writing code are immense in terms of reusability and reproducibility.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#literate-programming-1",
+    "href": "chapters/chapter2.html#literate-programming-1",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n6.1 Literate Programming1\n",
+    "text": "6.1 Literate Programming1\n\n\nDonald Knuth first defined literate programming as a script, notebook, or computational document that contains an explanation of the program logic in a natural language, interspersed with snippets of macros and source code, which can be compiled and rerun\n\nFor example jupyter notebooks, R Markdown and now Quarto are literate programming frameworks to integrate code and text.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#literate-programming-the-markup-language",
+    "href": "chapters/chapter2.html#literate-programming-the-markup-language",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n6.2 Literate Programming, the markup language",
+    "text": "6.2 Literate Programming, the markup language\nBeyond the coding part, the markup language is the core element of a literate programming framework. The idea of a markup language is separating the result from what you actually write. Some examples are:\n\nLaTeX\nHTML\nMarkdown\nXML\n…",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#latex",
+    "href": "chapters/chapter2.html#latex",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n6.3 LaTeX 2\n",
+    "text": "6.3 LaTeX 2",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#html",
+    "href": "chapters/chapter2.html#html",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n6.4 HTML",
+    "text": "6.4 HTML\n&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;body&gt;\n\n&lt;h1&gt;My First Heading&lt;/h1&gt;\n\nLorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. È sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum.\n\n&lt;h2&gt;My Second Heading&lt;/h2&gt;\n\nLorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. \n\nLorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo \n\ntipografo prese una cassetta di caratteri e li assemblò per preparare un testo campione. \n\nÈ sopravvissuto non solo a più di cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. \n\nFu reso popolare, negli anni ’60, con la diffusione dei \n\nfogli di caratteri trasferibili “Letraset”, che contenevano passaggi del Lorem Ipsum\n\npiù recentemente da software di impaginazione come Aldus PageMaker, che includeva versioni del Lorem Ipsum.\n\n&lt;/body&gt;\n&lt;/html&gt;",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#markdown",
+    "href": "chapters/chapter2.html#markdown",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n6.5 Markdown3\n",
+    "text": "6.5 Markdown3",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#markdown-1",
+    "href": "chapters/chapter2.html#markdown-1",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n6.6 Markdown",
+    "text": "6.6 Markdown\nMarkdown is one of the most popular markup languages for several reasons:\n\neasy to write and read compared to Latex and HTML\neasy to convert from Markdown to basically every other format using pandoc\n\neasy to implement new features",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#markdown-source-code",
+    "href": "chapters/chapter2.html#markdown-source-code",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n6.7 Markdown (source code)",
+    "text": "6.7 Markdown (source code)\n## Markdown\n\nMarkdown is one of the most popular markup languages for several reasons:\n\n- easy to write and read compared to Latex and HTML\n- easy to convert from Markdown to basically every other format using `pandoc`\n- easy to implement new features\n. . .\nAlso the source code can be used, compared to Latex or HTML, to take notes and read. Latex and HTML need to be compiled otherwise they are very hard to read.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#whats-wrong-about-microsoft-word",
+    "href": "chapters/chapter2.html#whats-wrong-about-microsoft-word",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n6.8 What’s wrong about Microsoft Word?",
+    "text": "6.8 What’s wrong about Microsoft Word?\nMS Word is a WYSIWYG (what you see is what you get editor) that force users to think about formatting, numbering, etc. Markup languages receive the content (plain text) and the rules and creates the final document.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#whats-wrong-about-microsoft-word-1",
+    "href": "chapters/chapter2.html#whats-wrong-about-microsoft-word-1",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n6.9 What’s wrong about Microsoft Word?",
+    "text": "6.9 What’s wrong about Microsoft Word?\nBeyond the pure writing process, there are other aspects related to research data.\n\nwriting math formulas\nreporting statistics in the text\nproducing tables\nproducing plots\n\nIn MS Word (or similar) we need to produce everything outside and then manually put figures and tables.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#the-solution-quarto",
+    "href": "chapters/chapter2.html#the-solution-quarto",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n6.10 The solution… Quarto",
+    "text": "6.10 The solution… Quarto\nQuarto (https://quarto.org/) is the evolution of R Markdown that integrate a programming language with the Markdown markup language. It is very simple but quite powerful.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#basic-markdown",
+    "href": "chapters/chapter2.html#basic-markdown",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n6.11 Basic Markdown",
+    "text": "6.11 Basic Markdown\nMarkdown can be learned in minutes. You can go to the following link https://quarto.org/docs/authoring/markdown-basics.html and try to understand the syntax.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#more-about-quarto-and-r-markdown",
+    "href": "chapters/chapter2.html#more-about-quarto-and-r-markdown",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n7.1 More about Quarto and R Markdown",
+    "text": "7.1 More about Quarto and R Markdown\nThe topic is extremely vast. You can do everything in Quarto, a website, thesis, your CV, etc.\n\nYihui Xie - R Markdown Cookbook https://bookdown.org/yihui/rmarkdown-cookbook/\n\nYihui Xie - R Markdown: The Definitive Guide https://bookdown.org/yihui/rmarkdown/\n\nQuarto documentation https://quarto.org/docs/guide/",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#git-and-github-1",
+    "href": "chapters/chapter2.html#git-and-github-1",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n8.1 Git and Github",
+    "text": "8.1 Git and Github\nThe basic idea is to track changes within a folder, assign a message and eventually a tag to a specific version obtaining a version hystory. The version history is completely navigable, you can go back to a previous version of the code.\n. . .\nThe are advanced features like branches for creating an independent version of the project to test new features and then merge into the main streamline.\n. . .\nThe entire (local) Git project can be hosted on Github to improve collaboration. Other people or collaborators can clone the repository and push their changes to the project.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#veeeery-basic-git-workflow-1",
+    "href": "chapters/chapter2.html#veeeery-basic-git-workflow-1",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n9.1 Veeeery basic Git workflow",
+    "text": "9.1 Veeeery basic Git workflow\n\nAfter installing Git, you can start a new repository opening a terminal on a folder and typing git init. The folder is now a git project you can notice by the hidden .git folder.\n\ncd ~/some/folder\ngit init\n\nThen you can add files to the staging area. Basically these files are ready to be committed i.e. “written” in the Git history.\n\ngit add file1.txt\n# git add . # add everyting\n\nFinally you can commit the modified version of the file using git commit -m message\n\n\ngit commit -m \"my first amazing commit\"\n\nyou can see the Git hystory with all your commits:\n\ngit log",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#github",
+    "href": "chapters/chapter2.html#github",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n9.2 Github",
+    "text": "9.2 Github\nImagine to put everyting into a server with nice viewing options and advanced features. Github is just an hosting service for your git folder.\nYou can create an empty repository on Github named git-test. Now my repo has the path git@github.com:filippogambarota/git-test.git.\ngit remote add origin git@github.com:filippogambarota/git-test.git\ngit push\nNow our local repository is linked with the remote repository. Every time we do git push our local commits will be uploaded.\nIf you worked on the repository from another machine or a colleague add some changes, you can do git pull and your local machine will be updated.\n\nThe repository git-test is online and can be seen here filippogambarota/git-test.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#github-1",
+    "href": "chapters/chapter2.html#github-1",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n9.3 Github",
+    "text": "9.3 Github\nAn now let’s see on Github the result:",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#more-about-git-and-github",
+    "href": "chapters/chapter2.html#more-about-git-and-github",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n9.4 More about Git and Github",
+    "text": "9.4 More about Git and Github\nThere are a lot of resources online:\n\nThe Open Science Manual - Zandonella and Massidda - Git and Github chapters.\nhttps://agripongit.vincenttunru.com/\nhttps://git-scm.com/docs/gittutorial",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#open-science-framework-1",
+    "href": "chapters/chapter2.html#open-science-framework-1",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n10.1 Open Science Framework",
+    "text": "10.1 Open Science Framework\n\nOSF is a free, open platform to support your research and enable collaboration.\n\nIs a great tool to upload and share materials with others and collaborate on a project. Similarly to Github you can track the changes made to a project.\nThe great addition is having a DOI thus the project is persistently online and can be cited.\nIt is now common practice to create a OSF project supporting a research paper and put the link within the paper containing supplementary materials, raw data, scripts etc.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#open-science-framework-2",
+    "href": "chapters/chapter2.html#open-science-framework-2",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n10.2 Open Science Framework",
+    "text": "10.2 Open Science Framework\nIt’s very easy to create a new project, then you simply need to add files and share it.\n\nThe project can be accessed here (depending on the visibility) https://osf.io/yf9tg/.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#open-science-framework-3",
+    "href": "chapters/chapter2.html#open-science-framework-3",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n10.3 Open Science Framework",
+    "text": "10.3 Open Science Framework\n\n10.3.1 OSF and Github\nAn interesting feature is linking a Github repository to OSF. Now all changes made on Github (easier to manage) are mirrored into OSF. You can easily work in Github for the coding part and use OSF to upload other data or information and to assign a DOI to the project.\n\n10.3.2 Preprints\nOSF is also linked to a popular service for preprints called PsyArXiv https://psyarxiv.com/ thus you can link a preprint to an OSF project.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#more-on-osf",
+    "href": "chapters/chapter2.html#more-on-osf",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n10.4 More on OSF",
+    "text": "10.4 More on OSF\n\nhttps://help.osf.io/article/342-getting-started-on-the-osf\nhttps://arca-dpss.github.io/manual-open-science/osf-chapter.html",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#more-on-reproducibility",
+    "href": "chapters/chapter2.html#more-on-reproducibility",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "\n10.5 More on reproducibility",
+    "text": "10.5 More on reproducibility\nIn general, I highly suggest the online book The Open Science Manual https://arca-dpss.github.io/manual-open-science/ written by my friend Claudio Zandonella and Davide Massidda where these and other topics are explained in details:",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter2.html#footnotes",
+    "href": "chapters/chapter2.html#footnotes",
+    "title": "\n2  Replicability and reproducibility\n",
+    "section": "",
+    "text": "https://en.wikipedia.org/wiki/Literate_programming↩︎\nhttps://latexbase.com/↩︎\nhttps://markdownlivepreview.com/↩︎",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Replicability and reproducibility</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter3.html",
+    "href": "chapters/chapter3.html",
+    "title": "\n3  Probability of Replication\n",
+    "section": "",
+    "text": "3.1 Formalization",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Probability of Replication</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter3.html#formalization",
+    "href": "chapters/chapter3.html#formalization",
+    "title": "\n3  Probability of Replication\n",
+    "section": "",
+    "text": "3.1.1 The Miller (2009) definitions\nMiller (2009) proposed one of the earliest probabilistic frameworks for estimating the probability of replication. He defines two different senses of replication probabilities:\n\naggregate replication probability (ARP): the probability of researchers working on a certain research field finding a statistically significant result in a replication study given a significant original study.\nindividual replication probability (IRP): the probability of finding a significant effect on a replication study when replicating a specific original study.\n\nIn this chapter we will take off from Miller’s definitions and provide a formal framework to answer key questions about replication probabilities.\n\n\n\n\n\n\nKey questions\n\n\n\n\nWhat is the probability of replicating an observed effect in a precise replication experiment?\nWhat is the probability of replicating experiments of a certain type within a research field?\nHow is the probability of replication affected by the experimental design (e.g., sample size, etc.) and by the effect size?\nIs the probability of replication affected by questionable research practices or publication bias?\n\n\n\n\n3.1.2 Notation\nWe begin by providing a consistent notation and terminology, and a formal framework for the statistical models and analysis examples throughout the book. The notation is based on the replication model by Pawel & Held (2020) and the meta-analytical notation by Hedges & Schauer (2021), Schauer & Hedges (2021), and Hedges & Schauer (2019).\nWe use \\(x\\)’s to denote predictors, treatments, and fixed factors, and \\(y\\)’s to denote outcomes. The subscript \\(i\\) denotes individuals within a study, while \\(r\\) indexes studies. We use \\(r=0\\) to denote the original study, and \\(r = 1, 2, \\ldots, R\\) to denote the \\(R \\geq 1\\) replication studies.\nWe use the greek letter \\(\\theta\\)’s to define the true effects for the original and replication study(s). These are population parameters. In particular \\(\\theta_0\\) is the effect in original study and \\(\\theta_r\\) is the effect in the \\(r\\)-th study. In principle, \\(\\theta\\)’s can be vector valued, but for simplicity we will focus on a scalar effect. We will also use other greek letters for parameters specific to individual settings.\nThe one-to-one replication design is used when a single replication study is replicating an original experiment. On the other hand, a replication project with \\(R\\) replication studies is called a one-to-many design.\nIn Chapter XXX we covered the Machery definition of replication, in which only the randomly drawn subjects differ between the original study and the replications. In a replication of this type, the population of reference remains the same, an therefore \\(\\theta_0 = \\theta_1 = \\ldots = \\theta_R\\). This will be the case with Miller’s original, for example. Generally, in a highly precise replication, this will also be approximately correct.\nOn the other hand, if we consider a group of extension experiments, or even more broadly examine an entire field of research, we typically alter fixed factors, and thus consider many different, albeit related, populations. In this case \\(\\theta\\)’s are no longer identical. Variation between \\(\\theta\\)’s is an important aspect of replicability analysis. We will return to it in several places. For now, consider that this variation depends on the unverse of studies of interest. For example, a group of extension experiment for a specific treatment / outcome combination will generally have smaller variability than a group considering the effect of the same treatment on a variety of outcomes.\n\n3.1.3 Two-Level Models\nOne way to think about studying the variation of the \\(\\theta\\)’s is to frame the analysis in a two-level model. Within a study, we imagine that subjects are drawn from a population, with each population associated to a specific study design / fixed factors. In turn, then, study designs themselves are seen as draws from a hypothetically vast collection of possible designs. This allows to describe the variation of \\(\\theta\\)’s probabilistically. In many examples we will use a Normal distribution to describe the resulting population of effect sizes. This normal distribution will have mean \\(\\mu_{\\theta}\\) and variance \\(\\tau^2\\).\nReplication is often framed in terms of tests of hypothesis. Parenthetically, several fields of study are making organized attempts at moving scientific reporting away from tests of hypotheses (Harrington et al., 2019). Evidential summaries from hypotheses tests, such as p-values, systematically confound sample size and effect size (Wasserstein & Lazar, 2016). Better reporting focuses on quantitative effect sizes. Nonetheless, replicability analysis requires explicit consideration of significance, as this remains a factor in determining publication.\nHere we will define the null hypothesis to be that “the effect is too small to be of scientific interest”. Formally, the null hypothesis is true when \\(|\\theta| &lt; h_0\\) where \\(h_0\\) is specified by the analyst and defines a so-called region of practical equivalence or ROPE (Kruschke, 2015; Kruschke & Liddell, 2018)1. In a precise replication, \\(\\theta\\) does not change across studies and thus the null hypothesis is either true or not in every study. In contrast, if we consider a group of extension experiments or a whole field, \\(\\theta\\)’s vary and the null hypothesis may hold in some studies and not others. We will use \\(\\pi\\) to denote the proportion of non-null effect in a population of studies.\nMiller (2009) noted that \\(\\pi\\) is an unknown quantity that is difficult to estimate from the literature. In Psychology Wilson & Wixted (2018) tried to estimate \\(\\pi\\) based on the Collaboration & Open Science Collaboration (2015) large scale replication project finding different rates for social and cognitive psychology. On the same line, Jager & Leek (2014) tried to estimate the false discovery rate across the top medical journals.\nThe more precise the replication, the smaller will \\(\\tau\\) be. As \\(\\tau\\) goes to zero, all \\(\\theta\\)’s will concentrate around \\(\\mu_{\\theta}\\) and \\(\\pi\\) will approach either 0 or 1 depending on whether \\(\\mu_{\\theta}\\) is in the region of practical equivalence.\n\n\n\n\n\nFigure 3.1: Simple generating model\n\n\nFigure BLAH summarizes this discussion. Caption. Spiegare generating mechanism. Spiegare notazione della normale.\nThe framework described in figure BLAH defined a generating model for replicability studies, that is a way to generate in silico, starting from a given \\(\\pi,\\mu_{\\theta},\\tau\\), a set of replicability data. We will give examples in Chapter XXX.\n\n3.1.4 Multi-level Models\nAnxiety and Depression example.\nTwo component mixture for thetas \\(\\mu^1_{\\theta}\\) and \\(\\mu^2_{\\theta}\\) \\(\\tau^1\\) \\(\\tau^2\\) Proportion of anxiety studies \\(\\omega_a\\)\n\n\n\n\n\nFigure 3.2: Mixture generating model\n\n\n\n3.1.5 Simple Null Hypotheses\nMiller’s work as well as much work in the literature concerns simple null hypotheses. In our notation the null hypothesis is true when \\(|\\theta| = 0\\). The logic of section Section 3.1.3 can be cloned for this case as well, as illustrated in Figure XXX. Now the distribution of \\(\\theta\\) has two components: a continuous component describing the variation of the effect assuming the effect is not zero, and a discrete component at exactly zero. The probability of drawing a nonzero effect will again be \\(\\pi\\), which is also the area under the bell curve in the figure. Thus the point mass at zero is \\(1-\\pi\\).\n\n\n\n\n\nFigure 3.3: Point null generating model",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Probability of Replication</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter3.html#probability-of-replication-in-exact-replication-experiments",
+    "href": "chapters/chapter3.html#probability-of-replication-in-exact-replication-experiments",
+    "title": "\n3  Probability of Replication\n",
+    "section": "\n3.2 Probability of Replication in Exact Replication Experiments",
+    "text": "3.2 Probability of Replication in Exact Replication Experiments\n\n3.2.1 Two-Sample Design Review\nWe will often use a two-sample design to make the discussion more concrete. For two groups with the same sample size and the same true variance in both groups, the \\(t\\) statistics is calculated as:\n\\[\nt = \\frac{\\overline{y}_1 - \\overline{y}_2}{SE_{\\overline{y}_1 - \\overline{y}_2}}\n\\] where subscript denote the two groups. The standard error at the denominator is: \\[\n\\mbox{SE}_{\\overline{y}_1 - \\overline{y}_2} = s_p \\sqrt{\\frac{1}{n_1} + \\frac{1}{n_2}}\n\\] where \\(s_p\\) is the pooled standard deviation: \\[\ns_p = \\sqrt{\\frac{s^2_{y_1}(n_1 - 1) + s^2_{y_1}{(n_2 - 1)}}{n_1 + n_2 - 2}}\n\\]\nIn the case of a simple null hypothesis, the p-value can be calculated from a \\(t\\) distribution with \\(\\nu = n_1 + n_2 - 2\\) degrees of freedom.\nMore generally, when the true effect size is not zero, the \\(t\\) statistics will follow a non-central Student’s \\(t\\) distribution with \\(\\nu\\) degrees of freedom and \\(\\lambda\\) as non-centrality parameter calculated as: \\[\n\\lambda = \\delta \\sqrt{\\frac{n_1 n_2}{n_1 + n_2}}\n\\] where \\(\\delta\\) is the true effect size calculated as the true difference between means divided by the true group specific standard error.\nIf \\(F_{t_\\nu}\\) is the cumulative distribution function of the non-central Student’s \\(t\\) distribution, the statistical power is calculated as:\n\\[\n1 - \\beta = 1 - F_{t_\\nu} \\left(t_c, \\lambda \\right) + F_{t_\\nu} \\left(-t_{c}, \\lambda \\right)\n\\] With this setup, we can easily implement these equations in R creating a flexible set of functions to reproduce and extend the examples from the Miller (2009) work.\n\npower.t &lt;- function(d, n1, n2 = NULL, alpha = 0.05){\n    if(is.null(n2)) n2 &lt;- n1\n    df  &lt;- n1 + n2 - 2\n    ncp &lt;- d * sqrt((n1 * n2) / (n1 + n2))\n    tc  &lt;- abs(qt(alpha/2, df = df))\n    pt(-tc, df = df, ncp = ncp) + pt(tc, df = df, ncp = ncp, lower.tail = FALSE)\n}\n\n\npower.t(d = 0.5, n1 = 30)\n## [1] 0.4778965\npower.t(d = 0.5, n1 = 100)\n## [1] 0.9404272\npower.t(d = 0.1, n1 = 200)\n## [1] 0.1694809\n\nWhen the null hypothesis is a set (section (set-twolevel?)) the p-value is calculated conditional of the least favorable case, which occurs when \\(\\theta = h_0\\) or \\(\\theta = - h_0\\) so the noncentral \\(t\\) is used to compute both the p-value and the power.\n\n3.2.2 The Calculus of Replication Probabilities\nConsider the case of strict replication, so the null hypothesis is true or falls in both studies at the same time.\nTo prepare for Miller, we look at replication probability by focusing on replicating significance. Given that the original study was significant (that is that \\(|t_0| &gt; t_{c_0}\\)), what is the probability that the second study will also be significant and the effect will be in the same direction as the original study? Formally we express significance in the original study as \\(|t_0| &gt; t_{c_0}\\), significance in the replication study as \\(|t_1| &gt; t_{c_1}\\), and concordance of the direction of the effect as \\(t_0 \\cdot t_1 &gt;0\\).\n\\[\np_{rep} = \\Pr(|t_1| &gt; t_{c_1} \\cap t_0 \\cdot t_1 &gt;0 \\boldsymbol{\\mid} |t_0| &gt; t_{c_0})\n\\] Using the laws of conditional and total probability in turn, we can express this as\n\n\\[\n\\begin{split}\np_{rep} &= \\Pr(|t_1| \\geq t_{c_1} \\boldsymbol{\\mid} |t_0| \\geq t_{c_0}) \\\\[10pt]\n&= \\frac{\\Pr(|t_1| \\geq t_{c_1} \\cap t_0 \\cdot t_1 &gt;0 \\cap |t_0| \\geq t_{c_0})}{\\Pr(|t_0| \\geq t_{c_0})} \\\\[10pt]\n\\end{split}\n\\]\nConsiderering separately the numerator and the denominator, and using the law of total probabilities, we have:\n\\[\n\\begin{split}\n\\mbox{numerator} =& \\Pr(H_1) \\cdot \\Pr(|t_1| \\geq t_{c1} \\cap t_0 \\cdot t_1 &gt;0 \\cap |t_0| \\geq t_{c_0} \\mid H_1) + \\\\\n& \\Pr(H_0) \\cdot \\Pr(|t_1| \\geq t_{c1} \\cap t_0 \\cdot t_1 &gt;0 \\cap |t_0| \\geq t_{c0} \\mid H_0) \\\\[10pt]\n\\mbox{denominator} =& \\Pr(H_1) \\cdot \\Pr(|t_0| \\geq t_{c_0} \\mid H_1) + \\\\\n& \\Pr(H_0) \\cdot \\Pr(|t_0| \\geq t_{c_1} \\mid H_0).\n\\end{split}\n\\]\nThese expressions are a bit lengthy but allow us to express the probability of replication as a useful function of power and significance level. This is because\n\\[\n\\Pr (|t_0| \\geq t_{c_0} | H_0 ) = \\alpha_0, \\quad \\mbox{and} \\quad \\Pr (|t_0| \\geq t_{c_0} \\cap t_0 \\cdot t_1 &gt;0 | H_0 ) = \\alpha_1 / 2\n\\]\nwhere \\(\\alpha_r\\) is the the study-specific significance level. The division by two is because half of the false positive rejections are expected to occur in the discordant direction under the null. Also\n\\[\\Pr(|t_0| \\geq t_{c_0} | H_1) = 1-\\beta_0 \\quad \\mbox{and} \\quad \\Pr(|t_1| \\geq t_{c_1} \\cap t_0 \\cdot t_1 &gt;0 | H_1) \\approx 1-\\beta_1\\] where \\(1-\\beta_r\\) is the study specific power. Power is simple to compute when the alternative is also a single point, but it is more complex when, as in section Section 3.1.3, we consider a distribution of non-null effects. For now, think about \\(1-\\beta_r\\) as an average power. We will return on this point when we discuss hierarchical models.\nThe approximation sign refers to the fact that we are ignoring the probability that the replication study will generate a significant and discordant effect if the true effect is not null and is indeed in the direction identified in the original study. This probability will be small when the sample size is large or the effect size is large, but can be nontrivial in small studies with small effects.\nRewriting and using independence of the two studies:\n\\[\n\\begin{split}\np_{rep} & \\approx\n\\frac{\\Pr(H_1) \\cdot (1-\\beta_0)(1-\\beta_1) + (1- \\Pr(H_1)) \\cdot \\alpha_0 \\alpha_1 / 2}{\\Pr(H_1) \\cdot (1-\\beta_0) + (1-\\Pr(H_1)) \\cdot \\alpha_0} \\\\[10pt]\n\\end{split}\n\\tag{3.1}\\]\nThe key quantity that remains to understand is \\(\\Pr(H_1)\\), the probability that the effect is not null. The interpretation of this probability depends on the context as well as the analysts’ approach. In section Section 3.2.3 we consider Miller’s version, where \\(\\Pr(H_1)\\) is essentially \\(\\pi\\) from Section Section 3.1.3. Later we will cover an alternative Bayesian interpretation where \\(\\Pr(H_1)\\) is specified based on expert knowledge existing prior to the original experiment.\nWe take two quick digressions before going back to Miller. First, if \\(R&gt;1\\) we can extend this reasoning to more general expressions. For example if we want to estimate the probability of having successful replications in \\(R\\) experiments we can consider \\[\n\\Pr \\left( \\bigcap_{r=1}^R |t_r| &gt; t_{c_r} \\boldsymbol{\\mid} |t_0| &gt; t_{c_0} \\right).\n\\]\nSecond, if you are not familiar with the logic behind Bayes’s rule, we walk you through it in the remainder of this section. The probability of the event A happening given (\\(|\\)) that B happened is:\n\\[\n\\Pr(A|B) = \\frac{\\Pr(A \\cap B)}{\\Pr(B)}\n\\]\nWhere \\(\\Pr(A \\cap B)\\) is the joint probability that can be calculated as:\n\\[\n\\Pr(A \\cap B) = \\Pr(B|A) \\cdot \\Pr(A)\n\\]\nThen the full equation also known as Bayes rule is:\n\\[\n\\Pr(A|B) = \\frac{\\Pr(B|A) \\cdot \\Pr(A)}{\\Pr(B)}\n\\]\n\n3.2.3 Miller’s Aggregate Replication Probability (ARP)\n\nTo recap, Miller (2009) original work is about replication with the highest precision, because he considers no differences in populations between the experiments. He focuses on tests of hypotheses, and considers replication of experiments with significant testing results, as we did above. He also assumes that power and significance level are the same in the original and replication experiment. He also evaluates power at a single point at a time, effectively assuming that the statistical problem is testing a simple null hypothesis against a simple alternative.\nWith regards to \\(\\Pr( H_1)\\) he considers a scheme similar to that of section Section 3.1.3. A study design is drawn randomly from the aggregate describing a scientific field of interest, and then replicated with high precision. In what proportion of times does this exercise lead to a replication? For this calculation \\(\\Pr( H_1)\\) is the same as \\(\\pi\\) in Figure XXX. Miller calls \\(\\pi\\) the strenght of a research area. This parameter has also been considered by other author when evaluating the probability of replicating in a research field (Ioannidis, 2005; Wilson & Wixted, 2018).\nIn his setting, the only relevant parameters in his replication model are the type-2 error rate \\(\\beta\\) (or equivalently the statistical power \\(1 - \\beta\\)), the type-1 error rate \\(\\alpha\\) and the proportion of true hypotheses \\(\\pi\\) in a certain research field.\nUsing formula (#eq-arp2?), the probability to replicate an effect in a given research area, or ARP, conditional on a significant original experiment is \\[\np_{ARP} \\approx \\frac\n{\\pi \\cdot (1 - \\beta)^2 + (1 - \\pi) \\cdot \\alpha^2 / 2}\n{\\pi \\cdot (1 - \\beta)   + (1 - \\pi) \\cdot \\alpha}\n\\tag{3.2}\\] (see also Miller, 2009)\n\nThe denominator is the probability of a significant results in the original study, broken down into the probability of a false false positive \\((1 - \\pi) \\alpha\\) plus the probability of a true positive \\(\\pi (1 - \\beta)\\). Now, let’s consider the numerator. This is the probability that both the original and replication studies being significant and also concordant in the sign of the effect. A good way to understand the process is by formalizing inference using a contingency table as done in Table 3.1.\n\n\nTable 3.1\n\n\n\n\n\n\n\n\nDecision on \\(H_0\\)\n\n\n\n\n\n\n\n\n\n\n\nFalse\n\n\nTrue\n\n\n\n\n\n\n\n\n\\(\\boldsymbol{H_0}\\)\n\n\nFalse\n\n\nTrue Positive (\\(1 - \\beta\\))\n\n\nFalse Negative (\\(\\beta\\))\n\n\n\\(\\pi\\)\n\n\n\n\n\\(\\boldsymbol{H_0}\\)\n\n\nTrue\n\n\nFalse Positive (\\(\\alpha\\))\n\n\nTrue Negative (\\(1 - \\alpha\\))\n\n\n\\(1 - \\pi\\)\n\n\n\n\n\n\n\nFor example, the probability that something is significant is the sum of true positives (i.e., the statistical power) and false positives (i.e., type-1 errors) weighted by the prevalence \\(\\pi\\). Thus the numerator \\(\\Pr(|t_1| &gt; t_{c1} \\cap |t_0| &gt; t_{c0})\\) can be written as the sum between:\n\nOriginal study being significant \\((1 - \\beta) \\cdot \\pi + \\alpha \\cdot (1 - \\pi)\\)\n\nReplication study being significant \\((1 - \\beta) + \\frac{\\alpha}{2}\\)\n\n\n\\(\\frac{\\alpha}{2}\\) because we assume that the replication success happens when the result is on the same direction thus we are not considering false positives with the opposite sign.\nAn interesting use of the Equation 3.2 formula is that we can explore the probability of replication in different scenarios manipulating the parameters defined above. In the next sections we selected the key points from the Miller (2009) work reproducing and extending the proposed examples and figures.\nFor the examples, Miller (2009) used Binomial experiments and t-tests. We decided to present the examples (especially for the IRP) using a two-sample t-test as base case. The same reasoning can be applied to whatever statistical test but the equations could be different.\nBeyond expanding Equation 3.2 to include multiple replication experiments, Miller (2009) also expanded the model by considering a form of p-hacking where multiple original experiments are conducted before obtaning the significant result. The impact of questionable research practices on the probability of replication has been extensively studied by Ulrich & Miller (2020) using a similar model.\n\n3.2.4 R Code for the Aggregate replication probability (ARP)\nWe implemented the Miller (2009) equations in R:\n\narp &lt;- function(r, pi, power, alpha) {\n    if(any(r &lt; 1)) stop(\"number of replicates should be equal or greater than 1\")\n    j &lt;- r + 1 # total studies\n    num &lt;- pi * power^j + (1 - pi) * alpha * (alpha/2)^(j - 1)\n    den &lt;- pi * power + (1 - pi) * alpha\n    num/den\n}\n\nr is the number of replication studies, pi is \\(\\pi\\), power is \\(1 - \\beta\\) and alpha is \\(\\alpha\\).\nThe Figure 3.4 depicts how the ARP change according to the theory strength \\(\\pi\\) and the power (assumed to be the same for the original and replication experiment).\n\n\n\n\n\n\n\nFigure 3.4\n\n\n\n\nThe main takeaways from Figure 3.4 are:\n\nfor medium (and probably plausible) levels of theory strength the replication probability relatively low even for high power levels\nwhen \\(r &gt; 1\\) the probabilities are very low in every conditions\n\n3.2.5 Miller’s Individual replication probability (IRP)\n\nIn contrast to the ARP, which considers a randomly drawn original study from a field, the individual replication probability (IRP) focuses on a specific original study. Miller’s approach is ask what is the probability of a significant and concordant test result in the replication study, pretending that the estimated effect in the original study is correct. The reduces to calculating the power of the replication study conditional at observed effect, that is \\(p_{IRP} = 1 - \\beta(\\hat\\theta_0)\\)\nReplicating miller 3a figure with a two sample t-test and providing a function to calculate the power with upper and lower bound given the p value and the sample size of the initial experiment.\nUsing Equations from the ?sec-intro-miller we can reproduce and extend the Miller (2009) figures. Basically we estimate the IRP assuming the power (thus the effect size and sample size) of the replication study is the same of the original study. The core is the p2d function that return the power given the effect size for the point estimate and the lower/upper limit of the effect size confidence interval2.\n\np2d &lt;- function(p, n, alpha = 0.05){\n    df &lt;- n*2 - 2\n    to &lt;- abs(qt(p/2, df))\n    se &lt;- sqrt(1/n + 1/n)\n    cit &lt;- effectsize:::.get_ncp_t(to, df)\n    lb.t &lt;- cit[1]\n    ub.t &lt;- cit[2]\n    d &lt;- to * se\n    lb &lt;- lb.t * se\n    ub &lt;- ub.t * se\n    # power\n    d.power &lt;- power.t(d = d, n1 = n, alpha = alpha)\n    lb.power &lt;- power.t(d = lb, n1 = n, alpha = alpha)\n    ub.power &lt;- power.t(d = ub, n1 = n, alpha = alpha)\n    list(t = to, d = d,\n         se = se, df = df,\n         ci.lb = lb, ci.ub = ub,\n         d.power = d.power,\n         lb.power = lb.power,\n         ub.power = ub.power,\n         p = p)\n}\n\n\n\n\n\n\n\n\nFigure 3.5: fig-miller-irp\n\n\n\n\nFrom the Miller (2009) work on IRP the most important point is that statistical significance alone \\(p_0 \\leq \\alpha\\) of the original experiment is not enough to reliably estimate the probability of replicating that effect. Only a very small p-value of the original study is associated with a relatively narrow range of IRP. For significant but higher p-values there is a lot of uncertainty in terms of IRP.\nIn the Miller (2009) model, the replication study is assumed to have the same power of the original study. If we use the same sample size this means assuming also that the original study point estimate of the effect size is reliable. From the Figure 3.5 is also clear that, given the uncertainty, the point estimate of the original study is maybe too optimistic. Perugini et al. (2014) suggested to use not the point estimate of an effect size to plan a new study but, for example, the lower bound of the \\((1 - \\alpha) \\cdot 100\\) confidence interval. The planned study could requires more participants safeguarding from inflated effect size estimations.\n\n3.2.6 Bayesian Individual Replication Probability\nMiller’s IRP has two main limitations: first, the effect size estimated in the original study is subject to sampling variability. This is not considered. In reality the effect size could be larger or smaller. Second, in scientific areas where finding large effects is more challenging, the true effect size is more likely to be smaller than that estimated compared to areas where large effects abound. So considering the study in isolation is a limitation. Even at the individual level, we should have an higher probability of replication for research areas where there are more true effects.\nThe original effect size estimation could be biased (usually inflated) for several reasons (e.g., publication bias) affecting the actual probability of replication. This is what mainly emerged from Collaboration & Open Science Collaboration (2015) where replication effects were systematically lower compared to the original studies.\nSome of these limitation can be mitigated by Bayesian replication probabilities. If you are not familiar with the logic behind Bayesian statistics Lindley (1972) provides a great introduction https://epubs.siam.org/doi/book/10.1137/1.9781611970654.\nFor a simple example consider specifying \\(\\Pr(H_1)\\) for the individual experiment at hand to reflect knowledge exisitng up to the point of the original experiment, but not including the original experiment itself. In the depression treatment example this may have to to with the strength of the hypothesis, the plausibility of treatment examined, prior experiments in animals if the original experiment is in humans etc. Then you can apply the calculus of Section Section 3.2.2 and specifically Equation (ew-rp?) to evaluate the individual replication probability. Consideration of the sampling variability in the effect size would be incorporated in the specific way you would calculate the average power. Consideration\nof the strenght of the field of study would be embedded to the prior, either informally or through the use of hierarchical models as seen later.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Probability of Replication</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter3.html#selection-and-regression-to-the-mean",
+    "href": "chapters/chapter3.html#selection-and-regression-to-the-mean",
+    "title": "\n3  Probability of Replication\n",
+    "section": "\n3.3 Selection and Regression to the Mean",
+    "text": "3.3 Selection and Regression to the Mean\nThe selection process implicit in publication decisions increases the likelihood of observing extreme and statistically significant results as the original studies. The replications studies (without assuming heterogeneity) have usually higher sample sizes bringing estimated effects toward the true (and generally lower) mean effect.  The Figure 3.6 shows a simulation where extreme values are selected from a population of effects centered on zero for an original experiment with a small sample size. Then, using the same effects we simulated other experiments with increasing sample size as usually done in replication projects. Clearly the effects shrink toward the mean and in this case are no longer significant. Perugini et al. (2014) proposed a method to adjust the estimation of the original effect size when estimating the probability of replication. .\nPublication bias is another reason for inflated effect size estimation from the original study. The publishing system force authors to select only significant (i.e., more extreme) studies regardless of the true effect size. Figure 3.6 is the result of a simple but effective simulation showing the impact of selecting significant effects when conducting the original study then replicated with an higher sample size. We simulated two conditions where the true effect is zero but in one case there is heterogeneity between effects while in the other case we have a point-null hypothesis. The main point is that the selection of extreme results produce significant and inflated estimations that are attenuated by more precise replication studies. Due to regression to the mean, replication studies are less powerful and the estimates converged to the true (null) value. This is the exact pattern that large scale replication projects are observing.\n\n\n\n\n\n\n\nFigure 3.6: Regression to the mean of replication experiments targeting the same true effect size distribution.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Probability of Replication</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter3.html#probability-of-replication-in-extension-experiments",
+    "href": "chapters/chapter3.html#probability-of-replication-in-extension-experiments",
+    "title": "\n3  Probability of Replication\n",
+    "section": "\n3.4 Probability of Replication in Extension Experiments",
+    "text": "3.4 Probability of Replication in Extension Experiments\n\n3.4.1 Hierarchical Models\n\nThe Pawel & Held (2020) work in Miller (2009) approach. The Miller (2009) model neglected the possibility of heterogeneity amoing true effects assuming that the power (and thus the effect size) is the same when \\(H_0\\) is false. A better way to predict the probability of estimating a certain finding is to use the information of the original study and replication study (one-to-one replication) with a hierarchical bayesian model. The main features of the model\n\nincluding the uncertainty of both studies and eventually the between-study heterogeneity \\(\\tau\\). This allows the replication study to be truly different from the original study, for example assuming publication bias.\nincluding a shrinkage factor balancing the strenght of the original study and the between-study heterogeneity\n\nThe actual model will be discussed in Chapter x. But the crucial point is that when formalizing a replication is important to take into account all the sources of information as well as applyning an appropriate weight according to degree of heterogeneity between the original study and the replication study. The model has been applied to the data from the Psychological replication project  suggesting better performance when including heterogeneity and the shrinkage factor. We adapted the Pawel & Held (2020) model creating a more general version that can be easily declined for simulating and analyzing data from replication studies. The model is presented in ?fig-general-model.\nIn the simple case of a two-groups study where \\(x_{ir}\\) denotes whether individual \\(i\\) is in group one, the distribution of the data in study \\(r\\) is as follows:\n\\[\ny_{ir}|x_{ir} \\sim \\mathcal{N}(\\mu_r + x_{ir}\\theta_r, \\sigma_r)\n\\]\nIn this case \\(\\theta_r\\) can be intepreted as the mean difference between the two groups.\nAt the effect size level, for example, we may have:\n\\[\n\\theta_r \\sim \\mathcal{N}(\\mu_\\theta, \\tau)\n\\]\n\n\n\n\n\n\n\n\n\n\nFigure 3.7: Hierarchical baysian model for estimating the replication outcome.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Probability of Replication</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter3.html#references",
+    "href": "chapters/chapter3.html#references",
+    "title": "\n3  Probability of Replication\n",
+    "section": "\n3.5 References",
+    "text": "3.5 References\n\n\n\n\n\nCollaboration, O. S., & Open Science Collaboration. (2015). Estimating the reproducibility of psychological science. In Science (Vol. 349). https://doi.org/10.1126/science.aac4716\n\n\nHarrington, D., D’Agostino, R. B., Sr, Gatsonis, C., Hogan, J. W., Hunter, D. J., Normand, S.-L. T., Drazen, J. M., & Hamel, M. B. (2019). New guidelines for statistical reporting in the journal. The New England Journal of Medicine, 381, 285–286. https://doi.org/10.1056/NEJMe1906559\n\n\nHedges, L. V., & Schauer, J. M. (2019). Statistical analyses for studying replication: Meta-analytic perspectives. Psychological Methods, 24, 557–570. https://doi.org/10.1037/met0000189\n\n\nHedges, L. V., & Schauer, J. M. (2021). The design of replication studies. Journal of the Royal Statistical Society. Series A, (Statistics in Society), 184, 868–886. https://doi.org/10.1111/rssa.12688\n\n\nIoannidis, J. P. A. (2005). Why most published research findings are false. PLoS Medicine, 2, e124. https://doi.org/10.1371/journal.pmed.0020124\n\n\nJager, L. R., & Leek, J. T. (2014). An estimate of the science-wise false discovery rate and application to the top medical literature. Biostatistics, 15, 1–12. https://academic.oup.com/biostatistics/article-abstract/15/1/1/244509\n\n\nKruschke, J. K. (2015). Bayesian approaches to testing a point (“null”) hypothesis. In Doing bayesian data analysis (pp. 335–358). Elsevier. https://doi.org/10.1016/b978-0-12-405888-0.00012-x\n\n\nKruschke, J. K., & Liddell, T. M. (2018). The bayesian new statistics: Hypothesis testing, estimation, meta-analysis, and power analysis from a bayesian perspective. Psychonomic Bulletin & Review, 25, 178–206. https://doi.org/10.3758/s13423-016-1221-4\n\n\nLakens, D., Scheel, A. M., & Isager, P. M. (2018). Equivalence testing for psychological research: A tutorial. Advances in Methods and Practices in Psychological Science, 1, 259–269. https://doi.org/10.1177/2515245918770963\n\n\nLindley, D. V. (1972). Bayesian statistics a review. In Bayesian statistics (pp. 1–74). https://doi.org/10.1137/1.9781611970654.ch1\n\n\nMiller, J. (2009). What is the probability of replicating a statistically significant effect? Psychonomic Bulletin & Review, 16, 617–640. https://doi.org/10.3758/PBR.16.4.617\n\n\nPawel, S., & Held, L. (2020). Probabilistic forecasting of replication studies. PloS One, 15, e0231416. https://doi.org/10.1371/journal.pone.0231416\n\n\nPerugini, M., Gallucci, M., & Costantini, G. (2014). Safeguard power as a protection against imprecise power estimates. Perspectives on Psychological Science: A Journal of the Association for Psychological Science, 9, 319–332. https://doi.org/10.1177/1745691614528519\n\n\nSchauer, J. M., & Hedges, L. V. (2021). Reconsidering statistical methods for assessing replication. Psychological Methods, 26, 127–139. https://doi.org/10.1037/met0000302\n\n\nSteiger, J. H. (2004). Beyond the f test: Effect size confidence intervals and tests of close fit in the analysis of variance and contrast analysis. Psychological Methods, 9, 164–182. https://doi.org/10.1037/1082-989X.9.2.164\n\n\nUlrich, R., & Miller, J. (2020). Questionable research practices may have little effect on replicability. eLife, 9, e58237. https://doi.org/10.7554/eLife.58237\n\n\nWasserstein, R. L., & Lazar, N. A. (2016). The ASA statement on p-values: Context, process, and purpose. The American Statistician, 70, 129–133. https://doi.org/10.1080/00031305.2016.1154108\n\n\nWilson, B. M., & Wixted, J. T. (2018). The prior odds of testing a true effect in cognitive and social psychology. Advances in Methods and Practices in Psychological Science, 1, 186–197. https://doi.org/10.1177/2515245918767122",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Probability of Replication</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter3.html#footnotes",
+    "href": "chapters/chapter3.html#footnotes",
+    "title": "\n3  Probability of Replication\n",
+    "section": "",
+    "text": "To note that the term ROPE refer to the Bayesian version of the equivalence region in the frequentist equivalence testing approach (Lakens et al., 2018). Despite using the Bayesian term, we are just referring to an area where the effect is neglegible and equivalent to a point-null value (e.g, zero).↩︎\nTo calculate the confidence interval of the effect size we used the so-called pivot method (Steiger, 2004) implemented into the effectsize:::.get_ncp_t() function↩︎",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Probability of Replication</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html",
+    "href": "chapters/chapter4.html",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "",
+    "text": "4.1 Introduction\nAnderson & Kelley (2024) suggests that also the perspective of supporting the null hypothesis should be taken into account especially when we are really skeptical about the initial results. We want to replicate an effect to see the reliability, maybe better estimating the true effect with a larger sample (taking into account the inflation of the original effect) but we could also think that the original effect is a false positive and we want to do the replication to see if the null hypothesis is supported. The bayes factor approach by Ly et al. (2019) Verhagen & Wagenmakers (2014) is exactly about this. also equivalence testing is useful\nIn the previous chapters we introduced replication from a statistical and theoretical point of view. We purposely omitted defining the outcome of a replication study to dedicate an entire chapter about this part. Similarly to the multiple definitions problem there are several statistical measures for the replication assessment. There are also multiple ways to propose a classification but we could indentify:\nIn addition to the multitude of methods, the field of replication measures is relatively new and keep growing proposing new metrics, simulation studies, and comparisons between methods. A review work could be in principle the best option but this is not feasible and also useful for a very active research area. There is an amazing project proposed by Heyard et al. (2024) where an extensive systematic review is supported by an online and keep up-to-date database with all replication measures organized and classified according to a common methodology. The authors reviewed roughly 50 different measures. The database is avaliable at the following link http://rachelheyard.com/reproducibility_metrics/.\nWe decided to make a selection of methods from the database according to the following criteria:",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#introduction",
+    "href": "chapters/chapter4.html#introduction",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "",
+    "text": "for similar methods we keep the most recent and general version. For example, if a method \\(x\\) riginally developed for one-to-one replication designs has been extended to cover also one-to-many designs we will present the latter.\nwe select both bayesian and frequentist methods\nwe selected methods more related to inference and also methods more focused on estimation of the effect size\nwe selected methods that are not linked to a specific research area or topic. For example in the database there are methods for voxels in fMRI research or methods for metrology.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#methods",
+    "href": "chapters/chapter4.html#methods",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n4.2 Methods",
+    "text": "4.2 Methods\n\nPrediction interval: replication effect in original 95% prediction interval\nProportion of population effects agreeing in direction with the original\nBayes Factor: Independent Jeffreys-Zellner-Siow BF test (default BF)\nBayes Factor: Equality-of-effect- size BF test\nBayes Factor: Fixed-effect meta-analysis BF Test (Meta-analytic BF) [this probably just a bayesian meta-analysis]\nBayesian Evidence Synthesis (variant: Meta-Analysis Model-based Assessment of replicability (MAMBA))\nBayesian mixture model for reproducibility rate\nConfidence interval: original effect in replication 95% CI (Coverage)\nConfidence interval: replication effect in original 95%CI (Capture probability)\nContinuously cumulating meta-analytic approach\nCorrespondence test\nCredibility analysis (Reverse-Bayes, probability of credibility, probability of replicating an effect)\nDesign analysis [type-m/s]\nEquivalence testing (TOST (two one-sided tests))\nLikelihood-based approach for reproducibility (Likelihood-ratio) [similar to bf?]\nMinimum effect testing [similar to small telescope?]\nP interval\nPrediction interval: replication effect in original 95% prediction interval\nReplication Bayes factor [already included]\nSceptical \\(p\\)-value (versions: nominal sceptical \\(p\\)-value, golden sceptical \\(p\\)-value, controlled sceptical \\(p\\)-value)\nSceptical Bayes Factor (Reverse-Bayes)\nSmall Telescopes\nSnapshot hybrid (Bayesian meta-analysis)\nZ-curve (Exact replication rate, p-curves)\nConsistency of original with replications, \\(P_{\\mbox{orig}}\\)\n\nI squared - \\(I^2\\) (Estimation of effect variance) [this can be togheter with Q and meta-analysis]\nProportion of population effects agreeing in direction with the original, \\(\\hat{P}_{&gt;0}\\)\n\nBland-Altman Plot (Agreement measures)\nCorrelation between effects\nDifference in effect size (Q-statistic, (meta-analytic) Q-test, difference test, Tukey’s post-hoc honest significant difference test)\nExternally standardized residuals [idea di calcolare tipo m su effetto stimato]\nMeta-analysis\nSignificance criterion (vote counting, two-trials rule, regulatory agreement)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#worth-mentioning",
+    "href": "chapters/chapter4.html#worth-mentioning",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n4.3 Worth mentioning",
+    "text": "4.3 Worth mentioning\n\nRepliCATS [subjective elicitation]\nText-based machine learning model to estimate reproducibility",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#for-me-to-check",
+    "href": "chapters/chapter4.html#for-me-to-check",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n4.4 for me to check",
+    "text": "4.4 for me to check\n\nCausal replication framework",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#simulating-data",
+    "href": "chapters/chapter4.html#simulating-data",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n4.5 Simulating data",
+    "text": "4.5 Simulating data\nIn light of the formalization presented in Chapter XXX and XXX we can formulate a general method to simulate data from the generative model ().\n\nTo simulate a single study we can define the true effect size parameter \\(\\theta_r\\) and then generate two independent groups sampled from two normal distributions with variance equal to one. One of the distribution is centered on zero while the other distribution is centered on \\(\\theta_r\\).\n\ntheta &lt;- 0.3\nn0 &lt;- 30\nn1 &lt;- 30\n\ny0 &lt;- rnorm(n0, 0, 1)\ny1 &lt;- rnorm(n1, theta, 1)\nmean(y1) - mean(y0) # this is the effect size\n\n[1] -0.02011754\n\nvar(y1)/n1 + var(y0)/n0 # this is the sampling variability\n\n[1] 0.05565741\n\n\nNow we can simply iterate the process for \\(R\\) studies to create a series of replications with a common true parameter \\(\\theta\\). We can also generate a more realistic set of sample sizes sampling from a probability distribution (e.g., Poisson)\n\nR &lt;- 10\nyi &lt;- vi &lt;- rep(NA, R)\nn0 &lt;- n1 &lt;- 10 + rpois(R, 40 - 10)\n\nfor(i in 1:R){\n    y0 &lt;- rnorm(n0[i], 0, 1)\n    y1 &lt;- rnorm(n1[i], theta, 1)\n    yi[i] &lt;- mean(y1) - mean(y0)\n    vi[i] &lt;- var(y1)/n1[i] + var(y0)/n0[i]\n}\n\nsim &lt;- data.frame(id = 0:(R - 1), yi, vi, n0, n1)\nsim\n\n   id          yi         vi n0 n1\n1   0  0.01476904 0.05239931 38 38\n2   1 -0.02142140 0.04549403 51 51\n3   2  0.36376339 0.03300727 49 49\n4   3  0.39667421 0.05930267 44 44\n5   4  0.26316570 0.05476932 37 37\n6   5  0.14944415 0.04993779 45 45\n7   6  0.34185438 0.03761737 46 46\n8   7  0.45372498 0.05433267 46 46\n9   8  0.50300280 0.05410981 40 40\n10  9  0.37954551 0.06210466 40 40\n\n\nThen, if we want to include variability in the true effects as in the extension framework we can simply sample \\(R\\) \\(\\theta\\)’s from a normal distribution with variability \\(\\tau^2\\).\n\n\n   id           yi         vi        theta n0 n1\n1   0  0.003218650 0.03593693 -0.126228824 48 48\n2   1  0.740607983 0.04974657  0.700254299 47 47\n3   2  0.901889954 0.03934327  0.897036878 37 37\n4   3  0.008334652 0.04281873  0.222999103 38 38\n5   4  0.150974265 0.04332951  0.383630820 46 46\n6   5  0.414119571 0.05491717  0.444614032 37 37\n7   6 -0.374487466 0.06629007 -0.238958229 32 32\n8   7  0.201141441 0.05602005  0.216779790 37 37\n9   8  0.466078981 0.04478137  0.411308942 49 49\n10  9 -0.196622204 0.04875768  0.002872426 37 37\n\n\nThen we can put everything in a function that can be used to simulate different scenarios.\nsim_meta &lt;- function(R, mu, tau2, n0, n1 = NULL, conf.level = 0.95){\n    if(is.null(n1)) n1 &lt;- n0\n    if((length(n1) != R & length(n1) != 1) | (length(n0) != R & length(n0) != 1)){\n        stop(\"n1 and n0 need to be of length 1 or R\")\n    }\n\n    if(length(n1) == 1) n1 &lt;- rep(n1, R)\n    if(length(n0) == 1) n0 &lt;- rep(n0, R)\n\n    theta &lt;- rnorm(R, mu, sqrt(tau2))\n    yi &lt;- vi &lt;- rep(NA, R)\n\n    for(i in 1:R){\n        y0 &lt;- rnorm(n0[i], 0, 1)\n        y1 &lt;- rnorm(n1[i], theta[i], 1)\n        yi[i] &lt;- mean(y1) - mean(y0)\n        vi[i] &lt;- var(y1)/n1[i] + var(y0)/n0[i]\n    }\n    sim &lt;- data.frame(id = 0:(R - 1), yi, vi, theta, n0, n1)\n    \n    # compute other statistics\n    sim$sei &lt;- sqrt(sim$vi) # standard error\n    sim$zi &lt;- sim$yi / sim$sei # test statistics\n    tc &lt;- abs(qnorm((1 - conf.level)/2))\n    sim$ci.lb &lt;- sim$yi - sim$sei * tc\n    sim$ci.ub &lt;- sim$yi + sim$sei * tc\n    return(sim)\n}\n\nsim_meta(R = 10, mu = 0.3, tau2 = 0.1, n0 = 30)\n\n   id          yi         vi       theta n0 n1       sei         zi       ci.lb\n1   0  0.12685160 0.06650511 -0.04926811 30 30 0.2578858  0.4918905 -0.37859538\n2   1  0.32214536 0.06410597  0.36172305 30 30 0.2531916  1.2723384 -0.17410099\n3   2  0.57035399 0.07591139  0.80030468 30 30 0.2755202  2.0700984  0.03034427\n4   3 -0.33659132 0.07222032 -0.03667565 30 30 0.2687384 -1.2524869 -0.86330888\n5   4  0.88320631 0.07125207  0.62179008 30 30 0.2669308  3.3087460  0.36003149\n6   5 -0.08357788 0.06610357  0.02818698 30 30 0.2571061 -0.3250715 -0.58749667\n7   6  0.45593954 0.05151685  0.29803240 30 30 0.2269732  2.0087811  0.01108017\n8   7  0.16901371 0.06837960  0.22246040 30 30 0.2614949  0.6463364 -0.34350695\n9   8  0.03551535 0.04562731  0.02705788 30 30 0.2136055  0.1662661 -0.38314372\n10  9  0.05060030 0.05997280  0.02772444 30 30 0.2448934  0.2066217 -0.42938202\n       ci.ub\n1  0.6322986\n2  0.8183917\n3  1.1103637\n4  0.1901262\n5  1.4063811\n6  0.4203409\n7  0.9007989\n8  0.6815344\n9  0.4541744\n10 0.5305826\n\n\nThe function can be easily extended for using different effect size measures or study designs but the overall idea is the same.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#some-random-concepts-1",
+    "href": "chapters/chapter4.html#some-random-concepts-1",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n6.1 Some (random) concepts",
+    "text": "6.1 Some (random) concepts\n\nCredibility of scientific claims is established with evidence for their replicability using new data (Nosek & Errington, 2020)\n\n\nReplication is repeating a study’s procedure and observing whether the prior finding recurs (Jeffreys, 1973)\n\n\nReplication is a study for which any outcome would be considered diagnostic evidence about a claim from prior research (Nosek & Errington, 2020).",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#difficulty-in-drawing-conclusions-from-replications",
+    "href": "chapters/chapter4.html#difficulty-in-drawing-conclusions-from-replications",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n6.2 Difficulty in drawing conclusions from replications",
+    "text": "6.2 Difficulty in drawing conclusions from replications\nReplication is often intended as conditioned to the original result. The original result could be a false positive or a biased result. Also the replication attempt could be a false positive or a false negative (Nosek & Errington, 2020).\n. . .\n\nTo be a replication, two things must be true. Outcomes consistent with a prior claim would increase confidence in the claim, and outcomes inconsistent with a prior claim would decrease confidence in the claim (Nosek & Errington, 2020).\n\n. . .\nThis is somehow similar with a Bayesian reasoning where evidence about a phenomenon is updated after collecting more data.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#exact-and-conceptual-replications",
+    "href": "chapters/chapter4.html#exact-and-conceptual-replications",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n6.3 Exact and Conceptual replications",
+    "text": "6.3 Exact and Conceptual replications\nExact replications are commonly considered as the gold-standard but in practice (especially in Social Sciences, Psychology, etc.) are rare.\nLet’s imagine, an original study \\(y_{or}\\) finding a result.\n\nReplication \\(y_{rep}\\) with the exact same method find the same result. Replication or not?\n\nReplication \\(y_{rep}\\) with a similar method find the same result. Replication or not?\n\nReplication \\(y_{rep}\\) with similar method did not find the same result. Replication or not?",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#direct-and-conceptual-replications-schmidt2009-mq",
+    "href": "chapters/chapter4.html#direct-and-conceptual-replications-schmidt2009-mq",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n6.4 Direct and Conceptual replications (S. Schmidt, 2009)\n",
+    "text": "6.4 Direct and Conceptual replications (S. Schmidt, 2009)\n\nA direct replication is defined as the repetition of an experimental procedure.\nA conceptual replication is defined as testing the same hypothesis with different methods.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#exact-replications-are-often-impossible-schmidt2009-mq",
+    "href": "chapters/chapter4.html#exact-replications-are-often-impossible-schmidt2009-mq",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n6.5 Exact replications are (often) impossible (S. Schmidt, 2009)\n",
+    "text": "6.5 Exact replications are (often) impossible (S. Schmidt, 2009)\n\nLet’s imagine an extreme example: testing the physiological reaction to arousing situation:\n\nThe original study: Experiment with prehistoric reacting to an arousing stimulus\nThe actual replication: It is possible to create the exact situation? Some phenomenon changes overtime, especially people-related phenomenon\n\nExact replication is often not feasible. Even using the same experimental setup (direct replication) does not assure that we are studying the same phenomenon.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#as-exact-as-possible",
+    "href": "chapters/chapter4.html#as-exact-as-possible",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n6.6 As Exact as possible…",
+    "text": "6.6 As Exact as possible…\nEven when an experiment use almost the same setup of the original study there is a source of unknown uncertainty. Which is the impact of a slightly change in the experimental setup on the actual result?\n\nA study on the human visual system: presenting stimuli on different monitors –&gt; small change with a huge impact\nA study on consumer behavior: participant answering question using a smartphone or a computer –&gt; small but (maybe) irrelevant change\n\nHow to evaluate the actual impact?",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#what-we-are-not-going-to-do",
+    "href": "chapters/chapter4.html#what-we-are-not-going-to-do",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n7.1 What we are (not) going to do?",
+    "text": "7.1 What we are (not) going to do?\n. . .\n\nI will not present a strictly theoretical and philosophical approach to replication (what is a replication?, what is the most appropriate definition?, etc.). But we can discuss it together :smile:!\n\n. . .\n\nAccording to the replication definitions and problems, we will explore some statistical methods to evaluate a replication success",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#overall-model-and-notation-1",
+    "href": "chapters/chapter4.html#overall-model-and-notation-1",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n8.1 Overall model and notation",
+    "text": "8.1 Overall model and notation\nFor the purpose of notation and simplicity we can define a meta-analytical-based replication model (Hedges & Schauer, 2019c; Schauer, 2022; Schauer & Hedges, 2021)\n\\[\ny_i = \\mu_{\\theta} + \\delta_i + \\epsilon_i\n\\]\n\\[\n\\delta_i \\sim \\mathcal{N}(0, \\tau^2)\n\\]\n\\[\n\\epsilon_i \\sim \\mathcal{N}(0, \\sigma^2_i)\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#overall-model-and-notation-2",
+    "href": "chapters/chapter4.html#overall-model-and-notation-2",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n8.2 Overall model and notation",
+    "text": "8.2 Overall model and notation\n\nThus each study \\(i\\) out of the number of studies \\(k\\).\n\n\\(\\mu_{\\theta}\\) is the real average effect and \\(\\theta = \\mu_{\\theta} + \\delta_i\\) is the real effect of each study\n\n\\(\\tau^2\\) is the real variance among different studies. When \\(\\tau^2 = 0\\) there is no variability among studies\n\n\\(\\epsilon_i\\) are the sampling errors that depends on \\(\\sigma^2_i\\), the sampling variability of each study\nWe define \\(\\theta_{orig}\\) (or \\(\\theta_1\\)) as the original study and \\(\\theta_{rep_i}\\) (with \\(i\\) from 2 to \\(k\\)) as the replication studies",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#simulating-for-learning",
+    "href": "chapters/chapter4.html#simulating-for-learning",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n8.3 Simulating for learning",
+    "text": "8.3 Simulating for learning\nFor the examples we are going to simulate studies. Each study comes from a two-groups comparison on a continous outcome:\n\\[\n\\Delta = \\overline{X_1} - \\overline{X_2}\n\\]\n\\[\nSE_{\\Delta} = \\sqrt{\\frac{s^2_1}{n_1} + \\frac{s^2_2}{n_2}}\n\\]\nWith \\(X_{1_j} \\sim \\mathcal{N}(0, 1)\\) and \\(X_{2_j} \\sim \\mathcal{N}(\\Delta, 1)\\)\ncontinue…",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#simulating-for-learning-1",
+    "href": "chapters/chapter4.html#simulating-for-learning-1",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n8.4 Simulating for learning",
+    "text": "8.4 Simulating for learning\nThus our observed effect sizes \\(y_i\\) is sampled from: \\[\ny_i \\sim \\mathcal{N}(\\mu_\\theta, \\tau^2 + \\frac{1}{n_1} + \\frac{1}{n_2})\n\\]\nWhere \\(\\frac{1}{n_1} + \\frac{1}{n_2}\\) is the sampling variability (\\(\\sigma^2_i\\)).\nThe sampling variances are sampled from:\n\\[\n\\sigma_i^2 \\sim \\frac{\\chi^2_{n_1 + n_2 - 2}}{n_1 + n_2 - 2} (\\frac{1}{n_1} + \\frac{1}{n_2})\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#simulating-for-learning-2",
+    "href": "chapters/chapter4.html#simulating-for-learning-2",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n8.5 Simulating for learning",
+    "text": "8.5 Simulating for learning\nEverything is implemented into the sim_studies() function:\n\nsim_studies &lt;- function(k, theta, tau2, n0, n1, summary = FALSE){\n  yi &lt;- rnorm(k, theta, sqrt(tau2 + 1/n0 + 1/n1))\n  vi &lt;- (rchisq(k, n0 + n1 - 2) / (n0 + n1 - 2)) * (1/n0 + 1/n1)\n  out &lt;- data.frame(yi, vi, sei = sqrt(vi))\n  if(summary){\n    out &lt;- summary_es(out)\n  }\n  return(out)\n}",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#simulating-for-learning-an-example",
+    "href": "chapters/chapter4.html#simulating-for-learning-an-example",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n8.6 Simulating for learning, an example",
+    "text": "8.6 Simulating for learning, an example\n\nsim_studies(k = 10, theta = 0.5, tau2 = 0.1, n0 = 30, n1 = 30)\n          yi         vi       sei\n1  0.6306046 0.07040783 0.2653447\n2  0.3117390 0.06975489 0.2641115\n3  1.3005623 0.06786796 0.2605148\n4  0.6860657 0.05444358 0.2333315\n5  0.5698951 0.07307152 0.2703174\n6  1.1003673 0.08245891 0.2871566\n7  1.4643882 0.05544487 0.2354673\n8  0.1718634 0.07772710 0.2787958\n9  0.3836479 0.06972331 0.2640517\n10 0.3877660 0.07604360 0.2757600",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#exact-vs-approximate-replication",
+    "href": "chapters/chapter4.html#exact-vs-approximate-replication",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n8.7 Exact vs Approximate replication",
+    "text": "8.7 Exact vs Approximate replication\nThis distinction (see Brandt et al., 2014 for a different terminology) refers to parameters \\(\\theta_i\\). With exact are considering a case where:\n\\[\n\\theta_1 = \\theta_2 = \\theta_3, \\dots, \\theta_k\n\\]\nThus the true parameters of \\(k\\) replication studies are the same. Thus the variability among true effects \\(\\tau^2 = 0\\).\nSimilarly, due to (often not controllable) differences among experiments (i.e., lab, location, sample, etc.) we could expect a certain degree of variability \\(\\tau^2\\). In other terms \\(\\tau^2 &lt; \\tau^2_0\\) where \\(\\tau^2_0\\) is the maximum variability (that need to be defined). In this way studies are replicating:\n\\[\n\\theta_i \\sim \\mathcal{N}(\\mu_\\theta, \\tau^2_0)\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#types-of-agreement",
+    "href": "chapters/chapter4.html#types-of-agreement",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n8.8 Types of agreement",
+    "text": "8.8 Types of agreement\nCoarsely, we can define a replication success when two or more studies obtain the “same” result. The definion of sameness it is crucial:\n\nsame sign or direction: two studies (original and replication) evaluating the efficacy of a treatment have a positive effect \\(sign(\\theta_1) = sign(\\theta_2)\\) where \\(sign\\) is the sign function.\nsame magnitude: two studies (original and replication) evaluating the efficacy of a treatment have the same effect in terms \\(|\\theta_1 - \\theta_2| = 0\\) or similar up to a tolerance factor \\(|\\theta_1 - \\theta_2| &lt; \\gamma\\) where \\(\\gamma\\) is the maximum difference considered as null.\n\nThe different methods that we are going to see are focused on a specific type of aggreement. For example, we could consider \\(\\theta_1 = 3x\\) and \\(\\theta_2 = x\\) to have the same sign but the replication study is on a completely different scale. Is this considered a successful replication?",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#falsification-vs-consistency",
+    "href": "chapters/chapter4.html#falsification-vs-consistency",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n8.9 Falsification vs Consistency",
+    "text": "8.9 Falsification vs Consistency\n. . .\nThis refers to how the replication setup is formulated. With \\(k = 2\\) studies where \\(k_1\\) is the original study and \\(k_2\\) is the replication we have a one-to-one setup. In this setup we compare the replication with the original and according to the chosen method and expectation we conclude if \\(k_1\\) has been replicated or not.\n. . .\nWhen \\(k &gt; 2\\) we could collapse the replication studies into a single value (e.g., using a meta-analysis method) and compare the results using a one-to-one or we can use a method for one-to-many designs.\n. . .\nRegardless the method, falsification approaches compared the original with the replicate(s) obtaining a yes-no answer or a continuous result. On the other side consistency methods are focused on evaluating the degree of similarity (i.e., consistency) among all studies.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#the-big-picture",
+    "href": "chapters/chapter4.html#the-big-picture",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n8.10 The big picture",
+    "text": "8.10 The big picture",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#statistical-methods-disclaimer-schauer2021-ja",
+    "href": "chapters/chapter4.html#statistical-methods-disclaimer-schauer2021-ja",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n9.1 Statistical Methods, disclaimer (Schauer & Hedges, 2021)\n",
+    "text": "9.1 Statistical Methods, disclaimer (Schauer & Hedges, 2021)\n\n\nThere are no unique methods to assess replication from a statistical point of view\nFor available statistical methods, statistical properties (e.g., type-1 error rate, power, bias, etc.) are not always known or extensively examined\nDifferent methods answers to the same question or to different replication definitions",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#vote-counting-based-on-significance-or-direction",
+    "href": "chapters/chapter4.html#vote-counting-based-on-significance-or-direction",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.1 Vote Counting based on significance or direction",
+    "text": "10.1 Vote Counting based on significance or direction\nThe simplest method is called vote counting (Hedges & Olkin, 1980; Valentine et al., 2011). A replication attempt \\(\\theta_{rep}\\) is considered successful if the result has the same direction of the original study \\(\\theta_{orig}\\) and it is statistically significant i.e., \\(p_{\\theta_{rep}} \\leq \\alpha\\). Similarly we can count the number of replication with the same sign as the original study.\n\n\nEasy to understand, communicate and compute\n\n\n\n\nDid not consider the size of the effect\nDepends on the power of \\(\\theta_{rep}\\)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#example-with-simulated-data",
+    "href": "chapters/chapter4.html#example-with-simulated-data",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.2 Example with simulated data",
+    "text": "10.2 Example with simulated data\nLet’s simulate an exact replication:\n\n## original study\nn_orig &lt;- 30\ntheta_orig &lt;- theta_from_z(2, n_orig)\n\norig &lt;- data.frame(\n  yi = theta_orig,\n  vi = 4/(n_orig*2)\n)\n\norig$sei &lt;- sqrt(orig$vi)\norig &lt;- summary_es(orig)\n\norig\n         yi         vi       sei zi       pval      ci.lb    ci.ub\n1 0.5163978 0.06666667 0.2581989  2 0.04550026 0.01033725 1.022458\n\n## replications\n\nk &lt;- 10\nreps &lt;- sim_studies(k = k, theta = theta_orig, tau2 = 0, n_orig, n_orig, summary = TRUE)\n\nhead(reps)\n         yi         vi       sei       zi         pval       ci.lb     ci.ub\n1 0.8797180 0.06597473 0.2568555 3.424953 0.0006149050  0.37629053 1.3831455\n2 0.7245546 0.04843434 0.2200780 3.292262 0.0009938480  0.29320963 1.1558996\n3 0.4111667 0.04870422 0.2206903 1.863094 0.0624491032 -0.02137836 0.8437118\n4 0.7085433 0.06511996 0.2551861 2.776574 0.0054935065  0.20838765 1.2086989\n5 0.8810186 0.05914530 0.2431981 3.622638 0.0002916136  0.40435914 1.3576780\n6 0.3968792 0.06680153 0.2584599 1.535554 0.1246477547 -0.10969292 0.9034514",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#example-with-simulated-data-1",
+    "href": "chapters/chapter4.html#example-with-simulated-data-1",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.3 Example with simulated data",
+    "text": "10.3 Example with simulated data\nLet’s compute the proportions of replication studies are statistically significant:\n\nmean(reps$pval &lt;= 0.05)\n[1] 0.6\n\n\nLet’s compute the proportions of replication studies with the same sign as the original:\n\nmean(sign(orig$yi) == sign(reps$yi))\n[1] 1\n\n\nWe could also perform some statistical tests. See Bushman & Wang (2009) and Hedges & Olkin (1980) for vote-counting methods in meta-analysis.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#vote-counting-extreme-example",
+    "href": "chapters/chapter4.html#vote-counting-extreme-example",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.4 Vote Counting, extreme example",
+    "text": "10.4 Vote Counting, extreme example\nLet’s imagine an original experiment with \\(n_{orig} = 30\\) and \\(\\hat \\theta_{orig} = 0.5\\) that is statistically significant \\(p \\approx 0.045\\). Now a direct replication (thus assuming \\(\\tau^2 = 0\\)) study with \\(n_{rep} = 350\\) found \\(\\hat \\theta_{rep_1} = 0.15\\), that is statistically significant \\(p\\approx 0.047\\).",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#confidence-interval-replication-within-original",
+    "href": "chapters/chapter4.html#confidence-interval-replication-within-original",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.5 Confidence Interval, replication within original",
+    "text": "10.5 Confidence Interval, replication within original\n\n\nTheory\nPlot\n\n\n\nAnother approach check if the replication attempt \\(\\theta_{rep}\\) is contained in the % confidence interval of the original study \\(\\theta_{orig}\\). Formally:\n\\[\n\\theta_{orig} - \\Phi(\\alpha/2) \\sqrt{\\sigma^2_{orig}} &lt; \\theta_{rep} &lt; \\theta_{orig} + \\Phi(\\alpha/2) \\sqrt{\\sigma^2_{orig}}\n\\]\nWhere \\(\\Phi\\) is the cumulative standard normal distribution, \\(\\alpha\\) is the type-1 error rate.\n\n\nTake into account the size of the effect and the precision of \\(\\theta_{orig}\\)\n\n\n\n\n\nThe original study is assumed to be a reliable estimation\nNo extension for many-to-one designs\nLow precise original studies lead to higher success rate\n\n\n\n\n\nse_orig &lt;- sqrt(4 / (2 * n_orig))\nci_orig &lt;- theta_orig + qnorm(c(0.025, 0.975)) * se_orig\ncurve(dnorm(x, theta_orig, se_orig), \n      -1, 2, \n      ylab = \"Density\", \n      xlab = latex2exp::TeX(\"$\\\\theta$\"))\nabline(v = ci_orig, lty = \"dashed\")\npoints(theta_orig, 0, pch = 19, cex = 2)\npoints(theta_rep, 0, pch = 19, cex = 2, col = \"firebrick\")\nlegend(\"topleft\", \n       legend = c(\"Original\", \"Replication\"), \n       fill = c(\"black\", \"firebrick\"))",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#confidence-interval-replication-within-original-1",
+    "href": "chapters/chapter4.html#confidence-interval-replication-within-original-1",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.6 Confidence Interval, replication within original",
+    "text": "10.6 Confidence Interval, replication within original\nOne potential problem of this method regards that low precise original studies are “easier” to replicate due to larger confidence intervals.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#confidence-interval-original-within-replication",
+    "href": "chapters/chapter4.html#confidence-interval-original-within-replication",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.7 Confidence Interval, original within replication",
+    "text": "10.7 Confidence Interval, original within replication\n\n\nTheory\nPlot\n\n\n\nThe same approach can be applied checking if the original effect size is contained within the replication confidence interval. Clearly these methods depends on the precision of studies. Formally:\n\\[\n\\theta_{rep} - \\Phi(\\alpha/2) \\sqrt{\\sigma_{rep}^2} &lt; \\theta_{orig} &lt; \\theta_{rep} + \\Phi(\\alpha/2) \\sqrt{\\sigma_{rep}^2}\n\\]\nThe method has the same pros and cons of the previous approach. One advantage is that usually replication studies are more precise (higher sample size) thus the parameter and the % CI is more reliable.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#prediction-interval-pi-what-to-expect-from-a-replication",
+    "href": "chapters/chapter4.html#prediction-interval-pi-what-to-expect-from-a-replication",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.8 Prediction interval (PI), what to expect from a replication",
+    "text": "10.8 Prediction interval (PI), what to expect from a replication\nOne problem of the previous approaches is taking into account only the uncertainty of the original or the replication study. Patil et al. (2016) and Spence & Stanley (2016) proposed a method to take into account both sources of uncertainty.\nIf the original and replication studies comes from the same population, the sampling distribution of the difference is centered on 0 with a certain standard error \\(\\theta_{orig} - \\theta_{rep_0} \\sim \\mathcal{N}\\left( 0, \\sqrt{\\sigma^2_{\\hat \\theta_{orig} - \\hat \\theta_{rep}}} \\right)\\) (subscript \\(0\\) to indicate that is expected to be sampled from the same population as \\(\\theta_{orig}\\))\n\\[\n\\hat \\theta_{orig} \\pm z_{95\\%} \\sqrt{\\sigma^2_{\\theta_{orig} - \\theta_{rep}}}\n\\]\nIf factors other than standard error influence the replication result, \\(\\theta_{rep_0}\\) is not expected to be contained within the 95% prediction interval.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#prediction-interval-pi-what-to-expect-from-a-replication-1",
+    "href": "chapters/chapter4.html#prediction-interval-pi-what-to-expect-from-a-replication-1",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.9 Prediction interval (PI), what to expect from a replication",
+    "text": "10.9 Prediction interval (PI), what to expect from a replication\nIn the case of a (un)standardized mean difference we can compute the prediction interval as:\n\\[\n\\sqrt{\\sigma^2_{\\epsilon_{\\hat \\theta_{orig} - \\hat \\theta_{rep_0}}}} = \\sqrt{\\left( \\frac{\\hat \\sigma^2_{o1}}{n_{o1}} +\\frac{\\hat \\sigma^2_{o2}}{n_{o2}}\\right) + \\left(\\frac{\\hat \\sigma^2_{o1}}{n_{r1}} + \\frac{\\hat\\sigma^2_{o2}}{n_{r2}}\\right)}\n\\]\nThe first term is just the standard error of the difference between the two groups in the original study and the second term is the standard error of the hypothetical replication study assuming the same standard deviation of the original but a different \\(n\\).\nIn this way we estimate an interval where, combining sampling variance from both studies and assuming that they comes from the same population, the replication should fall.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#prediction-interval-pi-what-to-expect-from-a-replication-2",
+    "href": "chapters/chapter4.html#prediction-interval-pi-what-to-expect-from-a-replication-2",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.10 Prediction interval (PI), what to expect from a replication",
+    "text": "10.10 Prediction interval (PI), what to expect from a replication\n\n\nR Code\nPlot\nPros/Cons\n\n\n\n\nset.seed(2025)\n\no1 &lt;- rnorm(50, 0.5, 1) # group 1\no2 &lt;- rnorm(50, 0, 1) # group 2\nod &lt;- mean(o1) - mean(o2) # effect size\nse_o &lt;- sqrt(var(o1)/50 + var(o2)/50) # standard error of the difference\n\nn_r &lt;- 100 # sample size replication\n\nse_o_r &lt;- sqrt(se_o^2 + (var(o1)/100 + var(o2)/100))\n\nod + qnorm(c(0.025, 0.975)) * se_o_r\n[1] 0.325520 1.298378\n\n\n\n\n\nCodepar(mar = c(4, 4, 0.1, 0.1))  \ncurve(dnorm(x, od, se_o_r), od - se_o_r*4, od + se_o_r*4, lwd = 2, xlab = latex2exp::TeX(\"$\\\\theta$\"), ylab = \"Density\")\nabline(v = od + qnorm(c(0.025, 0.975)) * se_o_r, lty = \"dashed\")\n\n\n\n\n\n\n\n\n\n\n\nTake into account uncertainty of both studies\nWe can plan a replication using the standard deviation of the original study and the expected sample size\n\n\n\n\nLow precise original studies lead to wide PI. For a replication study is difficult to fall outside the PI\nMainly for one-to-one replications design",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#mathur-vanderweele--mathur2020-nw-p_orig",
+    "href": "chapters/chapter4.html#mathur-vanderweele--mathur2020-nw-p_orig",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.11 Mathur & VanderWeele (2020) \\(p_{orig}\\)\n",
+    "text": "10.11 Mathur & VanderWeele (2020) \\(p_{orig}\\)\n\n\n\nTheory\nPros-cons\nR Code\nSimulation\n\n\n\nMathur & VanderWeele (2020) proposed a new method based on the prediction interval to calculate a p value \\(p_{orig}\\) representing the probability that \\(\\theta_{orig}\\) is consistent with the replications. This method is suited for many-to-one replication designs. Formally:\n\\[\nP_{orig} = 2 \\left[ 1 - \\Phi \\left( \\frac{|\\hat \\theta_{orig} - \\hat \\mu_{\\theta_{rep}}|}{\\sqrt{\\hat \\tau^2 + \\sigma^2_{orig} + \\hat{SE}^2_{\\hat \\mu_{\\theta_{rep}}}}} \\right) \\right]\n\\]\n\n\n\\(\\mu_{\\theta_{rep}}\\) is the pooled (i.e., meta-analytic) estimation of the \\(k\\) replications\n\n\\(\\tau^2\\) is the variance among replications\n\n\n\nIt is interpreted as the probability that \\(\\theta_{orig}\\) is equal or more extreme that what observed. A very low \\(p_{orig}\\) suggest that the original study is inconsistent with replications.\n\n\nSuited for many-to-one designs\nWe take into account all sources of uncertainty\nWe have a p-value\n\n\n\n\nThe code is implemented in the Replicate and MetaUtility R packages:\n\ntau2 &lt;- 0.05\ntheta_rep &lt;- 0.2\ntheta_orig &lt;- 0.7\n\nn_orig &lt;- 30\nn_rep &lt;- 100\nk &lt;- 20\n\nreplications &lt;- sim_studies(k, theta_rep, tau2, n_rep, n_rep)\noriginal &lt;- sim_studies(1, theta_orig, 0, n_orig, n_orig)\n\nfit_rep &lt;- metafor::rma(yi, vi, data = replications) # random-effects meta-analysis\n\nReplicate::p_orig(original$yi, original$vi, fit_rep$b[[1]], fit_rep$tau2, fit_rep$se^2)\n[1] 0.5563241\n\n\n\n\n\nCode# standard errors assuming same n and variance 1\nse_orig &lt;- sqrt(4/(n_orig * 2))\nse_rep &lt;- sqrt(4/(n_rep * 2))\nse_theta_rep &lt;- sqrt(1/((1/(se_rep^2 + tau2)) * k)) # standard error of the random-effects estimate\n\nsep &lt;- sqrt(tau2 + se_orig^2 + se_theta_rep^2) # z of p-orig denominator\n\ncurve(dnorm(x, theta_rep, sep), theta_rep - 4*sep, theta_rep + 4*sep, ylab = \"Density\", xlab = latex2exp::TeX(\"\\\\theta\"))\npoints(theta_orig, 0.02, pch = 19, cex = 2)\nabline(v = qnorm(c(0.025, 0.975), theta_rep, sep), lty = \"dashed\", col = \"firebrick\")",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#mathur-vanderweele--mathur2020-nw-hat-p_-0",
+    "href": "chapters/chapter4.html#mathur-vanderweele--mathur2020-nw-hat-p_-0",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.12 Mathur & VanderWeele (2020) \\(\\hat P_{> 0}\\)\n",
+    "text": "10.12 Mathur & VanderWeele (2020) \\(\\hat P_{&gt; 0}\\)\n\n\n\nTheory\nR Code\nBootstrap Code\nBootstrap Results\n\n\n\nAnother related metric is the \\(\\hat P_{&gt; 0}\\), representing the proportion of replications following the same direction as the original effect. Before simply computing the proportions we need to adjust the estimated \\(\\theta_{rep_i}\\) with a shrinkage factor:\n\\[\n\\tilde{\\theta}_{rep_i} = (\\theta_{rep_i} - \\mu_{\\theta_{rep_i}}) \\sqrt{\\frac{\\hat \\tau^2}{\\hat \\tau^2 + v_{rep_i}}}\n\\]\nThis method is somehow similar to the vote counting but we are adjusting the effects taking into account \\(\\tau^2\\).\n\n\n\n# compute calibrated estimation for the replications\n# use restricted maximum likelihood to estimate tau2 under the hood\ntheta_sh &lt;- MetaUtility::calib_ests(replications$yi, replications$sei, method = \"REML\")\nmean(theta_sh &gt; 0)\n[1] 0.75\n\n\n\n\nThe authors suggest a bootstrapping approach for making inference on \\(\\hat P_{&gt; 0}\\)\n\nnboot &lt;- 1e4\ntheta_boot &lt;- matrix(0, nrow = nboot, ncol = k)\n\nfor(i in 1:nboot){\n  idx &lt;- sample(1:nrow(replications), nrow(replications), replace = TRUE)\n  replications_boot &lt;- replications[idx, ]\n  theta_cal &lt;- MetaUtility::calib_ests(replications_boot$yi, \n                                       replications_boot$sei, \n                                       method = \"REML\")\n  theta_boot[i, ] &lt;- theta_cal\n}\n\n# calculate\np_greater_boot &lt;- apply(theta_boot, 1, function(x) mean(x &gt; 0))",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q",
+    "href": "chapters/chapter4.html#mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.13 Mathur & VanderWeele (2020) \\(\\hat P_{\\gtrless q*}\\)\n",
+    "text": "10.13 Mathur & VanderWeele (2020) \\(\\hat P_{\\gtrless q*}\\)\n\nInstead of using 0 as threshold, we can use meaningful effect size to be considered as low but different from 0. \\(\\hat P_{\\gtrless q*}\\) is the proportion of (calibrated) replications greater or lower than the \\(q*\\) value. This framework is similar to equivalence and minimum effect size testing (Lakens et al., 2018).\n\nq &lt;- 0.2 # minimum non zero effect\n\nfit &lt;- metafor::rma(yi, vi, data = replications)\n\n# see ?MetaUtility::prop_stronger\nMetaUtility::prop_stronger(q = q,\n                           M = fit$b[[1]],\n                           t2 = fit$tau2,\n                           tail = \"above\",\n                           estimate.method = \"calibrated\",\n                           ci.method = \"calibrated\",\n                           dat = replications,\n                           yi.name = \"yi\",\n                           vi.name = \"vi\")\n   est        se  lo   hi  bt.mn shapiro.pval\n1 0.35 0.1137901 0.1 0.55 0.3573    0.5224829",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#combining-original-and-replications",
+    "href": "chapters/chapter4.html#combining-original-and-replications",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.14 Combining original and replications",
+    "text": "10.14 Combining original and replications\n\n\nTheory\nFixed-effects Model\nRandom-Effects model\nPooling replications\n\n\n\nAnother approach is to combine the original and replication results (both one-to-one and many-to-one) using a meta-analysis model. Then we can test if the pooled estimate is different from 0 or another meaningful value.\n\n\nUse all the available information, especially when fitting a random-effects model\nTake into account the precision by inverse-variance weighting\n\n\n\n\nDid not consider the publication bias\nFor one-to-one designs only a fixed-effects model can be used\n\n\n\n\n\n# fixed-effects\nfit_fixed &lt;- rma(yi, vi, method = \"FE\")\nsummary(fit_fixed)\n\nFixed-Effects Model (k = 20)\n\n  logLik  deviance       AIC       BIC      AICc   \n 20.7415   -0.0000  -39.4829  -38.4872  -39.2607   \n\nI^2 (total heterogeneity / total variability):   0.00%\nH^2 (total variability / sampling variability):  0.00\n\nTest for Heterogeneity:\nQ(df = 19) = 0.0000, p-val = 1.0000\n\nModel Results:\n\nestimate      se    zval    pval   ci.lb   ci.ub      \n  0.2000  0.0316  6.3246  &lt;.0001 signif. codes:&gt;\n\n\n\n\n# fixed-effects\nfit_random &lt;- rma(yi, vi, method = \"REML\")\nsummary(fit_random)\n\nRandom-Effects Model (k = 20; tau^2 estimator: REML)\n\n  logLik  deviance       AIC       BIC      AICc   \n 19.7044  -39.4088  -35.4088  -33.5199  -34.6588   \n\ntau^2 (estimated amount of total heterogeneity): 0 (SE = 0.0065)\ntau (square root of estimated tau^2 value):      0\nI^2 (total heterogeneity / total variability):   0.00%\nH^2 (total variability / sampling variability):  1.00\n\nTest for Heterogeneity:\nQ(df = 19) = 0.0000, p-val = 1.0000\n\nModel Results:\n\nestimate      se    zval    pval   ci.lb   ci.ub      \n  0.2000  0.0316  6.3246  &lt;.0001 signif. codes:&gt;\n\n\n\nThe previous approach can be also implemented combining replications into a single effect and then compare the original with the combined replication study.\nThis is similar to using the CI or PI approaches but the replication effect will probably by very precise due to pooling multiple studies.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#q-statistics",
+    "href": "chapters/chapter4.html#q-statistics",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.15 Q Statistics",
+    "text": "10.15 Q Statistics\nAn interesting proposal is using the Q statistics (Hedges & Schauer, 2019a, 2019b, 2019c, 2021; Schauer, 2022; Schauer & Hedges, 2020; Schauer & Hedges, 2021), commonly used in meta-analysis to assess the presence of heterogeneity. Formally:\n\\[\nQ = \\sum_{i = 1}^{k} \\frac{(\\theta_i - \\bar \\theta_w)^2}{\\sigma^2_i}\n\\]\nWhere \\(\\bar \\theta_w\\) is the inverse-variance weighted average (i.g., fixed-effect model). The Q statistics is essentially a weighted sum of squares. Under the null hypothesis where all studies are equal \\(\\theta_1 = \\theta_2, ... = \\theta_i\\) the Q statistics has a \\(\\chi^2\\) distribution with \\(k - 1\\) degrees of freedom. Under the alternative hypothesis the distribution is a non-central \\(\\chi^2\\) with non centrality parameter \\(\\lambda\\). The expected value of the \\(Q\\) is \\(E(Q) = v + \\lambda\\), where \\(v\\) are the degrees of freedom.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#q-statistics-1",
+    "href": "chapters/chapter4.html#q-statistics-1",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.16 Q Statistics",
+    "text": "10.16 Q Statistics\nHedges & Schauer proposed to use the Q statistics to evaluate the consistency of a series of replications:\n\nIn case of exact replication, \\(\\lambda = 0\\) because \\(\\theta_1 = \\theta_2, ... = \\theta_k\\).\nIn case of approximate replication, \\(\\lambda &lt; \\lambda_0\\) where \\(\\lambda_0\\) is the maximum value considered as equal to null (i.e., 0).\n\nThis approach is testing the consistency (i.e., homogeneity) of replications. A successful replication should minimize the heterogeneity and the presence of a significant Q statistics should bring evidence for not replicating the effect1.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#q-statistics-2",
+    "href": "chapters/chapter4.html#q-statistics-2",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.17 Q Statistics",
+    "text": "10.17 Q Statistics\nThe method has been expanded and formalized in several papers with different objectives:\n. . .\n\nto cover different replications setup (burden of proof on replicating vs non-replicating, many-to-one and one-to-one, etc.)\n\n. . .\n\ninterpret and choose the \\(\\lambda\\) parameter given that is the core of the approach\n\n. . .\n\nevaluating the power and statistical properties under different replication scenarios\n\n. . .\n\nthe standard implementation put the burden of proof on non-replication. Thus \\(H_0\\) is that studies replicates. They provided also a series of tests with the opposite formulation.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#q-statistics-3",
+    "href": "chapters/chapter4.html#q-statistics-3",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.18 Q Statistics",
+    "text": "10.18 Q Statistics\nIn the case of evaluating an exact replication we can use the Qrep() function that simply calculate the p-value based on the Q sampling distribution.\n\n\nFunction\nCode\nPlot\n\n\n\n\nQrep &lt;- function(yi, vi, lambda0 = 0, alpha = 0.05){\n  fit &lt;- metafor::rma(yi, vi)\n  k &lt;- fit$k\n  Q &lt;- fit$QE\n  df &lt;- k - 1\n  Qp &lt;- pchisq(Q, df = df, ncp = lambda0, lower.tail = FALSE)\n  pval &lt;- ifelse(Qp &lt; 0.001, \"p &lt; 0.001\", sprintf(\"p = %.3f\", Qp))\n  lambda &lt;- ifelse((Q - df) &lt; 0, 0, (Q - df))\n  res &lt;- list(Q = Q, lambda = lambda, pval = Qp, df = df, k = k, alpha = alpha, lambda0 = lambda0)\n  H0 &lt;- ifelse(lambda0 != 0, paste(\"H0: lambda &lt;\", lambda0), \"H0: lambda = 0\")\n  title &lt;- ifelse(lambda0 != 0, \"Q test for Approximate Replication\", \"Q test for Exact Replication\")\n  cli::cli_rule()\n  cat(cli::col_blue(cli::style_bold(title)), \"\\n\\n\")\n  cat(sprintf(\"Q = %.3f (df = %s), lambda = %.3f, %s\", res$Q, res$df, lambda, pval), \"\\n\")\n  cat(H0, \"\\n\")\n  cli::cli_rule()\n  class(res) &lt;- \"Qrep\"\n  invisible(res)\n}\n\n\n\n\nQ test for Exact Replication \n\nQ = 367.321 (df = 99), lambda = 268.321, p \n\n\nQres &lt;- Qrep(dat$yi, dat$vi)\nQ test for Exact Replication \n\nQ = 367.321 (df = 99), lambda = 268.321, p \n\n\n\n\nplot.Qrep(Qres)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#q-statistics-for-approximate-replication",
+    "href": "chapters/chapter4.html#q-statistics-for-approximate-replication",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.19 Q Statistics for approximate replication",
+    "text": "10.19 Q Statistics for approximate replication\n\nIn case of approximate replication we need to set \\(\\lambda_0\\) to a meaningful value but the overall test is the same. The critical \\(Q\\) is no longer evaluated with a central \\(\\chi^2\\) but a non-central \\(\\chi^2\\) with \\(\\lambda_0\\) as non-centrality parameter.\nHedges & Schauer (2019c) provide different strategies to choose \\(\\lambda_0\\). They found that under some assumptions, \\(\\lambda = (k - 1) \\frac{\\tau^2}{\\tilde{v}}\\)\nGiven that we introduced the \\(I^2\\) statistics we can derive a \\(\\lambda_0\\) based in \\(I^2\\). F. L. Schmidt & Hunter (2014) proposed that when \\(\\tilde{v}\\) is at least 75% of total variance \\(\\tilde{v} + \\tau^2\\) thus \\(\\tau^2\\) could be considered neglegible. This corresponds to a \\(I^2 = 25%\\) and a ratio \\(\\frac{\\tau^2}{\\tilde{v}} = 1/3\\) thus \\(\\lambda_0 = \\frac{(k - 1)}{3}\\) can be considered a neglegible heterogeneity",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#q-statistics-for-approximate-replication-1",
+    "href": "chapters/chapter4.html#q-statistics-for-approximate-replication-1",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.20 Q Statistics for approximate replication",
+    "text": "10.20 Q Statistics for approximate replication\n\nk &lt;- 100\ndat &lt;- sim_studies(k, 0.5, 0, 50, 50)\nQrep(dat$yi, dat$vi, lambda0 = (k - 1)/3)\nQ test for Approximate Replication \n\nQ = 98.121 (df = 99), lambda = 0.000, p = 0.977 \nH0: lambda",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#small-telescopes-simonsohn2015-kg",
+    "href": "chapters/chapter4.html#small-telescopes-simonsohn2015-kg",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.21 Small Telescopes (Simonsohn, 2015)\n",
+    "text": "10.21 Small Telescopes (Simonsohn, 2015)\n\nSimonsohn (2015) introduced 3 main questions when evaluating replicability:\n. . .\n\nWhen we combine data from the original and replication study, what is our best guess of the overall effect?\n\n. . .\nmeta-analysis\n. . .\n\nIs the effect of the replication study different from the original study?\n\n. . .\nmeta-analysis and standard tests, but problematic in terms of statistical power\n. . .\n\nDoes the replication study suggest that the effect of interest is undetectable different from zero?\n\n. . .\nsmall telescopes",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#small-telescopes-simonsohn2015-kg-1",
+    "href": "chapters/chapter4.html#small-telescopes-simonsohn2015-kg-1",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.22 Small Telescopes (Simonsohn, 2015)\n",
+    "text": "10.22 Small Telescopes (Simonsohn, 2015)\n\nThe idea is simple but quite powerful and insightful. Let’s assume that an original study found an effect of \\(y_{orig} = 0.7\\) on a two-sample design with \\(n = 20\\) per group.\n. . .\n\nwe define a threshold as the effect size that is associated with a certain low power level e.g., \\(33\\%\\) given the sample size i.e. \\(\\theta_{small} = 0.5\\)\n\nthe replication study found an effect of \\(y_{rep} = 0.2\\) with \\(n = 100\\) subjects\n\n. . .\nIf the \\(y_{rep}\\) is lower (i.e., the upper bound of the confidence interval) than the small effect (\\(\\theta_{small} = 0.5\\)) we conclude that the effect is probably so tiny that could not have been detected by the original study. Thus there is no evidence for a replication.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#small-telescopes-simonsohn2015-kg-2",
+    "href": "chapters/chapter4.html#small-telescopes-simonsohn2015-kg-2",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.23 Small Telescopes (Simonsohn, 2015)\n",
+    "text": "10.23 Small Telescopes (Simonsohn, 2015)\n\nWe can use the custom small_telescope() function on simulated data:\n\nsmall_telescope &lt;- function(or_d,\n                            or_se,\n                            rep_d,\n                            rep_se,\n                            small,\n                            ci = 0.95){\n  # quantile for the ci\n  qs &lt;- c((1 - ci)/2, 1 - (1 - ci)/2)\n  \n  # original confidence interval\n  or_ci &lt;- or_d + qnorm(qs) * or_se\n  \n  # replication confidence interval\n  rep_ci &lt;- rep_d + qnorm(qs) * rep_se\n  \n  # small power\n  is_replicated &lt;- rep_ci[2] &gt; small\n  \n  msg_original &lt;- sprintf(\"Original Study: d = %.3f %s CI = [%.3f, %.3f]\",\n                          or_d, ci, or_ci[1], or_ci[2])\n  \n  msg_replicated &lt;- sprintf(\"Replication Study: d = %.3f %s CI = [%.3f, %.3f]\",\n                            rep_d, ci, rep_ci[1], rep_ci[2])\n  \n  \n  if(is_replicated){\n    msg_res &lt;- sprintf(\"The replicated effect is not smaller than the small effect (%.3f), (probably) replication!\", small)\n    msg_res &lt;- cli::col_green(msg_res)\n  }else{\n    msg_res &lt;- sprintf(\"The replicated effect is smaller than the small effect (%.3f), no replication!\", small)\n    msg_res &lt;- cli::col_red(msg_res)\n  }\n  \n  out &lt;- data.frame(id = c(\"original\", \"replication\"),\n                    d = c(or_d, rep_d),\n                    lower = c(or_ci[1], rep_ci[1]),\n                    upper = c(or_ci[2], rep_ci[2]),\n                    small = small\n  )\n  \n  # nice message\n  cat(\n    msg_original,\n    msg_replicated,\n    cli::rule(),\n    msg_res,\n    sep = \"\\n\"\n  )\n  \n  invisible(out)\n  \n}",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#small-telescopes-simonsohn2015-kg-3",
+    "href": "chapters/chapter4.html#small-telescopes-simonsohn2015-kg-3",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.24 Small Telescopes (Simonsohn, 2015)\n",
+    "text": "10.24 Small Telescopes (Simonsohn, 2015)\n\n\nset.seed(2025)\n\nd &lt;- 0.2 # real effect\n\n# original study\nor_n &lt;- 20\nor_d &lt;- 0.7\nor_se &lt;- sqrt(1/20 + 1/20)\nd_small &lt;- pwr::pwr.t.test(or_n, power = 0.33)$d\n\n# replication\nrep_n &lt;- 100 # sample size of replication study\ng0 &lt;- rnorm(rep_n, 0, 1)\ng1 &lt;- rnorm(rep_n, d, 1)\n\nrep_d &lt;- mean(g1) - mean(g0)\nrep_se &lt;- sqrt(var(g1)/rep_n + var(g0)/rep_n)\n\nHere we are using the pwr::pwr.t.test() to compute the effect size \\(\\theta_{small}\\) (in code d) associated with 33% power.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#small-telescopes-simonsohn2015-kg-4",
+    "href": "chapters/chapter4.html#small-telescopes-simonsohn2015-kg-4",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n10.25 Small Telescopes (Simonsohn, 2015)\n",
+    "text": "10.25 Small Telescopes (Simonsohn, 2015)\n\n\nsmall_telescope(or_d, or_se, rep_d, rep_se, d_small, ci = 0.95)\nOriginal Study: d = 0.700 0.95 CI = [0.080, 1.320]\nReplication Study: d = 0.214 0.95 CI = [-0.061, 0.490]\n────────────────────────────────────────────────────────────────────────────────\nThe replicated effect is smaller than the small effect (0.493), no replication!\n\n\nAnd a (quite over-killed) plot:",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#bayes-factor",
+    "href": "chapters/chapter4.html#bayes-factor",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.1 Bayes Factor",
+    "text": "11.1 Bayes Factor\nVerhagen & Wagenmakers (2014) proposed a method to estimate the evidence of a replication study. The core topics to understand the method are:\n\nBayesian hypothesis testing using the Bayes Factor (see, Rouder et al., 2009)\n\nBayes Factor using the Savage-Dickey density ratio (SDR, Wagenmakers et al., 2010)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#bayesian-inference",
+    "href": "chapters/chapter4.html#bayesian-inference",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.2 Bayesian inference",
+    "text": "11.2 Bayesian inference\nBayesian inference is the statistical procedure where prior beliefs about a phenomenon are combined, using the Bayes theorem, with evidence from data to obtain the posterior beliefs.\n. . .\nThe interesting part is that the researcher express the prior beliefs in probabilistic terms. Then after collecting data, evidence from the experiment is combined increasing or decreasing the plausibility of prior beliefs.\n. . .\nLet’s make an (not a very innovative :smile:) example. We need to evaluate the fairness of a coin. The crucial parameter is \\(\\theta\\) that is the probability of success (e.g., head). We have our prior belief about the coin (e.g., fair but with some uncertainty). We toss the coin \\(k\\) times and we observe \\(x\\) heads. What are my conclusions?",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#bayesian-inference-1",
+    "href": "chapters/chapter4.html#bayesian-inference-1",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.3 Bayesian inference",
+    "text": "11.3 Bayesian inference\n\\[\np(\\theta|D) = \\frac{p(D|\\theta) \\; p(\\theta)}{p(D)}\n\\] Where \\(\\theta\\) is our parameter and \\(D\\) the data. \\(p(\\theta|D)\\) is the posterior distribution that is the product between the likelihood \\(p(D|\\theta)\\) and the prior \\(p(\\theta)\\). \\(p(D)\\) is the probability of the data (aka marginal likelihood) and is necessary only for the posterior to be a proper probability distribution.\nWe can “read” the formula as: The probability of the parameter given the data is the product between the likelihood of the data given the parameter and the prior probability of the parameter.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#bayesian-inference-2",
+    "href": "chapters/chapter4.html#bayesian-inference-2",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.4 Bayesian inference",
+    "text": "11.4 Bayesian inference\nLet’s express our prior belief in probabilistic terms:",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#bayesian-inference-3",
+    "href": "chapters/chapter4.html#bayesian-inference-3",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.5 Bayesian inference",
+    "text": "11.5 Bayesian inference\nNow we collect data and we observe \\(x = 40\\) tails out of \\(k = 50\\) trials thus \\(\\hat{\\theta} = 0.8\\) and compute the likelihood:",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#bayesian-inference-4",
+    "href": "chapters/chapter4.html#bayesian-inference-4",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.6 Bayesian inference",
+    "text": "11.6 Bayesian inference\nFinally we combine, using the Bayes rule, prior and likelihood to obtain the posterior distribution:",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#bayes-factor-1",
+    "href": "chapters/chapter4.html#bayes-factor-1",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.7 Bayes Factor",
+    "text": "11.7 Bayes Factor\nThe idea of the Bayes Factor is computing the evidence of the data under two competing hypotheses, \\(H_0\\) and \\(H_1\\) (~ \\(\\theta\\) in our previous example):\n\\[\n\\frac{p(H_0|D)}{p(H_1|D)} = \\frac{f(D|H_0)}{f(D|H_1)} \\times \\frac{p(H_0)}{p(H_1)}\n\\]\nWhere \\(f\\) is the likelihood function, \\(y\\) are the data. The \\(\\frac{p(H_0)}{p(H_1)}\\) is the prior odds of the two hypothesis. The Bayes Factor is the ratio between the likelihood of the data under the two hypotheses.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#bayes-factor-using-the-sdr",
+    "href": "chapters/chapter4.html#bayes-factor-using-the-sdr",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.8 Bayes Factor using the SDR",
+    "text": "11.8 Bayes Factor using the SDR\nCalculating the BF can be problematic in some condition. The SDR is a convenient shortcut to calculate the Bayes Factor (Wagenmakers et al., 2010). The idea is that the ratio between the prior and posterior density distribution for the \\(H_1\\) is an estimate of the Bayes factor calculated in the standard way.\n\\[\nBF_{01} = \\frac{p(D|H_0)}{p(D|H_1)} = \\frac{p(\\theta = x|D, H_1)}{p(\\theta = x, H_1)}\n\\]\nWhere \\(\\theta\\) is the parameter of interest and \\(x\\) is the null value under \\(H_0\\) e.g., 0. and \\(D\\) are the data.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#bayes-factor-using-the-sdr-example",
+    "href": "chapters/chapter4.html#bayes-factor-using-the-sdr-example",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.9 Bayes Factor using the SDR, Example:",
+    "text": "11.9 Bayes Factor using the SDR, Example:\nFollowing the previous example \\(H_0: \\theta = 0.5\\). Under \\(H_1\\) we use a completely uninformative prior by setting \\(\\theta \\sim Beta(1, 1)\\).\nWe flip again the coin 20 times and we found that \\(\\hat \\theta = 0.75\\).",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#bayes-factor-using-the-sdr-example-1",
+    "href": "chapters/chapter4.html#bayes-factor-using-the-sdr-example-1",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.10 Bayes Factor using the SDR, Example:",
+    "text": "11.10 Bayes Factor using the SDR, Example:\nThe ratio between the two black dots is the Bayes Factor.\n\n\n\n\n\n\n\n\n\nIf the probability density of the null value decrease after seeing data (from prior to posterior) this means that the Bayes factor should favor the alternative hypothesis. On the left, the density of 0.5 is lower after seeing the data –&gt; evidence for H1 On the right the density of 0.5 is higher after seeing the data –&gt; evidence for H0",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#verhagen2014-tx-model",
+    "href": "chapters/chapter4.html#verhagen2014-tx-model",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.11 Verhagen & Wagenmakers (2014) model2\n",
+    "text": "11.11 Verhagen & Wagenmakers (2014) model2\n\nThe idea is using the posterior distribution of the original study as prior for a Bayesian hypothesis testing where:\n\n\n\\(H_0: \\theta_{rep} = 0\\) thus there is no effect in the replication study\n\n\\(H_1: \\theta_{rep} \\neq 0\\) and in particular is distributed as \\(\\delta \\sim \\mathcal{N}(\\theta_{orig}, \\sigma^2_{orig})\\) where \\(\\theta_{orig}\\) and \\(\\sigma^2_{orig}\\) are the mean and standard error of the original study\n\nIf \\(H_0\\) is more likely after seeing the data, there is evidence against the replication (i.e., \\(BF_{r0} &gt; 1\\)) otherwise there is evidence for a successful replication (\\(BF_{r1} &gt; 1\\)).",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#verhagen2014-tx-model-1",
+    "href": "chapters/chapter4.html#verhagen2014-tx-model-1",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.12 Verhagen & Wagenmakers (2014) model",
+    "text": "11.12 Verhagen & Wagenmakers (2014) model\n\n\n\n\n\n\nWarning\n\n\n\nDisclaimer: The actual implementation of Verhagen & Wagenmakers (2014) is different (they use the \\(t\\) statistics). The proposed implementation for the current workshop use a standard linear model.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#example",
+    "href": "chapters/chapter4.html#example",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.13 Example",
+    "text": "11.13 Example\nLet’s assume that the original study (\\(n = 30\\)) estimate a \\(y_{orig} = 0.4\\) and a standard error of \\(\\sigma^2/n\\).\n\n# original study\nn &lt;- 30\nyorig &lt;- 0.4\nse &lt;- sqrt(1/30)\n\n\n\n\n\n\n\nNote\n\n\n\nThe assumption of Verhagen & Wagenmakers (2014) is that the original study performed a Bayesian analysis with a completely flat prior. Thus the confidence interval is the same as the Bayesian credible interval.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#example-1",
+    "href": "chapters/chapter4.html#example-1",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.14 Example",
+    "text": "11.14 Example\nFor this reason, the posterior distribution of the original study can be approximated as:\n\n\n\n\n\n\n\n\n\nWith an uninformative prior the credible interval is the same as the confidence interval",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#example-2",
+    "href": "chapters/chapter4.html#example-2",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.15 Example",
+    "text": "11.15 Example\nLet’s imagine that a new study tried to replicate the original one. They collected \\(n = 100\\) participants with the same protocol and found and effect of \\(y_{rep} = 0.1\\).\n\nnrep &lt;- 100\nyrep &lt;- MASS::mvrnorm(nrep, mu = 0.1, Sigma = 1, empirical = TRUE)[, 1]\ndat &lt;- data.frame(y = yrep)\nhist(yrep, main = \"Replication Study (n1 = 100)\", xlab = latex2exp::TeX(\"$y_{rep}$\"))\nabline(v = mean(yrep), lwd = 2, col = \"firebrick\")",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#example-3",
+    "href": "chapters/chapter4.html#example-3",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.16 Example",
+    "text": "11.16 Example\nWe can analyze these data with an intercept-only regression model setting as prior the posterior distribution of the original study:\n\n# setting the prior on the intercept parameter\nprior &lt;- rstanarm::normal(location = yorig,\n                          scale = se)\n\n# fitting the bayesian linear regression\nfit &lt;- stan_glm(y ~ 1, \n                data = dat, \n                prior_intercept = prior,\n                refresh = FALSE)\n\nsummary(fit)\n\nModel Info:\n function:     stan_glm\n family:       gaussian [identity]\n formula:      y ~ 1\n algorithm:    sampling\n sample:       4000 (posterior sample size)\n priors:       see help('prior_summary')\n observations: 100\n predictors:   1\n\nEstimates:\n              mean   sd   10%   50%   90%\n(Intercept) 0.2    0.1  0.1   0.2   0.3  \nsigma       1.0    0.1  0.9   1.0   1.1  \n\nFit Diagnostics:\n           mean   sd   10%   50%   90%\nmean_PPD 0.2    0.1  0.0   0.2   0.3  \n\nThe mean_ppd is the sample average posterior predictive distribution of the outcome variable (for details see help('summary.stanreg')).\n\nMCMC diagnostics\n              mcse Rhat n_eff\n(Intercept)   0.0  1.0  2609 \nsigma         0.0  1.0  2608 \nmean_PPD      0.0  1.0  3185 \nlog-posterior 0.0  1.0  1693 \n\nFor each parameter, mcse is Monte Carlo standard error, n_eff is a crude measure of effective sample size, and Rhat is the potential scale reduction factor on split chains (at convergence Rhat=1).",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#example-4",
+    "href": "chapters/chapter4.html#example-4",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.17 Example",
+    "text": "11.17 Example\n\n\nResults\nPlot\n\n\n\nWe can use the bayestestR::bayesfactor_pointnull() to calculate the BF using the Savage-Dickey density ratio.\n\nbf &lt;- bayestestR::bayesfactor_pointnull(fit, null = 0)\nprint(bf)\n\n\n\n\nplot(bf)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#example-5",
+    "href": "chapters/chapter4.html#example-5",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.18 Example",
+    "text": "11.18 Example\nYou can also use the bf_replication() function:\n\nbf_replication &lt;- function(mu_original,\n                           se_original,\n                           replication){\n  \n  # prior based on the original study\n  prior &lt;- rstanarm::normal(location = mu_original, scale = se_original)\n  \n  # to dataframe\n  replication &lt;- data.frame(y = replication)\n  \n  fit &lt;- rstanarm::stan_glm(y ~ 1,\n                            data = replication,\n                            prior_intercept = prior, \n                            refresh = 0) # avoid printing\n  \n  bf &lt;- bayestestR::bayesfactor_pointnull(fit, null = 0, verbose = FALSE)\n  \n  title &lt;- \"Bayes Factor Replication Rate\"\n  posterior &lt;- \"Posterior Distribution ~ Mean: %.3f, SE: %.3f\"\n  replication &lt;- \"Evidence for replication: %3f (log %.3f)\"\n  non_replication &lt;- \"Evidence for non replication: %3f (log %.3f)\"\n  \n  if(bf$log_BF &gt; 0){\n    replication &lt;- cli::col_green(sprintf(replication, exp(bf$log_BF), bf$log_BF))\n    non_replication &lt;- sprintf(non_replication, 1/exp(bf$log_BF), -bf$log_BF)\n  }else{\n    replication &lt;- sprintf(replication, exp(bf$log_BF), bf$log_BF)\n    non_replication &lt;- cli::col_red(sprintf(non_replication, 1/exp(bf$log_BF), -bf$log_BF))\n  }\n  \n  outlist &lt;- list(\n    fit = fit,\n    bf = bf\n  )\n  \n  cat(\n    cli::col_blue(title),\n    cli::rule(),\n    sprintf(posterior, fit$coefficients, fit$ses),\n    \"\\n\",\n    replication,\n    non_replication,\n    sep = \"\\n\"\n  )\n  \n  invisible(outlist)\n  \n}",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#example-6",
+    "href": "chapters/chapter4.html#example-6",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.19 Example",
+    "text": "11.19 Example\n\nbf_replication(mu_original = yorig, se_original = se, replication = yrep)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#example-7",
+    "href": "chapters/chapter4.html#example-7",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.20 Example",
+    "text": "11.20 Example\nA better custom plot:\n\nbfplot &lt;- data.frame(\n  prior = rnorm(1e5, yorig, se),\n  posterior = rnorm(1e5, fit$coefficients, fit$ses)\n)\n \nplt &lt;- ggplot() +\n  stat_function(geom = \"line\", \n                aes(color = \"Original Study (Prior)\"),\n                linewidth = 1,\n                alpha = 0.3,\n                fun = dnorm, args = list(mean = yorig, sd = se)) +\n  stat_function(geom = \"line\",\n                linewidth = 1,\n                aes(color = \"Replication Study (Posterior)\"),\n                fun = dnorm, args = list(mean = fit$coefficients, sd = fit$ses)) +\n  xlim(c(-0.5, 1.2)) +\n  geom_point(aes(x = c(0, 0), y = c(dnorm(0, yorig, sd = se),\n                                    dnorm(0, fit$coefficients, sd = fit$ses))),\n             size = 3) +\n  xlab(latex2exp::TeX(\"\\\\delta\")) +\n  ylab(\"Density\") +\n  theme(legend.position = \"bottom\",\n        legend.title = element_blank())",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#example-8",
+    "href": "chapters/chapter4.html#example-8",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.21 Example",
+    "text": "11.21 Example\nA better custom plot:",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#references",
+    "href": "chapters/chapter4.html#references",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "\n11.22 References",
+    "text": "11.22 References\n\n\n\n\nAnderson, S. F., & Kelley, K. (2024). Sample size planning for replication studies: The devil is in the design. Psychological Methods, 29, 844–867. https://doi.org/10.1037/met0000520\n\n\nBrandt, M. J., IJzerman, H., Dijksterhuis, A., Farach, F. J., Geller, J., Giner-Sorolla, R., Grange, J. A., Perugini, M., Spies, J. R., & Veer, A. van ’t. (2014). The replication recipe: What makes for a convincing replication? Journal of Experimental Social Psychology, 50, 217–224. https://doi.org/10.1016/j.jesp.2013.10.005\n\n\nBushman, B. J., & Wang, M. C. (2009). Vote-counting procedures in meta-analysis. In The handbook of research synthesis and meta-analysis (pp. 207–220). Russell Sage Foundation.\n\n\nHedges, L. V., & Olkin, I. (1980). Vote-counting methods in research synthesis. Psychological Bulletin, 88, 359–369. https://doi.org/10.1037/0033-2909.88.2.359\n\n\nHedges, L. V., & Schauer, J. M. (2019a). Consistency of effects is important in replication: Rejoinder to mathur and VanderWeele (2019). Psychological Methods, 24, 576–577. https://doi.org/10.1037/met0000237\n\n\nHedges, L. V., & Schauer, J. M. (2019b). More than one replication study is needed for unambiguous tests of replication. Journal of Educational and Behavioral Statistics: A Quarterly Publication Sponsored by the American Educational Research Association and the American Statistical Association, 44, 543–570. https://doi.org/10.3102/1076998619852953\n\n\nHedges, L. V., & Schauer, J. M. (2019c). Statistical analyses for studying replication: Meta-analytic perspectives. Psychological Methods, 24, 557–570. https://doi.org/10.1037/met0000189\n\n\nHedges, L. V., & Schauer, J. M. (2021). The design of replication studies. Journal of the Royal Statistical Society. Series A, (Statistics in Society), 184, 868–886. https://doi.org/10.1111/rssa.12688\n\n\nHeyard, R., Pawel, S., Frese, J., Voelkl, B., Würbel, H., McCann, S., Held, L., Wever, K. E., Hartmann, H., Townsin, L., & Zellers, S. (2024). A scoping review on metrics to quantify reproducibility: A multitude of questions leads to a multitude of metrics. https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=JAb7P1QAAAAJ:ldfaerwXgEUC\n\n\nJeffreys, H. (1973). Scientific inference. Cambridge University Press.\n\n\nLakens, D., Scheel, A. M., & Isager, P. M. (2018). Equivalence testing for psychological research: A tutorial. Advances in Methods and Practices in Psychological Science, 1, 259–269. https://doi.org/10.1177/2515245918770963\n\n\nLy, A., Etz, A., Marsman, M., & Wagenmakers, E.-J. (2019). Replication bayes factors from evidence updating. Behavior Research Methods, 51, 2498–2508. https://doi.org/10.3758/s13428-018-1092-x\n\n\nMathur, M. B., & VanderWeele, T. J. (2019). Challenges and suggestions for defining replication \"success\" when effects may be heterogeneous: Comment on hedges and schauer (2019). Psychological Methods, 24, 571–575. https://doi.org/10.1037/met0000223\n\n\nMathur, M. B., & VanderWeele, T. J. (2020). New statistical metrics for multisite replication projects. Journal of the Royal Statistical Society. Series A, (Statistics in Society), 183, 1145–1166. https://doi.org/10.1111/rssa.12572\n\n\nNosek, B. A., & Errington, T. M. (2020). What is replication? PLoS Biology, 18, e3000691. https://doi.org/10.1371/journal.pbio.3000691\n\n\nPatil, P., Peng, R. D., & Leek, J. T. (2016). What should researchers expect when they replicate studies? A statistical view of replicability in psychological science. Perspectives on Psychological Science: A Journal of the Association for Psychological Science, 11, 539–544. https://doi.org/10.1177/1745691616646366\n\n\nRouder, J. N., Speckman, P. L., Sun, D., Morey, R. D., & Iverson, G. (2009). Bayesian t tests for accepting and rejecting the null hypothesis. Psychonomic Bulletin & Review, 16, 225–237. https://doi.org/10.3758/PBR.16.2.225\n\n\nSchauer, J. M. (2022). Replicability and meta-analysis. In W. O’Donohue, A. Masuda, & S. Lilienfeld (Eds.), Avoiding questionable research practices in applied psychology (pp. 301–342). Springer International Publishing. https://doi.org/10.1007/978-3-031-04968-2_14\n\n\nSchauer, J. M., & Hedges, L. V. (2020). Assessing heterogeneity and power in replications of psychological experiments. Psychological Bulletin, 146, 701–719. https://doi.org/10.1037/bul0000232\n\n\nSchauer, J. M., & Hedges, L. V. (2021). Reconsidering statistical methods for assessing replication. Psychological Methods, 26, 127–139. https://doi.org/10.1037/met0000302\n\n\nSchmidt, F. L., & Hunter, J. E. (2014). Methods of meta-analysis: Correcting error and bias in research findings (3rd ed.). SAGE Publications. https://doi.org/10.4135/9781483398105\n\n\nSchmidt, S. (2009). Shall we really do it again? The powerful concept of replication is neglected in the social sciences. Review of General Psychology: Journal of Division 1, of the American Psychological Association, 13, 90–100. https://doi.org/10.1037/a0015108\n\n\nSimonsohn, U. (2015). Small telescopes: Detectability and the evaluation of replication results: Detectability and the evaluation of replication results. Psychological Science, 26, 559–569. https://doi.org/10.1177/0956797614567341\n\n\nSpence, J. R., & Stanley, D. J. (2016). Prediction interval: What to expect when you’re expecting … a replication. PloS One, 11, e0162874. https://doi.org/10.1371/journal.pone.0162874\n\n\nValentine, J. C., Biglan, A., Boruch, R. F., Castro, F. G., Collins, L. M., Flay, B. R., Kellam, S., Mościcki, E. K., & Schinke, S. P. (2011). Replication in prevention science. Prevention Science: The Official Journal of the Society for Prevention Research, 12, 103–117. https://doi.org/10.1007/s11121-011-0217-6\n\n\nVerhagen, J., & Wagenmakers, E.-J. (2014). Bayesian tests to quantify the result of a replication attempt. Journal of Experimental Psychology. General, 143, 1457–1475. https://doi.org/10.1037/a0036731\n\n\nWagenmakers, E.-J., Lodewyckx, T., Kuriyal, H., & Grasman, R. (2010). Bayesian hypothesis testing for psychologists: A tutorial on the savage–dickey method. Cognitive Psychology, 60, 158–189. https://doi.org/10.1016/j.cogpsych.2009.12.001",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter4.html#footnotes",
+    "href": "chapters/chapter4.html#footnotes",
+    "title": "\n4  Statistical methods for replication assessment\n",
+    "section": "",
+    "text": "The approach has been debated by a series of opinion papers (see Hedges & Schauer, 2019a; Mathur & VanderWeele, 2019)↩︎\nsee also Ly et al. (2019) for an improvement↩︎",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Statistical methods for replication assessment</span>"
+    ]
+  }
+]

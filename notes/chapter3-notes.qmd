@@ -1,0 +1,12 @@
+---
+bibliography: /Users/filippogambarota/googledrive/notes/files/references.bib
+---
+
+what @Fletcher2021-hv define as CCMA meta analysis is very similar to the larry hedges approach. the paper cite the CCMA method from @Braver2014-pf. personally the method is just a meta-analysis and the focus is on pooling vs comparing. it make sense if $\tau^2$ is small, otherwise pooling make no sense. In addition, with 2 or few studies, estimating $\tau^2$ is not possible and the method provide control of type1 error only when it is small and thus even more difficult to estimate.
+I think that with one-to-many replications it make sense, but with one-to-one other methods based on confidence or prediction intervals are better
+
+the paper by @Etz2016-kk is interesting for combining a bayesian model with bayesian model averaging for publication bias. however it use a different perspective compared to @Ly2019-ow where the posterior of the initial study is assumed to be the prior of the other study. in @Etz2016-kk they want to see the contribution of each study (original and replicate) comparing the null (no effect) with the alternative hypotesis (unit normal)
+
+> Among the insights reported in OSC is that “low-power research designs combined with publication bias favoring positive results together produce a literature with upwardly biased effect sizes,” and that this may explain why replications—unaffected by publication bias—show smaller effect sizes. Here, we formally evaluate that insight, and use the results of the Reproduc- ibility Project: Psychology to conclude that publication bias and low-powered designs indeed contribute to the poor reproducibility, but also that many of the replication attempts in OSC were themselves underpowered.
+
+in the project the power analysis was conducted with the effect size of the original study that is likely to be inflated and thus replication studies despite with more power are still underpowered.

@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; What is a replication – The three Rs of trustworthy science</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/chapter2.html" rel="next">
+<link href="../index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-7580570a2e354cd56757c689413fca0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapter1.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is a replication</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">The three Rs of trustworthy science</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is a replication</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Replicability and reproducibility</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability of Replication</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistical methods for replication assessment</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Meta-analysis and publication bias</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Improving study robustness</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Planning a replication study</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#key-readings" id="toc-key-readings" class="nav-link active" data-scroll-target="#key-readings">Key Readings</a></li>
+  <li><a href="#replication-robustness-and-reproducibility" id="toc-replication-robustness-and-reproducibility" class="nav-link" data-scroll-target="#replication-robustness-and-reproducibility"><span class="header-section-number">1.1</span> Replication, Robustness and Reproducibility</a></li>
+  <li><a href="#defining-replication" id="toc-defining-replication" class="nav-link" data-scroll-target="#defining-replication"><span class="header-section-number">1.2</span> Defining Replication</a>
+  <ul class="collapse">
+  <li><a href="#challenges" id="toc-challenges" class="nav-link" data-scroll-target="#challenges"><span class="header-section-number">1.2.1</span> Challenges</a></li>
+  <li><a href="#cronbachs-essential-components-of-an-experiment" id="toc-cronbachs-essential-components-of-an-experiment" class="nav-link" data-scroll-target="#cronbachs-essential-components-of-an-experiment"><span class="header-section-number">1.2.2</span> Cronbach’s essential components of an experiment</a></li>
+  <li><a href="#macherys-definition-of-a-replication-experiment" id="toc-macherys-definition-of-a-replication-experiment" class="nav-link" data-scroll-target="#macherys-definition-of-a-replication-experiment"><span class="header-section-number">1.2.3</span> Machery’s definition of a replication experiment</a></li>
+  </ul></li>
+  <li><a href="#validity-and-extensions" id="toc-validity-and-extensions" class="nav-link" data-scroll-target="#validity-and-extensions"><span class="header-section-number">1.3</span> Validity and Extensions</a>
+  <ul class="collapse">
+  <li><a href="#conceptual-replication" id="toc-conceptual-replication" class="nav-link" data-scroll-target="#conceptual-replication"><span class="header-section-number">1.3.1</span> Conceptual Replication</a></li>
+  <li><a href="#precision-of-replication" id="toc-precision-of-replication" class="nav-link" data-scroll-target="#precision-of-replication"><span class="header-section-number">1.3.2</span> Precision of Replication</a></li>
+  <li><a href="#replication-vs-extension-different-scientific-value" id="toc-replication-vs-extension-different-scientific-value" class="nav-link" data-scroll-target="#replication-vs-extension-different-scientific-value"><span class="header-section-number">1.3.3</span> Replication vs Extension: different scientific value?</a></li>
+  <li><a href="#contextual-dependency" id="toc-contextual-dependency" class="nav-link" data-scroll-target="#contextual-dependency"><span class="header-section-number">1.3.4</span> Contextual dependency</a></li>
+  <li><a href="#investigators-as-a-factor" id="toc-investigators-as-a-factor" class="nav-link" data-scroll-target="#investigators-as-a-factor"><span class="header-section-number">1.3.5</span> Investigators as a Factor</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-rep-theory" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is a replication</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="key-readings" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="key-readings">Key Readings</h2>
+<p>Key readings:</p>
+<ul>
+<li><span class="citation" data-cites="Machery2020-sv">Machery (<a href="#ref-Machery2020-sv" role="doc-biblioref">2020</a>)</span>: <em>What is a replication?</em></li>
+<li><span class="citation" data-cites="Nosek2020-vh">Nosek &amp; Errington (<a href="#ref-Nosek2020-vh" role="doc-biblioref">2020</a>)</span>: <em>What is replication?</em></li>
+</ul>
+<p>Optional readings:</p>
+<ul>
+<li><p><span class="citation" data-cites="Rosenthal1990-cq">Rosenthal (<a href="#ref-Rosenthal1990-cq" role="doc-biblioref">1990</a>)</span>: <em>Replication in behavioral research</em>. Especially for the concepts of <em>precision</em> and the idea of weighting replication studies according to qualitative and quantitative factors.</p></li>
+<li><p><span class="citation" data-cites="National-Academies-of-Sciences-Engineering-and-Medicine2019-ze">National Academies of Sciences, Engineering, and Medicine et al. (<a href="#ref-National-Academies-of-Sciences-Engineering-and-Medicine2019-ze" role="doc-biblioref">2019</a>)</span> National Academies report on <em>Reproducibility and Replicability in Science</em></p></li>
+</ul>
+</section>
+<section id="replication-robustness-and-reproducibility" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="replication-robustness-and-reproducibility"><span class="header-section-number">1.1</span> Replication, Robustness and Reproducibility</h2>
+<p>This book is concerned with what we call the three “R”’s of trustworthy science: Replication, Robustness and Reproducibility. We begin by sketching a definition of each. This first Chapter then elaborates on the definition of replicability more specifically.</p>
+<p>In 2019 the USA’s National Academies published a report on Reproducibility and Replicability in Science <span class="citation" data-cites="National-Academies-of-Sciences-Engineering-and-Medicine2019-ze">(<a href="#ref-National-Academies-of-Sciences-Engineering-and-Medicine2019-ze" role="doc-biblioref">National Academies of Sciences, Engineering, and Medicine et al., 2019</a>)</span> which we strongly recommend as a complementary reading to this document. They propose to define <strong><em>Replicability</em></strong> as “obtaining consistent results across studies aimed at answering the same scientific question, each of which has obtained its own data”. This will be our first “R”. The NAS definition is also endorsed by the American Statistical Association <span class="citation" data-cites="Broman2017-mv">(<a href="#ref-Broman2017-mv" role="doc-biblioref">Broman et al., 2017</a>)</span> and generally adopted in statistics (for example <span class="citation" data-cites="Heller2014-lr">(<a href="#ref-Heller2014-lr" role="doc-biblioref">Heller et al., 2014</a>)</span> add a couple of review papers).</p>
+<p>The second “R” is <strong><em>Reproducibility</em></strong>, defined by NAS as “obtaining consistent results using the same input data, computational steps, methods, and code, and conditions of analysis” <span class="citation" data-cites="National-Academies-of-Sciences-Engineering-and-Medicine2019-ze">(<a href="#ref-National-Academies-of-Sciences-Engineering-and-Medicine2019-ze" role="doc-biblioref">National Academies of Sciences, Engineering, and Medicine et al., 2019</a>)</span>. Here the experimental design, data and methodologies of analysis are all fixed. A reproducible research paper should provide enough information to obtain the results originally reported, starting from the same raw data. Raw data are data in a form as close as possible to what generated the experimental source. Defining precisely what raw data is can be complex both conceptually and practically, but a digression on this would take us too far astray. Nowadays it is becoming more common to supplement a paper with analysis code, raw data (if possible) and details or materials (e.g., experimental stimuli, biological reagents, questionnaires) about the experimental setup. Reproducibility can be considered as the most fundamental pre-requisite of replication in science. Chapter XXX will provide a more detailed explaination of the concept with an overview of tools for doing reproducible science.</p>
+<p>Our third “R” also involves keeping the raw data fixed, and focuses on changing parts of the analysis method. This is different from the previous two, as it investigates the <strong><em>robustness</em></strong> of the results to the many judgment calls that typically need to be made in the implementation of a statistical analysis. Chapter XXX will present some methods for investigating robustness. For example, multiverse analysis is a way to systematically sample different plausible analytical strategies and see their impact on the final conclusions.</p>
+<p>Usage of the first two “R” terms is often inconsistent and is reversed in computer science. <span class="citation" data-cites="Kenett2015-jm Goodman2016-yw Barba2018-ef">(<a href="#ref-Barba2018-ef" role="doc-biblioref">Barba, 2018</a>; <a href="#ref-Goodman2016-yw" role="doc-biblioref">Goodman et al., 2016</a>; <a href="#ref-Kenett2015-jm" role="doc-biblioref">Kenett &amp; Shmueli, 2015</a>)</span> review these terminologies and their usage.</p>
+</section>
+<section id="defining-replication" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="defining-replication"><span class="header-section-number">1.2</span> Defining Replication</h2>
+<section id="challenges" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="challenges"><span class="header-section-number">1.2.1</span> Challenges</h3>
+<p>When studying, planning or conducting studies about replication in science, it is essential to start from a clear definition and formalization of replication. First we need to define when an experiment or study constitutes a replication attempt of another.</p>
+<p>A greay area often arises where scientists attempt to replicate the results of a study using a similar but not identical scientific methodology. If they obtain a different result, should they conclude that the new study did not replicate the original? To answer, the replication needs to be evaluated not only in terms of result but also with regard to the study design, for example with regard to whether experimental factors, approaches and conditions are the same or different. In this first chapter we discuss the design of a replication study from both an empirical and a philosophical perspective.</p>
+<p>The statistical analysis and the evaluation of whether replication was successful will be covered in Chapter XXX, we’re we will discover that there can be several different definitions of what a successful replication is. <span class="citation" data-cites="Anderson2024-cx">Anderson &amp; Kelley (<a href="#ref-Anderson2024-cx" role="doc-biblioref">2024</a>)</span> reviewed more than 20 different replication criteria and <span class="citation" data-cites="Heyard2024-hv">Heyard et al. (<a href="#ref-Heyard2024-hv" role="doc-biblioref">2024</a>)</span> indentified more than 50 published statistical approaches to assess a replication experiment.</p>
+<p>We begin by reviewing concepts that in our view are general enough to be applied to multiple research areas and translated into an empirically testable statistical framework. The bibliography chapter contains a selected list of theoretical papers on replication.</p>
+</section>
+<section id="cronbachs-essential-components-of-an-experiment" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="cronbachs-essential-components-of-an-experiment"><span class="header-section-number">1.2.2</span> Cronbach’s essential components of an experiment</h3>
+<p>We start by defining the essential components of an experiment as proposed by <span class="citation" data-cites="Cronbach1982-kl">Cronbach &amp; Shapiro (<a href="#ref-Cronbach1982-kl" role="doc-biblioref">1982</a>)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> His framework is concisely referred to as UTOS because it consisted of these components:</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+UTOS Framework
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>U</strong>nits: the elements of the population from which the study sample has been drawn; the term population is used here in its statistical meaning: a real or hypothetical universe of units (not necessarily persons) to which the inferential conclusions of the study should apply;</li>
+<li><strong>T</strong>reatments: the independent variables, for example experimental interventions, or population subgroups of interest;</li>
+<li><strong>O</strong>utcomes: the dependent variables on which the study is focused</li>
+<li><strong>S</strong>etting: the remainder of factors that can affect the experimental outcome and its relation to treatments. For example the factors defining the “environment” where a psychological experiment takes place (lab vs online experiment, cultural aspects, etc.)</li>
+</ul>
+</div>
+</div>
+<p>Some initial comments:</p>
+<ul>
+<li><p><strong>U</strong>: this component positions us unequivocally in the territory of statistical inference, where we posit a population of reference consisting of distinct units, and we are interested in generalizing from an observed sample to the entire population. Naturally not all science aligns with this paradigm. Before reading further, try to think about important scientific studies you may have come across recently that do not fit with this paradigm.</p></li>
+<li><p><strong>T &amp; O</strong>: these components implicitly assume that the goal of the study was to elucidate how, in the population of interest, the outcomes relate to the independent variables, perhaps causally if the experiment is controlled. Again, this is an important subset of science, but is by no means exhaustive. Clustering, discovery of latent dimensions in high dimensional data, segmentation of images, and a number of other exceptions come to mind. Add your own. Also, important science can be simply exploratory and descriptive, but replicability questions are relevant there as well.</p></li>
+<li><p><strong>S</strong>: By changing settings “minimally” you get “essentially” the same experiments. For example you may change the temperature in the lab for an experiment where temperature is a negligible factor. On the other hand if you change the temperature in a chemistry experiment where a certain reaction is very sensitive to temperature, you may get a completely different experiment and arguably a different study: skating on ice vs water, so to speak. So it takes a little sprinkle of common sense for this to be a useful definition. Be alert.</p></li>
+</ul>
+</section>
+<section id="macherys-definition-of-a-replication-experiment" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="macherys-definition-of-a-replication-experiment"><span class="header-section-number">1.2.3</span> Machery’s definition of a replication experiment</h3>
+<p><span class="citation" data-cites="Machery2020-sv">Machery (<a href="#ref-Machery2020-sv" role="doc-biblioref">2020</a>)</span> proposed a simple and flexible perspective on replication called the <strong>resampling account</strong>.</p>
+<p>Consider an original experiment in the UTOS framework, and imagine we can sharply specify <em>fixed</em> and <em>random factors</em> in the following sense: a random factor can be thought of as sampled from the population of interest, while a fixed factor is not sampled, but rather determined by design. For example, participants (<em>Units</em>) can be assumed to be random when the study samples a group of participants according to a well defined sampling scheme. In contrast, an experimental manipulation is generally fixed. Random sampling affords to option to use statistical inference to learn parameters of the population of interest <span class="citation" data-cites="Yarkoni2020-xf">(see also <a href="#ref-Yarkoni2020-xf" role="doc-biblioref">Yarkoni, 2020</a> for the idea of generalizability)</span>. Stricltly speaking, inference using a fixed factor is limited only to the tested condition. Defining fixed and random factors in real settings can be complex. Challenges and approaches are extensively debated in the literature <span class="citation" data-cites="Clark2015-pz">(e.g., <a href="#ref-Clark2015-pz" role="doc-biblioref">Clark &amp; Linzer, 2015</a>)</span>.</p>
+<p>Returning to replication, according to Machery, a replication experiment is an experiment created by <em>sampling from the random factors</em> (e.g., new group of participants), and <em>keeping the non-random factors fixed</em> (e.g., same type of drug or treatment). In this definition, population parameters of interest are identical between an original study and its replication. We will return on this point in Chapter XXX.</p>
+<p>A replication experiment is meant to assess what Machery calls <strong>reliability</strong>. <span class="citation" data-cites="Machery2020-sv">Machery (<a href="#ref-Machery2020-sv" role="doc-biblioref">2020</a>)</span> uses the term reliability as in measurement theory [] where a reliable instrument (in this case the experiment is seen as the instrument) produces <em>consistent</em> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> results across different replications of the measurement. When replicating a whole experiment, say sampling a new sample of participants, we are similarly interested in evaluating whether the experimental setup is reliable in the sense of producing consistent results.</p>
+<p>Along the line of the measurement methaphor, let’s imagine a treatment for depression that have been evaluated in an original study. The researchers developed a protocol, defined the concept of depression, administered the treatment and chosen some depression self-report measures finding a decreasing level of depression compared to the control group. Another group of researchers decided to <em>replicate</em> this original experiment. They adopted the same protocol, definitions and measures but collected another sample of participants from the same population. The results of the replication experiment, for example the magnitude of the effect of the treatment on the depression level as defined by the protocol, may or may not be close to the original. If they are close, this provides evidence in favor of the <em>reliability</em> of the original experiment, as defined above <span class="citation" data-cites="Nosek2017-an">(<a href="#ref-Nosek2017-an" role="doc-biblioref">Nosek &amp; Errington, 2017</a>)</span>. Here, we are not questioning the definition or the measures used in the study.</p>
+<p>To recap the progress made so far, if you can frame a study as UTOS, and clearly separate the random and fixed factors, you know how to design a replication study!</p>
+</section>
+</section>
+<section id="validity-and-extensions" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="validity-and-extensions"><span class="header-section-number">1.3</span> Validity and Extensions</h2>
+<section id="conceptual-replication" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="conceptual-replication"><span class="header-section-number">1.3.1</span> Conceptual Replication</h3>
+<p>Does is make sense to compare experiments when fixed factors have changed? In many cases it does, and this type of analysis still falls under the purview of replication, broadly understood. Readers familiar with the replication literature may have noticed that we did not use concepts such as <em>direct</em> or <em>conceptual</em> replication yet. Briefly, a direct replication is usually defined as an experiment that tries to recreate the original experiment as closely as possible. While this can be done in certain fields, most of the time this objective is empirically difficult to achieve to due uncontrollable factors <span class="citation" data-cites="Nosek2017-an Nosek2020-vh">(<a href="#ref-Nosek2017-an" role="doc-biblioref">Nosek &amp; Errington, 2017</a>, <a href="#ref-Nosek2020-vh" role="doc-biblioref">2020</a>)</span>. Examples include replicating effects that are strongly culturally related, or experiments that used a completely outdated technology for the experimental setup.</p>
+<p>In contrast, <em>conceptual</em> replication is a broad term defining a replication experiment with similar aims and methodology but with important differences <span class="citation" data-cites="Crandall2016-xg">(e.g., <a href="#ref-Crandall2016-xg" role="doc-biblioref">Crandall &amp; Sherman, 2016</a>)</span>. In Machery’s terms, a <em>conceptual</em> replication changes some of the fixed factors. In the depression example above, a conceptual replication might be a second experiment using another theoretical definition or measure of depression. Here, the goal is still within the broad umbrella of understanding the effect of the treatment on depression, but the experiment is not a strict replication in the Machery sense, because the outcome measurement methodology has changed. For this reason <span class="citation" data-cites="Machery2020-sv">Machery (<a href="#ref-Machery2020-sv" role="doc-biblioref">2020</a>)</span> uses the term <em>extension</em>. Extensions may include a methodological change but also a more profound philosophical change, for example using a scale motivated by a different theoretical framework for defining depression. An <em>extension</em> experiment is not assessing the <em>reliability</em>, but rather the <em>validity</em> of the original experiment and in a broader sense the theory underlying the original experiment. Similarly to <em>reliability</em>, the term <em>validity</em> is used with measurement theory in mind. The <em>validity</em> of an instrument is the link with the true phenomenon being assessed (for example the actual weight of an object being weighed).</p>
+<p>In the depression example, if the researchers want to see whether the treatment is effective also using other measures of depression they are <em>extending</em> the original results testing the <em>validity</em> of the result about the treatment.</p>
+</section>
+<section id="precision-of-replication" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="precision-of-replication"><span class="header-section-number">1.3.2</span> Precision of Replication</h3>
+<p>In practice we can often design a variety of replication / extension experiments, with varying degrees of similarity with the original one. <span class="citation" data-cites="Rosenthal1990-cq">Rosenthal (<a href="#ref-Rosenthal1990-cq" role="doc-biblioref">1990</a>)</span> defines the important concept of <em>precision</em> as the degree of similarity between the replication and the original experiment. The most precise is a Machery replication. Generally, very <em>precise</em> experiments lack external validity (they are not able to <em>extend</em>) but they can directly speak to the <em>reliability</em> of the original experimental setup and results. Less <em>precise</em> experiments reduce the amount of information for assessing the confidence in the original experiment, shifting the focus on the underlying theory. For example, we may say that the treatment reduces also physiological indexes of depression or works also in a different population of patients.</p>
+</section>
+<section id="replication-vs-extension-different-scientific-value" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="replication-vs-extension-different-scientific-value"><span class="header-section-number">1.3.3</span> Replication vs Extension: different scientific value?</h3>
+<p>We have seen that a precise replication experiment is an attempt to ask again the same inferential question in as close a way as possible. Variations in setting and fixed factors can generate experiments that probe the trustworthiness of the conclusions further. These slight variations are can be successfully analyzed together with replicability in mind, for example in a meta-analysis (see Chapter XXX), even though they do not constitute a strict replication by Machery’s exacting standards.</p>
+<p>As settings are varied further and the replication becomes less precise, we eventually found ourselves having extended the experimental paradigm beyond the initial goals and populations. When is this line crossed? The answer is dependent on the context and reasonable scientists may disagree about it. An important debate in the literature regards the value of a replication compared to an extension experiment. <span class="citation" data-cites="Crandall2016-xg">Crandall &amp; Sherman (<a href="#ref-Crandall2016-xg" role="doc-biblioref">2016</a>)</span> considers extensions as more valuable while <span class="citation" data-cites="Simons2014-cg">Simons (<a href="#ref-Simons2014-cg" role="doc-biblioref">2014</a>)</span> argues in favor of focusing on replications experiment. Clearly both have a place in science. If the main aim is to test the reliability of the original experiment one should reduce as much as possible the heterogeneity (i.e., increase the <em>precision</em>). On the other hand, if the aim is to explore different instances of the same effect or theory one should extend the experimental setup. Often an extension experiment is the natural continuation of the scientific line of inquiry opened by a reliable original, possibly with its replication experiment.</p>
+<p>In the remainder of the discussion we will use <em>precise replication</em> to denote a replication experiment in the strict sense of Machery, or a sufficiently close approximation, while we use the word <em>extension</em> to describe replication settings where the precision is lower. Defining a successful replication, and choosing the appropriate statistical approach for analyzing data can be very different along the precision continuum.</p>
+</section>
+<section id="contextual-dependency" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="contextual-dependency"><span class="header-section-number">1.3.4</span> Contextual dependency</h3>
+<p><em>contextual dependency</em> <span class="citation" data-cites="Gollwitzer2022-at Van-Bavel2016-eb Inbar2016-ls">(<a href="#ref-Gollwitzer2022-at" role="doc-biblioref">Gollwitzer &amp; Schwabe, 2022</a>; <a href="#ref-Inbar2016-ls" role="doc-biblioref">Inbar, 2016</a>; <a href="#ref-Van-Bavel2016-eb" role="doc-biblioref">Van Bavel et al., 2016</a>)</span> further develops the <span class="citation" data-cites="Machery2020-sv">Machery (<a href="#ref-Machery2020-sv" role="doc-biblioref">2020</a>)</span> framework by considering specific weights assigned to each UTOS element. Without going into details, the impact of the different UTOS elements on the actual experiment could differ according to the type of research question. For example, consider a social psychology experiment originally conducted on Western American participants and later extended to European or Asian participants. If the psychological construct of interest is strongly affected by cultural aspects, the impact of changing the ethnicity can be considerable. In contrast a lab-based experiment about low-level perceptual effects may be more portable across the same two population. Our expectations about the replication/extension outcome need to be calibrated on the specific research question and the impact of each experiment element.</p>
+</section>
+<section id="investigators-as-a-factor" class="level3" data-number="1.3.5">
+<h3 data-number="1.3.5" class="anchored" data-anchor-id="investigators-as-a-factor"><span class="header-section-number">1.3.5</span> Investigators as a Factor</h3>
+<p>As a final note, one important but often underestimated problem concerns the investigators conducting the replication study or studies. They can legitimately be considered part of the setting in some cases and random or irrelevant in others. <span class="citation" data-cites="Rosenthal1990-cq">Rosenthal (<a href="#ref-Rosenthal1990-cq" role="doc-biblioref">1990</a>)</span> cleary described the problem of <em>correlated replicators</em> and proposed different weighting approaches, based on the design of the replication study, to replication/extension studies conducted from authors that are orthogonal in terms of background theory and methods. Authors sharing a theory or a strict network of co-authorhips are likely to create experiments and data that are more similar compared to independent authors. A replication or extension study conducted by an independent, and possibly skeptical, researcher should have a greater impact on increasing or decreasing confidence in the original findings compared to a study conducted by the original author.</p>
+</section>
+</section>
+<section id="references" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-Anderson2024-cx" class="csl-entry" role="listitem">
+Anderson, S. F., &amp; Kelley, K. (2024). Sample size planning for replication studies: The devil is in the design. <em>Psychological Methods</em>, <em>29</em>, 844–867. <a href="https://doi.org/10.1037/met0000520">https://doi.org/10.1037/met0000520</a>
+</div>
+<div id="ref-Barba2018-ef" class="csl-entry" role="listitem">
+Barba, L. A. (2018). Terminologies for reproducible research. <em>arXiv [Cs.DL]</em>, arXiv:1802.03311. <a href="http://arxiv.org/abs/1802.03311">http://arxiv.org/abs/1802.03311</a>
+</div>
+<div id="ref-Broman2017-mv" class="csl-entry" role="listitem">
+Broman, K., Cetinkaya-Rundel, M., Nussbaum, A., Paciorek, C., Peng, R., Turek, D., &amp; Wickham, H. (2017, January 18). <em>Recommendations to funding agencies for supporting reproducible research</em>. <a href="https://www.amstat.org/asa/files/pdfs/POL-ReproducibleResearchRecommendations.pdf">https://www.amstat.org/asa/files/pdfs/POL-ReproducibleResearchRecommendations.pdf</a>
+</div>
+<div id="ref-Clark2015-pz" class="csl-entry" role="listitem">
+Clark, T. S., &amp; Linzer, D. A. (2015). Should i use fixed or random effects? <em>Political Science Research and Methods</em>, <em>3</em>, 399–408. <a href="https://doi.org/10.1017/psrm.2014.32">https://doi.org/10.1017/psrm.2014.32</a>
+</div>
+<div id="ref-Crandall2016-xg" class="csl-entry" role="listitem">
+Crandall, C. S., &amp; Sherman, J. W. (2016). On the scientific superiority of conceptual replications for scientific progress. <em>Journal of Experimental Social Psychology</em>, <em>66</em>, 93–99. <a href="https://doi.org/10.1016/j.jesp.2015.10.002">https://doi.org/10.1016/j.jesp.2015.10.002</a>
+</div>
+<div id="ref-Cronbach1982-kl" class="csl-entry" role="listitem">
+Cronbach, L. J., &amp; Shapiro, K. (1982). <em>Designing evaluations of educational and social programs</em>. <a href="https://eduq.info/xmlui/handle/11515/9106">https://eduq.info/xmlui/handle/11515/9106</a>
+</div>
+<div id="ref-Gollwitzer2022-at" class="csl-entry" role="listitem">
+Gollwitzer, M., &amp; Schwabe, J. (2022). Context dependency as a predictor of replicability. <em>Review of General Psychology: Journal of Division 1, of the American Psychological Association</em>, <em>26</em>, 241–249. <a href="https://doi.org/10.1177/10892680211015635">https://doi.org/10.1177/10892680211015635</a>
+</div>
+<div id="ref-Goodman2016-yw" class="csl-entry" role="listitem">
+Goodman, S. N., Fanelli, D., &amp; Ioannidis, J. P. A. (2016). What does research reproducibility mean? <em>Science Translational Medicine</em>, <em>8</em>, 341ps12. <a href="https://doi.org/10.1126/scitranslmed.aaf5027">https://doi.org/10.1126/scitranslmed.aaf5027</a>
+</div>
+<div id="ref-Heller2014-lr" class="csl-entry" role="listitem">
+Heller, R., Bogomolov, M., &amp; Benjamini, Y. (2014). Deciding whether follow-up studies have replicated findings in a preliminary large-scale omics study. <em>Proceedings of the National Academy of Sciences of the United States of America</em>, <em>111</em>, 16262–16267. <a href="https://doi.org/10.1073/pnas.1314814111">https://doi.org/10.1073/pnas.1314814111</a>
+</div>
+<div id="ref-Heyard2024-hv" class="csl-entry" role="listitem">
+Heyard, R., Pawel, S., Frese, J., Voelkl, B., Würbel, H., McCann, S., Held, L., Wever, K. E., Hartmann, H., Townsin, L., &amp; Zellers, S. (2024). <em>A scoping review on metrics to quantify reproducibility: A multitude of questions leads to a multitude of metrics</em>. <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;citation_for_view=JAb7P1QAAAAJ:ldfaerwXgEUC">https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;citation_for_view=JAb7P1QAAAAJ:ldfaerwXgEUC</a>
+</div>
+<div id="ref-Inbar2016-ls" class="csl-entry" role="listitem">
+Inbar, Y. (2016). Association between contextual dependence and replicability in psychology may be spurious. <em>Proceedings of the National Academy of Sciences of the United States of America</em>, <em>113</em>, E4933–4. <a href="https://doi.org/10.1073/pnas.1608676113">https://doi.org/10.1073/pnas.1608676113</a>
+</div>
+<div id="ref-Kenett2015-jm" class="csl-entry" role="listitem">
+Kenett, R. S., &amp; Shmueli, G. (2015). Clarifying the terminology that describes scientific reproducibility. <em>Nature Methods</em>, <em>12</em>, 699. <a href="https://doi.org/10.1038/nmeth.3489">https://doi.org/10.1038/nmeth.3489</a>
+</div>
+<div id="ref-Machery2020-sv" class="csl-entry" role="listitem">
+Machery, E. (2020). What is a replication? <em>Philosophy of Science</em>, <em>87</em>, 545–567. <a href="https://doi.org/10.1086/709701">https://doi.org/10.1086/709701</a>
+</div>
+<div id="ref-National-Academies-of-Sciences-Engineering-and-Medicine2019-ze" class="csl-entry" role="listitem">
+National Academies of Sciences, Engineering, and Medicine, Policy and Global Affairs, Committee on Science, Engineering, Medicine, and Public Policy, Board on Research Data and Information, Division on Engineering and Physical Sciences, Committee on Applied and Theoretical Statistics, Board on Mathematical Sciences and Analytics, Division on Earth and Life Studies, Nuclear and Radiation Studies Board, &amp; Division of Behavioral and Social Sciences and Education. (2019). <em>Reproducibility and replicability in science</em>. National Academies Press. <a href="https://doi.org/10.17226/25303">https://doi.org/10.17226/25303</a>
+</div>
+<div id="ref-Nosek2017-an" class="csl-entry" role="listitem">
+Nosek, B. A., &amp; Errington, T. M. (2017). Making sense of replications. <em>eLife</em>, <em>6</em>, e23383. <a href="https://doi.org/10.7554/eLife.23383">https://doi.org/10.7554/eLife.23383</a>
+</div>
+<div id="ref-Nosek2020-vh" class="csl-entry" role="listitem">
+Nosek, B. A., &amp; Errington, T. M. (2020). What is replication? <em>PLoS Biology</em>, <em>18</em>, e3000691. <a href="https://doi.org/10.1371/journal.pbio.3000691">https://doi.org/10.1371/journal.pbio.3000691</a>
+</div>
+<div id="ref-Parmigiani2023-sg" class="csl-entry" role="listitem">
+Parmigiani, G. (2023). Defining replicability of prediction rules. <em>Statistical Science: A Review Journal of the Institute of Mathematical Statistics</em>, <em>38</em>. <a href="https://doi.org/10.1214/23-sts891">https://doi.org/10.1214/23-sts891</a>
+</div>
+<div id="ref-Rosenthal1990-cq" class="csl-entry" role="listitem">
+Rosenthal, R. (1990). Replication in behavioral research. <em>Journal of Social Behavior and Personality</em>. <a href="https://search.proquest.com/openview/5ccc3a267139968c18c0d7ce1a1c09f6/1?pq-origsite=gscholar&amp;cbl=1819046">https://search.proquest.com/openview/5ccc3a267139968c18c0d7ce1a1c09f6/1?pq-origsite=gscholar&amp;cbl=1819046</a>
+</div>
+<div id="ref-Simons2014-cg" class="csl-entry" role="listitem">
+Simons, D. J. (2014). The value of direct replication. <em>Perspectives on Psychological Science: A Journal of the Association for Psychological Science</em>, <em>9</em>, 76–80. <a href="https://doi.org/10.1177/1745691613514755">https://doi.org/10.1177/1745691613514755</a>
+</div>
+<div id="ref-Van-Bavel2016-eb" class="csl-entry" role="listitem">
+Van Bavel, J. J., Mende-Siedlecki, P., Brady, W. J., &amp; Reinero, D. A. (2016). Contextual sensitivity in scientific reproducibility. <em>Proceedings of the National Academy of Sciences of the United States of America</em>, <em>113</em>, 6454–6459. <a href="https://doi.org/10.1073/pnas.1521897113">https://doi.org/10.1073/pnas.1521897113</a>
+</div>
+<div id="ref-Yarkoni2020-xf" class="csl-entry" role="listitem">
+Yarkoni, T. (2020). The generalizability crisis. <em>The Behavioral and Brain Sciences</em>, <em>45</em>, e1. <a href="https://doi.org/10.1017/S0140525X20001685">https://doi.org/10.1017/S0140525X20001685</a>
+</div>
+</div>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>This framework has been proposed for social science and psychology but can be easily applied to different fields. For example see <span class="citation" data-cites="Parmigiani2023-sg">Parmigiani (<a href="#ref-Parmigiani2023-sg" role="doc-biblioref">2023</a>)</span> for a more detailed taxonomy applied to biomedical studies.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>e.g.&nbsp;close in some quantiative metric if they are real numbers<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../index.html" class="pagination-link" aria-label="Welcome">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/chapter2.html" class="pagination-link" aria-label="Replicability and reproducibility">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Replicability and reproducibility</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

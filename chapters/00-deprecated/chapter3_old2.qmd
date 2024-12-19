@@ -1,0 +1,679 @@
+---
+bibliography: "/Users/filippogambarota/googledrive/notes/files/references.bib"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = "center",
+                      fig.dev = "svg")
+```
+
+```{r}
+#| include: false
+library(tidyverse)
+library(kableExtra)
+library(here)
+
+devtools::load_all()
+
+mtheme <- function(){
+    ggthemes::theme_pander(base_size = 15)
+}
+
+theme_set(mtheme())
+tex <- latex2exp::TeX
+funs <- filor::get_funs(here("R", "prob-replication.R"))
+```
+
+# Probability of Replication
+
+## Introduction
+
+### Notation
+
+The aim of this section is to provide a consistent notation and terminology for the statistical models and analysis examples throughout the book. The notation is based on the replication model by @Pawel2020-cm and the meta-analytical notation by @Hedges2021-of, @Schauer2021-ja, and @Hedges2019-ry.
+
+We use $x$'s to denote predictors, treatments and fixed factors, and $y$
+s to denote outcomes. The subscript $i$ denotes individuals, while $r$ indexes replication studies  with $r = (1, 2, \ldots, R)$ when $R$ is the total number of replication studies.
+We use the greek letter $\theta$ to define the true effects for the original and replication study(s). In particular $\theta_0$ is the original study and $\theta_r$ is the effect in the $r$-th study. We will use other greek letters for parameters specific to indovidual settings. 
+
+The *one-to-one* replication design is used when a single replication study $\theta_1$ is replicating an original experiment $\theta_0$. On the other hand, a replication project with $R$ replication studies is called a *one-to-many* design.
+
+After defining the theoretical replication framework in @sec-rep-theory we need to formalize also the statistical part. There are some important questions:
+
+::: {.callout-note appearance="simple"}
+
+### Key questions
+
+- What is the probability of replicating an observed effect?
+- Is the probability of replication the same regardless of the research field?
+- Is the probability of replication affected by the experimental design (e.g., effect size, sample size, etc.)?
+- Is the probability of replication affected by questionable research practices or publication bias?
+
+:::
+
+## Aggregate versus individual replication probablity {#sec-intro-miller}
+
+### The @Miller2009-hp definitions
+
+@Miller2009-hp proposed one of the earliest probabilistic frameworks for estimating the probability of replication. He defines two different sensel of replication probabilities:
+
+- **aggregate replication probability** (ARP): the probability of researchers working on a certain research field finding a statistically significant result in a replication study given a significant original study.
+
+- **individual replication probability** (IRP): the probability of finding a significant effect on a replication study when replicating a specific original study.
+
+In other words, the IRP is the probability of replicating a specific original experiment. The ARP is the probability of replicating a hypothetical statistically significant experiment in a given research area. @Miller2009-hp work is about replication [in @Machery2020-sv terms] with the highest precision because he considers no differences between the experiments. He focuses on tests of hypotheses, and considers replication of experiments with significant testing results. In this setting, the only relevant parameters in his replication model are the type-2 error rate $\beta$ (or equivalently the statistical power $1 - \beta$), the type-1 error rate $\alpha$ and the proportion of true hypotheses $\pi$ in a certain research field. The parameters $\pi$ is also called the *strenght* of a research area. Finally, @Miller2009-hp considers as successful replication, a study finding a statistically significant result in the same direction as the original study.
+
+Here we first provide a formalism for both types of replication probability and the return to Miller. We use a two-sample t-test 
+
+### Relation to OTOS framework and Machery
+
+-- interpretation of probability of null hypothesis
+is the null hypothesis true status the same in all studies or not?
+
+cite wilson
+
+cite https://doi.org/10.1093/biostatistics/kxt007
+
+
+-- variability in effects across studies 
+
+-- Miller's own work consideres a fixed effect and therefore he focuses on replication of precise replications. 
+
+-- in this chapter we look at both precise replication and extensions
+
+### Generating Models
+
+-- figura lavagna
+
+
+### Two-Sample t-test Review 
+
+
+For a two-sample design with two groups with the same sample size and variances, the $t$ statistics is calculated as:
+
+$$
+t = \frac{\overline{x}_1 - \overline{x}_2}{SE_{\overline{x}_1 - \overline{x}_2}}
+$$
+
+With standard error:
+
+$$
+\mbox{SE}_{\overline{x}_1 - \overline{x}_2} = s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}
+$$
+
+And pooled standard deviation:
+
+$$
+s_p = \sqrt{\frac{s^2_{x_1}(n_1 - 1) + s^2_{x_1}{(n_2 - 1)}}{n_1 + n_2 - 2}}
+$$
+
+The p-value can be calculated from a $t$ distribution with $\nu = n_1 + n_2 - 2$ degrees of freedom. The statistical power is calculated as:
+
+$$
+1 - \beta = 1 - F_{t_\nu} \left(t_c, \lambda \right) + F_{t_\nu} \left(-t_{c}, \lambda \right)
+$$
+
+
+Where $F_{t_\nu}$ is the cumulative distribution function of the non-central Student's $t$ distribution with $\nu$ degrees of freedom and  $\lambda$ as non-centrality parameter calculated as:
+
+$$
+\lambda = \delta \sqrt{\frac{n_1 n_2}{n_1 + n_2}}
+$$
+The $\delta$ parameter is the effect size calculated as the difference between means divided by the pooled standard deviation.
+
+With this setup, we can easily implement these equations in R creating a flexible set of functions to reproduce and extend the examples from the @Miller2009-hp work.
+
+```{r}
+#| results: asis
+filor::print_fun(funs$power.t)
+```
+
+```{r}
+#| echo: true
+#| collapse: true
+power.t(d = 0.5, n1 = 30)
+power.t(d = 0.5, n1 = 100)
+power.t(d = 0.1, n1 = 200)
+```
+
+
+## Bayes' Rule for Replicaiton probabilities
+
+ The probability to replicate an effect in a given research area, conditioned on a significant original experiment is a function of $\pi$, $1 - \beta$ (the statistical power) and $\alpha$. $t$ is a generic test statistics and $t_c$ is the critical test statistics at significance level $1 - \alpha$.
+
+$$
+p_{AR} = \Pr(|t_1| > t_{c_1} \boldsymbol{\mid} |t_0| > t_{c_0})
+$$
+
+We can define also a more general equation if we want to estimate the probability of having successful replications in $R$ experiments.
+
+$$
+p_{\mbox{AR}_r} = \Pr(\bigcap_{r=1}^R |t_r| > t_{c_r} \boldsymbol{\mid} |t_0| > t_{c_0})
+$$
+
+Sticking with $R = 1$, the ARP is calculated as:
+
+$$
+\begin{split}
+p_{\mbox{AR}} &= \Pr(|t_1| \geq t_{c_1} \boldsymbol{\mid} |t_0| \geq t_{c_0}) \\[10pt]
+&= \frac{\Pr(|t_1| \geq t_{c_1} \cap |t_0| \geq t_{c_0})}{\Pr(|t_0| \geq t_{c_0})} \\[10pt]
+&= \frac{\Pr(H_1) \cdot \Pr(|t_1| \geq t_{c1} \cap |t_0| \geq t_{c_0} \mid H_1) + \Pr(H_0) \cdot \Pr(|t_1| \geq t_{c1} \cap |t_0| \geq t_{c0} \mid H_0)}{\Pr(H_1) \cdot \Pr(|t_0| \geq t_{c_0} \mid H_1) + \Pr(H_0) \cdot \Pr(|t_0| \geq t_{c_1} \mid H_0)} \\[10pt]
+\end{split}
+$${#eq-arp}
+
+
+- $\Pr(H_1) = \pi$ and $\Pr(H_0) = 1 - \pi$
+- $\Pr(|t_r| \geq t_{c_r})$ is the probability of a study $r$ being significant thus $1 - \beta$ and $\alpha$ weighted by $\pi$. In other terms, a significant results is the sum of the false positive rate $(1 - \pi) \alpha$ plus the true positive rate $\pi (1 - \beta)$
+
+If you are not familiar with probabilities properties, you can better understand @eq-arp in this way. The probability of the event A happening given ($|$) that B happened is:
+
+$$
+\Pr(A|B) = \frac{\Pr(A \cap B)}{\Pr(B)}
+$$
+
+Where $\Pr(A \cap B)$ is the joint probability that can be calculated as:
+
+$$
+\Pr(A \cap B) = \Pr(B|A) \cdot \Pr(A)
+$$
+
+Then the full equation also known as Bayes rule is:
+
+$$
+\Pr(A|B) = \frac{\Pr(B|A) \cdot \Pr(A)}{\Pr(B)}
+$$
+
+Now, let's take the numerator of @eq-arp $\Pr(|t_1| > t_{c1} \cap |t_0| > t_{c0})$. This is the probability that both the original and replication studies being significant. Given the defined parameters we can calculate this quantity. A good way to understand the process is by formalizing inference using a contingency table as done in @tbl-inference.
+
+### Alternative Interpretations of $\Pr(H_0)$
+
+### Replication Probabilities when power and level are fixed.
+
+
+$$
+&= \frac{\pi \cdot (1 - \beta)^2 + (1 - \pi) \cdot \alpha \cdot \alpha / 2}{\pi \cdot (1 - \beta) + (1 - \pi) \cdot \alpha}
+$$
+Crucially, the model presented in the paper assume that the original and replication studies have always the same power. However we can simply include subscripts for $1 - \beta$ and $\alpha$ to include the possibility of having heterogeneous effects [@Miller2022-td]. To better explain the notation:
+
+### Back to Miller
+
+Given these parameters, the IRP is only affected by the statistical power of the replication study. On the other hand, the ARP depends mainly on the proportion of true effects $\pi$. Naively, everthing else being equal, we should have an higher probability of replication for research areas where there are more true effects. The parameter $\pi$ is also called *prior odds* in Bayesian statistics as the prior probability of two competing hypotheses. This parameter has also been considered by other author when evaluating the probability of replicating in a research field [@Ioannidis2005-em; @Wilson2018-aa].
+
+The interesting part of the @Miller2009-hp work is that we can explore the probability of replication in different scenarios manipulating the parameters defined above. In the next sections we selected the key points from the @Miller2009-hp work reproducing and extending the proposed examples and figures.
+
+For the examples, @Miller2009-hp used Binomial experiments and t-tests. We decided to present the examples (especially for the IRP) using a two-sample t-test as base case. The same reasoning can be applied to whatever statistical test but the equations could be different.
+
+### Aggregate replication probability (ARP)
+
+The ARP is formalized in @eq-arp [see @Miller2009-hp for the full derivation].
+
+```{r}
+#| echo: false
+#| label: tbl-inference
+#| output: asis
+
+dd <- data.frame(
+    stringsAsFactors = FALSE,
+    V1 = c("$\\boldsymbol{H_0}$", "$\\boldsymbol{H_0}$"),
+    V2 = c("False", "True"),
+    V3 = c("True Positive ($1 - \\beta$)", "False Positive ($\\alpha$)"),
+    V4 = c("False Negative ($\\beta$)", "True Negative ($1 - \\alpha$)"),
+    V5 = c("$\\pi$", "$1 - \\pi$")
+) 
+
+# dd$V3 <- cell_spec(dd$V3, background = ifelse(dd$V3 == "True Positive", "green", "#FC8D8D"))
+# dd$V4 <- cell_spec(dd$V4, background = ifelse(dd$V4 == "True Negative", "green", "#FC8D8D"))
+
+dd |> 
+    kable(col.names = c("", "", "False", "True", ""),
+          align = "c",
+          escape = FALSE,
+          booktabs = TRUE) |> 
+    kable_styling(font_size = 13) |>
+    column_spec(1:2, bold = TRUE) |> 
+    row_spec(0, bold = TRUE) |> 
+    add_header_above(c(" " = 2, "Decision on $H_0$" = 2, " " = 1),
+                     bold = TRUE) |> 
+    collapse_rows(c(1,2)) |>
+    cat()
+```
+
+For example, the probability that something is significant is the sum of true positives (i.e., the statistical power) and false positives (i.e., type-1 errors) weighted by the prevalence $\pi$. Thus the numerator $\Pr(|t_1| > t_{c1} \cap |t_0| > t_{c0})$ can be written as the sum between:
+
+- Original study being significant $(1 - \beta) \cdot \pi + \alpha \cdot (1 - \pi)$
+- Replication study being significant $(1 - \beta) + \frac{\alpha}{2}$
+
+$\frac{\alpha}{2}$ because we assume that the replication success happens when the result is on the same direction thus we are not considering false positives with the opposite sign.
+
+The denominator is just the original study being significant thus $(1 - \beta) \cdot \pi + \alpha \cdot (1 - \pi)$.
+
+Beyond expanding @eq-arp to include multiple replication experiments, @Miller2009-hp also expanded the model by considering a form of p-hacking where multiple original experiments are conducted before obtaning the significant result. The impact of questionable research practices on the probability of replication has been extensively studied by @Ulrich2020-rk using a similar model.
+
+We implemented the @Miller2009-hp equations in R:
+
+```{r}
+#| results: asis
+filor::print_fun(funs$arp)
+```
+
+`r` is the number of replication studies, `pi` is $\pi$, `power` is $1 - \beta$ and alpha is $\alpha$.
+
+The @fig-arp1 depicts how the ARP change according to the theory strength $\pi$ and the power (assumed to be the same for the original and replication experiment).
+
+```{r}
+#| label: fig-arp1
+#| fig-width: 8
+expand_grid(
+    pi = seq(0.1, 0.9, 0.01),
+    power = c(0.3, 0.5, 0.8),
+    r = c(1, 2, 5)
+) |> 
+    mutate(arp = arp(r, pi, power, 0.05),
+           r = sprintf("r = %s", r)) |> 
+    ggplot(aes(x = pi, y = arp, color = factor(power))) +
+    geom_line() +
+    xlim(c(0, 1)) +
+    ylim(c(0, 1)) +
+    labs(
+        color = tex("$(1 - \\beta)$"),
+        x = tex("$\\pi$"),
+        y = "ARP"
+    ) +
+    facet_wrap(~r)
+```
+
+The main takeaways from @fig-arp1 are:
+
+- for medium (and probably plausible) levels of theory strength the replication probability relatively low even for high power levels
+- when $r > 1$ the probabilities are very low in every conditions
+
+### Individual replication probability (IRP)
+
+The IRP is easier to compute because depends only on the statistical power. The power depends on the effect size thus for calculating the IRP we need to assume a certain effect. The first strategy is using the estimated effect from the original study and fixing the sample size $Pr_{IRP} = 1 - \beta$. However the original effect size estimation could be biased (usually inflated) for several reasons (e.g., publication bias) affecting the actual probability of replication. This is what mainly emerged from @Collaboration2015-ep where replication effects were systematically lower compared to the original studies.
+
+This problem can be easily explained by regression to the mean where the publication bias increases the likelihood of selecting extreme and statistically significant results (i.e., the original studies). The replications studies (without assuming heterogeneity) have usually higher sample sizes bringing estimated effects toward the true (and generally lower) mean effect. <!-- TODO describe better the figure and the simulation --> The @fig-hes shows a simulation where extreme values are selected from a population of effects centered on zero for an original experiment with a small sample size. Then, using the same effects we simulated other experiments with increasing sample size as usually done in replication projects. Clearly the effects shrink toward the mean and in this case are no longer significant. @Perugini2014-bx proposed a method to adjust the estimation of the original effect size when estimating the probability of replication. <!-- TODO check perugini work -->.
+
+Replicating miller 3a figure with a two sample t-test and providing a function to calculate the power with upper and lower bound given the p value and the sample size of the initial experiment.
+
+Using Equations from the @sec-intro-miller we can reproduce and extend the @Miller2009-hp figures. Basically we estimate the IRP assuming the power (thus the effect size and sample size) of the replication study is the same of the original study. The core is the `p2d` function that return the power given the effect size for the point estimate and the lower/upper limit of the effect size confidence interval^[To calculate the confidence interval of the effect size we used the so-called pivot method [@Steiger2004-wg] implemented into the `effectsize:::.get_ncp_t()` function]. 
+
+```{r}
+#| results: asis
+filor::print_fun(funs$p2d)
+```
+
+
+```{r}
+#| label: fig-miller-irp
+#| fig-cap: fig-miller-irp
+
+irp_ex <- expand.grid(
+    p0 = seq(0.0001, 0.05, length.out = 100),
+    n = c(10, 100, 1000)
+)
+
+irp_ex <- map2(irp_ex$p0, irp_ex$n, p2d) |> 
+    bind_rows() |> 
+    bind_cols(irp_ex)
+
+
+irp_ex |> 
+    pivot_longer(c(d.power, lb.power, ub.power)) |> 
+    mutate(lty = ifelse(name %in% c("lb.power", "ub.power"), "limit", "point"),
+           n = sprintf("n = %s", n)) |> 
+    ggplot(aes(x = p0, y = value, group = interaction(name, n))) +
+    geom_line(aes(color = factor(n), lty = lty), show.legend = FALSE) +
+    scale_linetype_manual(values = c("dashed", "solid")) +
+    facet_wrap(~n) +
+    labs(
+        y = "IRP",
+        xlab = tex("$p_0$")
+    )
+```
+
+From the @Miller2009-hp work on IRP the most important point is that statistical significance alone $p_0 \leq \alpha$ of the original experiment is not enough to reliably estimate the probability of replicating that effect. Only a very small p-value of the original study is associated with a relatively narrow range of IRP. For significant but higher p-values there is a lot of uncertainty in terms of IRP.
+
+In the @Miller2009-hp model, the replication study is assumed to have the same power of the original study. If we use the same sample size this means assuming also that the original study point estimate of the effect size is reliable. From the @fig-miller-irp is also clear that, given the uncertainty, the point estimate of the original study is maybe too optimistic. @Perugini2014-bx suggested to use not the point estimate of an effect size to plan a new study but, for example, the lower bound of the $(1 - \alpha) \cdot 100$ confidence interval. The planned study could requires more participants safeguarding from inflated effect size estimations.
+
+### Selection and Regression to the Mean
+
+Publication bias is another reason for inflated effect size estimation from the original study. The publishing system force authors to select only significant (i.e., more extreme) studies regardless of the true effect size. @fig-hes is the result of a simple but effective simulation showing the impact of selecting significant effects when conducting the original study then replicated with an higher sample size. We simulated two conditions where the true effect is zero but in one case there is heterogeneity between effects while in the other case we have a point-null hypothesis. The main point is that the selection of extreme results produce significant and inflated estimations that are attenuated by more precise replication studies. Due to regression to the mean, replication studies are less powerful and the estimates converged to the true (null) value. This is the exact pattern that large scale replication projects are observing.
+
+```{r}
+#| label: fig-reg-mean0
+#| warning: false
+#| messages: false
+#| echo: false
+#| fig-cap: Triangles are significant studies at $\alpha = 0.05$ and dots are the non-significant ones. The highlighted effect (in red) is a randomly selected effect that was significant with $n = 25$ participants (original study $\theta_0$). We simulated $k = 50$ true effects $\theta_k$ (in blue) from a Gaussian distribution with mean $\mu_{\theta = 0}$ and $\tau^2 = 0.05$. Then we simulated the first experiment as a two independent groups comparison with effect size $\theta_k$. Then we used the same $\theta_k$ to simulate another experiment with $n = 100$ and $n = 500$ participants. Clearly, as $n$ increase, the $\theta_k$ estimation is more precise with a shrinkage towards the average effect $\mu_\theta$.
+
+library(tibble)
+library(latex2exp)
+set.seed(2150)
+
+
+tex <- TeX
+
+k <- 50
+n <- c(25, 100, 500)
+mu <- 0
+tau2 <- 0.05
+theta <- rnorm(k, mu, sqrt(tau2))
+res <- vector(mode = "list", length = length(n))
+theta_lab <- ifelse(tau2 == 0, tex("$\\theta$"), tex("$\\theta_k$"))
+
+Dtheta <- data.frame(yi = theta, id = 1:k)
+
+for(i in 1:length(n)){
+    yi <- sei <- rep(NA, k)
+    for(j in 1:k){
+        y0 <- rnorm(n[i], 0, 1)
+        y1 <- rnorm(n[i], theta[j], 1)
+        yi[j] <- mean(y1) - mean(y0)
+        sei[j] <- sqrt(var(y0)/n[i] + var(y1)/n[i])
+    }
+    res[[i]] <- data.frame(yi, sei, n = n[i], theta = theta, id = 1:k)
+}
+
+sim <- do.call(rbind, res)
+sim$zi <- with(sim, yi / sei)
+sim$pval <- (1 - pnorm(abs(sim$zi))) * 2
+sim$sign <- sim$pval <= 0.05
+
+view <- which(sim$sign & sim$n == n[1])[1]
+sim$high <- sim$id == sim$id[view]
+
+Dtheta$high <- ifelse(Dtheta$id == sim$id[view], 1, 0)
+
+ptau20 <- ggplot(data = sim[!sim$high, ],
+       aes(x = n, y = yi, group = id)) +
+    geom_line(alpha = 0.2) +
+    geom_point(aes(shape = sign),
+               size = 2) +
+    xlim(c(-40, max(n))) +
+    ylim((max(range(sim$yi)) + 0.4) * c(-1,1)) +
+    {
+        lapply(1:length(n) - 1, function(i){
+            annotate("label",
+                     x = n[i + 1],
+                     y = -max(range(sim$yi)) - 0.3,
+                     label = tex(sprintf("$\\hat{\\theta}_%s$", i)),
+                     size = 8)
+        })
+    } + 
+    cowplot::theme_minimal_grid(20) +
+    theme(legend.position = "none") +
+    # highlighted
+    geom_point(data = sim[sim$high, ],
+               aes(x = n, y = yi, shape = sign),
+               size = 4,
+               col = "firebrick") +
+    geom_line(data = sim[sim$high, ],
+              aes(group = id),
+              col = "firebrick") +
+    {
+        if(tau2 != 0){
+            geom_rug(
+                data = Dtheta,
+                aes(x = -30,
+                    y = yi,
+                    color = high),
+                sides = "l",colour = ifelse(Dtheta$high == 1, "firebrick", "dodgerblue"),
+                lwd = ifelse(Dtheta$high == 1, 2, 0.3)
+            )
+        }else{
+            geom_point(
+                aes(x = -30,
+                    y = mu),
+                col = "dodgerblue",
+                size = 3
+            )
+        }
+    } +
+    annotate("label",
+             x = -40,
+             y = -max(range(sim$yi)) - 0.3,
+             label = theta_lab,
+             size = 8,
+             fill = scales::alpha("dodgerblue", 0.5)) +
+    xlab("Sample Size") +
+    ylab("Effect size") +
+    ggtitle(tex(sprintf("$\\mu_{\\theta} = %s$, $\\tau^2 = %s$", mu, tau2))) +
+    geom_segment(data = sim[sim$n == n[1], ],
+                 aes(x = -40, xend = n,
+                     y = theta, yend = yi,
+                     ),
+                 col = ifelse(sim[sim$n == n[1], ]$high == 1, "firebrick", "black"),
+                 alpha = ifelse(sim[sim$n == n[1], ]$high == 1, 1, 0.2))
+```
+
+```{r}
+#| label: fig-reg-mean1
+#| warning: false
+#| messages: false
+#| echo: false
+set.seed(2150)
+
+tau2 <- 0
+theta <- rnorm(k, mu, sqrt(tau2))
+res <- vector(mode = "list", length = length(n))
+theta_lab <- ifelse(tau2 == 0, tex("$\\theta$"), tex("$\\theta_k$"))
+
+Dtheta <- data.frame(yi = theta, id = 1:k)
+
+for(i in 1:length(n)){
+    yi <- sei <- rep(NA, k)
+    for(j in 1:k){
+        y0 <- rnorm(n[i], 0, 1)
+        y1 <- rnorm(n[i], theta[j], 1)
+        yi[j] <- mean(y1) - mean(y0)
+        sei[j] <- sqrt(var(y0)/n[i] + var(y1)/n[i])
+    }
+    res[[i]] <- data.frame(yi, sei, n = n[i], theta = theta, id = 1:k)
+}
+
+sim <- do.call(rbind, res)
+sim$zi <- with(sim, yi / sei)
+sim$pval <- (1 - pnorm(abs(sim$zi))) * 2
+sim$sign <- sim$pval <= 0.05
+
+view <- which(sim$sign & sim$n == n[1])[1]
+sim$high <- sim$id == sim$id[view]
+
+Dtheta$high <- ifelse(Dtheta$id == sim$id[view], 1, 0)
+
+ptau2 <- ggplot(data = sim[!sim$high, ],
+       aes(x = n, y = yi, group = id)) +
+    geom_line(alpha = 0.2) +
+    geom_point(aes(shape = sign),
+               size = 2) +
+    xlim(c(-40, max(n))) +
+    ylim((max(range(sim$yi)) + 0.4) * c(-1,1)) +
+    {
+        lapply(1:length(n) - 1, function(i){
+            annotate("label",
+                     x = n[i + 1],
+                     y = -max(range(sim$yi)) - 0.3,
+                     label = tex(sprintf("$\\hat{\\theta}_%s$", i)),
+                     size = 8)
+        })
+    } + 
+    cowplot::theme_minimal_grid(20) +
+    theme(legend.position = "none") +
+    # highlighted
+    geom_point(data = sim[sim$high, ],
+               aes(x = n, y = yi, shape = sign),
+               size = 4,
+               col = "firebrick") +
+    geom_line(data = sim[sim$high, ],
+              aes(group = id),
+              col = "firebrick") +
+    {
+        if(tau2 != 0){
+            geom_rug(
+                data = Dtheta,
+                aes(x = -30,
+                    y = yi,
+                    color = high),
+                sides = "l",colour = ifelse(Dtheta$high == 1, "firebrick", "dodgerblue"),
+                lwd = ifelse(Dtheta$high == 1, 2, 0.3)
+            )
+        }else{
+            geom_point(
+                aes(x = -30,
+                    y = mu),
+                col = "dodgerblue",
+                size = 3
+            )
+        }
+    } +
+    annotate("label",
+             x = -30,
+             y = -max(range(sim$yi)) - 0.3,
+             label = theta_lab,
+             size = 8,
+             fill = scales::alpha("dodgerblue", 0.5)) +
+    xlab("Sample Size") +
+    ylab("Effect size") +
+    ggtitle(tex(sprintf("$\\mu_{\\theta} = %s$, $\\tau^2 = %s$", mu, tau2)))
+```
+
+```{r}
+#| fig-height: 11
+#| label: fig-hes
+#| fig-cap: Regression to the mean of replication experiments targeting the same true effect size distribution.
+#| warning: false
+cowplot::plot_grid(ptau20, ptau2, ncol = 1)
+```
+
+## Hierarchical Models for Replication and Extensions 
+
+### @Pawel2020-cm, individual replication probability
+
+<!-- TODO check if pawel is actually estimating the probability of individual replication -->
+
+The @Pawel2020-cm work in @Miller2009-hp approach. The @Miller2009-hp model neglected the possibility of heterogeneity amoing true effects assuming that the power (and thus the effect size) is the same when $H_0$ is false. A better way to predict the probability of estimating a certain finding is to use the information of the original study and replication study (*one-to-one* replication) with a hierarchical bayesian model. The main features of the model
+
+- including the uncertainty of both studies and eventually the between-study heterogeneity $\tau$. This allows the replication study to be truly different from the original study, for example assuming publication bias.
+- including a shrinkage factor balancing the strenght of the original study and the between-study heterogeneity
+
+The actual model will be discussed in Chapter x. But the crucial point is that when formalizing a replication is important to take into account all the sources of information as well as applyning an appropriate weight according to degree of heterogeneity between the original study and the replication study. The model has been applied to the data from the Psychological replication project <!-- TODO ref here --> suggesting better performance when including heterogeneity and the shrinkage factor. We adapted the @Pawel2020-cm model creating a more general version that can be easily declined for simulating and analyzing data from replication studies. The model is presented in @fig-general-model.
+
+<!-- [for giovanni]
+This version is with the vectors of values instead of $\hat \theta$ and the single bold parameter for $\tau$. if i get correctly we can assume that \theta comes from a distribution with a location and scale parameter (can be gaussian) and tau from another distribution with 1 or more parameters (half cauchy, gamma, etc.)  
+
+Still don't know if using a very general versio or stick with the "Gaussian" version just a little bit more general.
+-->
+
+```{tikz}
+#| fig-ext: png
+#| echo: false
+#| label: fig-general-model2
+#| fig-cap: Hierarchical baysian model for estimating the replication outcome.
+
+\usetikzlibrary{bayesnet, fit,positioning}
+
+\tikzset{
+    > = stealth,
+    every node/.append style = {
+        draw = none,
+    },
+    hidden/.style = {
+        shape = circle,
+        draw = black,
+        inner sep = 3pt
+    },
+    observed/.style = {
+        shape = rectangle,
+        draw = black,
+        inner sep = 3pt
+    }
+}
+
+\begin{tikzpicture}
+    % rectangles
+
+    %% original
+    \node[draw, rounded corners, thick, minimum width=2.5cm, minimum height=2cm, align=center] (rect) at (-0.5,-2.5)
+    {\phantom{A} \\[2.5cm] % Space to push text down
+    \footnotesize Original study};
+
+    %% rep 1
+    \node[draw, rounded corners, thick, minimum width=2.5cm, minimum height=2cm, align=center] (rect) at (2,-2.5)
+    {\phantom{A} \\[2.5cm] % Space to push text down
+    \footnotesize Replication $1$};
+
+    %% rep r
+
+    \node[draw, rounded corners, thick, minimum width=2.5cm, minimum height=2cm, align=center] (rect) at (5,-2.5)
+    {\phantom{A} \\[2.5cm] % Space to push text down
+    \footnotesize Replication $r$};
+    
+    % hyperparameters
+    \node (ltheta) at (-1.25 + 1.75, 2) {$\mu_\theta$};
+    \node (stheta) at (-0.75 + 2.25, 2) {$\zeta_\theta$};
+    
+    \node (zetatau) at (0.25 + 2.75, 2) {$\boldsymbol{\zeta}$};
+    %\node (stau) at (0.25 + 3.25, 2) {$\zeta_\tau$};
+    
+    % main parameters nodes
+    \node[hidden] (theta) at (-1 + 2,0.75) {$\theta$};
+    \node[hidden] (tau) at (0 + 3,0.75) {$\tau$};
+
+    % true values nodes of original and replications
+    
+    %% original
+    \node[hidden] (theta0) at (-1,-2) {$\theta_0$};
+    \node (sigma0) at (0, -2) {$\sigma_0$};
+    %%% estimated values
+    \node[observed] (thetah0) at (-0.5, -3) {$\left[x_{10}, \cdots x_{n0}\right]$};
+
+     %% rep 1
+    \node[hidden] (theta1) at (-0.5 + 2,-2) {$\theta_1$};
+    \node (sigma1) at (0.5 + 2, -2) {$\sigma_1$};
+    \node[observed] (thetah1) at (0 + 2, -3) {$\left[x_{11}, \cdots x_{n1}\right]$};
+
+    %  %% rep r
+    \node[hidden] (thetar) at (-0.5 + 5,-2) {$\theta_r$};
+    \node (sigmar) at (0.5 + 5, -2) {$\sigma_r$};
+    %\node[observed] (thetahr) at (0 + 5, -3) {$\hat \theta_r$};
+    \node[observed] (thetahr) at (0 + 5, -3) {$\left[x_{1r}, \cdots x_{nr}\right]$};
+
+    % extra
+    \node (dots) at (-0.5 + 4,-2.5) {\dots};
+    
+    % PATHS
+    \path[->] (zetatau) edge (tau);
+    %\path[->] (stau) edge (tau);
+    
+    \path[->] (theta) edge (theta0)
+              (theta) edge (theta1)
+              (theta) edge (thetar);
+    
+    \path[->] (tau) edge (theta0)
+              (tau) edge (theta1)
+              (tau) edge (thetar);
+    
+    \path[->] (theta0) edge (thetah0);
+    \path[->] (sigma0) edge (thetah0);
+
+    \path[->] (theta1) edge (thetah1);
+    \path[->] (sigma1) edge (thetah1);
+
+    \path[->] (thetar) edge (thetahr);
+    \path[->] (sigmar) edge (thetahr);
+    
+    \path[->] (ltheta) edge (theta);
+    \path[->] (stheta) edge (theta);
+\end{tikzpicture}
+```
+
+<!-- TODO expand more here from pawel and maybe Ulrich, R., & Miller, J. (2020). Questionable research practices may have little effect on replicability. eLife, 9, e58237. https://doi.org/10.7554/eLife.58237 -->
+
+### Simulating data
+
+Here a section, given the model and the notation, about simple monte carlo simulations with R functions for generating meta-analytical data given the parameters defined above.
+
+## References
+
+<!-- TODO small section about the slides deck 3 of the last summer school with the meta-analysis model based on the hierarchical model above -->
+

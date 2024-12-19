@@ -1,0 +1,73 @@
+---
+bibliography: "/Users/filippogambarota/googledrive/notes/files/references.bib"
+---
+
+# What is a replication
+
+> I argue that a replication is an experiment that resamples the experimental components of an experiment that are treated as random factors and that the function of replications is, narrowly, to assess the reliability of the replicated experiments.
+
+> In particular, the reality and nature of phenomena are typically in- ferred from the data, which themselves are the products of measurement
+
+> A token experiment is reliable if and only if, if one repeatedly sampled new values for the experimental components that are treated as random fac- tors (e.g., repeatedly sampling new participants from the original popula- tion of participants—say Americans—or repeatedly sampling new stimuli from the original population of stimuli), everything else being kept con- stant, the same experimental outcome would be found with high frequency.
+
+the core aspect of Machery account for relication, is that an exact replication is in fact a proper sampling from random factors keeping all other fixed factors the same. In this view, there is a relaxation of the usual concept of exact replication that some authors argue is never exact.
+
+I'm not really sure if the idea of Machery is related to the result or the actual experiment design.
+
+the problem of assessing relialability in this terms --> same outcome given the "same" setup is related to how to practically say if an outcome is the same or not (direction, effect size, etc.)
+
+> A token experiment is valid just in case it actually supports the conclusion it claims to establish. It is internally valid just in case it actually supports the causal claim that the treatment caused the measured difference between the conditions. Plausible but uncontrolled confounds undermine the internal va- lidity of an experiment. A token experiment is externally valid just in case it actually supports a conclusion about a situation outside the lab that is of in- terest to scientists and motivated the research in the first place
+
+internal validity --> the manipulation actually do what is supposed to do
+extenal validity --> extension outside the lab
+
+> Experiment A replicates experiment B if and only if A consists of a sequence of events of the same type as B while resampling some of its experimental components in order to assess the reliability of the original experiment.
+
+> I propose to contrast replications, which involve resampling from a given population, and extensions, which involve either sampling from a different population (for the experimental components treated as random factors) orchanging the level ofan experimental component treated as a fixed factor (see also Bonett 2012).
+
+> basically the extension is changing a fixed component of an experiment. this is commonly referred as conceptual replication but make sense to not consider it as a replication because is actually an experiment that did not tell us a lot about the original finding. See @Rosenthal1990-cq
+According to the Resampling Ac- count, the function of replications is to check whether a token experiment e that claims to identify and characterize a candidate phenomenon is reliable, that is, whether an experimental outcome similar to the one found in e would be found frequently were one to resample from the populations correspond- ing to the experimental components treated as random factors (if similar re- sults would not be found frequently, then the results of e are due to the sources of unreliability such as sampling or measurement error).
+
+> So, on the Resampling Account, the function of replications is really to test reliability rather than validity.
+
+here the point is that, we want to obtain the "same" result and not questioning if we are measuring the phenomenon appropriately.
+
+- sampling from random factors keeping fixed fixed factors --> genuine replication
+- changing a fixed factor --> extension (usually considered a conceptual replication)
+- sampling from a distinct population (e.g., sampling subjects of different states) --> another kind of extension
+
+in this view there is a degree of expected heterogeneity (as for the distinction between conceptual and direct replication) that is influenced by:
+
+- how many factors i'm treating as random: i expect that there should be more heterogeneity if i consider as random more factors
+- which factors i'm treating as random: this is probably missing by the machery account because there is probably a clear impact (in some cases) between resampling subjects and resampling stimuli
+
+> replication and extension have different functions. Replications test the reliability of token experiments; extensions, their va- lidity as well as the invariance range of a phenomenon.
+
+it is more important a replication or an extension? if we considered the extension as the conceptual replication the idea of information by @Rosenthal1990-cq can be useful
+
+@Simons2014-cg suggested that researchers should clearly specify the population to which they want to generalize the findings. In this vein, the @Machery2020-sv approach is also more relevant.
+
+> Conceptual replications disperse this ambiguity, and as a result, can contribute more to theoretical development and scientific advance. If an idea replicates across operationalizations, then the idea is substantially more likely to be correct than if it replicates using the exact same operationalizations, no matter how many times or with whatever preci- sion. As such, conceptual replications are critical for establishing the generalizability of an initial observation and the theory it purports to support. @Crandall2016-xg
+
+This is true but the idea to generalize (thus using a  different measure of the same construct for example) is the same idea of resampling the factor as @Machery2020-sv
+
+this is also related to the generalizibility crisis 
+
+tabella con same analysis/data robustness etc. dove si mette la multiverse, reproducibility
+
+anche @Nosek2020-vh propongono un framework simile dicendo che non esistono praticamente direct replication e le conceptual replication servono per la generalizzabilità e non underminano gli original findings vedi anche la figura figa.
+
+the problem of hidden moderators and contextual sensitivity as a possible cause of replicability
+
+> Many scientists have also argued that the failure to reproduce results might reflect contextual differences—often termed “hidden moderators”—between the original research and the replication attempt (32–36). In fact, such suggestions precede the current
+replication debate by decades. @Van-Bavel2016-eb
+
+seems that the concept of contextual sensitivity refers to hidden moderators that explain (or could explain) why the experiment is not working in the replication. @Gollwitzer2022-at
+
+> Psychological science is still dazzled by astoundingly large number of published effects that cannot be replicated— even when these replications used the same materials, the same methods, and a similar setup as the original study (Open Science Collaboration, 2015; Shrout & Rodgers, 2018). One interpretation for the difficulty to replicate an original effect is that it never really existed in the first place (i.e., a “false positive”) because it was the result of pure chance, bias, or questionable research practices (e.g., “p-hacking”; Bakker et al., 2012; Simmons et al., 2011). A second interpretation for failing to replicate an original effect is that it did exist, but the replication attempt was unlikely to find it either because it was underpowered (Etz & Vandekerckhove, 2016; Miller, 2009; Miller & Ulrich, 2016), the “replication success” criterion was underspeci- fied, or the chance for successful replication was low a priori (Fiedler & Prager, 2018). Finally, a third interpreta- tion—which is the one that we focus on in this article—is that the effect in an original study did in fact exist, but only under contextual conditions that were present in the original and absent in the replication studies. @Gollwitzer2022-at
+
+vedi questo Cronbach’s (1982) UTOS framework che anche @Machery2020-sv ha usato (e viene un pochino usato da tutti).
+
+per la distizione di contextually relevant or irrelevant effects @Gollwitzer2022-at is a good paper
+
+I would also say that in general a single study is not informative at all about the studied effect in terms of information per se and in terms of how likely is to replicate that finding (as miller shows).

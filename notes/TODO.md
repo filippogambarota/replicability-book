@@ -1,0 +1,3 @@
+- set up a license (see the lakens book https://lakens.github.io/statistical_inferences)
+- set up an acknowledgement section
+- check giovanni and branden slides of the past courses for extra important points

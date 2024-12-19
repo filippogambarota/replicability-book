@@ -1,0 +1,21 @@
+# Welcome {.unnumbered}
+
+The aim of the book is to provide un updated (and continuously evolving) overview of the **replication** in science from a theoretical and statistical point of view. The book is not supposed to be exaustive but providing a general framework for learning and teaching the problem of replication in the era of the reproducibility and replicability crisis.
+
+<!-- TODO expand this section a little bit -->
+
+## Contents
+
+<!-- TODO describe book contents and chapters here -->
+
+## Book structure
+
+The book is written in [Quarto](https://quarto.org/). All materials and source code GitHub. The main language used in the statistical part of the book is [R](https://www.r-project.org/). In addition, we wrote several functions used in the examples collected into an R package <!-- TODO put R package name --> used through the book. You are free to fork, share and reuse contents. In addition, we consider the book as a shared resources thus if you have some suggestions, additions or any way to extend or improve the content you can submit a pull request on Github or contact the author (see the @sec-contributing section).
+
+## Contributing {#sec-contributing}
+
+For contributing submit a PR on Github or write an email to **Filippo Gambarota** ([filippo.gambarota@unipd.it](filippo.gambarota@unipd.it)).
+
+<!-- TODO study a little bit how the PR method could work -->
+
+[ciao](extra/miller2009.qmd)

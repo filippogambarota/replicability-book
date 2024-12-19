@@ -1,0 +1,110 @@
+# What is a replication {#sec-rep-theory}
+
+## Key Readings {-}
+
+In the first chapter, our key readings are:
+
+- @Machery2020-sv: *What is a replication?*
+- @Nosek2020-vh: *What is replication?*
+
+In addition, as optional but valuable readings:
+
+- @Rosenthal1990-cq: *Replication in behavioral research*. Especially for the concepts of *precision* and the idea of weighting replication studies according to qualitative and quantitative factors.
+
+- @National-Academies-of-Sciences-Engineering-and-Medicine2019-ze National Academies report on *Reproducibility and Replicability in Science*
+
+## Replication, Robustness and Reproducibility
+
+This book is concerned with what we call the three "R"'s of thrustworthy science: Replication, Robustness and Reproducibility. We begin by sketching a definition of each. This first Chapter then elaborates on the definition of replicability more specifically.
+
+In 2019 the USA's National Academies published a report on Reproducibility and Replicability in Science [@National-Academies-of-Sciences-Engineering-and-Medicine2019-ze] which we strongly recommend as a complementary reading to this document. They propose the following definition: "***Replicability*** is obtaining consistent results across studies aimed at answering the same scientific question, each of which has obtained its own data". This will be our first "R". The NAS definition is also endorsed by the American Statistical Association [@Broman2017-mv] and generally adoped in statistics (for example [@Heller2014-lr]). 
+
+The second "R" is ***Reproducibility***, defined by NAS as "obtaining consistent results using the same input data, computational steps, methods, and code, and conditions of analysis" [@National-Academies-of-Sciences-Engineering-and-Medicine2019-ze]. 
+Here the experimental desing, data and methodologies of analysis are all fixed. The idea is that a research paper should provide enough information to reproduce the results reported starting from the same raw data, that is data in a form as close as possible to what generated the experimental source. Defining precisely what raw data is can be complex both conceptually and practically, but a digression on this would take us too far astray. Nowadays it is becoming more common to supplement a paper with analysis code, raw data (if possible) and details or materials (e.g., experimental stimuli, biological reagents, questionnaires) about the experimental setup. Reproducibility can be considered as the most fundamental pre-requisite of replication in science. Chapter XXX will provide a more detailed explaination of the concept with an overview of tools for doing reproducibile science.
+
+Our third "R" also involves keeping the raw data fixed, and focusses on changing parts of the analysis method. This is not usually considered a replication but a way to investigate the ***robustness*** of the results to the many judgment calls that typically need to be made in the implementation of a statistical analysis. Chapter XXX will present some methods for investigating robustness. For example, multiverse analysis is a way to systematically sample different plausible analytical strategies and see their impact on the final conclusions.
+
+Usage of the first two "R" terms is often inconsistent and is reversed in computer science. [@Kenett2015-jm; @Goodman2016-yw; @Barba2018-ef] review these terminologies and their usage.
+
+## Defining Replication
+
+### Challenges
+
+When studying, planning or conducting studies about replication in science, it is essential to start from a clear definition and formalization of replication. First we need to define when an experiment or study constitutes a replication attempt of another. This is important in understanding potential ambiguities in interpretation. For example, a challenging scenario arises when scientists attept to replicate the result of a study using a similar but not identical scientific paradigm. If they obtain a different result, should they conclude that the new study did not replicate the original? To answer, the replication needs to be evaluated not only in terms of result but also with regard to the design, for example with regard to whether experimental factors, approaches and conditions are the same or different. In this first chapter we discuss the design of a replication study from both an empirical and a philosophical perspective. 
+
+The statistical formalization and the evaluation of whether replication was successful will be covered in Chapter XXX, we’re we will discover that there can be several different defitions of what a successful replication is. @Anderson2024-cx reviewed more than 20 different replication criteria and @Heyard2024-hv indentified more than 50 published statistical approaches to assess a replication experiment.
+
+We begin by reviewing concepts that in our view are general enough to be applied to multiple research areas and traslated into an empirically testable statistical framework. The bibliography chapter contains a selected list of theoretical papers on replication.
+
+### Cronbach's essential components of an experiment
+
+We start by defining the essential components of an experiment as proposed by @Cronbach1982-kl^[This framework has been proposed for social science and psychology but can be easily applied to different fields. For example see @Parmigiani2023-sg for a more detailed taxonomy applied to biomedical studies.] His framework is concisely referred to as UTOS because it consisted of these components:
+
+::: {.callout-note icon=false}
+
+## UTOS Framework
+
+- **U**nits: the elements of the population from which the study sample has been drawn; the term population is used here in its statistical meaning: a real or hypothetical universe of units (not necessarily persons) to which the inferential conclusions of the study should apply;
+- **T**reatments: the independent variables, for example experimental interventions, or population subgroups of interest;
+- **O**utcomes: the dependent variables on which the study is focused
+- **S**etting: the remainder of factors that can affect the experimental outcome and its relation to treatments. For example the factors defining the "environment" where a psychological experiment takes place (lab vs online experiment, cultural aspects, etc.)
+
+:::
+
+Some initial comments: 
+
+- **U**: this component positions us unequivocally in the territory of statistical inference, where we posit a population of reference consisting of distinct units, and we are interested in generalizing from an observed sample to the entire population. Naturally not all science aligns with this paradigm. Before reading further, try to think about important scientific studies you may have come across recently that do not fit with this paradigm. 
+
+- **T & O**: these components implicitly assume that the goal of the study was to elucidate how, in the population of interest, the outcomes relate to the independent variables, perhaps causally if the experiment is controlled. Again, this is an important subset of science, but is by no means exhaustive. Clustering, discovery of latent dimensions in high dimensional data, segmentation of images, and a number of other exceptions come to mind. Add your own. Also, important science can be simply exploratory and descriptive, but replicability questions are relevant there as well.
+
+- **S**: By changing settings “minimally” you get “essentially” the same experiments. For example you may change the temperature in the lab for an experiment where temperature is a negligible factor. On the other hand if you change the temperature in a chemistry experiment where a certain reaction is very sensitive to temperature, you may get a completely different experiment and arguably a different study: skating on ice vs water, so to speak. So it takes a little sprinkle of common sense for this to be a useful definition. Be alert.
+
+### Machery's definition of a replication experiment
+
+@Machery2020-sv proposed a simple and flexible perspective on replication called the **resampling account**. 
+
+Consider an original experiment in the UTOS framework, and imagine we can sharply specify *fixed* and *random factors* in the following sense: a random factor can be thought of as sampled from the population of interest, while a fixed factor is not sampled, but rather determined by design. For example, participants (*Units*) can  be assumed to be random when the study samples a group of participants according to a well defined sampling scheme. In contrast, an experimental manipulation is generally fixed. Random sampling affords to option to use statistical inference to learn parameters of the population of interest [see also @Yarkoni2020-xf for the idea of generalizability]. Stricltly speaking, inference using a fixed factor is limited only to the tested condition. Defining fixed and random factors in real settings can be complex. Challenges and approaches are extensively debated in the literature [e.g., @Clark2015-pz]. 
+
+Returning to replication, according to Machery, a replication experiment is an experiment created by *sampling from the random factors* (e.g., new group of participants), and *keeping the non-random factors fixed* (e.g., same type of drug or treatment). In this definition, population parameters of interest are identical between an original study and its replication. We will return on this point in Chapter XXX. 
+
+A replication experiment is meant to assess what Machery calls **reliability**.
+@Machery2020-sv uses the term reliability as in measurement theory [] where a reliable instrument (in this case the experiment is seen as the instrument) produces *consistent* ^[e.g. close in some quantiative metric if they are real numbers] results across different replications of the measurement. When replicating a whole experiment, say sampling a new sample of participants, we are similarly interested in evaluating whether the  experimental setup is reliable in the sense of producing consistent results. 
+
+Along the line of the measurement methaphor, let's imagine a treatment for depression that have been evaluated in an original study. The researchers developed a protocol, defined the concept of depression, administered the treatment and chosen some depression self-report measures finding a decreasing level of depression compared to the control group. Another group of researchers decided to *replicate* this original experiment. They adopted the same protocol, definitions and measures but collected another sample of participants from the same population. The results of the replication experiment, for example the magnitude of the effect of the treatment on the depression level as defined by the protocol, may or may not be close to the original. If they are close, this provides evidence in favor of the *reliability* of the original experiment, as defined above [@Nosek2017-an]. Here, we are not questioning the definition or the measures used in the study.
+
+To recap the progress made so far, if you can frame a study as UTOS, and clearly separate the random and fixed factors, you know how to design a replication study!
+
+## Validity and Extensions
+
+### Conceptual Replication
+
+Does is make sense to compare experiments when fixed factors have changed? In many cases it does, and this type of analysis still falls under the purview of replication, broadly understood. Readers familiar with the replication literature may have noticed that we did not use concepts such as *direct* or *conceptual* replication yet. Briefly, a direct replication is usually defined as an experiment that tries to recreate the original experiment as closely as possible. While this can be done in certain fields, most of the time this objective is empirically difficult to achieve to due uncontrollable factors [@Nosek2017-an; @Nosek2020-vh]. For example replicating strongly culturally related effects or experiments that used a completely outdated technology for the experimental setup. 
+
+In contrast, *conceptual* replication is a broad term defining a replication experiment with similar aims and methodology but with important differences [e.g., @Crandall2016-xg]. In Machery's terms, a *conceptual* replication changes some of the fixed factors. In the depression example above, a conceltual replication might be a second experiment using another theoretical definition or measure of depression. Here, the goal is still within the broad umbrella of understanding the effect of the treatment on depression, but the experiment is not a strict replication in the Machery sense, because the outcome measurement methodology has changed. For this reason 
+@Machery2020-sv uses the term *extension*. Extensions may include a methodological change but also a more profound philosophical change, for example using a scale motivated by a different theoretical framework for defining depression. An *extension* experiment is not  assessing the *reliability*, but rather the *validity* of the original experiment and in a broader sense the theory underlying the original experiment. Similarly to *reliability*, the term *validity* is used with measurement theory in mind. The *validity* of an instrument is the link with the true phenomenon being assessed (for example the actual weight of an object being weighed). 
+
+In the depression example, if the researchers want to see whether the treatment is effective also using other measures of depression they are *extending* the original results testing the *validity* of the result about the treatment. 
+
+### Precision of Replication
+
+<!-- TODO: map terms replication -> precise -->
+
+In practice we can often design a variety of replication/extension experiments, with varying degrees of similarity with the original one.
+@Rosenthal1990-cq defines the important concept of *precision* as the degree of similarity between the replication and the original experiment. The most precise is a Machery replication. Generally, very *precise* experiments lack external validity (they are not able to *extend*) but they can directly speak to the *reliability* of the original experimental setup and results. Less *precise* experiments reduce the amount of information for assessing the confidence in the original experiment, shifting the focus on the underlying theory. For example, we may say that the treatment reduces also physiological indexes of depression or works also in a different population of patients.
+
+### Replication vs Extension: different scientific value?
+
+A precise replication experiment is an attempt to ask again the same inferential question in as close a way as possible. Slight variations in setting and fixed factors can generate experiments that probe the trustworthiness of the conclusions further. 
+These slight variations are can be successfully analyzed together with replicability in mind, for example in a meta-analysis (see Chapter XXX), even though they do not constitute a strict  replication by Machery’s exacting standards.
+
+As settings are varied further and the replication becomes less precise, we eventually found ourselves having extended the experimental paradigm beyond the initial goals and populations. When is this line crossed? The answer is dependent on the context and reasonable scientists may disagree about it. An important debate in the literature regards the value of a replication compared to an extension experiment. @Crandall2016-xg consider extensions as more valuable while @Simons2014-cg argues in favor of focusing on replications experiment. Clearly both have a place in science. If the main aim is to test the reliability of the original experiment one should reduce as much as possible the heterogeneity (i.e., increase the *precision*). On the other hand, if the aim is to explore different instances of the same effect or theory one should extend the experimental setup. Often an extension experiment is the natural continuation of the scientific line of inquiry opened by a reliable original, possibly with its replication experiment.
+
+### Contextual dependency
+
+*contextual dependency* [@Gollwitzer2022-at; @Van-Bavel2016-eb; @Inbar2016-ls] further develops the @Machery2020-sv framework by considering specific weights assigned to each UTOS element. Without going into details, the impact of the different UTOS elements on the actual experiment could differ according to the type of research question. For example, consider a social psychology experiment originally conducted on Western American participants and later extended to European or Asian participants. If the psychological construct of interest is strongly affected by cultural aspects, the impact of changing the ethnicity can be considerable. In contrast a lab-based experiment about low-level perceptual effects may be more portable across the same two population. Our expectations about the replication/extension outcome need to be calibrated on the specific research question and the impact of each experiment element.
+
+### Investigators as a Factor
+
+As a final note, one important but often underestimated problem concerns the investigators conducting the replication study or studies. They can legitimately be considered part of the setting in some cases and random or irrelevant in others. @Rosenthal1990-cq cleary described the problem of *correlated replicators* and proposed different weighting approaches, based on the design of the replication study, to replication/extension studies conducted from authors that are orthogonal in terms of background theory and methods. Authors sharing a theory or a strict network of co-authorhips are likely to create experiments and data that are more similar compared to independent authors. A replication or extension study conducted by an independent, and possibly skeptical, researcher should have a greater impact on increasing or decreasing confidence in the original findings compared to a study conducted by the original author.
+
+## References {-}

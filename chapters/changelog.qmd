@@ -1,0 +1,1 @@
+<!-- TODO adapt a changelog strategy as lakens https://lakens.github.io/statistical_inferences/changelog.html -->

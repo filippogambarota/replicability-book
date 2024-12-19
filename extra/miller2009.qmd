@@ -1,0 +1,59 @@
+---
+title: "Old Faithful"
+format: html
+server: shiny
+---
+
+@Miller2009-hp proposed a model to estimate the probability of replication given an initial significant finding. The paper make an important distinction between:
+
+- **aggregated replication probability**: defined as the probability of replicating one or more times a randomly selected original effect. In other terms, is the probability to replicate a significant effect in a certain research area or group of effects. The important aspect is that it strongly depends on $\delta$ thus the probability of true effects ($H_0$ is false).
+- **individual replication probability**: is the probability of replicating one or more times a specific original experiment and depends on the power of the effect.
+
+This R function can compute the aggregated replication.
+```{r}
+aggregate_replication <- function(j, pi, beta, alpha) {
+    
+    if(j < 1){
+        stop("number of replicates should be equal or greater than 1")
+    }
+    
+    j <- j + 1
+    
+    power <- 1 - beta  # Compute power
+    
+    # Joint probability: all j experiments are significant
+    joint_prob <- pi * (power^j) + (1 - pi) * ((alpha^j) / (2^(j - 1)))
+    
+    # Probability of the first experiment being significant
+    S1_prob <- pi * power + (1 - pi) * alpha
+    
+    # Aggregate replication probability
+    p_ra <- joint_prob / S1_prob
+    return(p_ra)
+}
+```
+
+To estimate the individual probability of a replication, he suggest to use the effect size of the original experiment as best guess to calculate the power of the replication (i.e., the individual probability of replicating). In addition, he suggest to compute the upper and lower bound of the power to have an interval of values.
+
+```{r}
+d <- 0.3
+n <- 200
+se <- sqrt(1/n + 1/n)
+
+lb <- d - se * 2
+ub <- d + se * 2
+
+dd <- seq(0, 0.7, length.out = 100) 
+pp <- sapply(dd, function(d) pwr::pwr.t.test(n, d)$power)
+
+p_d <- pwr::pwr.t.test(n, d)$power
+p_lb <- pwr::pwr.t.test(n, lb)$power
+p_ub <- pwr::pwr.t.test(n, ub)$power
+
+plot(dd, pp, type = "l", ylim = c(0, 1))
+points(c(d, lb, ub), c(p_d, p_lb, p_ub))
+segments(c(d, lb, ub), c(0, 0, 0),
+         c(d, lb, ub), c(p_d, p_lb, p_ub))
+segments(c(0, 0, 0), c(p_d, p_lb, p_ub),
+         c(d, lb, ub), c(p_d, p_lb, p_ub))
+```
