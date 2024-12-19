@@ -1,5 +1,5 @@
 # Todoget Report
-last update: 2024-12-19 (11:53)
+last update: 2024-12-19 (12:06)
 
 ## index.qmd
 
@@ -42,6 +42,11 @@ last update: 2024-12-19 (11:53)
 ## notes/multilevel-model.md
 
 - Line 0: A natural extension of the previous model where is by including another hierarchical layer where $\mu_{\theta}$ effects are sampled from another distribution. This distribution can be considered as the probability distribution of true effects across a research field. Also the heterogeneity values can be considered as sampled from a probability distribution. In the @fig- we presented the model assuming to have two effects in a given research area. Given a certain ROPE  TODO check if rope is defined  we have a proportion of true and false effects ($\omega$) for each different effect across a research field. 
+
+## notes/README.rmd
+
+- Line 77: TODO check if putting this 
+- Line 92: TODO check if putting this 
 
 ## extra/miller2009.html
 
