@@ -79,6 +79,10 @@ Qrep <- function(yi, vi, lambda0 = 0, alpha = 0.05){
   invisible(res)
 }
 
+#' plot.Qrep
+#'
+#' @param obj the object
+#' @export
 plot.Qrep <- function(obj){
   title <- ifelse(obj$lambda0 != 0, "Q test for Approximate Replication", "Q test for Exact Replication")
   xlim <- c(0, max(c(obj$Q, obj$k - 1)))

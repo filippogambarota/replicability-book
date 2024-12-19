@@ -17,11 +17,30 @@ power.t <- function(d, n1, n2 = NULL, alpha = 0.05){
     pt(-tc, df = df, ncp = ncp) + pt(tc, df = df, ncp = ncp, lower.tail = FALSE)
 }
 
-arp <- function(r, pi, power, alpha) {
-    if(any(r < 1)) stop("number of replicates should be equal or greater than 1")
-    j <- r + 1 # total studies
-    num <- pi * power^j + (1 - pi) * alpha * (alpha/2)^(j - 1)
-    den <- pi * power + (1 - pi) * alpha
+#' Aggregated replication probability
+#'
+#' @param R The number of studies considering the original study. For one-to-one design R = 2
+#' @param pi The theory strenght i.e. the proportion of true effects
+#' @param power The power of the R studies. Power can be a single value (used for R studies) or a vector of length R
+#' @param alpha The alpha level. For the replication studies (R - 1) alpha/2 will be used
+#'
+#' @returns The aggregated probability
+#' @export
+#'
+#' @examples
+#' arp(2, 0.2, 0.8, 0.05) # as reported in Miller (2009) p.619
+arp <- function(R, pi, power, alpha) {
+  
+    if(any(R < 2)) stop("number of studies should be equal or greater than 2")
+    
+    if(length(power) != 1 & length(power) != R){
+      stop("length of power vector should be 1 or R")
+    }
+    
+    if(length(power) == 1) power <- rep(power, R)
+  
+    num <- pi * prod(power) + (1 - pi) * alpha * (alpha/2)^(R - 1)
+    den <- pi * power[1] + (1 - pi) * alpha
     num/den
 }
 
