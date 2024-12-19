@@ -38,7 +38,7 @@ The `renv` package is a way to manage and install all the R packages used in a p
 
 The last updated version of the book can be found at: `_book/index.html`. Just opening this file with a standard browser is enough to navigate and see the final result. If the book is not re-rendered the updates to the single `*.qmd` files will not be integrated.
 
-```{r, results = "asis"}
+```{r, results = "asis", echo = FALSE}
 system("sh quarto-scripts/safe-todoget.sh")
 todo <- readLines("todoget.md")
 cat(todo, sep = "\n")

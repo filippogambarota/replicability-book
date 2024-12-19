@@ -36,15 +36,9 @@ enough to navigate and see the final result. If the book is not
 re-rendered the updates to the single `*.qmd` files will not be
 integrated.
 
-``` r
-system("sh quarto-scripts/safe-todoget.sh")
-todo <- readLines("todoget.md")
-cat(todo, sep = "\n")
-```
-
 # Todoget Report
 
-last update: 2024-12-19 (12:06)
+last update: 2024-12-19 (12:09)
 
 ## index.qmd
 
