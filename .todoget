@@ -2,6 +2,10 @@ todo:
   name: todo
   pattern: TODO
   active: true
+giovanni:
+  name: giovanni
+  pattern: GIOVANNI
+  active: true
 config:
   ignore:
   - venv/*

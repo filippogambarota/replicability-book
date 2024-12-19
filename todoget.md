@@ -1,5 +1,5 @@
 # Todoget Report
-last update: 2024-12-19 (12:28)
+last update: 2024-12-19 (18:33)
 
 ## index.qmd
 
@@ -10,18 +10,12 @@ last update: 2024-12-19 (12:28)
 
 ## chapters/chapter3.qmd
 
-- Line 167: TODO: review this formula too lenghty 
-- Line 238: TODO: review and smooth this section 
-- Line 255: TODO see if the remainder of the section can be shortened, it seems a bit repetitive 
-- Line 347: TODO: review and smooth this section 
-- Line 408: The selection process implicit in publication decisions increases the likelihood of observing extreme and statistically significant results as the original studies. The replications studies (without assuming heterogeneity) have usually higher sample sizes bringing estimated effects toward the true (and generally lower) mean effect.  TODO describe better the figure and the simulation  The @fig-hes shows a simulation where extreme values are selected from a population of effects centered on zero for an original experiment with a small sample size. Then, using the same effects we simulated other experiments with increasing sample size as usually done in replication projects. Clearly the effects shrink toward the mean and in this case are no longer significant. @Perugini2014-bx proposed a method to adjust the estimation of the original effect size when estimating the probability of replication.  TODO check perugini work . 
-- Line 623: TODO check if pawel is actually estimating the probability of individual replication 
-- Line 630: The actual model will be discussed in Chapter x. But the crucial point is that when formalizing a replication is important to take into account all the sources of information as well as applyning an appropriate weight according to degree of heterogeneity between the original study and the replication study. The model has been applied to the data from the Psychological replication project  TODO ref here  suggesting better performance when including heterogeneity and the shrinkage factor. We adapted the @Pawel2020-cm model creating a more general version that can be easily declined for simulating and analyzing data from replication studies. The model is presented in @fig-general-model. 
-- Line 646: TODO: describe standardized vs unstandardized 
-- Line 654: TODO: describe \mu and \theta 
-- Line 765: TODO expand more here from pawel and maybe Ulrich, R., & Miller, J. (2020). Questionable research practices may have little effect on replicability. eLife, 9, e58237. https://doi.org/10.7554/eLife.58237 
-- Line 767: TODO: model in stan 
-- Line 771: TODO small section about the slides deck 3 of the last summer school with the meta-analysis model based on the hierarchical model above 
+- Line 246: TODO: review and smooth this section 
+- Line 262: TODO see if the remainder of the section can be shortened, it seems a bit repetitive 
+- Line 353: TODO: review and smooth this section 
+- Line 708: TODO: describe standardized vs unstandardized 
+- Line 709: TODO: describe \mu and \theta 
+- Line 713: GIOVANNI: is sigma the residual variance or the effect size sampling variability? 
 
 ## chapters/chapter4.qmd
 
