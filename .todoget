@@ -16,3 +16,4 @@ config:
   - chapters/00-deprecated/*
   - README.rmd
   - README.md
+  - notes/*
