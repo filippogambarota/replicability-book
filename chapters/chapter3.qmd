@@ -1,5 +1,8 @@
 ---
 bibliography: "/Users/filippogambarota/googledrive/notes/files/references.bib"
+crossref: 
+    lst-title: Code
+    lst-prefix: Code
 ---
 
 ```{r setup, include=FALSE}
@@ -403,13 +406,15 @@ For a simple example consider specifying $\Pr(H_1)$ for the individual experimen
 
 The original effect size estimation could be biased (usually inflated) for several reasons (e.g., publication bias) affecting the actual probability of replication. For example, let's assume that original studies are published only when they are significant. In additions let's assume working on a research area with medium strength and on average medium-small effects (a very likely scenario). Then let's also assume to work with sample sizes that are relatively low. This research area will be on average low-powered and significant effects will be in the best case inflated and in the worst case false positives.
 
+<!-- GIOVANNI: i have added a small section and simulation about typeM error by gelman. I think that is interesting because shows the amount of effect size inflation given the sample size when selecting for significance -->
+
 When conducting replication studies of these original works sometimes can happen to find significant but substantially lower estimated effects or even non significant effects. For example, the large scale project @Collaboration2015-ep reported that regardless the significance, replicated effect where substantially lower than original effects. Regression to the mean is a good explanation for this phenomenon because selection of extreme results will produce on average lower estimations (i.e., shrinkage) in later studies. In addition, if the replication study design (i.e., sample size) is based on the original effect size estimation the inflation can greatly reduce the power. This is related to the concept of the type-M (M for magnitude) error [@Gelman2014-js] that quantify the exent of inflation given the true effect and the sample size.
 
-In the @lst-typem
+In the @lst-typem there is a small simulation showing how to estimate the type-M error for a two-samples design.
 
 ```{r}
 #| lst-label: lst-typem
-#| lst-cap: ciao
+#| lst-cap: Type-M error simulation for a two-samples design
 #| echo: true
 
 d <- 0.3
@@ -433,6 +438,7 @@ mean(abs(di[significant])) / d
 The type-M error increases as the sample size and/or the true effect size decreases. The @fig-typem shows the type-M error for different conditions.
 
 ```{r}
+#| lst-label: lst-typem-large
 #| code-fold: true
 #| echo: true
 #| cache: true
@@ -707,7 +713,6 @@ $$
 $$
 
 <!-- TODO: describe standardized vs unstandardized -->
-<!-- TODO: describe \mu and \theta -->
 
 @fig-general-model depicts the hierarchical model. $\mu_\theta$ is the average true effect and $\tau$ is the heterogeneity thus the standard deviation of the true effects. This is very similar to the generating model presented in @fig-gen-model-simple and can be considered as a standard two-level model or random-effects meta-analysis. Both $\mu_\theta$ and $\tau$ can be associated with a prior distribution. In this case $\boldsymbol{\zeta_\theta}$ and $\boldsymbol{\zeta_\tau}$ are vectors of parameters of the prior distributions. A common choice could be a normal distribution for $\mu_\theta$ and an half-cauchy distribution for $\tau$ [@Williams2018-wu]. At the study level, $\theta_r$ is study specific slope (i.e., the difference between the groups), $\mu_t$ is the intercept (i.e., expected value for the reference group). $y_{nr}$ and $x_{nr}$ are respectively the response values and the predictors for the individual $n$ of the study $r$.
 
