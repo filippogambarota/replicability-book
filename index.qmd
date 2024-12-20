@@ -17,5 +17,3 @@ The book is written in [Quarto](https://quarto.org/). All materials and source c
 For contributing submit a PR on Github or write an email to **Filippo Gambarota** ([filippo.gambarota@unipd.it](filippo.gambarota@unipd.it)).
 
 <!-- TODO study a little bit how the PR method could work -->
-
-[ciao](extra/miller2009.qmd)
