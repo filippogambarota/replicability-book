@@ -1,5 +1,5 @@
 # Todoget Report
-last update: 2024-12-19 (18:33)
+last update: 2024-12-20 (13:19)
 
 ## index.qmd
 
@@ -10,12 +10,12 @@ last update: 2024-12-19 (18:33)
 
 ## chapters/chapter3.qmd
 
-- Line 246: TODO: review and smooth this section 
-- Line 262: TODO see if the remainder of the section can be shortened, it seems a bit repetitive 
-- Line 353: TODO: review and smooth this section 
-- Line 708: TODO: describe standardized vs unstandardized 
-- Line 709: TODO: describe \mu and \theta 
-- Line 713: GIOVANNI: is sigma the residual variance or the effect size sampling variability? 
+- Line 249: TODO: review and smooth this section 
+- Line 265: TODO see if the remainder of the section can be shortened, it seems a bit repetitive 
+- Line 356: TODO: review and smooth this section 
+- Line 408: GIOVANNI: i have added a small section and simulation about typeM error by gelman. I think that is interesting because shows the amount of effect size inflation given the sample size when selecting for significance 
+- Line 714: TODO: describe standardized vs unstandardized 
+- Line 718: GIOVANNI: is sigma the residual variance or the effect size sampling variability? 
 
 ## chapters/chapter4.qmd
 
@@ -32,17 +32,3 @@ last update: 2024-12-19 (18:33)
 ## chapters/changelog.qmd
 
 - Line 0: TODO adapt a changelog strategy as lakens https://lakens.github.io/statistical_inferences/changelog.html 
-
-## notes/multilevel-model.md
-
-- Line 0: A natural extension of the previous model where is by including another hierarchical layer where $\mu_{\theta}$ effects are sampled from another distribution. This distribution can be considered as the probability distribution of true effects across a research field. Also the heterogeneity values can be considered as sampled from a probability distribution. In the @fig- we presented the model assuming to have two effects in a given research area. Given a certain ROPE  TODO check if rope is defined  we have a proportion of true and false effects ($\omega$) for each different effect across a research field. 
-
-## notes/README.rmd
-
-- Line 77: TODO check if putting this 
-- Line 92: TODO check if putting this 
-
-## extra/miller2009.html
-
-- Line 241: // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860) 
-- Line 352: // TODO in 1.5, we should make sure this works without a callout special case 
