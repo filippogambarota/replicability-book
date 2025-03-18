@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>5&nbsp; Meta-analysis and publication bias – The three Rs of trustworthy science</title>
 <style>
 code{white-space: pre-wrap;}
@@ -20,8 +17,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
-
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
@@ -40,8 +90,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d536d1a7baed4b06fb80168836a8c311.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-d536d1a7baed4b06fb80168836a8c311.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -67,17 +116,37 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -88,13 +157,9 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">The three Rs of trustworthy science</a> 
     </div>
@@ -106,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
@@ -155,19 +220,63 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li>
+<a href="#meta-analysis" id="toc-meta-analysis" class="nav-link active" data-scroll-target="#meta-analysis"><span class="header-section-number">6</span> Meta-analysis</a>
+  <ul class="collapse">
+<li><a href="#meta-analysis-1" id="toc-meta-analysis-1" class="nav-link" data-scroll-target="#meta-analysis-1"><span class="header-section-number">6.1</span> Meta-analysis</a></li>
+  <li><a href="#meta-analysis-and-systematic-review" id="toc-meta-analysis-and-systematic-review" class="nav-link" data-scroll-target="#meta-analysis-and-systematic-review"><span class="header-section-number">6.2</span> Meta-analysis and Systematic Review</a></li>
+  <li><a href="#before-the-fun-part" id="toc-before-the-fun-part" class="nav-link" data-scroll-target="#before-the-fun-part"><span class="header-section-number">6.3</span> Before the fun part…</a></li>
+  <li><a href="#unstandardized-effect-sizes" id="toc-unstandardized-effect-sizes" class="nav-link" data-scroll-target="#unstandardized-effect-sizes"><span class="header-section-number">6.4</span> Unstandardized effect sizes</a></li>
+  <li><a href="#unstandardized-effect-sizes-1" id="toc-unstandardized-effect-sizes-1" class="nav-link" data-scroll-target="#unstandardized-effect-sizes-1"><span class="header-section-number">6.5</span> Unstandardized effect sizes</a></li>
+  <li><a href="#unstandardized-effect-sizes-2" id="toc-unstandardized-effect-sizes-2" class="nav-link" data-scroll-target="#unstandardized-effect-sizes-2"><span class="header-section-number">6.6</span> Unstandardized effect sizes</a></li>
+  <li><a href="#standardized-effect-sizes" id="toc-standardized-effect-sizes" class="nav-link" data-scroll-target="#standardized-effect-sizes"><span class="header-section-number">6.7</span> Standardized effect sizes</a></li>
+  <li><a href="#standardized-effect-sizes-1" id="toc-standardized-effect-sizes-1" class="nav-link" data-scroll-target="#standardized-effect-sizes-1"><span class="header-section-number">6.8</span> Standardized effect sizes</a></li>
+  <li><a href="#standardized-vs-unstandardized" id="toc-standardized-vs-unstandardized" class="nav-link" data-scroll-target="#standardized-vs-unstandardized"><span class="header-section-number">6.9</span> Standardized vs unstandardized</a></li>
+  <li><a href="#standardized-vs-unstandardized-1" id="toc-standardized-vs-unstandardized-1" class="nav-link" data-scroll-target="#standardized-vs-unstandardized-1"><span class="header-section-number">6.10</span> Standardized vs unstandardized</a></li>
+  <li><a href="#sec-effsize-se" id="toc-sec-effsize-se" class="nav-link" data-scroll-target="#sec-effsize-se"><span class="header-section-number">6.11</span> Effect size sampling variability</a></li>
+  <li><a href="#effect-size-sampling-variability" id="toc-effect-size-sampling-variability" class="nav-link" data-scroll-target="#effect-size-sampling-variability"><span class="header-section-number">6.12</span> Effect size sampling variability</a></li>
+  <li><a href="#unstandardized-effect-sizes-3" id="toc-unstandardized-effect-sizes-3" class="nav-link" data-scroll-target="#unstandardized-effect-sizes-3"><span class="header-section-number">6.13</span> Unstandardized effect sizes</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#simulating-a-single-study" id="toc-simulating-a-single-study" class="nav-link" data-scroll-target="#simulating-a-single-study"><span class="header-section-number">7</span> Simulating a single study</a>
+  <ul class="collapse">
+<li><a href="#simulating-a-single-study---umd" id="toc-simulating-a-single-study---umd" class="nav-link" data-scroll-target="#simulating-a-single-study---umd"><span class="header-section-number">7.1</span> Simulating a single study - UMD</a></li>
+  <li><a href="#simulating-a-single-study---umd-1" id="toc-simulating-a-single-study---umd-1" class="nav-link" data-scroll-target="#simulating-a-single-study---umd-1"><span class="header-section-number">7.2</span> Simulating a single study - UMD</a></li>
+  <li><a href="#simulating-a-single-study---umd-2" id="toc-simulating-a-single-study---umd-2" class="nav-link" data-scroll-target="#simulating-a-single-study---umd-2"><span class="header-section-number">7.3</span> Simulating a single study - UMD</a></li>
+  <li><a href="#sec-umd-sampling-distribution" id="toc-sec-umd-sampling-distribution" class="nav-link" data-scroll-target="#sec-umd-sampling-distribution"><span class="header-section-number">7.4</span> Simulating a single study - UMD</a></li>
+  <li><a href="#simulating-a-single-study---smd" id="toc-simulating-a-single-study---smd" class="nav-link" data-scroll-target="#simulating-a-single-study---smd"><span class="header-section-number">7.5</span> Simulating a single study - SMD</a></li>
+  <li><a href="#simulating-a-single-study---smd-1" id="toc-simulating-a-single-study---smd-1" class="nav-link" data-scroll-target="#simulating-a-single-study---smd-1"><span class="header-section-number">7.6</span> Simulating a single study - SMD</a></li>
+  <li><a href="#simulating-a-single-study---pearson-rho" id="toc-simulating-a-single-study---pearson-rho" class="nav-link" data-scroll-target="#simulating-a-single-study---pearson-rho"><span class="header-section-number">7.7</span> Simulating a single study - Pearson <span class="math inline">\(\rho\)</span></a></li>
+  <li><a href="#simulating-a-single-study---pearson-rho-1" id="toc-simulating-a-single-study---pearson-rho-1" class="nav-link" data-scroll-target="#simulating-a-single-study---pearson-rho-1"><span class="header-section-number">7.8</span> Simulating a single study - Pearson <span class="math inline">\(\rho\)</span></a></li>
+  <li><a href="#simulating-a-single-study---pearson-rho-2" id="toc-simulating-a-single-study---pearson-rho-2" class="nav-link" data-scroll-target="#simulating-a-single-study---pearson-rho-2"><span class="header-section-number">7.9</span> Simulating a single study - Pearson <span class="math inline">\(\rho\)</span></a></li>
+  <li><a href="#simulating-a-single-study---pearson-rho-3" id="toc-simulating-a-single-study---pearson-rho-3" class="nav-link" data-scroll-target="#simulating-a-single-study---pearson-rho-3"><span class="header-section-number">7.10</span> Simulating a single study - Pearson <span class="math inline">\(\rho\)</span></a></li>
+  <li><a href="#simulating-a-single-study---pearson-rho-4" id="toc-simulating-a-single-study---pearson-rho-4" class="nav-link" data-scroll-target="#simulating-a-single-study---pearson-rho-4"><span class="header-section-number">7.11</span> Simulating a single study - Pearson <span class="math inline">\(\rho\)</span></a></li>
+  <li><a href="#simulating-a-single-study---pearson-rho-5" id="toc-simulating-a-single-study---pearson-rho-5" class="nav-link" data-scroll-target="#simulating-a-single-study---pearson-rho-5"><span class="header-section-number">7.12</span> Simulating a single study - Pearson <span class="math inline">\(\rho\)</span></a></li>
+  <li><a href="#more-on-effect-sizes" id="toc-more-on-effect-sizes" class="nav-link" data-scroll-target="#more-on-effect-sizes"><span class="header-section-number">7.13</span> More on effect sizes</a></li>
+  <li><a href="#simulating-from-sampling-distributions-extra" id="toc-simulating-from-sampling-distributions-extra" class="nav-link" data-scroll-target="#simulating-from-sampling-distributions-extra"><span class="header-section-number">7.14</span> Simulating from sampling distributions [#extra]</a></li>
+  <li><a href="#simulating-from-sampling-distributions-extra-1" id="toc-simulating-from-sampling-distributions-extra-1" class="nav-link" data-scroll-target="#simulating-from-sampling-distributions-extra-1"><span class="header-section-number">7.15</span> Simulating from sampling distributions [#extra]</a></li>
+  <li><a href="#simulating-from-sampling-distributions-extra-2" id="toc-simulating-from-sampling-distributions-extra-2" class="nav-link" data-scroll-target="#simulating-from-sampling-distributions-extra-2"><span class="header-section-number">7.16</span> Simulating from sampling distributions [#extra]</a></li>
+  <li><a href="#simulating-from-sampling-distributions-extra-3" id="toc-simulating-from-sampling-distributions-extra-3" class="nav-link" data-scroll-target="#simulating-from-sampling-distributions-extra-3"><span class="header-section-number">7.17</span> Simulating from sampling distributions [#extra]</a></li>
+  <li><a href="#simulating-from-sampling-distributions-extra-4" id="toc-simulating-from-sampling-distributions-extra-4" class="nav-link" data-scroll-target="#simulating-from-sampling-distributions-extra-4"><span class="header-section-number">7.18</span> Simulating from sampling distributions [#extra]</a></li>
+  <li><a href="#simulating-from-sampling-distributions-extra-5" id="toc-simulating-from-sampling-distributions-extra-5" class="nav-link" data-scroll-target="#simulating-from-sampling-distributions-extra-5"><span class="header-section-number">7.19</span> Simulating from sampling distributions [#extra]</a></li>
+  <li><a href="#references-download-.bib-file" id="toc-references-download-.bib-file" class="nav-link" data-scroll-target="#references-download-.bib-file"><span class="header-section-number">7.20</span> References </a><button class="btn"><a href="#references-download-.bib-file" id="toc-references-download-.bib-file" class="nav-link" data-scroll-target="#references-download-.bib-file"><i class="fa fa-download"></i></a><a href="data:text/x-bibtex;base64,QEFSVElDTEV7VmllY2h0YmF1ZXIyMDA1LXp0LAogIHRpdGxlID0ge0JpYXMgYW5kIGVmZmljaWVuY3kgb2YgbWV0YS1hbmFseXRpYyB2YXJpYW5jZSBlc3RpbWF0b3JzIGluIHRoZQogIHJhbmRvbS1lZmZlY3RzIG1vZGVsfSwKICBhdXRob3IgPSB7VmllY2h0YmF1ZXIsIFdvbGZnYW5nfSwKICBqb3VybmFsdGl0bGUgPSB7Sm91cm5hbCBvZiBlZHVjYXRpb25hbCBhbmQgYmVoYXZpb3JhbCBzdGF0aXN0aWNzOiBhIHF1YXJ0ZXJseQogIHB1YmxpY2F0aW9uIHNwb25zb3JlZCBieSB0aGUgQW1lcmljYW4gRWR1Y2F0aW9uYWwgUmVzZWFyY2ggQXNzb2NpYXRpb24gYW5kIHRoZQogIEFtZXJpY2FuIFN0YXRpc3RpY2FsIEFzc29jaWF0aW9ufSwKICBwdWJsaXNoZXIgPSB7QW1lcmljYW4gRWR1Y2F0aW9uYWwgUmVzZWFyY2ggQXNzb2NpYXRpb24gKEFFUkEpfSwKICB2b2x1bWUgPSB7MzB9LAogIGlzc3VlID0gezN9LAogIHBhZ2VzID0gezI2MS0yOTN9LAogIGRhdGUgPSB7MjAwNS0wOX0sCiAgZG9pID0gezEwLjMxMDIvMTA3Njk5ODYwMzAwMDMyNjF9LAogIGlzc24gPSB7MTA3Ni05OTg2LDE5MzUtMTA1NH0sCiAgYWJzdHJhY3QgPSB7VGhlIG1ldGEtYW5hbHl0aWMgcmFuZG9tIGVmZmVjdHMgbW9kZWwgYXNzdW1lcyB0aGF0IHRoZQogIHZhcmlhYmlsaXR5IGluIGVmZmVjdCBzaXplIGVzdGltYXRlcyBkcmF3biBmcm9tIGEgc2V0IG9mIHN0dWRpZXMgY2FuIGJlCiAgZGVjb21wb3NlZCBpbnRvIHR3byBwYXJ0czogaGV0ZXJvZ2VuZWl0eSBkdWUgdG8gcmFuZG9tIHBvcHVsYXRpb24gZWZmZWN0cyBhbmQKICBzYW1wbGluZyB2YXJpYW5jZS4gSW4gdGhpcyBjb250ZXh0LCB0aGUgdXN1YWwgZ29hbCBpcyB0byBlc3RpbWF0ZSB0aGUgY2VudHJhbAogIHRlbmRlbmN5IGFuZCB0aGUgYW1vdW50IG9mIGhldGVyb2dlbmVpdHkgaW4gdGhlIHBvcHVsYXRpb24gZWZmZWN0IHNpemVzLiBUaGUKICBhbW91bnQgb2YgaGV0ZXJvZ2VuZWl0eSBpbiBhIHNldCBvZiBlZmZlY3Qgc2l6ZXMgaGFzIGltcGxpY2F0aW9ucyByZWdhcmRpbmcKICB0aGUgaW50ZXJwcmV0YXRpb24gb2YgdGhlIG1ldGEtYW5hbHl0aWMgZmluZGluZ3MgYW5kIG9mdGVuIHNlcnZlcyBhcyBhbgogIGluZGljYXRvciBmb3IgdGhlIHByZXNlbmNlIG9mIHBvdGVudGlhbCBtb2RlcmF0b3IgdmFyaWFibGVzLiBGaXZlIHBvcHVsYXRpb24KICBoZXRlcm9nZW5laXR5IGVzdGltYXRvcnMgd2VyZSBjb21wYXJlZCBpbiB0aGlzIGFydGljbGUgYW5hbHl0aWNhbGx5IGFuZCB2aWEKICBNb250ZSBDYXJsbyBzaW11bGF0aW9ucyB3aXRoIHJlc3BlY3QgdG8gdGhlaXIgYmlhcyBhbmQgZWZmaWNpZW5jeS59LAogIHVybCA9IHtodHRwczovL3NjaG9sYXIuZ29vZ2xlLmNvbS9jaXRhdGlvbnM/dmlld19vcD12aWV3X2NpdGF0aW9uJmhsPWVuJnVzZXI9Sjg5UlhKa0FBQUFKJmNpdGF0aW9uX2Zvcl92aWV3PUo4OVJYSmtBQUFBSjpxak1ha0ZIRHk3c0N9LAogIGxhbmd1YWdlID0ge2VufQp9CgpAQVJUSUNMRXtWZXJvbmlraTIwMTYtbncsCiAgdGl0bGUgPSB7TWV0aG9kcyB0byBlc3RpbWF0ZSB0aGUgYmV0d2Vlbi1zdHVkeSB2YXJpYW5jZSBhbmQgaXRzIHVuY2VydGFpbnR5IGluCiAgbWV0YS1hbmFseXNpc30sCiAgYXV0aG9yID0ge1Zlcm9uaWtpLCBBcmV0aSBBbmdlbGlraSBhbmQgSmFja3NvbiwgRGFuIGFuZCBWaWVjaHRiYXVlciwgV29sZmdhbmcKICBhbmQgQmVuZGVyLCBSYWxmIGFuZCBCb3dkZW4sIEphY2sgYW5kIEtuYXBwLCBHdWlkbyBhbmQgS3VzcywgT2xpdmVyIGFuZAogIEhpZ2dpbnMsIEp1bGlhbiBQIFQgYW5kIExhbmdhbiwgRGVhbiBhbmQgU2FsYW50aSwgR2VvcmdpYX0sCiAgam91cm5hbHRpdGxlID0ge1Jlc2VhcmNoIHN5bnRoZXNpcyBtZXRob2RzfSwKICBwdWJsaXNoZXIgPSB7V2lsZXl9LAogIHZvbHVtZSA9IHs3fSwKICBpc3N1ZSA9IHsxfSwKICBwYWdlcyA9IHs1NS03OX0sCiAgZGF0ZSA9IHsyMDE2LTAzfSwKICBkb2kgPSB7MTAuMTAwMi9qcnNtLjExNjR9LAogIHBtYyA9IHtQTUM0OTUwMDMwfSwKICBwbWlkID0gezI2MzMyMTQ0fSwKICBpc3NuID0gezE3NTktMjg3OSwxNzU5LTI4ODd9LAogIGFic3RyYWN0ID0ge01ldGEtYW5hbHlzZXMgYXJlIHR5cGljYWxseSB1c2VkIHRvIGVzdGltYXRlIHRoZSBvdmVyYWxsL21lYW4gb2YKICBhbiBvdXRjb21lIG9mIGludGVyZXN0LiBIb3dldmVyLCBpbmZlcmVuY2UgYWJvdXQgYmV0d2Vlbi1zdHVkeSB2YXJpYWJpbGl0eSwKICB3aGljaCBpcyB0eXBpY2FsbHkgbW9kZWxsZWQgdXNpbmcgYSBiZXR3ZWVuLXN0dWR5IHZhcmlhbmNlIHBhcmFtZXRlciwgaXMKICB1c3VhbGx5IGFuIGFkZGl0aW9uYWwgYWltLiBUaGUgRGVyU2ltb25pYW4gYW5kIExhaXJkIG1ldGhvZCwgY3VycmVudGx5IHdpZGVseQogIHVzZWQgYnkgZGVmYXVsdCB0byBlc3RpbWF0ZSB0aGUgYmV0d2Vlbi1zdHVkeSB2YXJpYW5jZSwgaGFzIGJlZW4gbG9uZwogIGNoYWxsZW5nZWQuIE91ciBhaW0gaXMgdG8gaWRlbnRpZnkga25vd24gbWV0aG9kcyBmb3IgZXN0aW1hdGlvbiBvZiB0aGUKICBiZXR3ZWVuLXN0dWR5IHZhcmlhbmNlIGFuZCBpdHMgY29ycmVzcG9uZGluZyB1bmNlcnRhaW50eSwgYW5kIHRvIHN1bW1hcmlzZSB0aGUKICBzaW11bGF0aW9uIGFuZCBlbXBpcmljYWwgZXZpZGVuY2UgdGhhdCBjb21wYXJlcyB0aGVtLiBXZSBpZGVudGlmaWVkIDE2CiAgZXN0aW1hdG9ycyBmb3IgdGhlIGJldHdlZW4tc3R1ZHkgdmFyaWFuY2UsIHNldmVuIG1ldGhvZHMgdG8gY2FsY3VsYXRlCiAgY29uZmlkZW5jZSBpbnRlcnZhbHMsIGFuZCBzZXZlcmFsIGNvbXBhcmF0aXZlIHN0dWRpZXMuIFNpbXVsYXRpb24gc3R1ZGllcwogIHN1Z2dlc3QgdGhhdCBmb3IgYm90aCBkaWNob3RvbW91cyBhbmQgY29udGludW91cyBkYXRhIHRoZSBlc3RpbWF0b3IgcHJvcG9zZWQKICBieSBQYXVsZSBhbmQgTWFuZGVsIGFuZCBmb3IgY29udGludW91cyBkYXRhIHRoZSByZXN0cmljdGVkIG1heGltdW0gbGlrZWxpaG9vZAogIGVzdGltYXRvciBhcmUgYmV0dGVyIGFsdGVybmF0aXZlcyB0byBlc3RpbWF0ZSB0aGUgYmV0d2Vlbi1zdHVkeSB2YXJpYW5jZS4KICBCYXNlZCBvbiB0aGUgc2NlbmFyaW9zIGFuZCByZXN1bHRzIHByZXNlbnRlZCBpbiB0aGUgcHVibGlzaGVkIHN0dWRpZXMsIHdlCiAgcmVjb21tZW5kIHRoZSBRLXByb2ZpbGUgbWV0aG9kIGFuZCB0aGUgYWx0ZXJuYXRpdmUgYXBwcm9hY2ggYmFzZWQgb24gYQogICdnZW5lcmFsaXNlZCBDb2NocmFuIGJldHdlZW4tc3R1ZHkgdmFyaWFuY2Ugc3RhdGlzdGljJyB0byBjb21wdXRlCiAgY29ycmVzcG9uZGluZyBjb25maWRlbmNlIGludGVydmFscyBhcm91bmQgdGhlIHJlc3VsdGluZyBlc3RpbWF0ZXMuIE91cgogIHJlY29tbWVuZGF0aW9ucyBhcmUgYmFzZWQgb24gYSBxdWFsaXRhdGl2ZSBldmFsdWF0aW9uIG9mIHRoZSBleGlzdGluZwogIGxpdGVyYXR1cmUgYW5kIGV4cGVydCBjb25zZW5zdXMuIEV2aWRlbmNlLWJhc2VkIHJlY29tbWVuZGF0aW9ucyByZXF1aXJlIGFuCiAgZXh0ZW5zaXZlIHNpbXVsYXRpb24gc3R1ZHkgd2hlcmUgYWxsIG1ldGhvZHMgd291bGQgYmUgY29tcGFyZWQgdW5kZXIgdGhlIHNhbWUKICBzY2VuYXJpb3MufSwKICB1cmwgPSB7aHR0cHM6Ly9vbmxpbmVsaWJyYXJ5LndpbGV5LmNvbS9kb2kvMTAuMTAwMi9qcnNtLjExNjR9LAogIGZpbGUgPSB7VmVyb25pa2kgZXQgYWwuIDIwMTYgLSBNZXRob2RzIHRvIGVzdGltYXRlIHRoZSBiZXR3ZWVuLXN0dWR5IHZhcmlhbmNlIGFuZCBpdHMgdW5jZXJ0YWludHkgaW4gbWV0YS1hbmFseXNpcy5wZGZ9LAogIGtleXdvcmRzID0ge2JpYXM7IGNvbmZpZGVuY2UgaW50ZXJ2YWw7IGNvdmVyYWdlIHByb2JhYmlsaXR5OyBoZXRlcm9nZW5laXR5OwogIG1lYW4gc3F1YXJlZCBlcnJvcn0sCiAgbGFuZ3VhZ2UgPSB7ZW59Cn0KCkBNSVNDe0JvcmVuc3RlaW4yMDA5LW1vLAogIHRpdGxlID0ge0ludHJvZHVjdGlvbiB0byB7TWV0YS1BbmFseXNpc319LAogIGF1dGhvciA9IHtCb3JlbnN0ZWluLCBNaWNoYWVsIGFuZCBIZWRnZXMsIExhcnJ5IFYgYW5kIEhpZ2dpbnMsIEp1bGlhbiBQIFQgYW5kCiAgUm90aHN0ZWluLCBIYW5uYWggUn0sCiAgZGF0ZSA9IHsyMDA5fSwKICBkb2kgPSB7MTAuMTAwMi85NzgwNDcwNzQzMzg2fSwKICB1cmwgPSB7aHR0cDovL2R4LmRvaS5vcmcvMTAuMTAwMi85NzgwNDcwNzQzMzg2fQp9CgpAQVJUSUNMRXtIZWRnZXMxOTg5LWlwLAogIHRpdGxlID0ge0FuIHVuYmlhc2VkIGNvcnJlY3Rpb24gZm9yIHNhbXBsaW5nIGVycm9yIGluIHZhbGlkaXR5IGdlbmVyYWxpemF0aW9uCiAgc3R1ZGllc30sCiAgYXV0aG9yID0ge0hlZGdlcywgTGFycnkgVn0sCiAgam91cm5hbHRpdGxlID0ge1RoZSBKb3VybmFsIG9mIGFwcGxpZWQgcHN5Y2hvbG9neX0sCiAgcHVibGlzaGVyID0ge0FtZXJpY2FuIFBzeWNob2xvZ2ljYWwgQXNzb2NpYXRpb24gKEFQQSl9LAogIHZvbHVtZSA9IHs3NH0sCiAgaXNzdWUgPSB7M30sCiAgcGFnZXMgPSB7NDY5LTQ3N30sCiAgZGF0ZSA9IHsxOTg5LTA2fSwKICBkb2kgPSB7MTAuMTAzNy8wMDIxLTkwMTAuNzQuMy40Njl9LAogIGlzc24gPSB7MDAyMS05MDEwLDE5MzktMTg1NH0sCiAgdXJsID0ge2h0dHA6Ly9keC5kb2kub3JnLzEwLjEwMzcvMDAyMS05MDEwLjc0LjMuNDY5fSwKICBsYW5ndWFnZSA9IHtlbn0KfQoK" download="refs_to_download.bib" class="nav-link" data-scroll-target="data\:text/x-bibtex;base64,QEFSVElDTEV7VmllY2h0YmF1ZXIyMDA1LXp0LAogIHRpdGxlID0ge0JpYXMgYW5kIGVmZmljaWVuY3kgb2YgbWV0YS1hbmFseXRpYyB2YXJpYW5jZSBlc3RpbWF0b3JzIGluIHRoZQogIHJhbmRvbS1lZmZlY3RzIG1vZGVsfSwKICBhdXRob3IgPSB7VmllY2h0YmF1ZXIsIFdvbGZnYW5nfSwKICBqb3VybmFsdGl0bGUgPSB7Sm91cm5hbCBvZiBlZHVjYXRpb25hbCBhbmQgYmVoYXZpb3JhbCBzdGF0aXN0aWNzOiBhIHF1YXJ0ZXJseQogIHB1YmxpY2F0aW9uIHNwb25zb3JlZCBieSB0aGUgQW1lcmljYW4gRWR1Y2F0aW9uYWwgUmVzZWFyY2ggQXNzb2NpYXRpb24gYW5kIHRoZQogIEFtZXJpY2FuIFN0YXRpc3RpY2FsIEFzc29jaWF0aW9ufSwKICBwdWJsaXNoZXIgPSB7QW1lcmljYW4gRWR1Y2F0aW9uYWwgUmVzZWFyY2ggQXNzb2NpYXRpb24gKEFFUkEpfSwKICB2b2x1bWUgPSB7MzB9LAogIGlzc3VlID0gezN9LAogIHBhZ2VzID0gezI2MS0yOTN9LAogIGRhdGUgPSB7MjAwNS0wOX0sCiAgZG9pID0gezEwLjMxMDIvMTA3Njk5ODYwMzAwMDMyNjF9LAogIGlzc24gPSB7MTA3Ni05OTg2LDE5MzUtMTA1NH0sCiAgYWJzdHJhY3QgPSB7VGhlIG1ldGEtYW5hbHl0aWMgcmFuZG9tIGVmZmVjdHMgbW9kZWwgYXNzdW1lcyB0aGF0IHRoZQogIHZhcmlhYmlsaXR5IGluIGVmZmVjdCBzaXplIGVzdGltYXRlcyBkcmF3biBmcm9tIGEgc2V0IG9mIHN0dWRpZXMgY2FuIGJlCiAgZGVjb21wb3NlZCBpbnRvIHR3byBwYXJ0czogaGV0ZXJvZ2VuZWl0eSBkdWUgdG8gcmFuZG9tIHBvcHVsYXRpb24gZWZmZWN0cyBhbmQKICBzYW1wbGluZyB2YXJpYW5jZS4gSW4gdGhpcyBjb250ZXh0LCB0aGUgdXN1YWwgZ29hbCBpcyB0byBlc3RpbWF0ZSB0aGUgY2VudHJhbAogIHRlbmRlbmN5IGFuZCB0aGUgYW1vdW50IG9mIGhldGVyb2dlbmVpdHkgaW4gdGhlIHBvcHVsYXRpb24gZWZmZWN0IHNpemVzLiBUaGUKICBhbW91bnQgb2YgaGV0ZXJvZ2VuZWl0eSBpbiBhIHNldCBvZiBlZmZlY3Qgc2l6ZXMgaGFzIGltcGxpY2F0aW9ucyByZWdhcmRpbmcKICB0aGUgaW50ZXJwcmV0YXRpb24gb2YgdGhlIG1ldGEtYW5hbHl0aWMgZmluZGluZ3MgYW5kIG9mdGVuIHNlcnZlcyBhcyBhbgogIGluZGljYXRvciBmb3IgdGhlIHByZXNlbmNlIG9mIHBvdGVudGlhbCBtb2RlcmF0b3IgdmFyaWFibGVzLiBGaXZlIHBvcHVsYXRpb24KICBoZXRlcm9nZW5laXR5IGVzdGltYXRvcnMgd2VyZSBjb21wYXJlZCBpbiB0aGlzIGFydGljbGUgYW5hbHl0aWNhbGx5IGFuZCB2aWEKICBNb250ZSBDYXJsbyBzaW11bGF0aW9ucyB3aXRoIHJlc3BlY3QgdG8gdGhlaXIgYmlhcyBhbmQgZWZmaWNpZW5jeS59LAogIHVybCA9IHtodHRwczovL3NjaG9sYXIuZ29vZ2xlLmNvbS9jaXRhdGlvbnM/dmlld19vcD12aWV3X2NpdGF0aW9uJmhsPWVuJnVzZXI9Sjg5UlhKa0FBQUFKJmNpdGF0aW9uX2Zvcl92aWV3PUo4OVJYSmtBQUFBSjpxak1ha0ZIRHk3c0N9LAogIGxhbmd1YWdlID0ge2VufQp9CgpAQVJUSUNMRXtWZXJvbmlraTIwMTYtbncsCiAgdGl0bGUgPSB7TWV0aG9kcyB0byBlc3RpbWF0ZSB0aGUgYmV0d2Vlbi1zdHVkeSB2YXJpYW5jZSBhbmQgaXRzIHVuY2VydGFpbnR5IGluCiAgbWV0YS1hbmFseXNpc30sCiAgYXV0aG9yID0ge1Zlcm9uaWtpLCBBcmV0aSBBbmdlbGlraSBhbmQgSmFja3NvbiwgRGFuIGFuZCBWaWVjaHRiYXVlciwgV29sZmdhbmcKICBhbmQgQmVuZGVyLCBSYWxmIGFuZCBCb3dkZW4sIEphY2sgYW5kIEtuYXBwLCBHdWlkbyBhbmQgS3VzcywgT2xpdmVyIGFuZAogIEhpZ2dpbnMsIEp1bGlhbiBQIFQgYW5kIExhbmdhbiwgRGVhbiBhbmQgU2FsYW50aSwgR2VvcmdpYX0sCiAgam91cm5hbHRpdGxlID0ge1Jlc2VhcmNoIHN5bnRoZXNpcyBtZXRob2RzfSwKICBwdWJsaXNoZXIgPSB7V2lsZXl9LAogIHZvbHVtZSA9IHs3fSwKICBpc3N1ZSA9IHsxfSwKICBwYWdlcyA9IHs1NS03OX0sCiAgZGF0ZSA9IHsyMDE2LTAzfSwKICBkb2kgPSB7MTAuMTAwMi9qcnNtLjExNjR9LAogIHBtYyA9IHtQTUM0OTUwMDMwfSwKICBwbWlkID0gezI2MzMyMTQ0fSwKICBpc3NuID0gezE3NTktMjg3OSwxNzU5LTI4ODd9LAogIGFic3RyYWN0ID0ge01ldGEtYW5hbHlzZXMgYXJlIHR5cGljYWxseSB1c2VkIHRvIGVzdGltYXRlIHRoZSBvdmVyYWxsL21lYW4gb2YKICBhbiBvdXRjb21lIG9mIGludGVyZXN0LiBIb3dldmVyLCBpbmZlcmVuY2UgYWJvdXQgYmV0d2Vlbi1zdHVkeSB2YXJpYWJpbGl0eSwKICB3aGljaCBpcyB0eXBpY2FsbHkgbW9kZWxsZWQgdXNpbmcgYSBiZXR3ZWVuLXN0dWR5IHZhcmlhbmNlIHBhcmFtZXRlciwgaXMKICB1c3VhbGx5IGFuIGFkZGl0aW9uYWwgYWltLiBUaGUgRGVyU2ltb25pYW4gYW5kIExhaXJkIG1ldGhvZCwgY3VycmVudGx5IHdpZGVseQogIHVzZWQgYnkgZGVmYXVsdCB0byBlc3RpbWF0ZSB0aGUgYmV0d2Vlbi1zdHVkeSB2YXJpYW5jZSwgaGFzIGJlZW4gbG9uZwogIGNoYWxsZW5nZWQuIE91ciBhaW0gaXMgdG8gaWRlbnRpZnkga25vd24gbWV0aG9kcyBmb3IgZXN0aW1hdGlvbiBvZiB0aGUKICBiZXR3ZWVuLXN0dWR5IHZhcmlhbmNlIGFuZCBpdHMgY29ycmVzcG9uZGluZyB1bmNlcnRhaW50eSwgYW5kIHRvIHN1bW1hcmlzZSB0aGUKICBzaW11bGF0aW9uIGFuZCBlbXBpcmljYWwgZXZpZGVuY2UgdGhhdCBjb21wYXJlcyB0aGVtLiBXZSBpZGVudGlmaWVkIDE2CiAgZXN0aW1hdG9ycyBmb3IgdGhlIGJldHdlZW4tc3R1ZHkgdmFyaWFuY2UsIHNldmVuIG1ldGhvZHMgdG8gY2FsY3VsYXRlCiAgY29uZmlkZW5jZSBpbnRlcnZhbHMsIGFuZCBzZXZlcmFsIGNvbXBhcmF0aXZlIHN0dWRpZXMuIFNpbXVsYXRpb24gc3R1ZGllcwogIHN1Z2dlc3QgdGhhdCBmb3IgYm90aCBkaWNob3RvbW91cyBhbmQgY29udGludW91cyBkYXRhIHRoZSBlc3RpbWF0b3IgcHJvcG9zZWQKICBieSBQYXVsZSBhbmQgTWFuZGVsIGFuZCBmb3IgY29udGludW91cyBkYXRhIHRoZSByZXN0cmljdGVkIG1heGltdW0gbGlrZWxpaG9vZAogIGVzdGltYXRvciBhcmUgYmV0dGVyIGFsdGVybmF0aXZlcyB0byBlc3RpbWF0ZSB0aGUgYmV0d2Vlbi1zdHVkeSB2YXJpYW5jZS4KICBCYXNlZCBvbiB0aGUgc2NlbmFyaW9zIGFuZCByZXN1bHRzIHByZXNlbnRlZCBpbiB0aGUgcHVibGlzaGVkIHN0dWRpZXMsIHdlCiAgcmVjb21tZW5kIHRoZSBRLXByb2ZpbGUgbWV0aG9kIGFuZCB0aGUgYWx0ZXJuYXRpdmUgYXBwcm9hY2ggYmFzZWQgb24gYQogICdnZW5lcmFsaXNlZCBDb2NocmFuIGJldHdlZW4tc3R1ZHkgdmFyaWFuY2Ugc3RhdGlzdGljJyB0byBjb21wdXRlCiAgY29ycmVzcG9uZGluZyBjb25maWRlbmNlIGludGVydmFscyBhcm91bmQgdGhlIHJlc3VsdGluZyBlc3RpbWF0ZXMuIE91cgogIHJlY29tbWVuZGF0aW9ucyBhcmUgYmFzZWQgb24gYSBxdWFsaXRhdGl2ZSBldmFsdWF0aW9uIG9mIHRoZSBleGlzdGluZwogIGxpdGVyYXR1cmUgYW5kIGV4cGVydCBjb25zZW5zdXMuIEV2aWRlbmNlLWJhc2VkIHJlY29tbWVuZGF0aW9ucyByZXF1aXJlIGFuCiAgZXh0ZW5zaXZlIHNpbXVsYXRpb24gc3R1ZHkgd2hlcmUgYWxsIG1ldGhvZHMgd291bGQgYmUgY29tcGFyZWQgdW5kZXIgdGhlIHNhbWUKICBzY2VuYXJpb3MufSwKICB1cmwgPSB7aHR0cHM6Ly9vbmxpbmVsaWJyYXJ5LndpbGV5LmNvbS9kb2kvMTAuMTAwMi9qcnNtLjExNjR9LAogIGZpbGUgPSB7VmVyb25pa2kgZXQgYWwuIDIwMTYgLSBNZXRob2RzIHRvIGVzdGltYXRlIHRoZSBiZXR3ZWVuLXN0dWR5IHZhcmlhbmNlIGFuZCBpdHMgdW5jZXJ0YWludHkgaW4gbWV0YS1hbmFseXNpcy5wZGZ9LAogIGtleXdvcmRzID0ge2JpYXM7IGNvbmZpZGVuY2UgaW50ZXJ2YWw7IGNvdmVyYWdlIHByb2JhYmlsaXR5OyBoZXRlcm9nZW5laXR5OwogIG1lYW4gc3F1YXJlZCBlcnJvcn0sCiAgbGFuZ3VhZ2UgPSB7ZW59Cn0KCkBNSVNDe0JvcmVuc3RlaW4yMDA5LW1vLAogIHRpdGxlID0ge0ludHJvZHVjdGlvbiB0byB7TWV0YS1BbmFseXNpc319LAogIGF1dGhvciA9IHtCb3JlbnN0ZWluLCBNaWNoYWVsIGFuZCBIZWRnZXMsIExhcnJ5IFYgYW5kIEhpZ2dpbnMsIEp1bGlhbiBQIFQgYW5kCiAgUm90aHN0ZWluLCBIYW5uYWggUn0sCiAgZGF0ZSA9IHsyMDA5fSwKICBkb2kgPSB7MTAuMTAwMi85NzgwNDcwNzQzMzg2fSwKICB1cmwgPSB7aHR0cDovL2R4LmRvaS5vcmcvMTAuMTAwMi85NzgwNDcwNzQzMzg2fQp9CgpAQVJUSUNMRXtIZWRnZXMxOTg5LWlwLAogIHRpdGxlID0ge0FuIHVuYmlhc2VkIGNvcnJlY3Rpb24gZm9yIHNhbXBsaW5nIGVycm9yIGluIHZhbGlkaXR5IGdlbmVyYWxpemF0aW9uCiAgc3R1ZGllc30sCiAgYXV0aG9yID0ge0hlZGdlcywgTGFycnkgVn0sCiAgam91cm5hbHRpdGxlID0ge1RoZSBKb3VybmFsIG9mIGFwcGxpZWQgcHN5Y2hvbG9neX0sCiAgcHVibGlzaGVyID0ge0FtZXJpY2FuIFBzeWNob2xvZ2ljYWwgQXNzb2NpYXRpb24gKEFQQSl9LAogIHZvbHVtZSA9IHs3NH0sCiAgaXNzdWUgPSB7M30sCiAgcGFnZXMgPSB7NDY5LTQ3N30sCiAgZGF0ZSA9IHsxOTg5LTA2fSwKICBkb2kgPSB7MTAuMTAzNy8wMDIxLTkwMTAuNzQuMy40Njl9LAogIGlzc24gPSB7MDAyMS05MDEwLDE5MzktMTg1NH0sCiAgdXJsID0ge2h0dHA6Ly9keC5kb2kub3JnLzEwLjEwMzcvMDAyMS05MDEwLjc0LjMuNDY5fSwKICBsYW5ndWFnZSA9IHtlbn0KfQoK"> Download .bib file</a></button></li>
+  </ul>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Meta-analysis and publication bias</span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Meta-analysis and publication bias</span>
+</h1>
 </div>
 
 
@@ -181,14 +290,830 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
+</header><section id="meta-analysis" class="level1 section" data-number="6"><h1 class="section" data-number="6">
+<span class="header-section-number">6</span> Meta-analysis</h1>
+<section id="meta-analysis-1" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="meta-analysis-1">
+<span class="header-section-number">6.1</span> Meta-analysis</h2>
+<ul>
+<li>The meta-analysis is a statistical procedure to combine evidence from a group of studies.</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>The idea is to “switch” the statistical unit from e.g., participants to studies</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>The motto could be that (appropriately) combining similar studies with a similar aim is the best way to understand something about a phenomenon</li>
+</ul></section><section id="meta-analysis-and-systematic-review" class="level2 smaller" data-number="6.2"><h2 class="smaller anchored" data-number="6.2" data-anchor-id="meta-analysis-and-systematic-review">
+<span class="header-section-number">6.2</span> Meta-analysis and Systematic Review</h2>
+<p>Usually a meta-analysis work follows these steps:</p>
+<ol type="1">
+<li>
+<strong>Identify the research question</strong>: is the treatment <em>x</em> effective?, Does the experimental effect <em>y</em> exist?</li>
+<li>
+<strong>Define inclusion/exclusion criteria</strong>: From the research question (1), keep only e.g., randomized controlled trials, studies with healthy participants, etc.</li>
+<li>
+<strong>Systematically search for studies</strong>: Analyze the literature to find all relevant studies</li>
+<li>
+<strong>Extract relevant information</strong>: Read, extract and organize relevant information e.g., sample size, treatment type, age, etc.</li>
+<li>
+<strong>Summarize the results</strong>: Create a narrative (flowcharts, tables, etc.) summary of included studies. This is the Systematic review part.</li>
+<li>
+<strong>Choose an effect size</strong>: Choose a way to standardize the effect across included studies</li>
+<li>
+<strong>Meta-analysis model</strong>: Choose and implement a meta-analysis model</li>
+<li><strong>Interpret and report results</strong></li>
+</ol></section><section id="before-the-fun-part" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="before-the-fun-part">
+<span class="header-section-number">6.3</span> Before the fun part…</h2>
+<div class="incremental">
+<ul class="incremental">
+<li>We are dealing only with the <strong>statistical part</strong>. The study selection, data extraction, studies evaluation etc. is another story</li>
+<li>The quality of the meta-analysis is the <strong>quality of included studies</strong>
+</li>
+</ul>
+</div>
+<p>. . .</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="img/gigo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</section><section id="unstandardized-effect-sizes" class="level2" data-number="6.4"><h2 data-number="6.4" class="anchored" data-anchor-id="unstandardized-effect-sizes">
+<span class="header-section-number">6.4</span> Unstandardized effect sizes</h2>
+<p>The basic idea of an effect size is just using the raw measure. For example studies using reaction times we can calculate the difference between two conditions as <span class="math inline">\(\overline X_1 - \overline X_2\)</span>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter5_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="unstandardized-effect-sizes-1" class="level2" data-number="6.5"><h2 data-number="6.5" class="anchored" data-anchor-id="unstandardized-effect-sizes-1">
+<span class="header-section-number">6.5</span> Unstandardized effect sizes</h2>
+<p>But another study (with the same research question) could use another measure, e.g., accuracy. We can still (not the best strategy but) compute the difference between the group means.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter5_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="unstandardized-effect-sizes-2" class="level2" data-number="6.6"><h2 data-number="6.6" class="anchored" data-anchor-id="unstandardized-effect-sizes-2">
+<span class="header-section-number">6.6</span> Unstandardized effect sizes</h2>
+<p>Clearly we cannot directly compare the two effects but we need to standardize the measure.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter5_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="standardized-effect-sizes" class="level2" data-number="6.7"><h2 data-number="6.7" class="anchored" data-anchor-id="standardized-effect-sizes">
+<span class="header-section-number">6.7</span> Standardized effect sizes</h2>
+<p>To compare results from different studies, we should use a common metric. Frequently meta-analysts use <em>standardized</em> effect sizes. For example the Pearson correlation or the Cohen’s <span class="math inline">\(d\)</span>.</p>
+<p><span id="eq-correlation"><span class="math display">\[
+r = \frac{\sum{(x_i - \bar{x})(y_i - \bar{y})}}{\sqrt{\sum{(x_i - \bar{x})^2}\sum{(y_i - \bar{y})^2}}}
+\tag{6.1}\]</span></span></p>
+<p><span class="math display">\[
+d = \frac{\bar{x_1} - \bar{x_2}}{s_p}
+\]</span></p>
+<p><span class="math display">\[
+s_p = \sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}}
+\]</span></p>
+</section><section id="standardized-effect-sizes-1" class="level2" data-number="6.8"><h2 data-number="6.8" class="anchored" data-anchor-id="standardized-effect-sizes-1">
+<span class="header-section-number">6.8</span> Standardized effect sizes</h2>
+<p>The advantage of standardized effect size is that regardless the original variable, the interpretation and the scale is the same. For example the pearson correlation ranges between -1 and 1 and the Cohen’s <span class="math inline">\(d\)</span> between <span class="math inline">\(- \infty\)</span> and <span class="math inline">\(\infty\)</span> and is interpreted as how many standard deviations the two groups/conditions differs.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">S</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0.7</span>, <span class="fl">0.7</span>, <span class="fl">1</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span><span class="op">)</span>, <span class="va">S</span>, empirical <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">X</span>, xlab <span class="op">=</span> <span class="st">"x"</span>, ylab <span class="op">=</span> <span class="st">"y"</span>, cex <span class="op">=</span> <span class="fl">1.3</span>, pch <span class="op">=</span> <span class="fl">19</span>,</span>
+<span>     cex.lab <span class="op">=</span> <span class="fl">1.2</span>, cex.axis <span class="op">=</span> <span class="fl">1.2</span>,</span>
+<span>     main <span class="op">=</span> <span class="fu">latex2exp</span><span class="fu">::</span><span class="fu"><a href="https://www.stefanom.io/latex2exp/reference/TeX.html">TeX</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"$r = %.2f$"</span>, <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">X</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">X</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">X</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">~</span> <span class="va">X</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"firebrick"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/density.html">density</a></span><span class="op">(</span><span class="va">X</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5</span>, <span class="fl">7</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"dodgerblue"</span>, lwd <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>     main <span class="op">=</span> <span class="fu">latex2exp</span><span class="fu">::</span><span class="fu"><a href="https://www.stefanom.io/latex2exp/reference/TeX.html">TeX</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"$d = %.2f$"</span>, <span class="fu">lsr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/lsr/man/cohensD.html">cohensD</a></span><span class="op">(</span><span class="va">X</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">X</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>     xlab <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/density.html">density</a></span><span class="op">(</span><span class="va">X</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"firebrick"</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter5_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="standardized-vs-unstandardized" class="level2" data-number="6.9"><h2 data-number="6.9" class="anchored" data-anchor-id="standardized-vs-unstandardized">
+<span class="header-section-number">6.9</span> Standardized vs unstandardized</h2>
+<p>The main difference is (usually) the absence of a effect-size-variance relationship for unstandardized effects. For example, the variance of the difference between two groups is:</p>
+<p><span id="eq-var-umd"><span class="math display">\[
+V_d = \frac{s^2_1}{n_1} + \frac{s^2_2}{n_2}
+\tag{6.2}\]</span></span></p>
+<p>While the variance of a Cohen’s <span class="math inline">\(d\)</span> can be calculated as:</p>
+<p><span class="math display">\[
+V_d = \frac{n_1 + n_2}{n_1 n_2} + \frac{d^2}{2(n_1 + n_2)}
+\]</span></p>
+</section><section id="standardized-vs-unstandardized-1" class="level2" data-number="6.10"><h2 data-number="6.10" class="anchored" data-anchor-id="standardized-vs-unstandardized-1">
+<span class="header-section-number">6.10</span> Standardized vs unstandardized</h2>
+<p>In this <a href="https://www.jepusto.com/alternative-formulas-for-the-smd/">amazing blog post</a> James Pustejovsky explained where the equations comes from. Basically, the <span class="math inline">\(\frac{n_1 + n_2}{n_1 n_2}\)</span> term is the same as the <span class="math inline">\(\frac{s^2_1}{n_1} + \frac{s^2_2}{n_2}\)</span> while the extra <span class="math inline">\(\frac{d^2}{2(n_1 + n_2)}\)</span> is for the non-centrality induced by the standardized difference.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">50</span>, <span class="fl">100</span><span class="op">)</span></span>
+<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">0.001</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span>n <span class="op">=</span> <span class="va">n</span>, d <span class="op">=</span> <span class="va">d</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dd</span><span class="op">$</span><span class="va">vumd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">dd</span>, <span class="fl">1</span><span class="op">/</span><span class="va">n</span> <span class="op">+</span> <span class="fl">1</span><span class="op">/</span><span class="va">n</span><span class="op">)</span></span>
+<span><span class="va">dd</span><span class="op">$</span><span class="va">vd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span><span class="op">(</span><span class="va">dd</span>, <span class="op">(</span><span class="va">n</span> <span class="op">+</span> <span class="va">n</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">n</span> <span class="op">*</span> <span class="va">n</span><span class="op">)</span> <span class="op">+</span> <span class="va">d</span><span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="op">(</span><span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="va">n</span> <span class="op">+</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="va">dd</span>, <span class="fl">3</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">d</span>, y <span class="op">=</span> <span class="va">value</span>, color <span class="op">=</span> <span class="va">name</span>, linetype <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>linetype <span class="op">=</span> <span class="st">"Sample Size"</span>,</span>
+<span>       color <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter5_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="sec-effsize-se" class="level2" data-number="6.11"><h2 data-number="6.11" class="anchored" data-anchor-id="sec-effsize-se">
+<span class="header-section-number">6.11</span> Effect size sampling variability</h2>
+<p>Crucially, we can calculate also the <strong>sampling variability</strong> of each effect size. The <strong>sampling variability</strong> is the precision of estimated value.</p>
+<p>For example, there are multiple methods to estimate the Cohen’s <span class="math inline">\(d\)</span> sampling variability. For example:</p>
+<p><span class="math display">\[
+V_d = \frac{n_1 + n_2}{n_1 n_2} + \frac{d^2}{2(n_1 + n_2)}
+\]</span></p>
+<p>Each effect size has a specific formula for the sampling variability. The sample size is usually the most important information. Studies with high sample size have low sampling variability.</p>
+</section><section id="effect-size-sampling-variability" class="level2" data-number="6.12"><h2 data-number="6.12" class="anchored" data-anchor-id="effect-size-sampling-variability">
+<span class="header-section-number">6.12</span> Effect size sampling variability</h2>
+<p>As the sample size grows and tends to infinity, the sampling variability approach zero.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter5_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="unstandardized-effect-sizes-3" class="level2" data-number="6.13"><h2 data-number="6.13" class="anchored" data-anchor-id="unstandardized-effect-sizes-3">
+<span class="header-section-number">6.13</span> Unstandardized effect sizes</h2>
+<p>For the examples and plots I’m going to use simulated data. We simulate <em>unstandardized</em> effect sizes (UMD) because the computations are easier and the estimator is unbiased <span class="citation" data-cites="Viechtbauer2005-zt">(e.g., <a href="chapter5.html#ref-Viechtbauer2005-zt" role="doc-biblioref">Viechtbauer, 2005</a>)</span></p>
+<p>More specifically we simulate hypothetical studies where two independent groups are compared:</p>
+<p><span id="eq-umd"><span class="math display">\[
+\Delta = \overline{X_1} - \overline{X_2}
+\tag{6.3}\]</span></span></p>
+<p><span class="math display">\[
+SE_{\Delta} = \sqrt{\frac{s^2_1}{n_1} + \frac{s^2_2}{n_2}}
+\]</span></p>
+<p>With <span class="math inline">\(X_{1_i} \sim \mathcal{N}(0, 1)\)</span> and <span class="math inline">\(X_{2_i} \sim \mathcal{N}(\Delta, 1)\)</span></p>
+<p>The main advantage is that, compared to standardized effect size, the sampling variability do not depends on the effect size itself, simplifying the computations.</p>
+</section></section><section id="simulating-a-single-study" class="level1 section" data-number="7"><h1 class="section" data-number="7">
+<span class="header-section-number">7</span> Simulating a single study</h1>
+<section id="simulating-a-single-study---umd" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="simulating-a-single-study---umd">
+<span class="header-section-number">7.1</span> Simulating a single study - UMD</h2>
+<p>To simulate a single study using a UMD we need to generate data according to the appropriate model. Here we have a difference between two groups. We can assume that the two groups comes from a normal distribution where group 1 <span class="math inline">\(g_1 \sim \mathcal{N}(0, 1)\)</span> and group 2 <span class="math inline">\(g_2 \sim \mathcal{N}(D, 1)\)</span> where <span class="math inline">\(D\)</span> is the effect size. Then using Equations <a href="#eq-var-umd" class="quarto-xref"><span>6.2</span></a>, <a href="#eq-umd" class="quarto-xref"><span>6.3</span></a> we can estimate the effect size and the variance.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">D</span> <span class="op">&lt;-</span> <span class="fl">1</span>  <span class="co"># effect size</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">50</span> <span class="co"># sample size</span></span>
+<span><span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">g2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, mean <span class="op">=</span> <span class="va">D</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># effect size</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">g2</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.8874294</span></span>
+<span></span>
+<span><span class="co"># variance</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span><span class="op">/</span><span class="va">n</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">g2</span><span class="op">)</span><span class="op">/</span><span class="va">n</span></span>
+<span><span class="co">#&gt; [1] 0.04084716</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="simulating-a-single-study---umd-1" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="simulating-a-single-study---umd-1">
+<span class="header-section-number">7.2</span> Simulating a single study - UMD</h2>
+<p>For simplicity we can wrap everything within a function:</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># default sd = 1</span></span>
+<span><span class="va">sim_umd</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n1</span>, <span class="va">n2</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">D</span>, <span class="va">sd</span> <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">n2</span><span class="op">)</span><span class="op">)</span> <span class="va">n2</span> <span class="op">&lt;-</span> <span class="va">n1</span> <span class="co"># same to n1 if null </span></span>
+<span>  <span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n1</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="va">sd</span><span class="op">)</span></span>
+<span>  <span class="va">g2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n2</span>, mean <span class="op">=</span> <span class="va">D</span>, sd <span class="op">=</span> <span class="va">sd</span><span class="op">)</span></span>
+<span>  <span class="va">yi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">g2</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></span>
+<span>  <span class="va">vi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">g2</span><span class="op">)</span><span class="op">/</span><span class="va">n2</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">yi</span>, <span class="va">vi</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">sim_umd</span><span class="op">(</span><span class="fl">100</span>, D <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          yi         vi</span></span>
+<span><span class="co">#&gt; 1 0.4037024 0.02264228</span></span>
+<span><span class="fu">sim_umd</span><span class="op">(</span><span class="fl">50</span>, D <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
+<span><span class="co">#&gt;           yi        vi</span></span>
+<span><span class="co">#&gt; 1 0.02194707 0.0430324</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="simulating-a-single-study---umd-2" class="level2" data-number="7.3"><h2 data-number="7.3" class="anchored" data-anchor-id="simulating-a-single-study---umd-2">
+<span class="header-section-number">7.3</span> Simulating a single study - UMD</h2>
+<p>We can also generate a large number of studies and check the distribution of effect size and sampling variances. Note that the real <span class="math inline">\(D = 1\)</span> and the real variance <span class="math inline">\(V_D = 1/50 + 1/50 = 0.04\)</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">studies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fu">sim_umd</span><span class="op">(</span>n1 <span class="op">=</span> <span class="fl">50</span>, D <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, simplify <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="co"># simplify = FALSE return a list</span></span>
+<span><span class="va">studies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">studies</span><span class="op">)</span> <span class="co"># to dataframe</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">studies</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;          yi         vi
+#&gt; 1 1.1915289 0.03585450
+#&gt; 2 0.9252292 0.04587208
+#&gt; 3 0.7187961 0.03841321
+#&gt; 4 1.2532639 0.04614220
+#&gt; 5 0.6508723 0.03235072
+#&gt; 6 0.8505336 0.03913158</code></pre>
+</div>
+</div>
+</section><section id="sec-umd-sampling-distribution" class="level2" data-number="7.4"><h2 data-number="7.4" class="anchored" data-anchor-id="sec-umd-sampling-distribution">
+<span class="header-section-number">7.4</span> Simulating a single study - UMD</h2>
+<p>Then we can plot the sampling distributions:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter5_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="simulating-a-single-study---smd" class="level2" data-number="7.5"><h2 data-number="7.5" class="anchored" data-anchor-id="simulating-a-single-study---smd">
+<span class="header-section-number">7.5</span> Simulating a single study - SMD</h2>
+<p>The idea is the same when simulating a SDM but we need extra steps. Let’s adjust the previous function:</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sim_smd</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n1</span>, <span class="va">n2</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">D</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">n2</span><span class="op">)</span><span class="op">)</span> <span class="va">n2</span> <span class="op">&lt;-</span> <span class="va">n1</span> <span class="co"># same to n1 if null </span></span>
+<span>  <span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n1</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="va">g2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n2</span>, mean <span class="op">=</span> <span class="va">D</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">v1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></span>
+<span>  <span class="va">v2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">g2</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># pooled standard deviation</span></span>
+<span>  <span class="va">sp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="va">v1</span> <span class="op">*</span> <span class="op">(</span><span class="va">n1</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span> <span class="va">v2</span> <span class="op">*</span> <span class="op">(</span><span class="va">n2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">n1</span> <span class="op">+</span> <span class="va">n2</span> <span class="op">-</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="va">yi</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">g2</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">g1</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="va">sp</span></span>
+<span>  <span class="va">vi</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">n1</span> <span class="op">+</span> <span class="va">n2</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">n1</span> <span class="op">*</span> <span class="va">n2</span><span class="op">)</span> <span class="op">+</span> <span class="va">yi</span><span class="op">^</span><span class="fl">2</span><span class="op">/</span><span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="op">(</span><span class="va">n1</span> <span class="op">+</span> <span class="va">n2</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">yi</span>, <span class="va">vi</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="simulating-a-single-study---smd-1" class="level2" data-number="7.6"><h2 data-number="7.6" class="anchored" data-anchor-id="simulating-a-single-study---smd-1">
+<span class="header-section-number">7.6</span> Simulating a single study - SMD</h2>
+<p>When working with SMD, calculating the sampling variance can be challenging. <span class="citation" data-cites="Veroniki2016-nw">Veroniki et al. (<a href="chapter5.html#ref-Veroniki2016-nw" role="doc-biblioref">2016</a>)</span> identified 16 different estimators with different properties. Furthermore, it is a common practice to correct the SDM effect and variance using the Hedges’s correction <span class="citation" data-cites="Hedges1989-ip">(<a href="chapter5.html#ref-Hedges1989-ip" role="doc-biblioref">Hedges, 1989</a>)</span>.</p>
+<p>You can directly implement another equation for the sampling variance or the Hedges’s correction directly in the simulation function.</p>
+</section><section id="simulating-a-single-study---pearson-rho" class="level2" data-number="7.7"><h2 data-number="7.7" class="anchored" data-anchor-id="simulating-a-single-study---pearson-rho">
+<span class="header-section-number">7.7</span> Simulating a single study - Pearson <span class="math inline">\(\rho\)</span>
+</h2>
+<p>Another common effect size is the Pearson correlation coefficient <span class="math inline">\(\rho\)</span> (and the estimate <span class="math inline">\(r\)</span>, see <a href="#eq-correlation" class="quarto-xref">Equation&nbsp;<span>6.1</span></a>). The variance of the correlation is calculated as:</p>
+<p><span class="math display">\[
+V_{r} = \frac{(1 - r^2)^2}{n - 1}
+\]</span></p>
+</section><section id="simulating-a-single-study---pearson-rho-1" class="level2" data-number="7.8"><h2 data-number="7.8" class="anchored" data-anchor-id="simulating-a-single-study---pearson-rho-1">
+<span class="header-section-number">7.8</span> Simulating a single study - Pearson <span class="math inline">\(\rho\)</span>
+</h2>
+<p>There is a huge dependency between <span class="math inline">\(r\)</span> and it’s sampling variance (similar to the Cohen’s <span class="math inline">\(d\)</span>):</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
+<span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0.01</span><span class="op">)</span></span>
+<span><span class="va">v</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">r</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="op">(</span><span class="va">n</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">r</span>, <span class="va">v</span>, type <span class="op">=</span> <span class="st">"l"</span>, main <span class="op">=</span> <span class="st">"N = 50"</span>, xlab <span class="op">=</span> <span class="st">"r"</span>, ylab <span class="op">=</span> <span class="fu">latex2exp</span><span class="fu">::</span><span class="fu"><a href="https://www.stefanom.io/latex2exp/reference/TeX.html">TeX</a></span><span class="op">(</span><span class="st">"$V_r$"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter5_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="simulating-a-single-study---pearson-rho-2" class="level2" data-number="7.9"><h2 data-number="7.9" class="anchored" data-anchor-id="simulating-a-single-study---pearson-rho-2">
+<span class="header-section-number">7.9</span> Simulating a single study - Pearson <span class="math inline">\(\rho\)</span>
+</h2>
+<p>For this reason the so-called Fisher’s <span class="math inline">\(z\)</span> transformation is used to stabilize the relationship.</p>
+<p><span class="math display">\[
+z = \frac{\log{\frac{1 + r}{1 - r}}}{2}
+\]</span></p>
+<p><span class="math display">\[
+V_z = \frac{1}{n - 3}
+\]</span></p>
+<p>Now the variance is completely independent from the correlation value.</p>
+</section><section id="simulating-a-single-study---pearson-rho-3" class="level2" data-number="7.10"><h2 data-number="7.10" class="anchored" data-anchor-id="simulating-a-single-study---pearson-rho-3">
+<span class="header-section-number">7.10</span> Simulating a single study - Pearson <span class="math inline">\(\rho\)</span>
+</h2>
+<p>This is the relationship between <span class="math inline">\(r\)</span> and <span class="math inline">\(z\)</span>:</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
+<span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0.01</span><span class="op">)</span></span>
+<span><span class="va">v</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">r</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="op">(</span><span class="va">n</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span> </span>
+<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">r</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">r</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">z</span>, <span class="va">r</span>, type <span class="op">=</span> <span class="st">"l"</span>, xlab <span class="op">=</span> <span class="st">"Fisher's z"</span>, ylab <span class="op">=</span> <span class="st">"Correlation"</span>, main <span class="op">=</span> <span class="st">"Correlation to Fisher's z"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter5_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="simulating-a-single-study---pearson-rho-4" class="level2" data-number="7.11"><h2 data-number="7.11" class="anchored" data-anchor-id="simulating-a-single-study---pearson-rho-4">
+<span class="header-section-number">7.11</span> Simulating a single study - Pearson <span class="math inline">\(\rho\)</span>
+</h2>
+<p>To simulate a study using correlations we can use the <code><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">MASS::mvrnorm()</a></code> function that can generate correlated data from a multivariate normal distribution.</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sim_r</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span>, <span class="va">r</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">R</span> <span class="op">&lt;-</span> <span class="va">r</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">r</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="co"># 2 x 2 correlation matrix</span></span>
+<span>  <span class="va">X</span> <span class="op">&lt;-</span> <span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/mvrnorm.html">mvrnorm</a></span><span class="op">(</span><span class="va">n</span>, mu <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, Sigma <span class="op">=</span> <span class="va">R</span><span class="op">)</span> <span class="co"># the means are not relevant here</span></span>
+<span>  <span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">]</span> <span class="co"># extract correlation</span></span>
+<span>  <span class="va">vr</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">r</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="op">(</span><span class="va">n</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>  <span class="co"># variance of r</span></span>
+<span>  <span class="va">yi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">(</span><span class="fl">1</span> <span class="op">+</span> <span class="va">r</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">r</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span> <span class="co"># fisher z</span></span>
+<span>  <span class="va">vi</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">/</span> <span class="op">(</span><span class="va">n</span> <span class="op">-</span> <span class="fl">3</span><span class="op">)</span> <span class="co"># fisher z variance</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">yi</span>, <span class="va">vi</span>, <span class="va">r</span>, <span class="va">vr</span><span class="op">)</span> <span class="co"># including also the pearson correlation and variance</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="simulating-a-single-study---pearson-rho-5" class="level2" data-number="7.12"><h2 data-number="7.12" class="anchored" data-anchor-id="simulating-a-single-study---pearson-rho-5">
+<span class="header-section-number">7.12</span> Simulating a single study - Pearson <span class="math inline">\(\rho\)</span>
+</h2>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">sim_r</span><span class="op">(</span><span class="fl">100</span>, <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          yi         vi         r          vr</span></span>
+<span><span class="co">#&gt; 1 0.4437195 0.01030928 0.4167228 0.006897386</span></span>
+<span><span class="fu">sim_r</span><span class="op">(</span><span class="fl">50</span>, <span class="fl">0.8</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          yi        vi         r          vr</span></span>
+<span><span class="co">#&gt; 1 0.8432957 0.0212766 0.6875507 0.005673833</span></span>
+<span></span>
+<span><span class="co"># also here the sampling distributions</span></span>
+<span><span class="va">studies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">1000</span>, <span class="fu">sim_r</span><span class="op">(</span><span class="fl">50</span>, <span class="fl">0.7</span><span class="op">)</span>, simplify <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">studies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">studies</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">studies</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        yi               vi                r                vr           </span></span>
+<span><span class="co">#&gt;  Min.   :0.3156   Min.   :0.02128   Min.   :0.3055   Min.   :0.0009244  </span></span>
+<span><span class="co">#&gt;  1st Qu.:0.7709   1st Qu.:0.02128   1st Qu.:0.6475   1st Qu.:0.0039523  </span></span>
+<span><span class="co">#&gt;  Median :0.8688   Median :0.02128   Median :0.7007   Median :0.0052864  </span></span>
+<span><span class="co">#&gt;  Mean   :0.8676   Mean   :0.02128   Mean   :0.6925   Mean   :0.0056173  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:0.9690   3rd Qu.:0.02128   3rd Qu.:0.7483   3rd Qu.:0.0068839  </span></span>
+<span><span class="co">#&gt;  Max.   :1.4088   Max.   :0.02128   Max.   :0.8872   Max.   :0.0167769</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="more-on-effect-sizes" class="level2" data-number="7.13"><h2 data-number="7.13" class="anchored" data-anchor-id="more-on-effect-sizes">
+<span class="header-section-number">7.13</span> More on effect sizes</h2>
+<p>The same logic can be applied to any situation. Just understand the data generation process, find the effect size equations and generate data.</p>
+<ul>
+<li>
+<span class="citation" data-cites="Borenstein2009-mo">Borenstein et al. (<a href="chapter5.html#ref-Borenstein2009-mo" role="doc-biblioref">2009</a>)</span> for all effect sizes equations. Also with equations to convert among effect sizes (useful in real-world meta-analyses)<br>
+</li>
+<li>the <a href="https://wviechtb.github.io/metafor/reference/escalc.html"><code>metafor::escalc()</code></a> function implements basically any effect size. You can see also the <a href="https://github.com/wviechtb/metafor/blob/master/R/escalc.r">source code</a> to see the actual R implementation.</li>
+<li>
+<a href="https://matthewbjane.quarto.pub/guide-to-effect-sizes-and-confidence-intervals">Guide to effect sizes</a>: a modern and complete overview of effect sizes</li>
+</ul></section><section id="simulating-from-sampling-distributions-extra" class="level2" data-number="7.14"><h2 data-number="7.14" class="anchored" data-anchor-id="simulating-from-sampling-distributions-extra">
+<span class="header-section-number">7.14</span> Simulating from sampling distributions [#extra]</h2>
+<p>The previous simulation examples are participant-level simulations. In fact we simulated <span class="math inline">\(n\)</span> observations then we aggregated calculating the effect sizes.</p>
+<p>. . .</p>
+<p>This is the most flexible and general data simulation strategy but is computationally not efficient.</p>
+<p>. . .</p>
+<p>Another strategy individuate the exact effect size sampling distribution. Then we can sample directly from it. The downside is that we need to derive (or find) the equation.</p>
+</section><section id="simulating-from-sampling-distributions-extra-1" class="level2" data-number="7.15"><h2 data-number="7.15" class="anchored" data-anchor-id="simulating-from-sampling-distributions-extra-1">
+<span class="header-section-number">7.15</span> Simulating from sampling distributions [#extra]</h2>
+<p>For example, when generating UMD we can simulate from the sampling distribution presented in <a href="#sec-umd-sampling-distribution" class="quarto-xref"><span>Section 7.4</span></a>.</p>
+<p><span class="math display">\[
+y_i \sim \mathcal{N}(\theta, \sqrt{\sigma^2_i})
+\]</span> <span class="math display">\[
+\sigma^2_i \sim \frac{\chi^2_{n_1 + n_2 - 2}}{n_1 + n_2 - 2} (\frac{1}{n_1} + \frac{1}{n_2})
+\]</span></p>
+<p>In this way we can sample <span class="math inline">\(k\)</span> effects and sampling variances directly from the sampling distributions. Without generating data and then aggregate.</p>
+</section><section id="simulating-from-sampling-distributions-extra-2" class="level2" data-number="7.16"><h2 data-number="7.16" class="anchored" data-anchor-id="simulating-from-sampling-distributions-extra-2">
+<span class="header-section-number">7.16</span> Simulating from sampling distributions [#extra]</h2>
+<p>We can again put everything within a function:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sim_k_umd</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">k</span>, <span class="va">D</span>, <span class="va">n1</span>, <span class="va">n2</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">n2</span><span class="op">)</span><span class="op">)</span> <span class="va">n2</span> <span class="op">&lt;-</span> <span class="va">n1</span></span>
+<span>  <span class="va">yi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">k</span>, <span class="va">D</span>, <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fl">1</span><span class="op">/</span><span class="va">n2</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">vi</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Chisquare.html">rchisq</a></span><span class="op">(</span><span class="va">k</span>, <span class="va">n1</span> <span class="op">+</span> <span class="va">n2</span> <span class="op">-</span> <span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">n1</span> <span class="op">+</span> <span class="va">n2</span> <span class="op">-</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fl">1</span><span class="op">/</span><span class="va">n2</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">yi</span>, <span class="va">vi</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="simulating-from-sampling-distributions-extra-3" class="level2" data-number="7.17"><h2 data-number="7.17" class="anchored" data-anchor-id="simulating-from-sampling-distributions-extra-3">
+<span class="header-section-number">7.17</span> Simulating from sampling distributions [#extra]</h2>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">sim_k_umd</span><span class="op">(</span>k <span class="op">=</span> <span class="fl">10</span>, D <span class="op">=</span> <span class="fl">0.5</span>, n1 <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
+<span><span class="co">#&gt;           yi         vi</span></span>
+<span><span class="co">#&gt; 1  0.5205905 0.04758252</span></span>
+<span><span class="co">#&gt; 2  0.3809505 0.03895516</span></span>
+<span><span class="co">#&gt; 3  0.5317918 0.03331633</span></span>
+<span><span class="co">#&gt; 4  0.5008877 0.04284575</span></span>
+<span><span class="co">#&gt; 5  0.3932129 0.03159672</span></span>
+<span><span class="co">#&gt; 6  0.7050753 0.04019913</span></span>
+<span><span class="co">#&gt; 7  0.3567325 0.03676669</span></span>
+<span><span class="co">#&gt; 8  0.4146574 0.03434670</span></span>
+<span><span class="co">#&gt; 9  0.5092143 0.03986247</span></span>
+<span><span class="co">#&gt; 10 0.1763490 0.03701465</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="simulating-from-sampling-distributions-extra-4" class="level2" data-number="7.18"><h2 data-number="7.18" class="anchored" data-anchor-id="simulating-from-sampling-distributions-extra-4">
+<span class="header-section-number">7.18</span> Simulating from sampling distributions [#extra]</h2>
+<p>We can compare the two methods and see that we are sampling from the same data generation process.</p>
+<div class="cell">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">1e4</span></span>
+<span><span class="va">s_umd</span> <span class="op">&lt;-</span> <span class="fu">sim_k_umd</span><span class="op">(</span><span class="va">k</span>, D <span class="op">=</span> <span class="fl">1</span>, n1 <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
+<span><span class="va">ip_umd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="va">k</span>, <span class="fu">sim_umd</span><span class="op">(</span>n1 <span class="op">=</span> <span class="fl">50</span>, D <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, simplify <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">ip_umd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">ip_umd</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter5_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="simulating-from-sampling-distributions-extra-5" class="level2" data-number="7.19"><h2 data-number="7.19" class="anchored" data-anchor-id="simulating-from-sampling-distributions-extra-5">
+<span class="header-section-number">7.19</span> Simulating from sampling distributions [#extra]</h2>
+<p>The actual advantage is in terms of computational speed. To simulate <span class="math inline">\(k = 10\)</span> studies for 1000 times (similar to a standard Monte Carlo simulation):</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bench</span> <span class="op">&lt;-</span> <span class="fu">microbenchmark</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span></span>
+<span>  sampling <span class="op">=</span> <span class="fu">sim_k_umd</span><span class="op">(</span>k <span class="op">=</span> <span class="fl">10</span>, n1 <span class="op">=</span> <span class="fl">50</span>, D <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>  participant <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fu">sim_umd</span><span class="op">(</span>n1 <span class="op">=</span> <span class="fl">50</span>, D <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  times <span class="op">=</span> <span class="fl">1000</span> </span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="op">(</span><span class="va">bench</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">bench</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;          expr      min       lq      mean   median       uq      max neval cld</span></span>
+<span><span class="co">#&gt; 1    sampling  120.687  125.771  137.5462  131.272  138.035 4183.285  1000  a </span></span>
+<span><span class="co">#&gt; 2 participant 1529.916 1567.853 1658.2399 1588.146 1616.554 6862.813  1000   b</span></span>
+<span></span>
+<span><span class="va">bench</span><span class="op">$</span><span class="va">mean</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">/</span> <span class="va">bench</span><span class="op">$</span><span class="va">mean</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="co"># faster</span></span>
+<span><span class="co">#&gt; [1] 12.05588</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="references-download-.bib-file" class="level2 refs" data-number="7.20"><h2 class="refs anchored" data-number="7.20" data-anchor-id="references-download-.bib-file">
+<span class="header-section-number">7.20</span> References <button class="btn"><i class="fa fa-download"></i><a href="data:text/x-bibtex;base64,QEFSVElDTEV7VmllY2h0YmF1ZXIyMDA1LXp0LAogIHRpdGxlID0ge0JpYXMgYW5kIGVmZmljaWVuY3kgb2YgbWV0YS1hbmFseXRpYyB2YXJpYW5jZSBlc3RpbWF0b3JzIGluIHRoZQogIHJhbmRvbS1lZmZlY3RzIG1vZGVsfSwKICBhdXRob3IgPSB7VmllY2h0YmF1ZXIsIFdvbGZnYW5nfSwKICBqb3VybmFsdGl0bGUgPSB7Sm91cm5hbCBvZiBlZHVjYXRpb25hbCBhbmQgYmVoYXZpb3JhbCBzdGF0aXN0aWNzOiBhIHF1YXJ0ZXJseQogIHB1YmxpY2F0aW9uIHNwb25zb3JlZCBieSB0aGUgQW1lcmljYW4gRWR1Y2F0aW9uYWwgUmVzZWFyY2ggQXNzb2NpYXRpb24gYW5kIHRoZQogIEFtZXJpY2FuIFN0YXRpc3RpY2FsIEFzc29jaWF0aW9ufSwKICBwdWJsaXNoZXIgPSB7QW1lcmljYW4gRWR1Y2F0aW9uYWwgUmVzZWFyY2ggQXNzb2NpYXRpb24gKEFFUkEpfSwKICB2b2x1bWUgPSB7MzB9LAogIGlzc3VlID0gezN9LAogIHBhZ2VzID0gezI2MS0yOTN9LAogIGRhdGUgPSB7MjAwNS0wOX0sCiAgZG9pID0gezEwLjMxMDIvMTA3Njk5ODYwMzAwMDMyNjF9LAogIGlzc24gPSB7MTA3Ni05OTg2LDE5MzUtMTA1NH0sCiAgYWJzdHJhY3QgPSB7VGhlIG1ldGEtYW5hbHl0aWMgcmFuZG9tIGVmZmVjdHMgbW9kZWwgYXNzdW1lcyB0aGF0IHRoZQogIHZhcmlhYmlsaXR5IGluIGVmZmVjdCBzaXplIGVzdGltYXRlcyBkcmF3biBmcm9tIGEgc2V0IG9mIHN0dWRpZXMgY2FuIGJlCiAgZGVjb21wb3NlZCBpbnRvIHR3byBwYXJ0czogaGV0ZXJvZ2VuZWl0eSBkdWUgdG8gcmFuZG9tIHBvcHVsYXRpb24gZWZmZWN0cyBhbmQKICBzYW1wbGluZyB2YXJpYW5jZS4gSW4gdGhpcyBjb250ZXh0LCB0aGUgdXN1YWwgZ29hbCBpcyB0byBlc3RpbWF0ZSB0aGUgY2VudHJhbAogIHRlbmRlbmN5IGFuZCB0aGUgYW1vdW50IG9mIGhldGVyb2dlbmVpdHkgaW4gdGhlIHBvcHVsYXRpb24gZWZmZWN0IHNpemVzLiBUaGUKICBhbW91bnQgb2YgaGV0ZXJvZ2VuZWl0eSBpbiBhIHNldCBvZiBlZmZlY3Qgc2l6ZXMgaGFzIGltcGxpY2F0aW9ucyByZWdhcmRpbmcKICB0aGUgaW50ZXJwcmV0YXRpb24gb2YgdGhlIG1ldGEtYW5hbHl0aWMgZmluZGluZ3MgYW5kIG9mdGVuIHNlcnZlcyBhcyBhbgogIGluZGljYXRvciBmb3IgdGhlIHByZXNlbmNlIG9mIHBvdGVudGlhbCBtb2RlcmF0b3IgdmFyaWFibGVzLiBGaXZlIHBvcHVsYXRpb24KICBoZXRlcm9nZW5laXR5IGVzdGltYXRvcnMgd2VyZSBjb21wYXJlZCBpbiB0aGlzIGFydGljbGUgYW5hbHl0aWNhbGx5IGFuZCB2aWEKICBNb250ZSBDYXJsbyBzaW11bGF0aW9ucyB3aXRoIHJlc3BlY3QgdG8gdGhlaXIgYmlhcyBhbmQgZWZmaWNpZW5jeS59LAogIHVybCA9IHtodHRwczovL3NjaG9sYXIuZ29vZ2xlLmNvbS9jaXRhdGlvbnM/dmlld19vcD12aWV3X2NpdGF0aW9uJmhsPWVuJnVzZXI9Sjg5UlhKa0FBQUFKJmNpdGF0aW9uX2Zvcl92aWV3PUo4OVJYSmtBQUFBSjpxak1ha0ZIRHk3c0N9LAogIGxhbmd1YWdlID0ge2VufQp9CgpAQVJUSUNMRXtWZXJvbmlraTIwMTYtbncsCiAgdGl0bGUgPSB7TWV0aG9kcyB0byBlc3RpbWF0ZSB0aGUgYmV0d2Vlbi1zdHVkeSB2YXJpYW5jZSBhbmQgaXRzIHVuY2VydGFpbnR5IGluCiAgbWV0YS1hbmFseXNpc30sCiAgYXV0aG9yID0ge1Zlcm9uaWtpLCBBcmV0aSBBbmdlbGlraSBhbmQgSmFja3NvbiwgRGFuIGFuZCBWaWVjaHRiYXVlciwgV29sZmdhbmcKICBhbmQgQmVuZGVyLCBSYWxmIGFuZCBCb3dkZW4sIEphY2sgYW5kIEtuYXBwLCBHdWlkbyBhbmQgS3VzcywgT2xpdmVyIGFuZAogIEhpZ2dpbnMsIEp1bGlhbiBQIFQgYW5kIExhbmdhbiwgRGVhbiBhbmQgU2FsYW50aSwgR2VvcmdpYX0sCiAgam91cm5hbHRpdGxlID0ge1Jlc2VhcmNoIHN5bnRoZXNpcyBtZXRob2RzfSwKICBwdWJsaXNoZXIgPSB7V2lsZXl9LAogIHZvbHVtZSA9IHs3fSwKICBpc3N1ZSA9IHsxfSwKICBwYWdlcyA9IHs1NS03OX0sCiAgZGF0ZSA9IHsyMDE2LTAzfSwKICBkb2kgPSB7MTAuMTAwMi9qcnNtLjExNjR9LAogIHBtYyA9IHtQTUM0OTUwMDMwfSwKICBwbWlkID0gezI2MzMyMTQ0fSwKICBpc3NuID0gezE3NTktMjg3OSwxNzU5LTI4ODd9LAogIGFic3RyYWN0ID0ge01ldGEtYW5hbHlzZXMgYXJlIHR5cGljYWxseSB1c2VkIHRvIGVzdGltYXRlIHRoZSBvdmVyYWxsL21lYW4gb2YKICBhbiBvdXRjb21lIG9mIGludGVyZXN0LiBIb3dldmVyLCBpbmZlcmVuY2UgYWJvdXQgYmV0d2Vlbi1zdHVkeSB2YXJpYWJpbGl0eSwKICB3aGljaCBpcyB0eXBpY2FsbHkgbW9kZWxsZWQgdXNpbmcgYSBiZXR3ZWVuLXN0dWR5IHZhcmlhbmNlIHBhcmFtZXRlciwgaXMKICB1c3VhbGx5IGFuIGFkZGl0aW9uYWwgYWltLiBUaGUgRGVyU2ltb25pYW4gYW5kIExhaXJkIG1ldGhvZCwgY3VycmVudGx5IHdpZGVseQogIHVzZWQgYnkgZGVmYXVsdCB0byBlc3RpbWF0ZSB0aGUgYmV0d2Vlbi1zdHVkeSB2YXJpYW5jZSwgaGFzIGJlZW4gbG9uZwogIGNoYWxsZW5nZWQuIE91ciBhaW0gaXMgdG8gaWRlbnRpZnkga25vd24gbWV0aG9kcyBmb3IgZXN0aW1hdGlvbiBvZiB0aGUKICBiZXR3ZWVuLXN0dWR5IHZhcmlhbmNlIGFuZCBpdHMgY29ycmVzcG9uZGluZyB1bmNlcnRhaW50eSwgYW5kIHRvIHN1bW1hcmlzZSB0aGUKICBzaW11bGF0aW9uIGFuZCBlbXBpcmljYWwgZXZpZGVuY2UgdGhhdCBjb21wYXJlcyB0aGVtLiBXZSBpZGVudGlmaWVkIDE2CiAgZXN0aW1hdG9ycyBmb3IgdGhlIGJldHdlZW4tc3R1ZHkgdmFyaWFuY2UsIHNldmVuIG1ldGhvZHMgdG8gY2FsY3VsYXRlCiAgY29uZmlkZW5jZSBpbnRlcnZhbHMsIGFuZCBzZXZlcmFsIGNvbXBhcmF0aXZlIHN0dWRpZXMuIFNpbXVsYXRpb24gc3R1ZGllcwogIHN1Z2dlc3QgdGhhdCBmb3IgYm90aCBkaWNob3RvbW91cyBhbmQgY29udGludW91cyBkYXRhIHRoZSBlc3RpbWF0b3IgcHJvcG9zZWQKICBieSBQYXVsZSBhbmQgTWFuZGVsIGFuZCBmb3IgY29udGludW91cyBkYXRhIHRoZSByZXN0cmljdGVkIG1heGltdW0gbGlrZWxpaG9vZAogIGVzdGltYXRvciBhcmUgYmV0dGVyIGFsdGVybmF0aXZlcyB0byBlc3RpbWF0ZSB0aGUgYmV0d2Vlbi1zdHVkeSB2YXJpYW5jZS4KICBCYXNlZCBvbiB0aGUgc2NlbmFyaW9zIGFuZCByZXN1bHRzIHByZXNlbnRlZCBpbiB0aGUgcHVibGlzaGVkIHN0dWRpZXMsIHdlCiAgcmVjb21tZW5kIHRoZSBRLXByb2ZpbGUgbWV0aG9kIGFuZCB0aGUgYWx0ZXJuYXRpdmUgYXBwcm9hY2ggYmFzZWQgb24gYQogICdnZW5lcmFsaXNlZCBDb2NocmFuIGJldHdlZW4tc3R1ZHkgdmFyaWFuY2Ugc3RhdGlzdGljJyB0byBjb21wdXRlCiAgY29ycmVzcG9uZGluZyBjb25maWRlbmNlIGludGVydmFscyBhcm91bmQgdGhlIHJlc3VsdGluZyBlc3RpbWF0ZXMuIE91cgogIHJlY29tbWVuZGF0aW9ucyBhcmUgYmFzZWQgb24gYSBxdWFsaXRhdGl2ZSBldmFsdWF0aW9uIG9mIHRoZSBleGlzdGluZwogIGxpdGVyYXR1cmUgYW5kIGV4cGVydCBjb25zZW5zdXMuIEV2aWRlbmNlLWJhc2VkIHJlY29tbWVuZGF0aW9ucyByZXF1aXJlIGFuCiAgZXh0ZW5zaXZlIHNpbXVsYXRpb24gc3R1ZHkgd2hlcmUgYWxsIG1ldGhvZHMgd291bGQgYmUgY29tcGFyZWQgdW5kZXIgdGhlIHNhbWUKICBzY2VuYXJpb3MufSwKICB1cmwgPSB7aHR0cHM6Ly9vbmxpbmVsaWJyYXJ5LndpbGV5LmNvbS9kb2kvMTAuMTAwMi9qcnNtLjExNjR9LAogIGZpbGUgPSB7VmVyb25pa2kgZXQgYWwuIDIwMTYgLSBNZXRob2RzIHRvIGVzdGltYXRlIHRoZSBiZXR3ZWVuLXN0dWR5IHZhcmlhbmNlIGFuZCBpdHMgdW5jZXJ0YWludHkgaW4gbWV0YS1hbmFseXNpcy5wZGZ9LAogIGtleXdvcmRzID0ge2JpYXM7IGNvbmZpZGVuY2UgaW50ZXJ2YWw7IGNvdmVyYWdlIHByb2JhYmlsaXR5OyBoZXRlcm9nZW5laXR5OwogIG1lYW4gc3F1YXJlZCBlcnJvcn0sCiAgbGFuZ3VhZ2UgPSB7ZW59Cn0KCkBNSVNDe0JvcmVuc3RlaW4yMDA5LW1vLAogIHRpdGxlID0ge0ludHJvZHVjdGlvbiB0byB7TWV0YS1BbmFseXNpc319LAogIGF1dGhvciA9IHtCb3JlbnN0ZWluLCBNaWNoYWVsIGFuZCBIZWRnZXMsIExhcnJ5IFYgYW5kIEhpZ2dpbnMsIEp1bGlhbiBQIFQgYW5kCiAgUm90aHN0ZWluLCBIYW5uYWggUn0sCiAgZGF0ZSA9IHsyMDA5fSwKICBkb2kgPSB7MTAuMTAwMi85NzgwNDcwNzQzMzg2fSwKICB1cmwgPSB7aHR0cDovL2R4LmRvaS5vcmcvMTAuMTAwMi85NzgwNDcwNzQzMzg2fQp9CgpAQVJUSUNMRXtIZWRnZXMxOTg5LWlwLAogIHRpdGxlID0ge0FuIHVuYmlhc2VkIGNvcnJlY3Rpb24gZm9yIHNhbXBsaW5nIGVycm9yIGluIHZhbGlkaXR5IGdlbmVyYWxpemF0aW9uCiAgc3R1ZGllc30sCiAgYXV0aG9yID0ge0hlZGdlcywgTGFycnkgVn0sCiAgam91cm5hbHRpdGxlID0ge1RoZSBKb3VybmFsIG9mIGFwcGxpZWQgcHN5Y2hvbG9neX0sCiAgcHVibGlzaGVyID0ge0FtZXJpY2FuIFBzeWNob2xvZ2ljYWwgQXNzb2NpYXRpb24gKEFQQSl9LAogIHZvbHVtZSA9IHs3NH0sCiAgaXNzdWUgPSB7M30sCiAgcGFnZXMgPSB7NDY5LTQ3N30sCiAgZGF0ZSA9IHsxOTg5LTA2fSwKICBkb2kgPSB7MTAuMTAzNy8wMDIxLTkwMTAuNzQuMy40Njl9LAogIGlzc24gPSB7MDAyMS05MDEwLDE5MzktMTg1NH0sCiAgdXJsID0ge2h0dHA6Ly9keC5kb2kub3JnLzEwLjEwMzcvMDAyMS05MDEwLjc0LjMuNDY5fSwKICBsYW5ndWFnZSA9IHtlbn0KfQoK" download="refs_to_download.bib"> Download .bib file</a></button>
+</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-Anderson2024-cx" class="csl-entry" role="listitem">
+Anderson, S. F., &amp; Kelley, K. (2024). Sample size planning for
+replication studies: The devil is in the design. <em>Psychological
+Methods</em>, <em>29</em>, 844–867. <a href="https://doi.org/10.1037/met0000520">https://doi.org/10.1037/met0000520</a>
+</div>
+<div id="ref-Barba2018-ef" class="csl-entry" role="listitem">
+Barba, L. A. (2018). Terminologies for reproducible research. <em>arXiv
+[Cs.DL]</em>, arXiv:1802.03311. <a href="http://arxiv.org/abs/1802.03311">http://arxiv.org/abs/1802.03311</a>
+</div>
+<div id="ref-Borenstein2009-mo" class="csl-entry" role="listitem">
+Borenstein, M., Hedges, L. V., Higgins, J. P. T., &amp; Rothstein, H. R.
+(2009). <em>Introduction to <span>Meta-Analysis</span></em>. <a href="https://doi.org/10.1002/9780470743386">https://doi.org/10.1002/9780470743386</a>
+</div>
+<div id="ref-Brandt2014-da" class="csl-entry" role="listitem">
+Brandt, M. J., IJzerman, H., Dijksterhuis, A., Farach, F. J., Geller,
+J., Giner-Sorolla, R., Grange, J. A., Perugini, M., Spies, J. R., &amp;
+Veer, A. van ’t. (2014). The replication recipe: What makes for a
+convincing replication? <em>Journal of Experimental Social
+Psychology</em>, <em>50</em>, 217–224. <a href="https://doi.org/10.1016/j.jesp.2013.10.005">https://doi.org/10.1016/j.jesp.2013.10.005</a>
+</div>
+<div id="ref-Broman2017-mv" class="csl-entry" role="listitem">
+Broman, K., Cetinkaya-Rundel, M., Nussbaum, A., Paciorek, C., Peng, R.,
+Turek, D., &amp; Wickham, H. (2017, January 18). <em>Recommendations to
+funding agencies for supporting reproducible research</em>. <a href="https://www.amstat.org/asa/files/pdfs/POL-ReproducibleResearchRecommendations.pdf">https://www.amstat.org/asa/files/pdfs/POL-ReproducibleResearchRecommendations.pdf</a>
+</div>
+<div id="ref-Bushman2009-zv" class="csl-entry" role="listitem">
+Bushman, B. J., &amp; Wang, M. C. (2009). Vote-counting procedures in
+meta-analysis. In <em><em>The handbook of research synthesis and
+meta-analysis</em></em> (pp. 207–220). Russell Sage Foundation.
+</div>
+<div id="ref-Clark2015-pz" class="csl-entry" role="listitem">
+Clark, T. S., &amp; Linzer, D. A. (2015). Should i use fixed or random
+effects? <em>Political Science Research and Methods</em>, <em>3</em>,
+399–408. <a href="https://doi.org/10.1017/psrm.2014.32">https://doi.org/10.1017/psrm.2014.32</a>
+</div>
+<div id="ref-Collaboration2015-ep" class="csl-entry" role="listitem">
+Collaboration, O. S., &amp; Open Science Collaboration. (2015).
+Estimating the reproducibility of psychological science. In
+<em>Science</em> (Vol. 349). <a href="https://doi.org/10.1126/science.aac4716">https://doi.org/10.1126/science.aac4716</a>
+</div>
+<div id="ref-Crandall2016-xg" class="csl-entry" role="listitem">
+Crandall, C. S., &amp; Sherman, J. W. (2016). On the scientific
+superiority of conceptual replications for scientific progress.
+<em>Journal of Experimental Social Psychology</em>, <em>66</em>, 93–99.
+<a href="https://doi.org/10.1016/j.jesp.2015.10.002">https://doi.org/10.1016/j.jesp.2015.10.002</a>
+</div>
+<div id="ref-Cronbach1982-kl" class="csl-entry" role="listitem">
+Cronbach, L. J., &amp; Shapiro, K. (1982). <em>Designing evaluations of
+educational and social programs</em>. <a href="https://eduq.info/xmlui/handle/11515/9106">https://eduq.info/xmlui/handle/11515/9106</a>
+</div>
+<div id="ref-Gelman2014-js" class="csl-entry" role="listitem">
+Gelman, A., &amp; Carlin, J. (2014). Beyond power calculations. In
+<em>Perspectives on Psychological Science</em> (Vol. 9, pp. 641–651). <a href="https://doi.org/10.1177/1745691614551642">https://doi.org/10.1177/1745691614551642</a>
+</div>
+<div id="ref-Goeman2010-nm" class="csl-entry" role="listitem">
+Goeman, J. J., Solari, A., &amp; Stijnen, T. (2010). Three-sided
+hypothesis testing: Simultaneous testing of superiority, equivalence and
+inferiority. <em>Statistics in Medicine</em>, <em>29</em>, 2117–2125. <a href="https://doi.org/10.1002/sim.4002">https://doi.org/10.1002/sim.4002</a>
+</div>
+<div id="ref-Gollwitzer2022-at" class="csl-entry" role="listitem">
+Gollwitzer, M., &amp; Schwabe, J. (2022). Context dependency as a
+predictor of replicability. <em>Review of General Psychology: Journal of
+Division 1, of the American Psychological Association</em>, <em>26</em>,
+241–249. <a href="https://doi.org/10.1177/10892680211015635">https://doi.org/10.1177/10892680211015635</a>
+</div>
+<div id="ref-Goodman2016-yw" class="csl-entry" role="listitem">
+Goodman, S. N., Fanelli, D., &amp; Ioannidis, J. P. A. (2016). What does
+research reproducibility mean? <em>Science Translational Medicine</em>,
+<em>8</em>, 341ps12. <a href="https://doi.org/10.1126/scitranslmed.aaf5027">https://doi.org/10.1126/scitranslmed.aaf5027</a>
+</div>
+<div id="ref-Harrington2019-sw" class="csl-entry" role="listitem">
+Harrington, D., D’Agostino, R. B., Sr, Gatsonis, C., Hogan, J. W.,
+Hunter, D. J., Normand, S.-L. T., Drazen, J. M., &amp; Hamel, M. B.
+(2019). New guidelines for statistical reporting in the journal. <em>The
+New England Journal of Medicine</em>, <em>381</em>, 285–286. <a href="https://doi.org/10.1056/NEJMe1906559">https://doi.org/10.1056/NEJMe1906559</a>
+</div>
+<div id="ref-Hedges1989-ip" class="csl-entry" role="listitem">
+Hedges, L. V. (1989). An unbiased correction for sampling error in
+validity generalization studies. <em>The Journal of Applied
+Psychology</em>, <em>74</em>, 469–477. <a href="https://doi.org/10.1037/0021-9010.74.3.469">https://doi.org/10.1037/0021-9010.74.3.469</a>
+</div>
+<div id="ref-Hedges1980-gd" class="csl-entry" role="listitem">
+Hedges, L. V., &amp; Olkin, I. (1980). Vote-counting methods in research
+synthesis. <em>Psychological Bulletin</em>, <em>88</em>, 359–369. <a href="https://doi.org/10.1037/0033-2909.88.2.359">https://doi.org/10.1037/0033-2909.88.2.359</a>
+</div>
+<div id="ref-Hedges2019-pr" class="csl-entry" role="listitem">
+Hedges, L. V., &amp; Schauer, J. M. (2019a). Consistency of effects is
+important in replication: Rejoinder to mathur and VanderWeele (2019).
+<em>Psychological Methods</em>, <em>24</em>, 576–577. <a href="https://doi.org/10.1037/met0000237">https://doi.org/10.1037/met0000237</a>
+</div>
+<div id="ref-Hedges2019-ar" class="csl-entry" role="listitem">
+Hedges, L. V., &amp; Schauer, J. M. (2019b). More than one replication
+study is needed for unambiguous tests of replication. <em>Journal of
+Educational and Behavioral Statistics: A Quarterly Publication Sponsored
+by the American Educational Research Association and the American
+Statistical Association</em>, <em>44</em>, 543–570. <a href="https://doi.org/10.3102/1076998619852953">https://doi.org/10.3102/1076998619852953</a>
+</div>
+<div id="ref-Hedges2019-ry" class="csl-entry" role="listitem">
+Hedges, L. V., &amp; Schauer, J. M. (2019c). Statistical analyses for
+studying replication: Meta-analytic perspectives. <em>Psychological
+Methods</em>, <em>24</em>, 557–570. <a href="https://doi.org/10.1037/met0000189">https://doi.org/10.1037/met0000189</a>
+</div>
+<div id="ref-Hedges2021-of" class="csl-entry" role="listitem">
+Hedges, L. V., &amp; Schauer, J. M. (2021). The design of replication
+studies. <em>Journal of the Royal Statistical Society. Series A,
+(Statistics in Society)</em>, <em>184</em>, 868–886. <a href="https://doi.org/10.1111/rssa.12688">https://doi.org/10.1111/rssa.12688</a>
+</div>
+<div id="ref-Heller2014-lr" class="csl-entry" role="listitem">
+Heller, R., Bogomolov, M., &amp; Benjamini, Y. (2014). Deciding whether
+follow-up studies have replicated findings in a preliminary large-scale
+omics study. <em>Proceedings of the National Academy of Sciences of the
+United States of America</em>, <em>111</em>, 16262–16267. <a href="https://doi.org/10.1073/pnas.1314814111">https://doi.org/10.1073/pnas.1314814111</a>
+</div>
+<div id="ref-Heyard2024-hv" class="csl-entry" role="listitem">
+Heyard, R., Pawel, S., Frese, J., Voelkl, B., Würbel, H., McCann, S.,
+Held, L., Wever, K. E., Hartmann, H., Townsin, L., &amp; Zellers, S.
+(2024). <em>A scoping review on metrics to quantify reproducibility: A
+multitude of questions leads to a multitude of metrics</em>. <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;citation_for_view=JAb7P1QAAAAJ:ldfaerwXgEUC">https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;citation_for_view=JAb7P1QAAAAJ:ldfaerwXgEUC</a>
+</div>
+<div id="ref-Inbar2016-ls" class="csl-entry" role="listitem">
+Inbar, Y. (2016). Association between contextual dependence and
+replicability in psychology may be spurious. <em>Proceedings of the
+National Academy of Sciences of the United States of America</em>,
+<em>113</em>, E4933–4. <a href="https://doi.org/10.1073/pnas.1608676113">https://doi.org/10.1073/pnas.1608676113</a>
+</div>
+<div id="ref-Ioannidis2005-em" class="csl-entry" role="listitem">
+Ioannidis, J. P. A. (2005). Why most published research findings are
+false. <em>PLoS Medicine</em>, <em>2</em>, e124. <a href="https://doi.org/10.1371/journal.pmed.0020124">https://doi.org/10.1371/journal.pmed.0020124</a>
+</div>
+<div id="ref-Jager2014-nq" class="csl-entry" role="listitem">
+Jager, L. R., &amp; Leek, J. T. (2014). An estimate of the science-wise
+false discovery rate and application to the top medical literature.
+<em>Biostatistics</em>, <em>15</em>, 1–12. <a href="https://academic.oup.com/biostatistics/article-abstract/15/1/1/244509">https://academic.oup.com/biostatistics/article-abstract/15/1/1/244509</a>
+</div>
+<div id="ref-Jeffreys1973-bp" class="csl-entry" role="listitem">
+Jeffreys, H. (1973). <em>Scientific inference</em>. Cambridge University
+Press.
+</div>
+<div id="ref-Kenett2015-jm" class="csl-entry" role="listitem">
+Kenett, R. S., &amp; Shmueli, G. (2015). Clarifying the terminology that
+describes scientific reproducibility. <em>Nature Methods</em>,
+<em>12</em>, 699. <a href="https://doi.org/10.1038/nmeth.3489">https://doi.org/10.1038/nmeth.3489</a>
+</div>
+<div id="ref-Kruschke2015-ew" class="csl-entry" role="listitem">
+Kruschke, J. K. (2015). Bayesian approaches to testing a point
+(<span>“null”</span>) hypothesis. In <em>Doing bayesian data
+analysis</em> (pp. 335–358). Elsevier. <a href="https://doi.org/10.1016/b978-0-12-405888-0.00012-x">https://doi.org/10.1016/b978-0-12-405888-0.00012-x</a>
+</div>
+<div id="ref-Kruschke2018-sm" class="csl-entry" role="listitem">
+Kruschke, J. K., &amp; Liddell, T. M. (2018). The bayesian new
+statistics: Hypothesis testing, estimation, meta-analysis, and power
+analysis from a bayesian perspective. <em>Psychonomic Bulletin &amp;
+Review</em>, <em>25</em>, 178–206. <a href="https://doi.org/10.3758/s13423-016-1221-4">https://doi.org/10.3758/s13423-016-1221-4</a>
+</div>
+<div id="ref-Lakens2018-ri" class="csl-entry" role="listitem">
+Lakens, D., Scheel, A. M., &amp; Isager, P. M. (2018). Equivalence
+testing for psychological research: A tutorial. <em>Advances in Methods
+and Practices in Psychological Science</em>, <em>1</em>, 259–269. <a href="https://doi.org/10.1177/2515245918770963">https://doi.org/10.1177/2515245918770963</a>
+</div>
+<div id="ref-Lindley1972-fa" class="csl-entry" role="listitem">
+Lindley, D. V. (1972). Bayesian statistics a review. In <em>Bayesian
+statistics</em> (pp. 1–74). <a href="https://doi.org/10.1137/1.9781611970654.ch1">https://doi.org/10.1137/1.9781611970654.ch1</a>
+</div>
+<div id="ref-Ly2019-ow" class="csl-entry" role="listitem">
+Ly, A., Etz, A., Marsman, M., &amp; Wagenmakers, E.-J. (2019).
+Replication bayes factors from evidence updating. <em>Behavior Research
+Methods</em>, <em>51</em>, 2498–2508. <a href="https://doi.org/10.3758/s13428-018-1092-x">https://doi.org/10.3758/s13428-018-1092-x</a>
+</div>
+<div id="ref-Machery2020-sv" class="csl-entry" role="listitem">
+Machery, E. (2020). What is a replication? <em>Philosophy of
+Science</em>, <em>87</em>, 545–567. <a href="https://doi.org/10.1086/709701">https://doi.org/10.1086/709701</a>
+</div>
+<div id="ref-Mathur2019-vh" class="csl-entry" role="listitem">
+Mathur, M. B., &amp; VanderWeele, T. J. (2019). Challenges and
+suggestions for defining replication "success" when effects may be
+heterogeneous: Comment on hedges and schauer (2019). <em>Psychological
+Methods</em>, <em>24</em>, 571–575. <a href="https://doi.org/10.1037/met0000223">https://doi.org/10.1037/met0000223</a>
+</div>
+<div id="ref-Mathur2020-nw" class="csl-entry" role="listitem">
+Mathur, M. B., &amp; VanderWeele, T. J. (2020). New statistical metrics
+for multisite replication projects. <em>Journal of the Royal Statistical
+Society. Series A, (Statistics in Society)</em>, <em>183</em>,
+1145–1166. <a href="https://doi.org/10.1111/rssa.12572">https://doi.org/10.1111/rssa.12572</a>
+</div>
+<div id="ref-Miller2009-hp" class="csl-entry" role="listitem">
+Miller, J. (2009). What is the probability of replicating a
+statistically significant effect? <em>Psychonomic Bulletin &amp;
+Review</em>, <em>16</em>, 617–640. <a href="https://doi.org/10.3758/PBR.16.4.617">https://doi.org/10.3758/PBR.16.4.617</a>
+</div>
+<div id="ref-National-Academies-of-Sciences-Engineering-and-Medicine2019-ze" class="csl-entry" role="listitem">
+National Academies of Sciences, Engineering, and Medicine, Policy and
+Global Affairs, Committee on Science, Engineering, Medicine, and Public
+Policy, Board on Research Data and Information, Division on Engineering
+and Physical Sciences, Committee on Applied and Theoretical Statistics,
+Board on Mathematical Sciences and Analytics, Division on Earth and Life
+Studies, Nuclear and Radiation Studies Board, &amp; Division of
+Behavioral and Social Sciences and Education. (2019).
+<em>Reproducibility and replicability in science</em>. National
+Academies Press. <a href="https://doi.org/10.17226/25303">https://doi.org/10.17226/25303</a>
+</div>
+<div id="ref-Nosek2017-an" class="csl-entry" role="listitem">
+Nosek, B. A., &amp; Errington, T. M. (2017). Making sense of
+replications. <em>eLife</em>, <em>6</em>, e23383. <a href="https://doi.org/10.7554/eLife.23383">https://doi.org/10.7554/eLife.23383</a>
+</div>
+<div id="ref-Nosek2020-vh" class="csl-entry" role="listitem">
+Nosek, B. A., &amp; Errington, T. M. (2020). What is replication?
+<em>PLoS Biology</em>, <em>18</em>, e3000691. <a href="https://doi.org/10.1371/journal.pbio.3000691">https://doi.org/10.1371/journal.pbio.3000691</a>
+</div>
+<div id="ref-Parmigiani2023-sg" class="csl-entry" role="listitem">
+Parmigiani, G. (2023). Defining replicability of prediction rules.
+<em>Statistical Science: A Review Journal of the Institute of
+Mathematical Statistics</em>, <em>38</em>. <a href="https://doi.org/10.1214/23-sts891">https://doi.org/10.1214/23-sts891</a>
+</div>
+<div id="ref-Patil2016-vc" class="csl-entry" role="listitem">
+Patil, P., Peng, R. D., &amp; Leek, J. T. (2016). What should
+researchers expect when they replicate studies? A statistical view of
+replicability in psychological science. <em>Perspectives on
+Psychological Science: A Journal of the Association for Psychological
+Science</em>, <em>11</em>, 539–544. <a href="https://doi.org/10.1177/1745691616646366">https://doi.org/10.1177/1745691616646366</a>
+</div>
+<div id="ref-Pawel2020-cm" class="csl-entry" role="listitem">
+Pawel, S., &amp; Held, L. (2020). Probabilistic forecasting of
+replication studies. <em>PloS One</em>, <em>15</em>, e0231416. <a href="https://doi.org/10.1371/journal.pone.0231416">https://doi.org/10.1371/journal.pone.0231416</a>
+</div>
+<div id="ref-Perugini2014-bx" class="csl-entry" role="listitem">
+Perugini, M., Gallucci, M., &amp; Costantini, G. (2014). Safeguard power
+as a protection against imprecise power estimates. <em>Perspectives on
+Psychological Science: A Journal of the Association for Psychological
+Science</em>, <em>9</em>, 319–332. <a href="https://doi.org/10.1177/1745691614528519">https://doi.org/10.1177/1745691614528519</a>
+</div>
+<div id="ref-Rosenthal1990-cq" class="csl-entry" role="listitem">
+Rosenthal, R. (1990). Replication in behavioral research. <em>Journal of
+Social Behavior and Personality</em>. <a href="https://search.proquest.com/openview/5ccc3a267139968c18c0d7ce1a1c09f6/1?pq-origsite=gscholar&amp;cbl=1819046">https://search.proquest.com/openview/5ccc3a267139968c18c0d7ce1a1c09f6/1?pq-origsite=gscholar&amp;cbl=1819046</a>
+</div>
+<div id="ref-Rouder2009-jh" class="csl-entry" role="listitem">
+Rouder, J. N., Speckman, P. L., Sun, D., Morey, R. D., &amp; Iverson, G.
+(2009). Bayesian t tests for accepting and rejecting the null
+hypothesis. <em>Psychonomic Bulletin &amp; Review</em>, <em>16</em>,
+225–237. <a href="https://doi.org/10.3758/PBR.16.2.225">https://doi.org/10.3758/PBR.16.2.225</a>
+</div>
+<div id="ref-Schauer2022-mj" class="csl-entry" role="listitem">
+Schauer, J. M. (2022). Replicability and meta-analysis. In W. O’Donohue,
+A. Masuda, &amp; S. Lilienfeld (Eds.), <em>Avoiding questionable
+research practices in applied psychology</em> (pp. 301–342). Springer
+International Publishing. <a href="https://doi.org/10.1007/978-3-031-04968-2_14">https://doi.org/10.1007/978-3-031-04968-2_14</a>
+</div>
+<div id="ref-Schauer2020-tw" class="csl-entry" role="listitem">
+Schauer, J. M., &amp; Hedges, L. V. (2020). Assessing heterogeneity and
+power in replications of psychological experiments. <em>Psychological
+Bulletin</em>, <em>146</em>, 701–719. <a href="https://doi.org/10.1037/bul0000232">https://doi.org/10.1037/bul0000232</a>
+</div>
+<div id="ref-Schauer2021-ja" class="csl-entry" role="listitem">
+Schauer, J. M., &amp; Hedges, L. V. (2021). Reconsidering statistical
+methods for assessing replication. <em>Psychological Methods</em>,
+<em>26</em>, 127–139. <a href="https://doi.org/10.1037/met0000302">https://doi.org/10.1037/met0000302</a>
+</div>
+<div id="ref-Schmidt2014-kw" class="csl-entry" role="listitem">
+Schmidt, F. L., &amp; Hunter, J. E. (2014). <em>Methods of
+meta-analysis: Correcting error and bias in research findings</em> (3rd
+ed.). SAGE Publications. <a href="https://doi.org/10.4135/9781483398105">https://doi.org/10.4135/9781483398105</a>
+</div>
+<div id="ref-Schmidt2009-mq" class="csl-entry" role="listitem">
+Schmidt, S. (2009). Shall we really do it again? The powerful concept of
+replication is neglected in the social sciences. <em>Review of General
+Psychology: Journal of Division 1, of the American Psychological
+Association</em>, <em>13</em>, 90–100. <a href="https://doi.org/10.1037/a0015108">https://doi.org/10.1037/a0015108</a>
+</div>
+<div id="ref-Simons2014-cg" class="csl-entry" role="listitem">
+Simons, D. J. (2014). The value of direct replication. <em>Perspectives
+on Psychological Science: A Journal of the Association for Psychological
+Science</em>, <em>9</em>, 76–80. <a href="https://doi.org/10.1177/1745691613514755">https://doi.org/10.1177/1745691613514755</a>
+</div>
+<div id="ref-Simonsohn2015-kg" class="csl-entry" role="listitem">
+Simonsohn, U. (2015). Small telescopes: Detectability and the evaluation
+of replication results: Detectability and the evaluation of replication
+results. <em>Psychological Science</em>, <em>26</em>, 559–569. <a href="https://doi.org/10.1177/0956797614567341">https://doi.org/10.1177/0956797614567341</a>
+</div>
+<div id="ref-Spence2016-tz" class="csl-entry" role="listitem">
+Spence, J. R., &amp; Stanley, D. J. (2016). Prediction interval: What to
+expect when you’re expecting … a replication. <em>PloS One</em>,
+<em>11</em>, e0162874. <a href="https://doi.org/10.1371/journal.pone.0162874">https://doi.org/10.1371/journal.pone.0162874</a>
+</div>
+<div id="ref-Stan_Development_Team2021-zw" class="csl-entry" role="listitem">
+Stan Development Team. (2021). <em>Stan: A c++ library for probability
+and sampling, version 2.26.0</em>. <a href="https://mc-stan.org/">https://mc-stan.org/</a>
+</div>
+<div id="ref-Steegen2016-lz" class="csl-entry" role="listitem">
+Steegen, S., Tuerlinckx, F., Gelman, A., &amp; Vanpaemel, W. (2016).
+Increasing transparency through a multiverse analysis. <em>Perspectives
+on Psychological Science: A Journal of the Association for Psychological
+Science</em>, <em>11</em>, 702–712. <a href="https://doi.org/10.1177/1745691616658637">https://doi.org/10.1177/1745691616658637</a>
+</div>
+<div id="ref-Steiger2004-wg" class="csl-entry" role="listitem">
+Steiger, J. H. (2004). Beyond the f test: Effect size confidence
+intervals and tests of close fit in the analysis of variance and
+contrast analysis. <em>Psychological Methods</em>, <em>9</em>, 164–182.
+<a href="https://doi.org/10.1037/1082-989X.9.2.164">https://doi.org/10.1037/1082-989X.9.2.164</a>
+</div>
+<div id="ref-Tal2020-ln" class="csl-entry" role="listitem">
+Tal, E. (2020). <em>Measurement in science</em>. Metaphysics Research
+Lab, Stanford University. <a href="https://plato.stanford.edu/archives/fall2020/entries/measurement-science/">https://plato.stanford.edu/archives/fall2020/entries/measurement-science/</a>
+</div>
+<div id="ref-Ulrich2020-rk" class="csl-entry" role="listitem">
+Ulrich, R., &amp; Miller, J. (2020). Questionable research practices may
+have little effect on replicability. <em>eLife</em>, <em>9</em>, e58237.
+<a href="https://doi.org/10.7554/eLife.58237">https://doi.org/10.7554/eLife.58237</a>
+</div>
+<div id="ref-Valentine2011-yq" class="csl-entry" role="listitem">
+Valentine, J. C., Biglan, A., Boruch, R. F., Castro, F. G., Collins, L.
+M., Flay, B. R., Kellam, S., Mościcki, E. K., &amp; Schinke, S. P.
+(2011). Replication in prevention science. <em>Prevention Science: The
+Official Journal of the Society for Prevention Research</em>,
+<em>12</em>, 103–117. <a href="https://doi.org/10.1007/s11121-011-0217-6">https://doi.org/10.1007/s11121-011-0217-6</a>
+</div>
+<div id="ref-Van-Bavel2016-eb" class="csl-entry" role="listitem">
+Van Bavel, J. J., Mende-Siedlecki, P., Brady, W. J., &amp; Reinero, D.
+A. (2016). Contextual sensitivity in scientific reproducibility.
+<em>Proceedings of the National Academy of Sciences of the United States
+of America</em>, <em>113</em>, 6454–6459. <a href="https://doi.org/10.1073/pnas.1521897113">https://doi.org/10.1073/pnas.1521897113</a>
+</div>
+<div id="ref-Verhagen2014-tx" class="csl-entry" role="listitem">
+Verhagen, J., &amp; Wagenmakers, E.-J. (2014). Bayesian tests to
+quantify the result of a replication attempt. <em>Journal of
+Experimental Psychology. General</em>, <em>143</em>, 1457–1475. <a href="https://doi.org/10.1037/a0036731">https://doi.org/10.1037/a0036731</a>
+</div>
+<div id="ref-Veroniki2016-nw" class="csl-entry" role="listitem">
+Veroniki, A. A., Jackson, D., Viechtbauer, W., Bender, R., Bowden, J.,
+Knapp, G., Kuss, O., Higgins, J. P. T., Langan, D., &amp; Salanti, G.
+(2016). Methods to estimate the between-study variance and its
+uncertainty in meta-analysis. <em>Research Synthesis Methods</em>,
+<em>7</em>, 55–79. <a href="https://doi.org/10.1002/jrsm.1164">https://doi.org/10.1002/jrsm.1164</a>
+</div>
+<div id="ref-Viechtbauer2005-zt" class="csl-entry" role="listitem">
+Viechtbauer, W. (2005). Bias and efficiency of meta-analytic variance
+estimators in the random-effects model. <em>Journal of Educational and
+Behavioral Statistics: A Quarterly Publication Sponsored by the American
+Educational Research Association and the American Statistical
+Association</em>, <em>30</em>, 261–293. <a href="https://doi.org/10.3102/10769986030003261">https://doi.org/10.3102/10769986030003261</a>
+</div>
+<div id="ref-Wagenmakers2010-fj" class="csl-entry" role="listitem">
+Wagenmakers, E.-J., Lodewyckx, T., Kuriyal, H., &amp; Grasman, R.
+(2010). Bayesian hypothesis testing for psychologists: A tutorial on the
+savage–dickey method. <em>Cognitive Psychology</em>, <em>60</em>,
+158–189. <a href="https://doi.org/10.1016/j.cogpsych.2009.12.001">https://doi.org/10.1016/j.cogpsych.2009.12.001</a>
+</div>
+<div id="ref-Wasserstein2016-xv" class="csl-entry" role="listitem">
+Wasserstein, R. L., &amp; Lazar, N. A. (2016). The ASA statement on
+p-values: Context, process, and purpose. <em>The American
+Statistician</em>, <em>70</em>, 129–133. <a href="https://doi.org/10.1080/00031305.2016.1154108">https://doi.org/10.1080/00031305.2016.1154108</a>
+</div>
+<div id="ref-Williams2018-wu" class="csl-entry" role="listitem">
+Williams, D. R., Rast, P., &amp; Bürkner, P.-. C. (2018). Bayesian
+meta-analysis with weakly informative prior distributions.
+<em>PsyArXiv</em>. <a href="https://doi.org/10.31234/osf.io/7tbrm">https://doi.org/10.31234/osf.io/7tbrm</a>
+</div>
+<div id="ref-Wilson2018-aa" class="csl-entry" role="listitem">
+Wilson, B. M., &amp; Wixted, J. T. (2018). The prior odds of testing a
+true effect in cognitive and social psychology. <em>Advances in Methods
+and Practices in Psychological Science</em>, <em>1</em>, 186–197. <a href="https://doi.org/10.1177/2515245918767122">https://doi.org/10.1177/2515245918767122</a>
+</div>
+<div id="ref-Yarkoni2020-xf" class="csl-entry" role="listitem">
+Yarkoni, T. (2020). The generalizability crisis. <em>The Behavioral and
+Brain Sciences</em>, <em>45</em>, e1. <a href="https://doi.org/10.1017/S0140525X20001685">https://doi.org/10.1017/S0140525X20001685</a>
+</div>
+</div>
 
 
-
-
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -604,9 +1529,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../chapters/chapter4.html" class="pagination-link" aria-label="Statistical methods for replication assessment">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistical methods for replication assessment</span></span>
       </a>          
@@ -618,7 +1541,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
