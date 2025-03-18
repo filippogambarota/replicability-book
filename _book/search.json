@@ -1544,7 +1544,7 @@
     "href": "chapters/chapter5.html#simulating-a-single-study---umd",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n7.1 Simulating a single study - UMD",
-    "text": "7.1 Simulating a single study - UMD\nTo simulate a single study using a UMD we need to generate data according to the appropriate model. Here we have a difference between two groups. We can assume that the two groups comes from a normal distribution where group 1 \\(g_1 \\sim \\mathcal{N}(0, 1)\\) and group 2 \\(g_2 \\sim \\mathcal{N}(D, 1)\\) where \\(D\\) is the effect size. Then using Equations 6.2, 6.3 we can estimate the effect size and the variance.\n\nD &lt;- 1  # effect size\nn &lt;- 50 # sample size\ng1 &lt;- rnorm(n, mean = 0, sd = 1)\ng2 &lt;- rnorm(n, mean = D, sd = 1)\n\n# effect size\nmean(g2) - mean(g1)\n#&gt; [1] 0.8988085\n\n# variance\nvar(g1)/n + var(g2)/n\n#&gt; [1] 0.0381312",
+    "text": "7.1 Simulating a single study - UMD\nTo simulate a single study using a UMD we need to generate data according to the appropriate model. Here we have a difference between two groups. We can assume that the two groups comes from a normal distribution where group 1 \\(g_1 \\sim \\mathcal{N}(0, 1)\\) and group 2 \\(g_2 \\sim \\mathcal{N}(D, 1)\\) where \\(D\\) is the effect size. Then using Equations 6.2, 6.3 we can estimate the effect size and the variance.\n\nD &lt;- 1  # effect size\nn &lt;- 50 # sample size\ng1 &lt;- rnorm(n, mean = 0, sd = 1)\ng2 &lt;- rnorm(n, mean = D, sd = 1)\n\n# effect size\nmean(g2) - mean(g1)\n#&gt; [1] 0.7428889\n\n# variance\nvar(g1)/n + var(g2)/n\n#&gt; [1] 0.03372845",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -1554,7 +1554,7 @@
     "href": "chapters/chapter5.html#simulating-a-single-study---umd-1",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n7.2 Simulating a single study - UMD",
-    "text": "7.2 Simulating a single study - UMD\nFor simplicity we can wrap everything within a function:\n\n# default sd = 1\nsim_umd &lt;- function(n1, n2 = NULL, D, sd = 1){\n  if(is.null(n2)) n2 &lt;- n1 # same to n1 if null \n  g1 &lt;- rnorm(n1, mean = 0, sd = sd)\n  g2 &lt;- rnorm(n2, mean = D, sd = sd)\n  yi &lt;- mean(g2) - mean(g1)\n  vi &lt;- var(g1)/n1 + var(g2)/n2\n  data.frame(yi, vi)\n}\n\nsim_umd(100, D = 0.5)\n#&gt;          yi         vi\n#&gt; 1 0.4114704 0.02041681\nsim_umd(50, D = 0.1)\n#&gt;           yi         vi\n#&gt; 1 -0.1741297 0.04320926",
+    "text": "7.2 Simulating a single study - UMD\nFor simplicity we can wrap everything within a function:\n\n# default sd = 1\nsim_umd &lt;- function(n1, n2 = NULL, D, sd = 1){\n  if(is.null(n2)) n2 &lt;- n1 # same to n1 if null \n  g1 &lt;- rnorm(n1, mean = 0, sd = sd)\n  g2 &lt;- rnorm(n2, mean = D, sd = sd)\n  yi &lt;- mean(g2) - mean(g1)\n  vi &lt;- var(g1)/n1 + var(g2)/n2\n  data.frame(yi, vi)\n}\n\nsim_umd(100, D = 0.5)\n#&gt;          yi         vi\n#&gt; 1 0.6292466 0.02098998\nsim_umd(50, D = 0.1)\n#&gt;          yi       vi\n#&gt; 1 0.4147609 0.047054",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -1564,7 +1564,7 @@
     "href": "chapters/chapter5.html#simulating-a-single-study---umd-2",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n7.3 Simulating a single study - UMD",
-    "text": "7.3 Simulating a single study - UMD\nWe can also generate a large number of studies and check the distribution of effect size and sampling variances. Note that the real \\(D = 1\\) and the real variance \\(V_D = 1/50 + 1/50 = 0.04\\)\n\nstudies &lt;- replicate(1000, sim_umd(n1 = 50, D = 1), simplify = FALSE) # simplify = FALSE return a list\nstudies &lt;- do.call(rbind, studies) # to dataframe\nhead(studies)\n\n#&gt;          yi         vi\n#&gt; 1 1.0498116 0.03577581\n#&gt; 2 0.6682341 0.03041130\n#&gt; 3 0.9836933 0.03880497\n#&gt; 4 1.0205462 0.04067314\n#&gt; 5 1.2316595 0.03710892\n#&gt; 6 1.2021872 0.03864621",
+    "text": "7.3 Simulating a single study - UMD\nWe can also generate a large number of studies and check the distribution of effect size and sampling variances. Note that the real \\(D = 1\\) and the real variance \\(V_D = 1/50 + 1/50 = 0.04\\)\n\nstudies &lt;- replicate(1000, sim_umd(n1 = 50, D = 1), simplify = FALSE) # simplify = FALSE return a list\nstudies &lt;- do.call(rbind, studies) # to dataframe\nhead(studies)\n\n#&gt;          yi         vi\n#&gt; 1 1.0974008 0.04093664\n#&gt; 2 1.0471223 0.03207823\n#&gt; 3 1.0283730 0.04529990\n#&gt; 4 1.1099761 0.04421705\n#&gt; 5 0.7004132 0.04450937\n#&gt; 6 0.7143166 0.04797191",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -1654,7 +1654,7 @@
     "href": "chapters/chapter5.html#simulating-a-single-study---pearson-rho-5",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n7.12 Simulating a single study - Pearson \\(\\rho\\)\n",
-    "text": "7.12 Simulating a single study - Pearson \\(\\rho\\)\n\n\nsim_r(100, 0.5)\n#&gt;          yi         vi         r          vr\n#&gt; 1 0.5132608 0.01030928 0.4724819 0.006094519\nsim_r(50, 0.8)\n#&gt;         yi        vi         r          vr\n#&gt; 1 1.195983 0.0212766 0.8324254 0.001924302\n\n# also here the sampling distributions\nstudies &lt;- replicate(1000, sim_r(50, 0.7), simplify = FALSE)\nstudies &lt;- do.call(rbind, studies)\nsummary(studies)\n#&gt;        yi               vi                r                vr          \n#&gt;  Min.   :0.4563   Min.   :0.02128   Min.   :0.4270   Min.   :0.001173  \n#&gt;  1st Qu.:0.7820   1st Qu.:0.02128   1st Qu.:0.6539   1st Qu.:0.003783  \n#&gt;  Median :0.8770   Median :0.02128   Median :0.7049   Median :0.005166  \n#&gt;  Mean   :0.8816   Mean   :0.02128   Mean   :0.7001   Mean   :0.005397  \n#&gt;  3rd Qu.:0.9836   3rd Qu.:0.02128   3rd Qu.:0.7546   3rd Qu.:0.006688  \n#&gt;  Max.   :1.3410   Max.   :0.02128   Max.   :0.8719   Max.   :0.013643",
+    "text": "7.12 Simulating a single study - Pearson \\(\\rho\\)\n\n\nsim_r(100, 0.5)\n#&gt;          yi         vi         r          vr\n#&gt; 1 0.4202373 0.01030928 0.3971303 0.007166144\nsim_r(50, 0.8)\n#&gt;         yi        vi       r          vr\n#&gt; 1 1.099418 0.0212766 0.80029 0.002638084\n\n# also here the sampling distributions\nstudies &lt;- replicate(1000, sim_r(50, 0.7), simplify = FALSE)\nstudies &lt;- do.call(rbind, studies)\nsummary(studies)\n#&gt;        yi               vi                r                vr          \n#&gt;  Min.   :0.4589   Min.   :0.02128   Min.   :0.4292   Min.   :0.001249  \n#&gt;  1st Qu.:0.7695   1st Qu.:0.02128   1st Qu.:0.6466   1st Qu.:0.003953  \n#&gt;  Median :0.8686   Median :0.02128   Median :0.7007   Median :0.005289  \n#&gt;  Mean   :0.8726   Mean   :0.02128   Mean   :0.6954   Mean   :0.005534  \n#&gt;  3rd Qu.:0.9690   3rd Qu.:0.02128   3rd Qu.:0.7483   3rd Qu.:0.006910  \n#&gt;  Max.   :1.3230   Max.   :0.02128   Max.   :0.8675   Max.   :0.013583",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -1704,7 +1704,7 @@
     "href": "chapters/chapter5.html#simulating-from-sampling-distributions-extra-3",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n7.17 Simulating from sampling distributions [#extra]",
-    "text": "7.17 Simulating from sampling distributions [#extra]\n\nsim_k_umd(k = 10, D = 0.5, n1 = 50)\n#&gt;           yi         vi\n#&gt; 1  0.5542286 0.04302018\n#&gt; 2  0.7837123 0.03991671\n#&gt; 3  0.3708463 0.04113782\n#&gt; 4  0.6159170 0.03526492\n#&gt; 5  0.6729047 0.03892563\n#&gt; 6  0.4946377 0.03992805\n#&gt; 7  0.5045990 0.03664000\n#&gt; 8  0.3628192 0.04725545\n#&gt; 9  0.2318982 0.04106268\n#&gt; 10 0.6832070 0.05237131",
+    "text": "7.17 Simulating from sampling distributions [#extra]\n\nsim_k_umd(k = 10, D = 0.5, n1 = 50)\n#&gt;            yi         vi\n#&gt; 1  0.59626901 0.03651621\n#&gt; 2  0.29367154 0.04243381\n#&gt; 3  0.55988406 0.05268682\n#&gt; 4  0.36752058 0.04880525\n#&gt; 5  0.05553809 0.03851076\n#&gt; 6  0.54829084 0.04382554\n#&gt; 7  0.31989788 0.03740828\n#&gt; 8  0.56871934 0.04222310\n#&gt; 9  0.20966467 0.04416763\n#&gt; 10 0.73415866 0.03596558",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -1724,7 +1724,7 @@
     "href": "chapters/chapter5.html#simulating-from-sampling-distributions-extra-5",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n7.19 Simulating from sampling distributions [#extra]",
-    "text": "7.19 Simulating from sampling distributions [#extra]\nThe actual advantage is in terms of computational speed. To simulate \\(k = 10\\) studies for 1000 times (similar to a standard Monte Carlo simulation):\n\nbench &lt;- microbenchmark::microbenchmark(\n  sampling = sim_k_umd(k = 10, n1 = 50, D = 1),\n  participant = replicate(10, sim_umd(n1 = 50, D = 1)),\n  times = 1000 \n)\n\n(bench &lt;- summary(bench))\n#&gt;          expr      min        lq      mean   median       uq      max neval cld\n#&gt; 1    sampling  119.875  126.2125  132.4143  130.801  136.913  393.049  1000  a \n#&gt; 2 participant 1533.363 1570.9390 1629.5997 1588.637 1605.914 6118.904  1000   b\n\nbench$mean[2] / bench$mean[1] # faster\n#&gt; [1] 12.30682",
+    "text": "7.19 Simulating from sampling distributions [#extra]\nThe actual advantage is in terms of computational speed. To simulate \\(k = 10\\) studies for 1000 times (similar to a standard Monte Carlo simulation):\n\nbench &lt;- microbenchmark::microbenchmark(\n  sampling = sim_k_umd(k = 10, n1 = 50, D = 1),\n  participant = replicate(10, sim_umd(n1 = 50, D = 1)),\n  times = 1000 \n)\n\n(bench &lt;- summary(bench))\n#&gt;          expr      min       lq      mean   median        uq      max neval cld\n#&gt; 1    sampling  121.468  127.109  135.6278  131.628  138.0295  263.506  1000  a \n#&gt; 2 participant 1532.892 1566.545 1659.8272 1593.727 1610.3680 6359.687  1000   b\n\nbench$mean[2] / bench$mean[1] # faster\n#&gt; [1] 12.2381",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -1733,8 +1733,8 @@
     "objectID": "chapters/chapter5.html#references-download-.bib-file",
     "href": "chapters/chapter5.html#references-download-.bib-file",
     "title": "\n5  Meta-analysis and publication bias\n",
-    "section": "\n11.40 References  Download .bib file\n",
-    "text": "11.40 References  Download .bib file\n\n\n\nAnderson, S. F., & Kelley, K. (2024). Sample size planning for\nreplication studies: The devil is in the design. Psychological\nMethods, 29, 844–867. https://doi.org/10.1037/met0000520\n\n\nBarba, L. A. (2018). Terminologies for reproducible research. arXiv\n[Cs.DL], arXiv:1802.03311. http://arxiv.org/abs/1802.03311\n\n\nBorenstein, M., Hedges, L. V., Higgins, J. P. T., & Rothstein, H. R.\n(2009). Introduction to Meta-Analysis. https://doi.org/10.1002/9780470743386\n\n\nBrandt, M. J., IJzerman, H., Dijksterhuis, A., Farach, F. J., Geller,\nJ., Giner-Sorolla, R., Grange, J. A., Perugini, M., Spies, J. R., &\nVeer, A. van ’t. (2014). The replication recipe: What makes for a\nconvincing replication? Journal of Experimental Social\nPsychology, 50, 217–224. https://doi.org/10.1016/j.jesp.2013.10.005\n\n\nBroman, K., Cetinkaya-Rundel, M., Nussbaum, A., Paciorek, C., Peng, R.,\nTurek, D., & Wickham, H. (2017, January 18). Recommendations to\nfunding agencies for supporting reproducible research. https://www.amstat.org/asa/files/pdfs/POL-ReproducibleResearchRecommendations.pdf\n\n\nBushman, B. J., & Wang, M. C. (2009). Vote-counting procedures in\nmeta-analysis. In The handbook of research synthesis and\nmeta-analysis (pp. 207–220). Russell Sage Foundation.\n\n\nClark, T. S., & Linzer, D. A. (2015). Should i use fixed or random\neffects? Political Science Research and Methods, 3,\n399–408. https://doi.org/10.1017/psrm.2014.32\n\n\nCollaboration, O. S., & Open Science Collaboration. (2015).\nEstimating the reproducibility of psychological science. In\nScience (Vol. 349). https://doi.org/10.1126/science.aac4716\n\n\nCrandall, C. S., & Sherman, J. W. (2016). On the scientific\nsuperiority of conceptual replications for scientific progress.\nJournal of Experimental Social Psychology, 66, 93–99.\nhttps://doi.org/10.1016/j.jesp.2015.10.002\n\n\nCronbach, L. J., & Shapiro, K. (1982). Designing evaluations of\neducational and social programs. https://eduq.info/xmlui/handle/11515/9106\n\n\nGelman, A., & Carlin, J. (2014). Beyond power calculations. In\nPerspectives on Psychological Science (Vol. 9, pp. 641–651). https://doi.org/10.1177/1745691614551642\n\n\nGoeman, J. J., Solari, A., & Stijnen, T. (2010). Three-sided\nhypothesis testing: Simultaneous testing of superiority, equivalence and\ninferiority. Statistics in Medicine, 29, 2117–2125. https://doi.org/10.1002/sim.4002\n\n\nGollwitzer, M., & Schwabe, J. (2022). Context dependency as a\npredictor of replicability. Review of General Psychology: Journal of\nDivision 1, of the American Psychological Association, 26,\n241–249. https://doi.org/10.1177/10892680211015635\n\n\nGoodman, S. N., Fanelli, D., & Ioannidis, J. P. A. (2016). What does\nresearch reproducibility mean? Science Translational Medicine,\n8, 341ps12. https://doi.org/10.1126/scitranslmed.aaf5027\n\n\nHarrer, M., Cuijpers, P., Furukawa, T., & Ebert, D. (2021).\nDoing meta-analysis with r: A hands-on guide (1st ed.). CRC\nPress.\n\n\nHarrington, D., D’Agostino, R. B., Sr, Gatsonis, C., Hogan, J. W.,\nHunter, D. J., Normand, S.-L. T., Drazen, J. M., & Hamel, M. B.\n(2019). New guidelines for statistical reporting in the journal. The\nNew England Journal of Medicine, 381, 285–286. https://doi.org/10.1056/NEJMe1906559\n\n\nHedges, L. V. (1989). An unbiased correction for sampling error in\nvalidity generalization studies. The Journal of Applied\nPsychology, 74, 469–477. https://doi.org/10.1037/0021-9010.74.3.469\n\n\nHedges, L. V., & Olkin, I. (1980). Vote-counting methods in research\nsynthesis. Psychological Bulletin, 88, 359–369. https://doi.org/10.1037/0033-2909.88.2.359\n\n\nHedges, L. V., & Schauer, J. M. (2019a). Consistency of effects is\nimportant in replication: Rejoinder to mathur and VanderWeele (2019).\nPsychological Methods, 24, 576–577. https://doi.org/10.1037/met0000237\n\n\nHedges, L. V., & Schauer, J. M. (2019b). More than one replication\nstudy is needed for unambiguous tests of replication. Journal of\nEducational and Behavioral Statistics: A Quarterly Publication Sponsored\nby the American Educational Research Association and the American\nStatistical Association, 44, 543–570. https://doi.org/10.3102/1076998619852953\n\n\nHedges, L. V., & Schauer, J. M. (2019c). Statistical analyses for\nstudying replication: Meta-analytic perspectives. Psychological\nMethods, 24, 557–570. https://doi.org/10.1037/met0000189\n\n\nHedges, L. V., & Schauer, J. M. (2021). The design of replication\nstudies. Journal of the Royal Statistical Society. Series A,\n(Statistics in Society), 184, 868–886. https://doi.org/10.1111/rssa.12688\n\n\nHeller, R., Bogomolov, M., & Benjamini, Y. (2014). Deciding whether\nfollow-up studies have replicated findings in a preliminary large-scale\nomics study. Proceedings of the National Academy of Sciences of the\nUnited States of America, 111, 16262–16267. https://doi.org/10.1073/pnas.1314814111\n\n\nHeyard, R., Pawel, S., Frese, J., Voelkl, B., Würbel, H., McCann, S.,\nHeld, L., Wever, K. E., Hartmann, H., Townsin, L., & Zellers, S.\n(2024). A scoping review on metrics to quantify reproducibility: A\nmultitude of questions leads to a multitude of metrics. https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=JAb7P1QAAAAJ:ldfaerwXgEUC\n\n\nHiggins, J. P. T., & Thompson, S. G. (2002). Quantifying\nheterogeneity in a meta-analysis. Statistics in Medicine,\n21, 1539–1558. https://doi.org/10.1002/sim.1186\n\n\nInbar, Y. (2016). Association between contextual dependence and\nreplicability in psychology may be spurious. Proceedings of the\nNational Academy of Sciences of the United States of America,\n113, E4933–4. https://doi.org/10.1073/pnas.1608676113\n\n\nIntHout, J., Ioannidis, J. P. A., Rovers, M. M., & Goeman, J. J.\n(2016). Plea for routinely presenting prediction intervals in\nmeta-analysis. BMJ Open, 6, e010247. https://doi.org/10.1136/bmjopen-2015-010247\n\n\nIoannidis, J. P. A. (2005). Why most published research findings are\nfalse. PLoS Medicine, 2, e124. https://doi.org/10.1371/journal.pmed.0020124\n\n\nJager, L. R., & Leek, J. T. (2014). An estimate of the science-wise\nfalse discovery rate and application to the top medical literature.\nBiostatistics, 15, 1–12. https://academic.oup.com/biostatistics/article-abstract/15/1/1/244509\n\n\nJeffreys, H. (1973). Scientific inference. Cambridge University\nPress.\n\n\nKenett, R. S., & Shmueli, G. (2015). Clarifying the terminology that\ndescribes scientific reproducibility. Nature Methods,\n12, 699. https://doi.org/10.1038/nmeth.3489\n\n\nKruschke, J. K. (2015). Bayesian approaches to testing a point\n(“null”) hypothesis. In Doing bayesian data\nanalysis (pp. 335–358). Elsevier. https://doi.org/10.1016/b978-0-12-405888-0.00012-x\n\n\nKruschke, J. K., & Liddell, T. M. (2018). The bayesian new\nstatistics: Hypothesis testing, estimation, meta-analysis, and power\nanalysis from a bayesian perspective. Psychonomic Bulletin &\nReview, 25, 178–206. https://doi.org/10.3758/s13423-016-1221-4\n\n\nLakens, D., Scheel, A. M., & Isager, P. M. (2018). Equivalence\ntesting for psychological research: A tutorial. Advances in Methods\nand Practices in Psychological Science, 1, 259–269. https://doi.org/10.1177/2515245918770963\n\n\nLindley, D. V. (1972). Bayesian statistics a review. In Bayesian\nstatistics (pp. 1–74). https://doi.org/10.1137/1.9781611970654.ch1\n\n\nLy, A., Etz, A., Marsman, M., & Wagenmakers, E.-J. (2019).\nReplication bayes factors from evidence updating. Behavior Research\nMethods, 51, 2498–2508. https://doi.org/10.3758/s13428-018-1092-x\n\n\nMachery, E. (2020). What is a replication? Philosophy of\nScience, 87, 545–567. https://doi.org/10.1086/709701\n\n\nMathur, M. B., & VanderWeele, T. J. (2019). Challenges and\nsuggestions for defining replication \"success\" when effects may be\nheterogeneous: Comment on hedges and schauer (2019). Psychological\nMethods, 24, 571–575. https://doi.org/10.1037/met0000223\n\n\nMathur, M. B., & VanderWeele, T. J. (2020). New statistical metrics\nfor multisite replication projects. Journal of the Royal Statistical\nSociety. Series A, (Statistics in Society), 183,\n1145–1166. https://doi.org/10.1111/rssa.12572\n\n\nMiller, J. (2009). What is the probability of replicating a\nstatistically significant effect? Psychonomic Bulletin &\nReview, 16, 617–640. https://doi.org/10.3758/PBR.16.4.617\n\n\nNational Academies of Sciences, Engineering, and Medicine, Policy and\nGlobal Affairs, Committee on Science, Engineering, Medicine, and Public\nPolicy, Board on Research Data and Information, Division on Engineering\nand Physical Sciences, Committee on Applied and Theoretical Statistics,\nBoard on Mathematical Sciences and Analytics, Division on Earth and Life\nStudies, Nuclear and Radiation Studies Board, & Division of\nBehavioral and Social Sciences and Education. (2019).\nReproducibility and replicability in science. National\nAcademies Press. https://doi.org/10.17226/25303\n\n\nNosek, B. A., & Errington, T. M. (2017). Making sense of\nreplications. eLife, 6, e23383. https://doi.org/10.7554/eLife.23383\n\n\nNosek, B. A., & Errington, T. M. (2020). What is replication?\nPLoS Biology, 18, e3000691. https://doi.org/10.1371/journal.pbio.3000691\n\n\nParmigiani, G. (2023). Defining replicability of prediction rules.\nStatistical Science: A Review Journal of the Institute of\nMathematical Statistics, 38. https://doi.org/10.1214/23-sts891\n\n\nPatil, P., Peng, R. D., & Leek, J. T. (2016). What should\nresearchers expect when they replicate studies? A statistical view of\nreplicability in psychological science. Perspectives on\nPsychological Science: A Journal of the Association for Psychological\nScience, 11, 539–544. https://doi.org/10.1177/1745691616646366\n\n\nPawel, S., & Held, L. (2020). Probabilistic forecasting of\nreplication studies. PloS One, 15, e0231416. https://doi.org/10.1371/journal.pone.0231416\n\n\nPerugini, M., Gallucci, M., & Costantini, G. (2014). Safeguard power\nas a protection against imprecise power estimates. Perspectives on\nPsychological Science: A Journal of the Association for Psychological\nScience, 9, 319–332. https://doi.org/10.1177/1745691614528519\n\n\nRiley, R. D., Higgins, J. P. T., & Deeks, J. J. (2011).\nInterpretation of random effects meta-analyses. BMJ,\n342, d549. https://doi.org/10.1136/bmj.d549\n\n\nRosenthal, R. (1990). Replication in behavioral research. Journal of\nSocial Behavior and Personality. https://search.proquest.com/openview/5ccc3a267139968c18c0d7ce1a1c09f6/1?pq-origsite=gscholar&cbl=1819046\n\n\nRouder, J. N., Speckman, P. L., Sun, D., Morey, R. D., & Iverson, G.\n(2009). Bayesian t tests for accepting and rejecting the null\nhypothesis. Psychonomic Bulletin & Review, 16,\n225–237. https://doi.org/10.3758/PBR.16.2.225\n\n\nSchauer, J. M. (2022). Replicability and meta-analysis. In W. O’Donohue,\nA. Masuda, & S. Lilienfeld (Eds.), Avoiding questionable\nresearch practices in applied psychology (pp. 301–342). Springer\nInternational Publishing. https://doi.org/10.1007/978-3-031-04968-2_14\n\n\nSchauer, J. M., & Hedges, L. V. (2020). Assessing heterogeneity and\npower in replications of psychological experiments. Psychological\nBulletin, 146, 701–719. https://doi.org/10.1037/bul0000232\n\n\nSchauer, J. M., & Hedges, L. V. (2021). Reconsidering statistical\nmethods for assessing replication. Psychological Methods,\n26, 127–139. https://doi.org/10.1037/met0000302\n\n\nSchmidt, F. L., & Hunter, J. E. (2014). Methods of\nmeta-analysis: Correcting error and bias in research findings (3rd\ned.). SAGE Publications. https://doi.org/10.4135/9781483398105\n\n\nSchmidt, S. (2009). Shall we really do it again? The powerful concept of\nreplication is neglected in the social sciences. Review of General\nPsychology: Journal of Division 1, of the American Psychological\nAssociation, 13, 90–100. https://doi.org/10.1037/a0015108\n\n\nSimons, D. J. (2014). The value of direct replication. Perspectives\non Psychological Science: A Journal of the Association for Psychological\nScience, 9, 76–80. https://doi.org/10.1177/1745691613514755\n\n\nSimonsohn, U. (2015). Small telescopes: Detectability and the evaluation\nof replication results: Detectability and the evaluation of replication\nresults. Psychological Science, 26, 559–569. https://doi.org/10.1177/0956797614567341\n\n\nSpence, J. R., & Stanley, D. J. (2016). Prediction interval: What to\nexpect when you’re expecting … a replication. PloS One,\n11, e0162874. https://doi.org/10.1371/journal.pone.0162874\n\n\nStan Development Team. (2021). Stan: A c++ library for probability\nand sampling, version 2.26.0. https://mc-stan.org/\n\n\nSteegen, S., Tuerlinckx, F., Gelman, A., & Vanpaemel, W. (2016).\nIncreasing transparency through a multiverse analysis. Perspectives\non Psychological Science: A Journal of the Association for Psychological\nScience, 11, 702–712. https://doi.org/10.1177/1745691616658637\n\n\nSteiger, J. H. (2004). Beyond the f test: Effect size confidence\nintervals and tests of close fit in the analysis of variance and\ncontrast analysis. Psychological Methods, 9, 164–182.\nhttps://doi.org/10.1037/1082-989X.9.2.164\n\n\nTal, E. (2020). Measurement in science. Metaphysics Research\nLab, Stanford University. https://plato.stanford.edu/archives/fall2020/entries/measurement-science/\n\n\nUlrich, R., & Miller, J. (2020). Questionable research practices may\nhave little effect on replicability. eLife, 9, e58237.\nhttps://doi.org/10.7554/eLife.58237\n\n\nValentine, J. C., Biglan, A., Boruch, R. F., Castro, F. G., Collins, L.\nM., Flay, B. R., Kellam, S., Mościcki, E. K., & Schinke, S. P.\n(2011). Replication in prevention science. Prevention Science: The\nOfficial Journal of the Society for Prevention Research,\n12, 103–117. https://doi.org/10.1007/s11121-011-0217-6\n\n\nVan Bavel, J. J., Mende-Siedlecki, P., Brady, W. J., & Reinero, D.\nA. (2016). Contextual sensitivity in scientific reproducibility.\nProceedings of the National Academy of Sciences of the United States\nof America, 113, 6454–6459. https://doi.org/10.1073/pnas.1521897113\n\n\nVerhagen, J., & Wagenmakers, E.-J. (2014). Bayesian tests to\nquantify the result of a replication attempt. Journal of\nExperimental Psychology. General, 143, 1457–1475. https://doi.org/10.1037/a0036731\n\n\nVeroniki, A. A., Jackson, D., Viechtbauer, W., Bender, R., Bowden, J.,\nKnapp, G., Kuss, O., Higgins, J. P. T., Langan, D., & Salanti, G.\n(2016). Methods to estimate the between-study variance and its\nuncertainty in meta-analysis. Research Synthesis Methods,\n7, 55–79. https://doi.org/10.1002/jrsm.1164\n\n\nViechtbauer, W. (2005). Bias and efficiency of meta-analytic variance\nestimators in the random-effects model. Journal of Educational and\nBehavioral Statistics: A Quarterly Publication Sponsored by the American\nEducational Research Association and the American Statistical\nAssociation, 30, 261–293. https://doi.org/10.3102/10769986030003261\n\n\nWagenmakers, E.-J., Lodewyckx, T., Kuriyal, H., & Grasman, R.\n(2010). Bayesian hypothesis testing for psychologists: A tutorial on the\nsavage–dickey method. Cognitive Psychology, 60,\n158–189. https://doi.org/10.1016/j.cogpsych.2009.12.001\n\n\nWasserstein, R. L., & Lazar, N. A. (2016). The ASA statement on\np-values: Context, process, and purpose. The American\nStatistician, 70, 129–133. https://doi.org/10.1080/00031305.2016.1154108\n\n\nWilliams, D. R., Rast, P., & Bürkner, P.-. C. (2018). Bayesian\nmeta-analysis with weakly informative prior distributions.\nPsyArXiv. https://doi.org/10.31234/osf.io/7tbrm\n\n\nWilson, B. M., & Wixted, J. T. (2018). The prior odds of testing a\ntrue effect in cognitive and social psychology. Advances in Methods\nand Practices in Psychological Science, 1, 186–197. https://doi.org/10.1177/2515245918767122\n\n\nYarkoni, T. (2020). The generalizability crisis. The Behavioral and\nBrain Sciences, 45, e1. https://doi.org/10.1017/S0140525X20001685",
+    "section": "\n14.46 References  Download .bib file\n",
+    "text": "14.46 References  Download .bib file\n\n\n\nAnderson, S. F., & Kelley, K. (2024). Sample size planning for\nreplication studies: The devil is in the design. Psychological\nMethods, 29, 844–867. https://doi.org/10.1037/met0000520\n\n\nBarba, L. A. (2018). Terminologies for reproducible research. arXiv\n[Cs.DL], arXiv:1802.03311. http://arxiv.org/abs/1802.03311\n\n\nBartoš, F., Maier, M., Quintana, D. S., & Wagenmakers, E.-J. (2022).\nAdjusting for publication bias in JASP and r: Selection models,\nPET-PEESE, and robust bayesian meta-analysis. Advances in Methods\nand Practices in Psychological Science, 5,\n251524592211092. https://doi.org/10.1177/25152459221109259\n\n\nBorenstein, M., Hedges, L. V., Higgins, J. P. T., & Rothstein, H. R.\n(2009). Introduction to Meta-Analysis. https://doi.org/10.1002/9780470743386\n\n\nBrandt, M. J., IJzerman, H., Dijksterhuis, A., Farach, F. J., Geller,\nJ., Giner-Sorolla, R., Grange, J. A., Perugini, M., Spies, J. R., &\nVeer, A. van ’t. (2014). The replication recipe: What makes for a\nconvincing replication? Journal of Experimental Social\nPsychology, 50, 217–224. https://doi.org/10.1016/j.jesp.2013.10.005\n\n\nBroman, K., Cetinkaya-Rundel, M., Nussbaum, A., Paciorek, C., Peng, R.,\nTurek, D., & Wickham, H. (2017, January 18). Recommendations to\nfunding agencies for supporting reproducible research. https://www.amstat.org/asa/files/pdfs/POL-ReproducibleResearchRecommendations.pdf\n\n\nBushman, B. J., & Wang, M. C. (2009). Vote-counting procedures in\nmeta-analysis. In The handbook of research synthesis and\nmeta-analysis (pp. 207–220). Russell Sage Foundation.\n\n\nCitkowicz, M., & Vevea, J. L. (2017). A parsimonious weight function\nfor modeling publication bias. Psychological Methods,\n22, 28–41. https://doi.org/10.1037/met0000119\n\n\nClark, T. S., & Linzer, D. A. (2015). Should i use fixed or random\neffects? Political Science Research and Methods, 3,\n399–408. https://doi.org/10.1017/psrm.2014.32\n\n\nCollaboration, O. S., & Open Science Collaboration. (2015).\nEstimating the reproducibility of psychological science. In\nScience (Vol. 349). https://doi.org/10.1126/science.aac4716\n\n\nCrandall, C. S., & Sherman, J. W. (2016). On the scientific\nsuperiority of conceptual replications for scientific progress.\nJournal of Experimental Social Psychology, 66, 93–99.\nhttps://doi.org/10.1016/j.jesp.2015.10.002\n\n\nCronbach, L. J., & Shapiro, K. (1982). Designing evaluations of\neducational and social programs. https://eduq.info/xmlui/handle/11515/9106\n\n\nDuval, S., & Tweedie, R. (2000). Trim and fill: A simple\nfunnel-plot-based method of testing and adjusting for publication bias\nin meta-analysis. Biometrics, 56, 455–463. https://doi.org/10.1111/j.0006-341x.2000.00455.x\n\n\nGelman, A., & Carlin, J. (2014). Beyond power calculations. In\nPerspectives on Psychological Science (Vol. 9, pp. 641–651). https://doi.org/10.1177/1745691614551642\n\n\nGelman, A., Hill, J., & Vehtari, A. (2020). Regression and other\nstories. Cambridge University Press. https://doi.org/10.1017/9781139161879\n\n\nGoeman, J. J., Solari, A., & Stijnen, T. (2010). Three-sided\nhypothesis testing: Simultaneous testing of superiority, equivalence and\ninferiority. Statistics in Medicine, 29, 2117–2125. https://doi.org/10.1002/sim.4002\n\n\nGollwitzer, M., & Schwabe, J. (2022). Context dependency as a\npredictor of replicability. Review of General Psychology: Journal of\nDivision 1, of the American Psychological Association, 26,\n241–249. https://doi.org/10.1177/10892680211015635\n\n\nGoodman, S. N., Fanelli, D., & Ioannidis, J. P. A. (2016). What does\nresearch reproducibility mean? Science Translational Medicine,\n8, 341ps12. https://doi.org/10.1126/scitranslmed.aaf5027\n\n\nGuan, M., & Vandekerckhove, J. (2016). A bayesian approach to\nmitigation of publication bias. Psychonomic Bulletin &\nReview, 23, 74–86. https://doi.org/10.3758/s13423-015-0868-6\n\n\nHarrer, M., Cuijpers, P., Furukawa, T., & Ebert, D. (2021).\nDoing meta-analysis with r: A hands-on guide (1st ed.). CRC\nPress.\n\n\nHarrington, D., D’Agostino, R. B., Sr, Gatsonis, C., Hogan, J. W.,\nHunter, D. J., Normand, S.-L. T., Drazen, J. M., & Hamel, M. B.\n(2019). New guidelines for statistical reporting in the journal. The\nNew England Journal of Medicine, 381, 285–286. https://doi.org/10.1056/NEJMe1906559\n\n\nHedges, L. V. (1989). An unbiased correction for sampling error in\nvalidity generalization studies. The Journal of Applied\nPsychology, 74, 469–477. https://doi.org/10.1037/0021-9010.74.3.469\n\n\nHedges, L. V., & Olkin, I. (1980). Vote-counting methods in research\nsynthesis. Psychological Bulletin, 88, 359–369. https://doi.org/10.1037/0033-2909.88.2.359\n\n\nHedges, L. V., & Schauer, J. M. (2019a). Consistency of effects is\nimportant in replication: Rejoinder to mathur and VanderWeele (2019).\nPsychological Methods, 24, 576–577. https://doi.org/10.1037/met0000237\n\n\nHedges, L. V., & Schauer, J. M. (2019b). More than one replication\nstudy is needed for unambiguous tests of replication. Journal of\nEducational and Behavioral Statistics: A Quarterly Publication Sponsored\nby the American Educational Research Association and the American\nStatistical Association, 44, 543–570. https://doi.org/10.3102/1076998619852953\n\n\nHedges, L. V., & Schauer, J. M. (2019c). Statistical analyses for\nstudying replication: Meta-analytic perspectives. Psychological\nMethods, 24, 557–570. https://doi.org/10.1037/met0000189\n\n\nHedges, L. V., & Schauer, J. M. (2021). The design of replication\nstudies. Journal of the Royal Statistical Society. Series A,\n(Statistics in Society), 184, 868–886. https://doi.org/10.1111/rssa.12688\n\n\nHeller, R., Bogomolov, M., & Benjamini, Y. (2014). Deciding whether\nfollow-up studies have replicated findings in a preliminary large-scale\nomics study. Proceedings of the National Academy of Sciences of the\nUnited States of America, 111, 16262–16267. https://doi.org/10.1073/pnas.1314814111\n\n\nHeyard, R., Pawel, S., Frese, J., Voelkl, B., Würbel, H., McCann, S.,\nHeld, L., Wever, K. E., Hartmann, H., Townsin, L., & Zellers, S.\n(2024). A scoping review on metrics to quantify reproducibility: A\nmultitude of questions leads to a multitude of metrics. https://scholar.google.com/citations?view_op=view_citation&hl=en&citation_for_view=JAb7P1QAAAAJ:ldfaerwXgEUC\n\n\nHiggins, J. P. T., & Thompson, S. G. (2002). Quantifying\nheterogeneity in a meta-analysis. Statistics in Medicine,\n21, 1539–1558. https://doi.org/10.1002/sim.1186\n\n\nInbar, Y. (2016). Association between contextual dependence and\nreplicability in psychology may be spurious. Proceedings of the\nNational Academy of Sciences of the United States of America,\n113, E4933–4. https://doi.org/10.1073/pnas.1608676113\n\n\nIntHout, J., Ioannidis, J. P. A., Rovers, M. M., & Goeman, J. J.\n(2016). Plea for routinely presenting prediction intervals in\nmeta-analysis. BMJ Open, 6, e010247. https://doi.org/10.1136/bmjopen-2015-010247\n\n\nIoannidis, J. P. A. (2005). Why most published research findings are\nfalse. PLoS Medicine, 2, e124. https://doi.org/10.1371/journal.pmed.0020124\n\n\nJager, L. R., & Leek, J. T. (2014). An estimate of the science-wise\nfalse discovery rate and application to the top medical literature.\nBiostatistics, 15, 1–12. https://academic.oup.com/biostatistics/article-abstract/15/1/1/244509\n\n\nJeffreys, H. (1973). Scientific inference. Cambridge University\nPress.\n\n\nJin, Z.-C., Zhou, X.-H., & He, J. (2015). Statistical methods for\ndealing with publication bias in meta-analysis. Statistics in\nMedicine, 34, 343–360. https://doi.org/10.1002/sim.6342\n\n\nKenett, R. S., & Shmueli, G. (2015). Clarifying the terminology that\ndescribes scientific reproducibility. Nature Methods,\n12, 699. https://doi.org/10.1038/nmeth.3489\n\n\nKruschke, J. K. (2015). Bayesian approaches to testing a point\n(“null”) hypothesis. In Doing bayesian data\nanalysis (pp. 335–358). Elsevier. https://doi.org/10.1016/b978-0-12-405888-0.00012-x\n\n\nKruschke, J. K., & Liddell, T. M. (2018). The bayesian new\nstatistics: Hypothesis testing, estimation, meta-analysis, and power\nanalysis from a bayesian perspective. Psychonomic Bulletin &\nReview, 25, 178–206. https://doi.org/10.3758/s13423-016-1221-4\n\n\nLakens, D., Scheel, A. M., & Isager, P. M. (2018). Equivalence\ntesting for psychological research: A tutorial. Advances in Methods\nand Practices in Psychological Science, 1, 259–269. https://doi.org/10.1177/2515245918770963\n\n\nLindley, D. V. (1972). Bayesian statistics a review. In Bayesian\nstatistics (pp. 1–74). https://doi.org/10.1137/1.9781611970654.ch1\n\n\nLópez-López, J. A., Marín-Martínez, F., Sánchez-Meca, J., Van den\nNoortgate, W., & Viechtbauer, W. (2014). Estimation of the\npredictive power of the model in mixed-effects meta-regression: A\nsimulation study. The British Journal of Mathematical and\nStatistical Psychology, 67, 30–48. https://doi.org/10.1111/bmsp.12002\n\n\nLy, A., Etz, A., Marsman, M., & Wagenmakers, E.-J. (2019).\nReplication bayes factors from evidence updating. Behavior Research\nMethods, 51, 2498–2508. https://doi.org/10.3758/s13428-018-1092-x\n\n\nMachery, E. (2020). What is a replication? Philosophy of\nScience, 87, 545–567. https://doi.org/10.1086/709701\n\n\nMaier, M., Bartoš, F., & Wagenmakers, E.-J. (2023). Robust bayesian\nmeta-analysis: Addressing publication bias with model-averaging.\nPsychological Methods, 28, 107–122. https://doi.org/10.1037/met0000405\n\n\nMathur, M. B., & VanderWeele, T. J. (2019). Challenges and\nsuggestions for defining replication \"success\" when effects may be\nheterogeneous: Comment on hedges and schauer (2019). Psychological\nMethods, 24, 571–575. https://doi.org/10.1037/met0000223\n\n\nMathur, M. B., & VanderWeele, T. J. (2020). New statistical metrics\nfor multisite replication projects. Journal of the Royal Statistical\nSociety. Series A, (Statistics in Society), 183,\n1145–1166. https://doi.org/10.1111/rssa.12572\n\n\nMcShane, B. B., Böckenholt, U., & Hansen, K. T. (2016). Adjusting\nfor publication bias in meta-analysis: An evaluation of selection\nmethods and some cautionary notes: An evaluation of selection methods\nand some cautionary notes. Perspectives on Psychological Science: A\nJournal of the Association for Psychological Science, 11,\n730–749. https://doi.org/10.1177/1745691616662243\n\n\nMiller, J. (2009). What is the probability of replicating a\nstatistically significant effect? Psychonomic Bulletin &\nReview, 16, 617–640. https://doi.org/10.3758/PBR.16.4.617\n\n\nNational Academies of Sciences, Engineering, and Medicine, Policy and\nGlobal Affairs, Committee on Science, Engineering, Medicine, and Public\nPolicy, Board on Research Data and Information, Division on Engineering\nand Physical Sciences, Committee on Applied and Theoretical Statistics,\nBoard on Mathematical Sciences and Analytics, Division on Earth and Life\nStudies, Nuclear and Radiation Studies Board, & Division of\nBehavioral and Social Sciences and Education. (2019).\nReproducibility and replicability in science. National\nAcademies Press. https://doi.org/10.17226/25303\n\n\nNosek, B. A., & Errington, T. M. (2017). Making sense of\nreplications. eLife, 6, e23383. https://doi.org/10.7554/eLife.23383\n\n\nNosek, B. A., & Errington, T. M. (2020). What is replication?\nPLoS Biology, 18, e3000691. https://doi.org/10.1371/journal.pbio.3000691\n\n\nOrwin, R. G. (1983). A fail-SafeN for effect size in meta-analysis.\nJournal of Educational Statistics, 8, 157–159. https://doi.org/10.3102/10769986008002157\n\n\nParmigiani, G. (2023). Defining replicability of prediction rules.\nStatistical Science: A Review Journal of the Institute of\nMathematical Statistics, 38. https://doi.org/10.1214/23-sts891\n\n\nPatil, P., Peng, R. D., & Leek, J. T. (2016). What should\nresearchers expect when they replicate studies? A statistical view of\nreplicability in psychological science. Perspectives on\nPsychological Science: A Journal of the Association for Psychological\nScience, 11, 539–544. https://doi.org/10.1177/1745691616646366\n\n\nPawel, S., & Held, L. (2020). Probabilistic forecasting of\nreplication studies. PloS One, 15, e0231416. https://doi.org/10.1371/journal.pone.0231416\n\n\nPerugini, M., Gallucci, M., & Costantini, G. (2014). Safeguard power\nas a protection against imprecise power estimates. Perspectives on\nPsychological Science: A Journal of the Association for Psychological\nScience, 9, 319–332. https://doi.org/10.1177/1745691614528519\n\n\nRiley, R. D., Higgins, J. P. T., & Deeks, J. J. (2011).\nInterpretation of random effects meta-analyses. BMJ,\n342, d549. https://doi.org/10.1136/bmj.d549\n\n\nRosenberg, M. S. (2005). The file-drawer problem revisited: A general\nweighted method for calculating fail-safe numbers in meta-analysis.\nEvolution; International Journal of Organic Evolution,\n59, 464–468. https://doi.org/10.1111/j.0014-3820.2005.tb01004.x\n\n\nRosenthal, R. (1979). The file drawer problem and tolerance for null\nresults. Psychological Bulletin, 86, 638–641. https://doi.org/10.1037/0033-2909.86.3.638\n\n\nRosenthal, R. (1990). Replication in behavioral research. Journal of\nSocial Behavior and Personality. https://search.proquest.com/openview/5ccc3a267139968c18c0d7ce1a1c09f6/1?pq-origsite=gscholar&cbl=1819046\n\n\nRouder, J. N., Speckman, P. L., Sun, D., Morey, R. D., & Iverson, G.\n(2009). Bayesian t tests for accepting and rejecting the null\nhypothesis. Psychonomic Bulletin & Review, 16,\n225–237. https://doi.org/10.3758/PBR.16.2.225\n\n\nSchad, D. J., Vasishth, S., Hohenstein, S., & Kliegl, R. (2020). How\nto capitalize on a priori contrasts in linear (mixed) models: A\ntutorial. Journal of Memory and Language, 110, 104038.\nhttps://doi.org/10.1016/j.jml.2019.104038\n\n\nSchauer, J. M. (2022). Replicability and meta-analysis. In W. O’Donohue,\nA. Masuda, & S. Lilienfeld (Eds.), Avoiding questionable\nresearch practices in applied psychology (pp. 301–342). Springer\nInternational Publishing. https://doi.org/10.1007/978-3-031-04968-2_14\n\n\nSchauer, J. M., & Hedges, L. V. (2020). Assessing heterogeneity and\npower in replications of psychological experiments. Psychological\nBulletin, 146, 701–719. https://doi.org/10.1037/bul0000232\n\n\nSchauer, J. M., & Hedges, L. V. (2021). Reconsidering statistical\nmethods for assessing replication. Psychological Methods,\n26, 127–139. https://doi.org/10.1037/met0000302\n\n\nSchmidt, F. L., & Hunter, J. E. (2014). Methods of\nmeta-analysis: Correcting error and bias in research findings (3rd\ned.). SAGE Publications. https://doi.org/10.4135/9781483398105\n\n\nSchmidt, S. (2009). Shall we really do it again? The powerful concept of\nreplication is neglected in the social sciences. Review of General\nPsychology: Journal of Division 1, of the American Psychological\nAssociation, 13, 90–100. https://doi.org/10.1037/a0015108\n\n\nShi, L., & Lin, L. (2019). The trim-and-fill method for publication\nbias: Practical guidelines and recommendations based on a large database\nof meta-analyses: Practical guidelines and recommendations based on a\nlarge database of meta-analyses. Medicine, 98, e15987.\nhttps://doi.org/10.1097/MD.0000000000015987\n\n\nSimons, D. J. (2014). The value of direct replication. Perspectives\non Psychological Science: A Journal of the Association for Psychological\nScience, 9, 76–80. https://doi.org/10.1177/1745691613514755\n\n\nSimonsohn, U. (2015). Small telescopes: Detectability and the evaluation\nof replication results: Detectability and the evaluation of replication\nresults. Psychological Science, 26, 559–569. https://doi.org/10.1177/0956797614567341\n\n\nSpence, J. R., & Stanley, D. J. (2016). Prediction interval: What to\nexpect when you’re expecting … a replication. PloS One,\n11, e0162874. https://doi.org/10.1371/journal.pone.0162874\n\n\nStan Development Team. (2021). Stan: A c++ library for probability\nand sampling, version 2.26.0. https://mc-stan.org/\n\n\nSteegen, S., Tuerlinckx, F., Gelman, A., & Vanpaemel, W. (2016).\nIncreasing transparency through a multiverse analysis. Perspectives\non Psychological Science: A Journal of the Association for Psychological\nScience, 11, 702–712. https://doi.org/10.1177/1745691616658637\n\n\nSteiger, J. H. (2004). Beyond the f test: Effect size confidence\nintervals and tests of close fit in the analysis of variance and\ncontrast analysis. Psychological Methods, 9, 164–182.\nhttps://doi.org/10.1037/1082-989X.9.2.164\n\n\nTal, E. (2020). Measurement in science. Metaphysics Research\nLab, Stanford University. https://plato.stanford.edu/archives/fall2020/entries/measurement-science/\n\n\nUlrich, R., & Miller, J. (2020). Questionable research practices may\nhave little effect on replicability. eLife, 9, e58237.\nhttps://doi.org/10.7554/eLife.58237\n\n\nValentine, J. C., Biglan, A., Boruch, R. F., Castro, F. G., Collins, L.\nM., Flay, B. R., Kellam, S., Mościcki, E. K., & Schinke, S. P.\n(2011). Replication in prevention science. Prevention Science: The\nOfficial Journal of the Society for Prevention Research,\n12, 103–117. https://doi.org/10.1007/s11121-011-0217-6\n\n\nVan Bavel, J. J., Mende-Siedlecki, P., Brady, W. J., & Reinero, D.\nA. (2016). Contextual sensitivity in scientific reproducibility.\nProceedings of the National Academy of Sciences of the United States\nof America, 113, 6454–6459. https://doi.org/10.1073/pnas.1521897113\n\n\nVerhagen, J., & Wagenmakers, E.-J. (2014). Bayesian tests to\nquantify the result of a replication attempt. Journal of\nExperimental Psychology. General, 143, 1457–1475. https://doi.org/10.1037/a0036731\n\n\nVeroniki, A. A., Jackson, D., Viechtbauer, W., Bender, R., Bowden, J.,\nKnapp, G., Kuss, O., Higgins, J. P. T., Langan, D., & Salanti, G.\n(2016). Methods to estimate the between-study variance and its\nuncertainty in meta-analysis. Research Synthesis Methods,\n7, 55–79. https://doi.org/10.1002/jrsm.1164\n\n\nVevea, J. L., & Woods, C. M. (2005). Publication bias in research\nsynthesis: Sensitivity analysis using a priori weight functions.\nPsychological Methods, 10, 428–443. https://doi.org/10.1037/1082-989X.10.4.428\n\n\nViechtbauer, W. (2005). Bias and efficiency of meta-analytic variance\nestimators in the random-effects model. Journal of Educational and\nBehavioral Statistics: A Quarterly Publication Sponsored by the American\nEducational Research Association and the American Statistical\nAssociation, 30, 261–293. https://doi.org/10.3102/10769986030003261\n\n\nWagenmakers, E.-J., Lodewyckx, T., Kuriyal, H., & Grasman, R.\n(2010). Bayesian hypothesis testing for psychologists: A tutorial on the\nsavage–dickey method. Cognitive Psychology, 60,\n158–189. https://doi.org/10.1016/j.cogpsych.2009.12.001\n\n\nWasserstein, R. L., & Lazar, N. A. (2016). The ASA statement on\np-values: Context, process, and purpose. The American\nStatistician, 70, 129–133. https://doi.org/10.1080/00031305.2016.1154108\n\n\nWilliams, D. R., Rast, P., & Bürkner, P.-. C. (2018). Bayesian\nmeta-analysis with weakly informative prior distributions.\nPsyArXiv. https://doi.org/10.31234/osf.io/7tbrm\n\n\nWilson, B. M., & Wixted, J. T. (2018). The prior odds of testing a\ntrue effect in cognitive and social psychology. Advances in Methods\nand Practices in Psychological Science, 1, 186–197. https://doi.org/10.1177/2515245918767122\n\n\nYarkoni, T. (2020). The generalizability crisis. The Behavioral and\nBrain Sciences, 45, e1. https://doi.org/10.1017/S0140525X20001685",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -1764,7 +1764,7 @@
     "href": "chapters/chapter5.html#simulation-setup-2",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n8.3 Simulation setup",
-    "text": "8.3 Simulation setup\nA more general, clear and realistic approach to simulate data is by generating \\(k\\) studies with same/different sample sizes and (later) true effect sizes.\n\nk &lt;- 10 # number of studies\nn1 &lt;- n2 &lt;- 10 + rpois(k, 30 - 10) # sample size from poisson distribution with lambda 40 and minimum 10\nD &lt;- 0.5 # effect size\n\nyi &lt;- rep(NA, k)\nvi &lt;- rep(NA, k)\n  \nfor(i in 1:k){\n  g1 &lt;- rnorm(n1[i], 0, 1)\n  g2 &lt;- rnorm(n2[i], D, 1)\n  yi[i] &lt;- mean(g2) - mean(g1)\n  vi[i] &lt;- var(g1)/n1[i] + var(g2)/n2[i]\n}\n  \nsim &lt;- data.frame(id = 1:k, yi, vi)\n\nhead(sim)\n#&gt;   id        yi         vi\n#&gt; 1  1 0.6161948 0.05161202\n#&gt; 2  2 0.3942969 0.07989387\n#&gt; 3  3 0.6223084 0.07811994\n#&gt; 4  4 0.2317775 0.09670337\n#&gt; 5  5 0.2699480 0.04687939\n#&gt; 6  6 0.6029536 0.08060074",
+    "text": "8.3 Simulation setup\nA more general, clear and realistic approach to simulate data is by generating \\(k\\) studies with same/different sample sizes and (later) true effect sizes.\n\nk &lt;- 10 # number of studies\nn1 &lt;- n2 &lt;- 10 + rpois(k, 30 - 10) # sample size from poisson distribution with lambda 40 and minimum 10\nD &lt;- 0.5 # effect size\n\nyi &lt;- rep(NA, k)\nvi &lt;- rep(NA, k)\n  \nfor(i in 1:k){\n  g1 &lt;- rnorm(n1[i], 0, 1)\n  g2 &lt;- rnorm(n2[i], D, 1)\n  yi[i] &lt;- mean(g2) - mean(g1)\n  vi[i] &lt;- var(g1)/n1[i] + var(g2)/n2[i]\n}\n  \nsim &lt;- data.frame(id = 1:k, yi, vi)\n\nhead(sim)\n#&gt;   id          yi         vi\n#&gt; 1  1  0.32347839 0.08199370\n#&gt; 2  2 -0.06229478 0.09007477\n#&gt; 3  3  0.42661729 0.06047760\n#&gt; 4  4  0.99254822 0.06154313\n#&gt; 5  5  0.28434245 0.04539959\n#&gt; 6  6  0.06321880 0.08937580",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -1804,7 +1804,7 @@
     "href": "chapters/chapter5.html#combining-studies-1",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n9.1 Combining studies",
-    "text": "9.1 Combining studies\nLet’s imagine to have \\(k = 10\\) studies, a \\(D = 0.5\\) and heterogeneous sample sizes in each study.\n\nk &lt;- 10\nD &lt;- 0.5\nn &lt;- 10 + rpois(k, lambda = 20) \ndat &lt;- sim_studies(k = k, es = D, n1 = n)\nhead(dat)\n#&gt; \n#&gt;   id      yi     vi n1 n2 \n#&gt; 1  1 -0.0200 0.0826 32 32 \n#&gt; 2  2 -0.0533 0.1244 21 21 \n#&gt; 3  3  0.8737 0.0524 31 31 \n#&gt; 4  4  0.6142 0.0664 29 29 \n#&gt; 5  5  0.2540 0.0510 37 37 \n#&gt; 6  6  0.5867 0.0511 29 29\n\n. . .\nWhat is the best way to combine the studies?",
+    "text": "9.1 Combining studies\nLet’s imagine to have \\(k = 10\\) studies, a \\(D = 0.5\\) and heterogeneous sample sizes in each study.\n\nk &lt;- 10\nD &lt;- 0.5\nn &lt;- 10 + rpois(k, lambda = 20) \ndat &lt;- sim_studies(k = k, es = D, n1 = n)\nhead(dat)\n#&gt; \n#&gt;   id     yi     vi n1 n2 \n#&gt; 1  1 0.2457 0.0614 32 32 \n#&gt; 2  2 0.4531 0.0645 38 38 \n#&gt; 3  3 0.1710 0.0829 19 19 \n#&gt; 4  4 0.5329 0.0673 31 31 \n#&gt; 5  5 0.4363 0.0539 26 26 \n#&gt; 6  6 0.3225 0.0526 40 40\n\n. . .\nWhat is the best way to combine the studies?",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -1814,7 +1814,7 @@
     "href": "chapters/chapter5.html#combining-studies-2",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n9.2 Combining studies",
-    "text": "9.2 Combining studies\nWe can take the average effect size and considering it as a huge study. This can be considered the best way to combine the effects.\n\\[\n\\hat{D} = \\frac{\\sum^{k}_{i = 1} D_i}{k}\n\\]\n\nmean(dat$yi)\n#&gt; [1] 0.3874658\n\n. . .\nIt is appropriate? What do you think? Are we missing something?",
+    "text": "9.2 Combining studies\nWe can take the average effect size and considering it as a huge study. This can be considered the best way to combine the effects.\n\\[\n\\hat{D} = \\frac{\\sum^{k}_{i = 1} D_i}{k}\n\\]\n\nmean(dat$yi)\n#&gt; [1] 0.3595696\n\n. . .\nIt is appropriate? What do you think? Are we missing something?",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -1834,7 +1834,7 @@
     "href": "chapters/chapter5.html#weighting-studies-1",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n9.4 Weighting studies",
-    "text": "9.4 Weighting studies\nWe need to find a value (called weight \\(w_i\\)) that allows assigning more trust to a study because it provide more information.\n. . .\nThe simplest weights are just the sample size, but in practice we use the so-called inverse-variance weighting. We use the (inverse) of the sampling variance of the effect size to weight each study.\n. . .\nThe basic version of a meta-analysis is just a weighted average:\n\\[\n\\overline D_w = \\frac{\\sum^k_{i = 1}{w_iD_i}}{\\sum^k_{i = 1}{w_i}}\n\\]\n. . .\n\nwi &lt;- 1/dat$vi\nsum(dat$yi * wi) / sum(wi)\n#&gt; [1] 0.41158\n# weighted.mean(dat$yi, wi)",
+    "text": "9.4 Weighting studies\nWe need to find a value (called weight \\(w_i\\)) that allows assigning more trust to a study because it provide more information.\n. . .\nThe simplest weights are just the sample size, but in practice we use the so-called inverse-variance weighting. We use the (inverse) of the sampling variance of the effect size to weight each study.\n. . .\nThe basic version of a meta-analysis is just a weighted average:\n\\[\n\\overline D_w = \\frac{\\sum^k_{i = 1}{w_iD_i}}{\\sum^k_{i = 1}{w_i}}\n\\]\n. . .\n\nwi &lt;- 1/dat$vi\nsum(dat$yi * wi) / sum(wi)\n#&gt; [1] 0.3663024\n# weighted.mean(dat$yi, wi)",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -1914,7 +1914,7 @@
     "href": "chapters/chapter5.html#fitting-an-ee-model",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n10.7 Fitting an EE model",
-    "text": "10.7 Fitting an EE model\nThe model can be fitted using the metafor::rma() function, with method = \"EE\"1.\n\ntheta &lt;- 0.5\nk &lt;- 15\nn &lt;- 10 + rpois(k, 30 - 10)\ndat &lt;- sim_studies(k = k, es = theta, n1 = n)\nfit &lt;- rma(yi, vi, data = dat, method = \"EE\")\nsummary(fit)\n#&gt; \n#&gt; Equal-Effects Model (k = 15)\n#&gt; \n#&gt;   logLik  deviance       AIC       BIC      AICc   \n#&gt;   2.4968    8.3471   -2.9936   -2.2855   -2.6859   \n#&gt; \n#&gt; I^2 (total heterogeneity / total variability):   0.00%\n#&gt; H^2 (total variability / sampling variability):  0.60\n#&gt; \n#&gt; Test for Heterogeneity:\n#&gt; Q(df = 14) = 8.3471, p-val = 0.8705\n#&gt; \n#&gt; Model Results:\n#&gt; \n#&gt; estimate      se    zval    pval   ci.lb   ci.ub      \n#&gt;   0.5999  0.0647  9.2691  &lt;.0001  0.4731  0.7268  *** \n#&gt; \n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
+    "text": "10.7 Fitting an EE model\nThe model can be fitted using the metafor::rma() function, with method = \"EE\"1.\n\ntheta &lt;- 0.5\nk &lt;- 15\nn &lt;- 10 + rpois(k, 30 - 10)\ndat &lt;- sim_studies(k = k, es = theta, n1 = n)\nfit &lt;- rma(yi, vi, data = dat, method = \"EE\")\nsummary(fit)\n#&gt; \n#&gt; Equal-Effects Model (k = 15)\n#&gt; \n#&gt;   logLik  deviance       AIC       BIC      AICc   \n#&gt;  -3.2628   19.0853    8.5257    9.2337    8.8334   \n#&gt; \n#&gt; I^2 (total heterogeneity / total variability):   26.65%\n#&gt; H^2 (total variability / sampling variability):  1.36\n#&gt; \n#&gt; Test for Heterogeneity:\n#&gt; Q(df = 14) = 19.0853, p-val = 0.1617\n#&gt; \n#&gt; Model Results:\n#&gt; \n#&gt; estimate      se    zval    pval   ci.lb   ci.ub      \n#&gt;   0.4590  0.0667  6.8778  &lt;.0001  0.3282  0.5898  *** \n#&gt; \n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -1964,7 +1964,7 @@
     "href": "chapters/chapter5.html#ee-model-as-a-weighted-average",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n10.12 EE model as a weighted Average",
-    "text": "10.12 EE model as a weighted Average\nFormally \\(\\theta\\) is estimated as (see Borenstein et al., 2009, p. 66)\n\\[\n\\hat{\\theta} = \\frac{\\sum^k_{i = 1}{w_iy_i}}{\\sum^k_{i = 1}{w_i}}; \\;\\;\\; w_i = \\frac{1}{\\sigma^2_i}\n\\]\n\\[\nSE_{\\theta} = \\frac{1}{\\sum^k_{i = 1}{w_i}}\n\\]\n\nwi &lt;- 1/dat$vi\ntheta_hat &lt;- with(dat, sum(yi * wi)/sum(wi))\nse_theta_hat &lt;- sqrt(1/sum(wi))\nc(theta = theta_hat, se = se_theta_hat, z = theta_hat / se_theta_hat)\n#&gt;     theta        se         z \n#&gt; 0.5999291 0.0647239 9.2690513",
+    "text": "10.12 EE model as a weighted Average\nFormally \\(\\theta\\) is estimated as (see Borenstein et al., 2009, p. 66)\n\\[\n\\hat{\\theta} = \\frac{\\sum^k_{i = 1}{w_iy_i}}{\\sum^k_{i = 1}{w_i}}; \\;\\;\\; w_i = \\frac{1}{\\sigma^2_i}\n\\]\n\\[\nSE_{\\theta} = \\frac{1}{\\sum^k_{i = 1}{w_i}}\n\\]\n\nwi &lt;- 1/dat$vi\ntheta_hat &lt;- with(dat, sum(yi * wi)/sum(wi))\nse_theta_hat &lt;- sqrt(1/sum(wi))\nc(theta = theta_hat, se = se_theta_hat, z = theta_hat / se_theta_hat)\n#&gt;      theta         se          z \n#&gt; 0.45897245 0.06673282 6.87776180",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -2034,7 +2034,7 @@
     "href": "chapters/chapter5.html#simulating-a-re-model",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n11.7 Simulating a RE Model",
-    "text": "11.7 Simulating a RE Model\nTo simulate the RE model we simply need to include \\(\\tau^2\\) in the EE model simulation.\n\nk &lt;- 15 # number of studies\nmu &lt;- 0.5 # average effect\ntau2 &lt;- 0.1 # heterogeneity\nn &lt;- 10 + rpois(k, 30 - 10) # sample size\ndeltai &lt;- rnorm(k, 0, sqrt(tau2)) # random-effects\nthetai &lt;- mu + deltai # true study effect\n\ndat &lt;- sim_studies(k = k, es = thetai, n1 = n)\n\nhead(dat)\n#&gt; \n#&gt;   id     yi     vi n1 n2 \n#&gt; 1  1 0.4462 0.0498 37 37 \n#&gt; 2  2 1.0966 0.0641 31 31 \n#&gt; 3  3 0.6987 0.0676 32 32 \n#&gt; 4  4 0.7012 0.0517 33 33 \n#&gt; 5  5 0.2842 0.0767 27 27 \n#&gt; 6  6 0.2323 0.0703 31 31",
+    "text": "11.7 Simulating a RE Model\nTo simulate the RE model we simply need to include \\(\\tau^2\\) in the EE model simulation.\n\nk &lt;- 15 # number of studies\nmu &lt;- 0.5 # average effect\ntau2 &lt;- 0.1 # heterogeneity\nn &lt;- 10 + rpois(k, 30 - 10) # sample size\ndeltai &lt;- rnorm(k, 0, sqrt(tau2)) # random-effects\nthetai &lt;- mu + deltai # true study effect\n\ndat &lt;- sim_studies(k = k, es = thetai, n1 = n)\n\nhead(dat)\n#&gt; \n#&gt;   id     yi     vi n1 n2 \n#&gt; 1  1 0.6838 0.0860 26 26 \n#&gt; 2  2 0.4613 0.0701 34 34 \n#&gt; 3  3 0.5666 0.0631 35 35 \n#&gt; 4  4 0.7017 0.0705 29 29 \n#&gt; 5  5 0.1014 0.0918 26 26 \n#&gt; 6  6 0.6434 0.0840 27 27",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -2064,7 +2064,7 @@
     "href": "chapters/chapter5.html#simulating-a-re-model-3",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n11.10 Simulating a RE model",
-    "text": "11.10 Simulating a RE model\nTo see the actual impact of \\(\\tau^2\\) we can follow the same approach of Section 10.5 thus using a large \\(n\\). The sampling variance vi of each study is basically 0.\n\n# ... other parameters as before\nn &lt;- 1e4\ndeltai &lt;- rnorm(k, 0, sqrt(tau2)) # random-effects\nthetai &lt;- mu + deltai # true study effect\ndat &lt;- sim_studies(k = k, es = thetai, n1 = n)\n# or equivalently \n# dat &lt;- sim_studies(k = k, es = mu, tau2 = tau2, n1 = n)\n\nhead(dat)\n#&gt; \n#&gt;   id     yi     vi    n1    n2 \n#&gt; 1  1 0.2071 0.0002 10000 10000 \n#&gt; 2  2 0.6257 0.0002 10000 10000 \n#&gt; 3  3 0.7598 0.0002 10000 10000 \n#&gt; 4  4 0.5984 0.0002 10000 10000 \n#&gt; 5  5 0.4834 0.0002 10000 10000 \n#&gt; 6  6 0.2013 0.0002 10000 10000",
+    "text": "11.10 Simulating a RE model\nTo see the actual impact of \\(\\tau^2\\) we can follow the same approach of Section 10.5 thus using a large \\(n\\). The sampling variance vi of each study is basically 0.\n\n# ... other parameters as before\nn &lt;- 1e4\ndeltai &lt;- rnorm(k, 0, sqrt(tau2)) # random-effects\nthetai &lt;- mu + deltai # true study effect\ndat &lt;- sim_studies(k = k, es = thetai, n1 = n)\n# or equivalently \n# dat &lt;- sim_studies(k = k, es = mu, tau2 = tau2, n1 = n)\n\nhead(dat)\n#&gt; \n#&gt;   id     yi     vi    n1    n2 \n#&gt; 1  1 0.5474 0.0002 10000 10000 \n#&gt; 2  2 0.0975 0.0002 10000 10000 \n#&gt; 3  3 0.9151 0.0002 10000 10000 \n#&gt; 4  4 0.4185 0.0002 10000 10000 \n#&gt; 5  5 0.0186 0.0002 10000 10000 \n#&gt; 6  6 0.1722 0.0002 10000 10000",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -2094,7 +2094,7 @@
     "href": "chapters/chapter5.html#fitting-a-re-model",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n11.13 Fitting a RE model",
-    "text": "11.13 Fitting a RE model\nIn R we can use the metafor::rma() function using the method = \"REML\".\n\nfit &lt;- rma(yi, vi, data = dat, method = \"REML\")\nsummary(fit)\n#&gt; \n#&gt; Random-Effects Model (k = 15; tau^2 estimator: REML)\n#&gt; \n#&gt;   logLik  deviance       AIC       BIC      AICc   \n#&gt;  -3.9162    7.8325   11.8325   13.1106   12.9234   \n#&gt; \n#&gt; tau^2 (estimated amount of total heterogeneity): 0.1022 (SE = 0.0387)\n#&gt; tau (square root of estimated tau^2 value):      0.3198\n#&gt; I^2 (total heterogeneity / total variability):   99.80%\n#&gt; H^2 (total variability / sampling variability):  512.56\n#&gt; \n#&gt; Test for Heterogeneity:\n#&gt; Q(df = 14) = 7157.7215, p-val &lt; .0001\n#&gt; \n#&gt; Model Results:\n#&gt; \n#&gt; estimate      se    zval    pval   ci.lb   ci.ub      \n#&gt;   0.6142  0.0826  7.4326  &lt;.0001  0.4523  0.7762  *** \n#&gt; \n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
+    "text": "11.13 Fitting a RE model\nIn R we can use the metafor::rma() function using the method = \"REML\".\n\nfit &lt;- rma(yi, vi, data = dat, method = \"REML\")\nsummary(fit)\n#&gt; \n#&gt; Random-Effects Model (k = 15; tau^2 estimator: REML)\n#&gt; \n#&gt;   logLik  deviance       AIC       BIC      AICc   \n#&gt;  -7.8430   15.6860   19.6860   20.9641   20.7769   \n#&gt; \n#&gt; tau^2 (estimated amount of total heterogeneity): 0.1793 (SE = 0.0679)\n#&gt; tau (square root of estimated tau^2 value):      0.4235\n#&gt; I^2 (total heterogeneity / total variability):   99.89%\n#&gt; H^2 (total variability / sampling variability):  898.45\n#&gt; \n#&gt; Test for Heterogeneity:\n#&gt; Q(df = 14) = 12514.0313, p-val &lt; .0001\n#&gt; \n#&gt; Model Results:\n#&gt; \n#&gt; estimate      se    zval    pval   ci.lb   ci.ub      \n#&gt;   0.5501  0.1094  5.0287  &lt;.0001  0.3357  0.7646  *** \n#&gt; \n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -2104,7 +2104,7 @@
     "href": "chapters/chapter5.html#intepreting-the-re-model",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n11.14 Intepreting the RE model",
-    "text": "11.14 Intepreting the RE model\nThe model output is quite similar to the EE model and also the intepretation is similar.\nThe only extra section is tau^2/tau that is the estimation of the between-study heterogeneity.\n\nsummary(fit)\n#&gt; \n#&gt; Random-Effects Model (k = 15; tau^2 estimator: REML)\n#&gt; \n#&gt;   logLik  deviance       AIC       BIC      AICc   \n#&gt;  -3.9162    7.8325   11.8325   13.1106   12.9234   \n#&gt; \n#&gt; tau^2 (estimated amount of total heterogeneity): 0.1022 (SE = 0.0387)\n#&gt; tau (square root of estimated tau^2 value):      0.3198\n#&gt; I^2 (total heterogeneity / total variability):   99.80%\n#&gt; H^2 (total variability / sampling variability):  512.56\n#&gt; \n#&gt; Test for Heterogeneity:\n#&gt; Q(df = 14) = 7157.7215, p-val &lt; .0001\n#&gt; \n#&gt; Model Results:\n#&gt; \n#&gt; estimate      se    zval    pval   ci.lb   ci.ub      \n#&gt;   0.6142  0.0826  7.4326  &lt;.0001  0.4523  0.7762  *** \n#&gt; \n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
+    "text": "11.14 Intepreting the RE model\nThe model output is quite similar to the EE model and also the intepretation is similar.\nThe only extra section is tau^2/tau that is the estimation of the between-study heterogeneity.\n\nsummary(fit)\n#&gt; \n#&gt; Random-Effects Model (k = 15; tau^2 estimator: REML)\n#&gt; \n#&gt;   logLik  deviance       AIC       BIC      AICc   \n#&gt;  -7.8430   15.6860   19.6860   20.9641   20.7769   \n#&gt; \n#&gt; tau^2 (estimated amount of total heterogeneity): 0.1793 (SE = 0.0679)\n#&gt; tau (square root of estimated tau^2 value):      0.4235\n#&gt; I^2 (total heterogeneity / total variability):   99.89%\n#&gt; H^2 (total variability / sampling variability):  898.45\n#&gt; \n#&gt; Test for Heterogeneity:\n#&gt; Q(df = 14) = 12514.0313, p-val &lt; .0001\n#&gt; \n#&gt; Model Results:\n#&gt; \n#&gt; estimate      se    zval    pval   ci.lb   ci.ub      \n#&gt;   0.5501  0.1094  5.0287  &lt;.0001  0.3357  0.7646  *** \n#&gt; \n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -2124,7 +2124,7 @@
     "href": "chapters/chapter5.html#estimating-tau2-1",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n11.16 Estimating \\(\\tau^2\\)\n",
-    "text": "11.16 Estimating \\(\\tau^2\\)\n\nThe Restricted Maximum Likelihood (REML) estimator is considered one of the best. We can compare the results using the all_rma() custom function that tests all the estimators2.\n\nfitl &lt;- all_rma(fit)\nround(filor::compare_rma(fitlist = fitl), 3)\n#&gt;           DL     HE     HS    HSk     SJ     ML   REML     EB     PM    PMM\n#&gt; b      0.614  0.614  0.614  0.614  0.614  0.614  0.614  0.614  0.614  0.614\n#&gt; se     0.083  0.083  0.080  0.083  0.083  0.080  0.083  0.083  0.083  0.085\n#&gt; zval   7.442  7.433  7.703  7.442  7.433  7.694  7.433  7.433  7.433  7.255\n#&gt; pval   0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000\n#&gt; ci.lb  0.452  0.452  0.458  0.452  0.452  0.458  0.452  0.452  0.452  0.448\n#&gt; ci.ub  0.776  0.776  0.771  0.776  0.776  0.771  0.776  0.776  0.776  0.780\n#&gt; I2    99.804 99.805 99.790 99.804 99.805 99.791 99.805 99.805 99.805 99.814\n#&gt; tau2   0.102  0.102  0.095  0.102  0.102  0.095  0.102  0.102  0.102  0.107",
+    "text": "11.16 Estimating \\(\\tau^2\\)\n\nThe Restricted Maximum Likelihood (REML) estimator is considered one of the best. We can compare the results using the all_rma() custom function that tests all the estimators2.\n\nfitl &lt;- all_rma(fit)\nround(filor::compare_rma(fitlist = fitl), 3)\n#&gt;           DL     HE     HS    HSk     SJ     ML   REML     EB     PM    PMM\n#&gt; b      0.550  0.550  0.550  0.550  0.550  0.550  0.550  0.550  0.550  0.550\n#&gt; se     0.109  0.109  0.105  0.109  0.109  0.106  0.109  0.109  0.109  0.112\n#&gt; zval   5.042  5.029  5.219  5.042  5.029  5.205  5.029  5.029  5.029  4.909\n#&gt; pval   0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000\n#&gt; ci.lb  0.336  0.336  0.344  0.336  0.336  0.343  0.336  0.336  0.336  0.330\n#&gt; ci.ub  0.764  0.765  0.757  0.764  0.765  0.757  0.765  0.765  0.765  0.770\n#&gt; I2    99.888 99.889 99.880 99.888 99.889 99.881 99.889 99.889 99.889 99.894\n#&gt; tau2   0.178  0.179  0.166  0.178  0.179  0.167  0.179  0.179  0.179  0.188",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -2144,7 +2144,7 @@
     "href": "chapters/chapter5.html#intepreting-tau2",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "\n11.18 Intepreting \\(\\tau^2\\)\n",
-    "text": "11.18 Intepreting \\(\\tau^2\\)\n\nAs in the previus plot we can assume \\(n = \\infty\\) and generate true effects from Equation 11.2. In this way we understand the impact of assuming (or estimating) a certain \\(\\tau^2\\).\nFor example, a \\(\\tau = 0.2\\) and a \\(\\mu_{\\theta} = 0.5\\), 50% of the true effects ranged between:\n\nD &lt;- 0.5\nyis &lt;- D + rnorm(1e5, 0, 0.2)\nquantile(yis, c(0.75, 0.25))\n#&gt;       75%       25% \n#&gt; 0.6358425 0.3664574",
+    "text": "11.18 Intepreting \\(\\tau^2\\)\n\nAs in the previus plot we can assume \\(n = \\infty\\) and generate true effects from Equation 11.2. In this way we understand the impact of assuming (or estimating) a certain \\(\\tau^2\\).\nFor example, a \\(\\tau = 0.2\\) and a \\(\\mu_{\\theta} = 0.5\\), 50% of the true effects ranged between:\n\nD &lt;- 0.5\nyis &lt;- D + rnorm(1e5, 0, 0.2)\nquantile(yis, c(0.75, 0.25))\n#&gt;       75%       25% \n#&gt; 0.6334614 0.3648225",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
@@ -2364,7 +2364,757 @@
     "href": "chapters/chapter5.html#footnotes",
     "title": "\n5  Meta-analysis and publication bias\n",
     "section": "",
-    "text": "There is a confusion about the fixed-effects vs fixed-effect (no s) and equal-effects models. See https://wviechtb.github.io/metafor/reference/misc-models.html↩︎\nThe filor::compare_rma() function is similar to the car::compareCoefs() function↩︎\nSee Harrer et al. (2021) (Chapter 5) and Hedges & Schauer (2019) for an overview about the Q statistics↩︎\nsee https://www.meta-analysis-workshops.com/download/common-mistakes1.pdf↩︎\nNotice that the equation, in particular the usage of \\(t\\) vs \\(z\\) depends on assuming \\(s_x\\) to be known or estimated. See https://online.stat.psu.edu/stat501/lesson/3/3.3, https://en.wikipedia.org/wiki/Prediction_interval and https://www.bryanshalloway.com/2021/03/18/intuition-on-uncertainty-of-predictions-introduction-to-prediction-intervals/↩︎\nWhen a \\(t\\) distribution is assumed, the quantiles are calculated using \\(k - 2\\) degrees of freedom↩︎",
+    "text": "There is a confusion about the fixed-effects vs fixed-effect (no s) and equal-effects models. See https://wviechtb.github.io/metafor/reference/misc-models.html↩︎\nThe filor::compare_rma() function is similar to the car::compareCoefs() function↩︎\nSee Harrer et al. (2021) (Chapter 5) and Hedges & Schauer (2019) for an overview about the Q statistics↩︎\nsee https://www.meta-analysis-workshops.com/download/common-mistakes1.pdf↩︎\nNotice that the equation, in particular the usage of \\(t\\) vs \\(z\\) depends on assuming \\(s_x\\) to be known or estimated. See https://online.stat.psu.edu/stat501/lesson/3/3.3, https://en.wikipedia.org/wiki/Prediction_interval and https://www.bryanshalloway.com/2021/03/18/intuition-on-uncertainty-of-predictions-introduction-to-prediction-intervals/↩︎\nWhen a \\(t\\) distribution is assumed, the quantiles are calculated using \\(k - 2\\) degrees of freedom↩︎\nThe functions is made for numerical variables thus is less appropriate for categorical variables↩︎\nsee https://www.metafor-project.org/doku.php/tips:models_with_or_without_intercept on removing the intercept↩︎\nThanks to the Wolfgang Viechtbauer’s course https://www.wvbauer.com/doku.php/course_ma↩︎",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#ma-as-weighted-linear-regression",
+    "href": "chapters/chapter5.html#ma-as-weighted-linear-regression",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.1 MA as (weighted) linear regression",
+    "text": "12.1 MA as (weighted) linear regression\nBoth the EE and RE model can be seen as standard (weighted) linear regression models. Precisely, there is a difference in fitting a meta-analysis using lm or lme4::lmer() and rma (see https://www.metafor-project.org/doku.php/tips:rma_vs_lm_lme_lmer).\n. . .\nBeyond these differences a general the EE and RE models are intercept-only linear regressions.\n\\[\n\\boldsymbol{Y} = \\mathbf{X}\\boldsymbol{\\beta} + \\boldsymbol{\\epsilon}\n\\]\nThe EE model:\n\\[\ny_i = \\beta_0 + \\epsilon_i\n\\]\nThe RE model:\n\\[\ny_i = \\beta_0 + \\beta_{0_i} + \\epsilon_i\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#ma-as-weighted-linear-regression-1",
+    "href": "chapters/chapter5.html#ma-as-weighted-linear-regression-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.2 MA as (weighted) linear regression",
+    "text": "12.2 MA as (weighted) linear regression\nIn the EE model \\(\\beta_0\\) is \\(\\theta\\) and \\(\\epsilon_i \\sim \\mathcal{N}(0, \\sigma^2_i)\\)\n\\[\ny_i = \\beta_0 + \\epsilon_i\n\\]\nIn the RE model \\(\\beta_0\\) is \\(\\mu_{\\theta}\\) and \\(\\beta_{0_i}\\) are the \\(\\delta_i\\).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#explaining-tau2",
+    "href": "chapters/chapter5.html#explaining-tau2",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.3 Explaining \\(\\tau^2\\)\n",
+    "text": "12.3 Explaining \\(\\tau^2\\)\n\nSo far we simply assumed \\(\\tau^2 = 0\\) (for the EE model) or estimated it using the RE model.\n. . .\nWe can extend the intercept-only meta-analysis by including study-level predictors (as in standard linear regression) to explain the estimated true heterogeneity.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#explaining-tau2-1",
+    "href": "chapters/chapter5.html#explaining-tau2-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.4 Explaining \\(\\tau^2\\)\n",
+    "text": "12.4 Explaining \\(\\tau^2\\)\n\nLet’s make an example where we simulate a meta-analysis with \\(k = 100\\) studies. Beyond the effect size, we extracted an experimental condition where 50 studies where lab-based experiments \\(x_{lab}\\) and 50 studies where online experiments.\nWe assume that there could be a lab effect thus we included a predictor in the model.\n\nk &lt;- 100\nn &lt;- 10 + rpois(k, 40 - 10)\nexp &lt;- rep(c(\"lab\", \"online\"), each = k/2)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#explaining-tau2-2",
+    "href": "chapters/chapter5.html#explaining-tau2-2",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.5 Explaining \\(\\tau^2\\)\n",
+    "text": "12.5 Explaining \\(\\tau^2\\)\n\nNow the model have a predictor \\(x\\) (the type of experiment) and two parameters \\(\\beta_0\\) and \\(\\beta_1\\). Depending on the contrast coding (default to contr.treatment() in R) the \\(\\beta_0\\) is different. Coding exp as 0 for lab-based experiments and 1 for online experiments:\n\\[\ny_i = \\beta_0 + \\beta_1X_{1_i} + \\epsilon_i\n\\]\n\\[\ny_{\\text{lab}_i} = \\beta_0 + \\epsilon_i\n\\]\n\\[\ny_{\\text{online}_i} = \\beta_0 + \\beta_1 + \\epsilon_i\n\\]",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#explaining-tau2-3",
+    "href": "chapters/chapter5.html#explaining-tau2-3",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.6 Explaining \\(\\tau^2\\)\n",
+    "text": "12.6 Explaining \\(\\tau^2\\)\n\nWhat is missing is the random-effect. Basically we still have \\(\\tau^2\\) determining the \\(\\delta_i \\sim \\mathcal{N}(0, \\tau^2)\\) but now is the residual \\(\\tau^2_r\\). The heterogeneity after including the predictor.\n\\[\ny_i = \\beta_0 + \\beta_{0_i} + \\beta_1X_{1_i} + \\epsilon_i\n\\tag{12.1}\\]\n\\[\n\\beta_{0_i} \\sim \\mathcal{N}(0, \\tau^2_r)\n\\]\nClearly the difference between \\(\\tau^2\\) (the total heterogeneity) and \\(\\tau^2_r\\) (residual heterogeneity) is an index of the impact of \\(X\\).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#simulating-the-x-effect",
+    "href": "chapters/chapter5.html#simulating-the-x-effect",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.7 Simulating the \\(X\\) effect",
+    "text": "12.7 Simulating the \\(X\\) effect\nTo simulate a meta-regression we just need to choose the parameters values (\\(\\beta_0\\) and \\(\\beta_1\\)) and implement Equation 12.1. Using treatment coding, \\(\\beta_0\\) is the effect size when \\(X = 0\\) (i.e., lab-based experiments) and \\(\\beta_1\\) is the difference between lab and online experiments.\n\nb0 &lt;- 0.3 # lab-based effect size\nb1 &lt;- 0.5 # online - lab-based --&gt; online = b0 + b1\nexp_dummy &lt;- ifelse(exp == \"lab\", 0, 1) # dummy version\nes &lt;- b0 + b1 * exp_dummy\nht(data.frame(exp, exp_dummy, es))\n#&gt;        exp exp_dummy  es\n#&gt; 1      lab         0 0.3\n#&gt; 2      lab         0 0.3\n#&gt; 3      lab         0 0.3\n#&gt; 4      lab         0 0.3\n#&gt; 5      lab         0 0.3\n#&gt; 95  online         1 0.8\n#&gt; 96  online         1 0.8\n#&gt; 97  online         1 0.8\n#&gt; 98  online         1 0.8\n#&gt; 99  online         1 0.8\n#&gt; 100 online         1 0.8",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#simulating-the-x-effects",
+    "href": "chapters/chapter5.html#simulating-the-x-effects",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.8 Simulating the \\(X\\) effects",
+    "text": "12.8 Simulating the \\(X\\) effects\nNow we can use the sim_studies() function as usual. The difference is that es is no longer a single value but a vector (with different values according to the \\(X\\) level) and tau2 is \\(\\tau^2_r\\) (this the leftover heterogeneity after including the \\(X\\) effect)\n\ntau2r &lt;- 0.05 # residual heterogeneity\ndat &lt;- sim_studies(k = k, es = es, tau2 = tau2r, n1 = n, add = list(exp = exp))\nht(dat)\n#&gt; \n#&gt;      id      yi     vi n1 n2    exp \n#&gt; 1     1  0.3868 0.0634 40 40    lab \n#&gt; 2     2  0.7162 0.0620 40 40    lab \n#&gt; 3     3 -0.0864 0.0601 36 36    lab \n#&gt; 4     4  0.0536 0.0516 40 40    lab \n#&gt; 5     5  0.2547 0.0573 34 34    lab \n#&gt; 95   95  1.4493 0.0530 31 31 online \n#&gt; 96   96  0.9304 0.0527 41 41 online \n#&gt; 97   97  1.0688 0.0420 47 47 online \n#&gt; 98   98  0.6288 0.0511 38 38 online \n#&gt; 99   99  1.2018 0.0462 41 41 online \n#&gt; 100 100  0.6452 0.0702 29 29 online",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#fitting-a-meta-regression-model",
+    "href": "chapters/chapter5.html#fitting-a-meta-regression-model",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.9 Fitting a meta-regression Model",
+    "text": "12.9 Fitting a meta-regression Model\nTo fit a meta-regression we still use the metafor::rma() function, adding the mods = ~ parameter with the model formula (same as the right-hand side of a y ~ x call in lm). The name of the predictor in the formula need to match a column of the data = dataframe.\n\nfit &lt;- rma(yi, vi, mods = ~ exp, data = dat, method = \"REML\")\nsummary(fit)\n#&gt; \n#&gt; Mixed-Effects Model (k = 100; tau^2 estimator: REML)\n#&gt; \n#&gt;   logLik  deviance       AIC       BIC      AICc   \n#&gt; -30.6576   61.3152   67.3152   75.0701   67.5706   \n#&gt; \n#&gt; tau^2 (estimated amount of residual heterogeneity):     0.0610 (SE = 0.0158)\n#&gt; tau (square root of estimated tau^2 value):             0.2471\n#&gt; I^2 (residual heterogeneity / unaccounted variability): 55.34%\n#&gt; H^2 (unaccounted variability / sampling variability):   2.24\n#&gt; R^2 (amount of heterogeneity accounted for):            48.11%\n#&gt; \n#&gt; Test for Residual Heterogeneity:\n#&gt; QE(df = 98) = 220.5886, p-val &lt; .0001\n#&gt; \n#&gt; Test of Moderators (coefficient 2):\n#&gt; QM(df = 1) = 53.2544, p-val &lt; .0001\n#&gt; \n#&gt; Model Results:\n#&gt; \n#&gt;            estimate      se    zval    pval   ci.lb   ci.ub      \n#&gt; intrcpt      0.3301  0.0472  6.9990  &lt;.0001  0.2377  0.4226  *** \n#&gt; exponline    0.4871  0.0667  7.2976  &lt;.0001  0.3563  0.6179  *** \n#&gt; \n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#intepreting-a-meta-regression-model",
+    "href": "chapters/chapter5.html#intepreting-a-meta-regression-model",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.10 Intepreting a meta-regression Model",
+    "text": "12.10 Intepreting a meta-regression Model\nThe output is similar to the RE model with few additions:\n\nEverything related to the heterogeneity (\\(H^2\\), \\(I^2\\), \\(Q\\), etc.) is now about residual heterogeneity\n\nThere is the (pseudo) \\(R^2\\)\n\nThere is an overall test for the moderators \\(Q_M\\)\n\nThere is a section (similar to standard regression models) with the estimated parameters, standard error and Wald test",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#model-parameters",
+    "href": "chapters/chapter5.html#model-parameters",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.11 Model parameters",
+    "text": "12.11 Model parameters\nintrcpt and exponline are the estimates of \\(\\beta_0\\) and \\(\\beta_1\\). The interpretation depends on the scale of the effect size and the contrast coding.\nWe can plot the model results using the metafor::regplot()7.\n\nregplot(fit)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#omnibus-moderator-test",
+    "href": "chapters/chapter5.html#omnibus-moderator-test",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.12 Omnibus Moderator Test",
+    "text": "12.12 Omnibus Moderator Test\nThe Test of Moderators section report the so-called omnibus test for model coeffiecients. Is a simultaneous test for 1 or more coefficients where \\(H_0: \\beta_j = 0\\).\nIn this case, coefficient 2 means that we are testing only the 2nd coefficient \\(\\beta_1\\). By default, the intercept is ignored. In fact, the exponline line and the omnibus test are the same (the \\(\\chi^2\\) is just the \\(z^2\\))\n\n#&gt; Test of Moderators (coefficient 2):\n#&gt; QM(df = 1) = 53.2544, p-val &lt; .0001\n#&gt;            estimate      se    zval    pval   ci.lb   ci.ub      \n#&gt; intrcpt      0.3301  0.0472  6.9990  &lt;.0001  0.2377  0.4226  *** \n#&gt; exponline    0.4871  0.0667  7.2976  &lt;.0001  0.3563  0.6179  ***",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#general-linear-hypotheses-testing-glht",
+    "href": "chapters/chapter5.html#general-linear-hypotheses-testing-glht",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.13 General Linear Hypotheses Testing (GLHT)",
+    "text": "12.13 General Linear Hypotheses Testing (GLHT)\nWe can also test any combination of parameters. For example we could test if lab-based experiments and online experiments are both different from 0. This is the same as fitting a model without the intercept8 thus estimating the cell means (see Schad et al., 2020).\n\n# now we are testing two coefficients\nfit_no_int &lt;- rma(yi, vi, mods = ~ 0 + exp, data = dat)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#general-linear-hypotheses-testing-glht-1",
+    "href": "chapters/chapter5.html#general-linear-hypotheses-testing-glht-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.14 General Linear Hypotheses Testing (GLHT)",
+    "text": "12.14 General Linear Hypotheses Testing (GLHT)\n\nfit_no_int\n#&gt; \n#&gt; Mixed-Effects Model (k = 100; tau^2 estimator: REML)\n#&gt; \n#&gt; tau^2 (estimated amount of residual heterogeneity):     0.0610 (SE = 0.0158)\n#&gt; tau (square root of estimated tau^2 value):             0.2471\n#&gt; I^2 (residual heterogeneity / unaccounted variability): 55.34%\n#&gt; H^2 (unaccounted variability / sampling variability):   2.24\n#&gt; \n#&gt; Test for Residual Heterogeneity:\n#&gt; QE(df = 98) = 220.5886, p-val &lt; .0001\n#&gt; \n#&gt; Test of Moderators (coefficients 1:2):\n#&gt; QM(df = 2) = 348.4548, p-val &lt; .0001\n#&gt; \n#&gt; Model Results:\n#&gt; \n#&gt;            estimate      se     zval    pval   ci.lb   ci.ub      \n#&gt; explab       0.3301  0.0472   6.9990  &lt;.0001  0.2377  0.4226  *** \n#&gt; exponline    0.8172  0.0472  17.3052  &lt;.0001  0.7247  0.9098  *** \n#&gt; \n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#general-linear-hypotheses-testing-glht-2",
+    "href": "chapters/chapter5.html#general-linear-hypotheses-testing-glht-2",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.15 General Linear Hypotheses Testing (GLHT)",
+    "text": "12.15 General Linear Hypotheses Testing (GLHT)\nA more elegant way is by using the GLHT framework. Basically we provide a contrast matrix expressing linear combinations of model parameters to be tested. In our case \\(\\text{lab} = \\beta_0 = 0\\) and \\(\\text{online} = \\beta_0 + \\beta_1 = 0\\).\nPractically, the matrix formulation is the following:\n\\[\n\\begin{pmatrix}  \n1 & 0 \\\\\n1 & 1\n\\end{pmatrix}\n\\begin{pmatrix}  \n\\beta_0\\\\\n\\beta_1\n\\end{pmatrix}\n=\n\\begin{pmatrix}  \n0\\\\\n0\n\\end{pmatrix}\n\\]\nIn R:\n\nC &lt;- rbind(c(1, 0), c(1, 1))\nB &lt;- coef(fit)\nC %*% B # same as coef(fit)[1] and coef(fit)[1] +  coef(fit)[2]\n#&gt;           [,1]\n#&gt; [1,] 0.3301324\n#&gt; [2,] 0.8172112",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#general-linear-hypotheses-testing-glht-3",
+    "href": "chapters/chapter5.html#general-linear-hypotheses-testing-glht-3",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.16 General Linear Hypotheses Testing (GLHT)",
+    "text": "12.16 General Linear Hypotheses Testing (GLHT)\nWe can use the anova() function providing the model and the hypothesis matrix.\n\nanova(fit) # the default\n#&gt; \n#&gt; Test of Moderators (coefficient 2):\n#&gt; QM(df = 1) = 53.2544, p-val &lt; .0001\nanova(fit, X = C)\n#&gt; \n#&gt; Hypotheses:                           \n#&gt; 1:             intrcpt = 0 \n#&gt; 2: intrcpt + exponline = 0 \n#&gt; \n#&gt; Results:\n#&gt;    estimate     se    zval   pval \n#&gt; 1:   0.3301 0.0472  6.9990 &lt;.0001 \n#&gt; 2:   0.8172 0.0472 17.3052 &lt;.0001 \n#&gt; \n#&gt; Omnibus Test of Hypotheses:\n#&gt; QM(df = 2) = 348.4548, p-val &lt; .0001\n\nNotice that is the same as the model without the intercept.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#likelihood-ratio-test-lrt",
+    "href": "chapters/chapter5.html#likelihood-ratio-test-lrt",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.17 Likelihood Ratio Test (LRT)",
+    "text": "12.17 Likelihood Ratio Test (LRT)\nAs in standard regression modelling, we can also compare models using LRT. The anova() function will compute the LRT when two (nested) models are provided. In this case we compared a null (intercept-only) model with the model including the predictor.\n\n# the null model\nfit0 &lt;- rma(yi, vi, data = dat, method = \"REML\")\nanova(fit0, fit, refit = TRUE) # refit = TRUE because LRT with REML is not meaningful, using ML instead\n#&gt; \n#&gt;         df      AIC      BIC     AICc   logLik     LRT   pval       QE  tau^2 \n#&gt; Full     3  66.5817  74.3972  66.8317 -30.2908                220.5886 0.0589 \n#&gt; Reduced  2 108.5228 113.7331 108.6465 -52.2614 43.9411 &lt;.0001 336.6655 0.1160 \n#&gt;              R^2 \n#&gt; Full             \n#&gt; Reduced 49.2018%",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#r2",
+    "href": "chapters/chapter5.html#r2",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.18 \\(R^2\\)\n",
+    "text": "12.18 \\(R^2\\)\n\nThe \\(R^2\\) value reported in the model output is not calculated as in standard regression analysis.\n\\[\nR^2 = 1 - \\frac{\\tau^2_r}{\\tau^2}\n\\]\nBasically is the percentage of heterogeneity reduction from the intercept-only model to the model including predictors.\nIn R:\n\n(1 - fit$tau2/fit0$tau2)*100\n#&gt; [1] 48.1096\nfit$R2\n#&gt; [1] 48.1096",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#r2-1",
+    "href": "chapters/chapter5.html#r2-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.19 \\(R^2\\)\n",
+    "text": "12.19 \\(R^2\\)\n\nDespite useful, the \\(R^2\\) has some limitations:\n\n\nLópez-López et al. (2014) showed that precise estimations require a large number of studies \\(k\\)\n\nSometimes could results in negative values (usually truncated to zero)\nDepends on the \\(\\tau^2\\) estimator\n\nMore about \\(R^2\\) and limitations can be found:\n\nhttps://www.metafor-project.org/doku.php/faq#for_mixed-effects_models_how_i\nhttps://www.metafor-project.org/doku.php/tips:ci_for_r2",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#numerical-predictor",
+    "href": "chapters/chapter5.html#numerical-predictor",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.20 Numerical predictor",
+    "text": "12.20 Numerical predictor\nThe same logic of simulating a meta-regression can be applied to numerical predictors. We still have \\(\\beta_0\\) and \\(\\beta_1\\) but \\(X\\) has more levels. Let’s simulate an impact of the average participants’ age on the effect size.\n\n\n\\(\\beta_0\\) is the effect size when age is zero\n\n\\(\\beta_1\\) is the expected increase in the effect size for a unit increase in age\n\n\nHow we can choose plausible values for the parameters and parametrize the model correctly?",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#parametrize-beta_0",
+    "href": "chapters/chapter5.html#parametrize-beta_0",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.21 Parametrize \\(\\beta_0\\)\n",
+    "text": "12.21 Parametrize \\(\\beta_0\\)\n\nThe intepretation (and the inference) of \\(\\beta_0\\) is strongly dependent on the type of numerical predictor. An age of zero is (probably) empirically meaningless thus the \\(\\beta_0\\) is somehow not useful.\nWe can for example mean-center (or other type of centering procedure) moving the zero on a meaningful value.\n\nage &lt;- 10:50 # the raw vector\nage0 &lt;- age - mean(age) # centering on the mean\nage20 &lt;- age - min(age) # centering on the minimum\n\nht(data.frame(age, age0, age20))\n#&gt;    age age0 age20\n#&gt; 1   10  -20     0\n#&gt; 2   11  -19     1\n#&gt; 3   12  -18     2\n#&gt; 4   13  -17     3\n#&gt; 5   14  -16     4\n#&gt; 36  45   15    35\n#&gt; 37  46   16    36\n#&gt; 38  47   17    37\n#&gt; 39  48   18    38\n#&gt; 40  49   19    39\n#&gt; 41  50   20    40",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#parametrize-beta_0-1",
+    "href": "chapters/chapter5.html#parametrize-beta_0-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.22 Parametrize \\(\\beta_0\\)\n",
+    "text": "12.22 Parametrize \\(\\beta_0\\)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#parametrize-beta_0-2",
+    "href": "chapters/chapter5.html#parametrize-beta_0-2",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.23 Parametrize \\(\\beta_0\\)\n",
+    "text": "12.23 Parametrize \\(\\beta_0\\)\n\nUsing different parametrizations will only affect the estimation (and the interpretation) of \\(\\beta_0\\). Other parameters and indexes will be the same.\n\nk &lt;- 100\nb0 &lt;- 0.2 # effect size when age 0\nb1 &lt;- 0.05 # slope (random for now)\nage &lt;- round(runif(k, 20, 50)) # sampling from uniform distribution\ntau2r &lt;- 0.05\nn &lt;- 10 + rpois(k, 30 - 10)\n\nes &lt;- b0 + b1 * age # raw\n\nage0 &lt;- age - mean(age)\nage20 &lt;- age - 20\n\ndat &lt;- sim_studies(k = k, es = es, tau2 = tau2r, n1 = n, add = list(age = age, age0 = age0, age20 = age20))\n\nfit &lt;- rma(yi, vi, mods = ~ age, data = dat)\nfit0 &lt;- rma(yi, vi, mods = ~ age0, data = dat)\nfit20 &lt;- rma(yi, vi, mods = ~ age20, data = dat)\n\n# showing the intercept\ncompare_rma(fit, fit0, fit20, extra_params = \"R2\") |&gt; \n  round(3)\n#&gt; fit: rma(yi = yi, vi = vi, mods = ~age, data = dat)\n#&gt; fit0: rma(yi = yi, vi = vi, mods = ~age0, data = dat)\n#&gt; fit20: rma(yi = yi, vi = vi, mods = ~age20, data = dat)\n#&gt;                fit   fit0  fit20\n#&gt; b (intrcpt)  0.371  2.026  1.290\n#&gt; se           0.153  0.036  0.076\n#&gt; zval         2.427 56.591 17.076\n#&gt; pval         0.015  0.000  0.000\n#&gt; ci.lb        0.071  1.956  1.142\n#&gt; ci.ub        0.671  2.096  1.438\n#&gt; R2          71.443 71.443 71.443\n#&gt; I2          49.486 49.486 49.486\n#&gt; tau2         0.063  0.063  0.063\n\n  # showing the intercept\ncompare_rma(fit, fit0, fit20, b = \"age\", extra_params = \"R2\") |&gt; \n  round(3)\n#&gt; fit: rma(yi = yi, vi = vi, mods = ~age, data = dat)\n#&gt; fit0: rma(yi = yi, vi = vi, mods = ~age0, data = dat)\n#&gt; fit20: rma(yi = yi, vi = vi, mods = ~age20, data = dat)\n#&gt;            fit   fit0  fit20\n#&gt; b (age)  0.046  0.046  0.046\n#&gt; se       0.004  0.004  0.004\n#&gt; zval    11.152 11.152 11.152\n#&gt; pval     0.000  0.000  0.000\n#&gt; ci.lb    0.038  0.038  0.038\n#&gt; ci.ub    0.054  0.054  0.054\n#&gt; R2      71.443 71.443 71.443\n#&gt; I2      49.486 49.486 49.486\n#&gt; tau2     0.063  0.063  0.063",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#choosing-beta_1",
+    "href": "chapters/chapter5.html#choosing-beta_1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.24 Choosing \\(\\beta_1\\)\n",
+    "text": "12.24 Choosing \\(\\beta_1\\)\n\nThe core of the model is \\(\\beta_1\\) that is the age effect. Compared to the categorical case where \\(\\beta_1\\) is just the standardized difference between two conditions, with numerical \\(X\\) choosing a meaningful \\(\\beta_1\\) is more challenging.\nTwo (maybe more) strategies:\n\nsimulating a lot of effects sizes fixing \\(beta_0\\) and \\(\\beta_1\\) and see the expected range of \\(y_i\\)\n\nfixing a certain \\(R^2\\) and choose the \\(\\beta_1\\) producing that \\(R^2\\)\n\n…",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#beta_1-by-simulations",
+    "href": "chapters/chapter5.html#beta_1-by-simulations",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.25 \\(\\beta_1\\) by simulations",
+    "text": "12.25 \\(\\beta_1\\) by simulations\nA strategy could be to simulate from the generative model a large number of studies and see the expected range of effect size (Gelman et al., 2020, Chapter 5 and p. 97). A large number of unplausible values suggest that the chosen \\(\\beta_1\\) is probably not appropriate.\n\nk &lt;- 1e3\nn &lt;- 30\ntau2 &lt;- 0\nx &lt;- runif(k, 20, 50) # age\nb0 &lt;- 0.1\nb1 &lt;- c(0.001, 0.05, 0.2)\nesl &lt;- lapply(b1, function(b) b0 + b*x)\ndatl &lt;- lapply(esl, function(es) sim_studies(k = k, es = es, tau2 = tau2, n1 = n, add = list(x = x)))\nnames(datl) &lt;- b1\ndat &lt;- dplyr::bind_rows(datl, .id = \"b1\")\nht(dat)\n#&gt; \n#&gt;         b1   id      yi     vi n1 n2        x \n#&gt; 1    0.001    1 -0.0234 0.0649 30 30 36.66325 \n#&gt; 2    0.001    2 -0.2818 0.0528 30 30 37.59875 \n#&gt; 3    0.001    3 -0.1208 0.0969 30 30 37.89483 \n#&gt; 4    0.001    4  0.3004 0.0509 30 30 24.06663 \n#&gt; 5    0.001    5 -0.1076 0.0560 30 30 22.65956 \n#&gt; 2995   0.2  995  8.9069 0.0616 30 30 43.62926 \n#&gt; 2996   0.2  996  4.6568 0.0618 30 30 21.95671 \n#&gt; 2997   0.2  997  5.9464 0.0631 30 30 30.73639 \n#&gt; 2998   0.2  998  6.6676 0.0712 30 30 31.20466 \n#&gt; 2999   0.2  999  9.8789 0.0994 30 30 48.16696 \n#&gt; 3000   0.2 1000  5.7442 0.0702 30 30 28.71515",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#beta_1-by-simulations-1",
+    "href": "chapters/chapter5.html#beta_1-by-simulations-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.26 \\(\\beta_1\\) by simulations",
+    "text": "12.26 \\(\\beta_1\\) by simulations\nClearly given the limited range of the \\(x\\) variable (age) some \\(\\beta_1\\) values are implausible leading to effect sizes that are out of a meaningful empirical range.\n\nCodedat$b1 &lt;- factor(dat$b1, labels = latex2exp::TeX(sprintf(\"$\\\\beta_1 = %s$\", unique(dat$b1))))\ndat |&gt; \n  ggplot(aes(x = x, y = yi)) +\n  geom_point() +\n  facet_wrap(~b1, scales = \"free_y\", labeller = label_parsed) +\n  xlab(\"Age\") +\n  ylab(latex2exp::TeX(\"$y_i$\"))",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#fixing-r2",
+    "href": "chapters/chapter5.html#fixing-r2",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.27 Fixing \\(R^2\\)\n",
+    "text": "12.27 Fixing \\(R^2\\)\n\nWe can use the approach by López-López et al. (2014) where predictors \\(x\\) are sampled from a standard normal distribution (or standardized). \\(\\beta_1\\) is calculated as \\(\\beta_1 = \\sqrt{\\tau^2 R^2}\\) and the residual heterogeneity as \\(\\tau^2_r = \\tau^2 - \\beta^2_1\\).\n\nk &lt;- 100\nn &lt;- 30\ntau2 &lt;- 0.3\nR2 &lt;- 0.4\nb0 &lt;- 0.1\nb1_2 &lt;- tau2 * R2\nb1 &lt;- sqrt(b1_2)\ntau2r &lt;- tau2 - b1_2",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#fixing-r2-1",
+    "href": "chapters/chapter5.html#fixing-r2-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.28 Fixing \\(R^2\\)\n",
+    "text": "12.28 Fixing \\(R^2\\)\n\nWe can check the simulation approach:\n\nk &lt;- 1e3\n1 - tau2r/tau2\n#&gt; [1] 0.4\nx &lt;- rnorm(k)\nes &lt;- b0 + b1 * x\ndat &lt;- sim_studies(k, es, tau2r, n1 = 1e3, add = list(x = x))\nfit &lt;- rma(yi, vi, data = dat, mods = ~x)\nsummary(fit)\n#&gt; \n#&gt; Mixed-Effects Model (k = 1000; tau^2 estimator: REML)\n#&gt; \n#&gt;    logLik   deviance        AIC        BIC       AICc   \n#&gt; -562.0096  1124.0193  1130.0193  1144.7365  1130.0434   \n#&gt; \n#&gt; tau^2 (estimated amount of residual heterogeneity):     0.1786 (SE = 0.0081)\n#&gt; tau (square root of estimated tau^2 value):             0.4226\n#&gt; I^2 (residual heterogeneity / unaccounted variability): 98.89%\n#&gt; H^2 (unaccounted variability / sampling variability):   90.40\n#&gt; R^2 (amount of heterogeneity accounted for):            43.09%\n#&gt; \n#&gt; Test for Residual Heterogeneity:\n#&gt; QE(df = 998) = 90168.4129, p-val &lt; .0001\n#&gt; \n#&gt; Test of Moderators (coefficient 2):\n#&gt; QM(df = 1) = 749.0935, p-val &lt; .0001\n#&gt; \n#&gt; Model Results:\n#&gt; \n#&gt;          estimate      se     zval    pval   ci.lb   ci.ub      \n#&gt; intrcpt    0.0830  0.0134   6.1759  &lt;.0001  0.0567  0.1094  *** \n#&gt; x          0.3628  0.0133  27.3696  &lt;.0001  0.3368  0.3888  *** \n#&gt; \n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#r2-using-simulations",
+    "href": "chapters/chapter5.html#r2-using-simulations",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.29 \\(R^2\\) using simulations",
+    "text": "12.29 \\(R^2\\) using simulations\nThe results from López-López et al. (2014) (and also our previous simulation) suggested that we need a large number of studies for precise \\(R^2\\) estimations. Let’s check using simulations the sampling distribution of \\(R^2\\) using a plausible meta-analysis scenario.\n\nk &lt;- 40 # number of studies\nn &lt;- 10 + rpois(k, 40 - 10) # sample size\ntau2 &lt;- 0.05 # tau ~ 0.22\nR2 &lt;- 0.3\nb0 &lt;- 0.1\nb1_2 &lt;- tau2 * R2\nb1 &lt;- sqrt(b1_2)\ntau2r &lt;- tau2 - b1_2\nnsim &lt;- 1e3\n\nR2i &lt;- rep(NA, nsim)\n\nfor(i in 1:nsim){\n  x &lt;- rnorm(k)\n  dat &lt;- sim_studies(k = k, es = b0 + b1*x, tau2 = tau2r, n1 = n, add = list(x))\n  fit &lt;- rma(yi, vi, data = dat, mods = ~x)\n  R2i[i] &lt;- fit$R2\n}",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#r2-using-simulations-1",
+    "href": "chapters/chapter5.html#r2-using-simulations-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n12.30 \\(R^2\\) using simulations",
+    "text": "12.30 \\(R^2\\) using simulations\nWe estimated the true \\(R^2\\) correctly but there is a lot of uncertainty with a plausible meta-analysis scenario. There are a lot of meta-analysis also with lower \\(k\\) worsening the results.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#publication-bias-pb-1",
+    "href": "chapters/chapter5.html#publication-bias-pb-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.1 Publication Bias (PB)",
+    "text": "14.1 Publication Bias (PB)\nThe PB is a very critical most problematic aspects of meta-analysis. Essentially the probability of publishing a paper (~and thus including into the meta-analysis) is not the same regardless of the result.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#publication-bias-disclaimer",
+    "href": "chapters/chapter5.html#publication-bias-disclaimer",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.2 Publication Bias Disclaimer!",
+    "text": "14.2 Publication Bias Disclaimer!\nWe cannot (completely) solve the PB using statistical tools. The PB is a problem related to the publishing process and publishing incentives\n. . .\n\n\npre-registrations, multi-lab studies, etc. can (almost) completely solve the problem filling the literature with unbiased studies\n\n. . .\n\nthere are statistical tools to detect, estimate and correct for the publication bias. As every statistical method, they are influenced by statistical assumptions, number of studies and sample size, heterogeneity, etc.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#publication-bias-pb---the-big-picture",
+    "href": "chapters/chapter5.html#publication-bias-pb---the-big-picture",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.3 Publication Bias (PB) - The Big Picture9\n",
+    "text": "14.3 Publication Bias (PB) - The Big Picture9",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#pb-under-an-ee-model",
+    "href": "chapters/chapter5.html#pb-under-an-ee-model",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.4 PB under an EE model",
+    "text": "14.4 PB under an EE model\nThe easiest way to understand the PB is by simulating what happen without the PB. Let’s simulate a lot of studies (under a EE model) keeping all the results without selection (the ideal world).\n\nset.seed(2023)\nk &lt;- 1e3\nn &lt;- round(runif(k, 10, 100))\ntheta &lt;- 0.3\ndat &lt;- sim_studies(k = k, es = theta, tau2 = 0, n1 = n)\ndat &lt;- summary(dat)\n# compute 1 tail pvalue\ndat$pval1 &lt;- 1 - pnorm(dat$zi)\nht(dat)\n#&gt; \n#&gt;        id      yi     vi n1 n2    sei      zi   pval   ci.lb  ci.ub       pval1 \n#&gt; 1       1  0.3483 0.0406 52 52 0.2015  1.7287 0.0839 -0.0466 0.7431 0.041927744 \n#&gt; 2       2  0.3762 0.0605 40 40 0.2460  1.5291 0.1262 -0.1060 0.8585 0.063119366 \n#&gt; 3       3  0.0634 0.0911 25 25 0.3018  0.2101 0.8336 -0.5281 0.6549 0.416800171 \n#&gt; 4       4  0.4101 0.0487 46 46 0.2206  1.8588 0.0631 -0.0223 0.8426 0.031530757 \n#&gt; 5       5 -0.0476 0.1160 13 13 0.3405 -0.1398 0.8888 -0.7151 0.6199 0.555581669 \n#&gt; 995   995  0.3584 0.0950 24 24 0.3083  1.1625 0.2450 -0.2458 0.9625 0.122511729 \n#&gt; 996   996  0.3939 0.1697 17 17 0.4120  0.9562 0.3390 -0.4135 1.2014 0.169484321 \n#&gt; 997   997  0.5205 0.0486 35 35 0.2204  2.3610 0.0182  0.0884 0.9525 0.009112230 \n#&gt; 998   998  0.4206 0.0815 29 29 0.2854  1.4737 0.1406 -0.1388 0.9801 0.070283435 \n#&gt; 999   999  0.0625 0.0244 83 83 0.1562  0.3999 0.6893 -0.2438 0.3687 0.344631179 \n#&gt; 1000 1000  0.5547 0.0416 37 37 0.2039  2.7201 0.0065  0.1550 0.9544 0.003263493",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#pb-under-an-ee-model-1",
+    "href": "chapters/chapter5.html#pb-under-an-ee-model-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.5 PB under an EE model",
+    "text": "14.5 PB under an EE model\n\npar(mfrow = c(1, 3))\nhist(dat$yi, breaks = 50, col = \"dodgerblue\", main = \"Effect Size\")\nplot(dat$yi, dat$pval1, pch = 19, col = ifelse(dat$pval1 &lt;= 0.05, scales::alpha(\"firebrick\", 0.5), scales::alpha(\"black\", 0.5)),\n     main = \"P value (one tail) ~ Effect size\")\nabline(h = 0.05)\nplot(dat$yi, dat$pval, pch = 19, col = ifelse(dat$pval &lt;= 0.05, scales::alpha(\"firebrick\", 0.5), scales::alpha(\"black\", 0.5)),\n     main = \"P value (two tails) ~ Effect size\")\nabline(h = 0.05)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#pb-under-an-ee-model-2",
+    "href": "chapters/chapter5.html#pb-under-an-ee-model-2",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.6 PB under an EE model",
+    "text": "14.6 PB under an EE model\nThen, let’s assume that our publishing system is very strict (extreme). You can publish only if \\(p \\leq 0.05\\) on the expected direction. Then the true population of effect sizes will be truncated. Essentially we are assuming that \\(P(1|p \\leq 0.05) = 1\\) and \\(P(1|p \\leq 0.05) = 0\\).\n\n# selecting\nsign &lt;- dat$pval1 &lt;= 0.05 & dat$zi &gt; 0\ndat_pb &lt;- dat[sign, ]\ndat_un &lt;- dat[sample(1:nrow(dat), sum(sign)), ]\n\n# fitting EE model for the full vs selected (ignore k differences)\nfit &lt;- rma(yi, vi, method = \"EE\", data = dat_un)\nfit_pb &lt;- rma(yi, vi, method = \"EE\", data = dat_pb)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#pb-under-an-ee-model-3",
+    "href": "chapters/chapter5.html#pb-under-an-ee-model-3",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.7 PB under an EE model",
+    "text": "14.7 PB under an EE model\nThen, let’s assume that our publishing system is very strict (extreme). You can publish only if \\(p \\leq 0.05\\) on the expected direction. Then the true population of effect sizes will be truncated. Essentially we are assuming that \\(P(1|p \\leq 0.05) = 1\\) and \\(P(1|p \\leq 0.05) = 0\\).\n\nround(compare_rma(fit, fit_pb), 3)\n#&gt; fit: rma(yi = yi, vi = vi, data = dat_un, method = \"EE\")\n#&gt; fit_pb: rma(yi = yi, vi = vi, data = dat_pb, method = \"EE\")\n#&gt;                fit fit_pb\n#&gt; b (intrcpt)  0.289  0.436\n#&gt; se           0.009  0.008\n#&gt; zval        32.003 51.811\n#&gt; pval         0.000  0.000\n#&gt; ci.lb        0.271  0.420\n#&gt; ci.ub        0.307  0.453\n#&gt; I2           0.955  0.000\n#&gt; tau2         0.000  0.000",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#pb-under-an-ee-model-4",
+    "href": "chapters/chapter5.html#pb-under-an-ee-model-4",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.8 PB under an EE model",
+    "text": "14.8 PB under an EE model\nThe situation is even worse when we simulate a null effect. This strict selection results in committing type-1 error:\n\nset.seed(2023)\nk &lt;- 1e3\nn &lt;- round(runif(k, 10, 100))\ndat0 &lt;- sim_studies(k = k, es = 0, tau2 = 0, n1 = n)\ndat0 &lt;- summary(dat0)\n# compute 1 tail pvalue\ndat0$pval1 &lt;- 1 - pnorm(dat0$zi)\n# selecting\nsign &lt;- dat0$pval1 &lt;= 0.05 & dat0$zi &gt; 0\ndat_pb0 &lt;- dat0[sign, ]\ndat_un0 &lt;- dat0[sample(1:nrow(dat0), sum(sign)), ]\n\n# fitting EE model for the full vs selected (ignore k differences)\nfit0 &lt;- rma(yi, vi, method = \"EE\", data = dat_un0)\nfit_pb0 &lt;- rma(yi, vi, method = \"EE\", data = dat_pb0)\nround(compare_rma(fit0, fit_pb0), 3)\n#&gt; fit0: rma(yi = yi, vi = vi, data = dat_un0, method = \"EE\")\n#&gt; fit_pb0: rma(yi = yi, vi = vi, data = dat_pb0, method = \"EE\")\n#&gt;               fit0 fit_pb0\n#&gt; b (intrcpt) -0.006   0.363\n#&gt; se           0.027   0.026\n#&gt; zval        -0.220  14.015\n#&gt; pval         0.826   0.000\n#&gt; ci.lb       -0.059   0.312\n#&gt; ci.ub        0.047   0.414\n#&gt; I2           0.000   0.000\n#&gt; tau2         0.000   0.000",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#pb-under-an-ee-model-5",
+    "href": "chapters/chapter5.html#pb-under-an-ee-model-5",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.9 PB under an EE model",
+    "text": "14.9 PB under an EE model\nAssuming to pick a very precise (\\(n = 1000\\)) and a very unprecise (\\(n = 20\\)) study, which one is more likely to have an effect size close to the true value?\n. . .\nThe precise study has a lower \\(\\epsilon_i\\) thus is closer to \\(\\theta\\). This relationship create a very insightful visual representation.\n. . .\nWhat could be the shape of the plot when plotting the precision (e.g., the sample size or the inverse of the variance) as a function of the effect size?",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#pb-under-an-ee-model-6",
+    "href": "chapters/chapter5.html#pb-under-an-ee-model-6",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.10 PB under an EE model",
+    "text": "14.10 PB under an EE model\n\n#|code-fold: true\nplot(dat$yi, sqrt(dat$vi), ylim=rev(range(dat$vi)), pch = 19, col = scales::alpha(\"black\", 0.5), cex = 1.5)\nabline(v = theta, lwd = 3, col = \"firebrick\")",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#publication-bias-pb---funnel-plot",
+    "href": "chapters/chapter5.html#publication-bias-pb---funnel-plot",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.11 Publication Bias (PB) - Funnel Plot",
+    "text": "14.11 Publication Bias (PB) - Funnel Plot\nWe created a funnel plot. This is a visual tool to check the presence of asymmetry that could be caused by publication bias. If meta-analysis assumptions are respected, and there is no publication bias:\n\neffects should be normally distributed around the average effect\nmore precise studies should be closer to the average effect\nless precise studies could be equally distributed around the average effect",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#publication-bias-pb---funnel-plot-1",
+    "href": "chapters/chapter5.html#publication-bias-pb---funnel-plot-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.12 Publication Bias (PB) - Funnel Plot",
+    "text": "14.12 Publication Bias (PB) - Funnel Plot\nThe plot assume the typical funnel shape and there are not missing spots on the at the bottom. The presence of missing spots is a potential index of publication bias.\n\nCodefit &lt;- rma(yi, vi, method = \"EE\", data = dat)\ndat$pb &lt;- dat$pval &lt;= 0.05\n\nwith(dat[dat$pb, ],\n     plot(yi, sei,\n          ylim = rev(range(dat$sei)),\n          xlab = latex2exp::TeX(\"$y_i$\"),\n          ylab = latex2exp::TeX(\"$\\\\sqrt{\\\\sigma_i^2}$\"),\n          xlim = range(dat$yi),\n          pch = 19,\n          col = scales::alpha(\"firebrick\", 0.5))\n)\n\nwith(dat[!dat$pb, ],\n     points(yi, sei, col = scales::alpha(\"black\", 0.5), pch = 19)\n)\n\nabline(v = fit$b[[1]], col = \"black\", lwd = 1.2)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#publication-bias-pb---funnel-plot-2",
+    "href": "chapters/chapter5.html#publication-bias-pb---funnel-plot-2",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.13 Publication Bias (PB) - Funnel Plot",
+    "text": "14.13 Publication Bias (PB) - Funnel Plot\nThe plot assume the typical funnel shape and there are not missing spots on the at the bottom. The presence of missing spots is a potential index of publication bias.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#robustness-to-pb---fail-safe-n",
+    "href": "chapters/chapter5.html#robustness-to-pb---fail-safe-n",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.14 Robustness to PB - Fail-safe N",
+    "text": "14.14 Robustness to PB - Fail-safe N\nThe Fail-safe N (Rosenthal, 1979) idea is very simple. Given a meta-analysis with a significant result (i.e., \\(p \\leq \\alpha\\)). How many null studies (i.e., \\(\\hat \\theta = 0\\)) do I need to obtain \\(p &gt; \\alpha\\)?\n\nmetafor::fsn(yi, vi, data = dat)\n#&gt; \n#&gt; Fail-safe N Calculation Using the Rosenthal Approach\n#&gt; \n#&gt; Observed Significance Level: &lt;.0001\n#&gt; Target Significance Level:   0.05\n#&gt; \n#&gt; Fail-safe N: 832741",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#robustness-to-pb---fail-safe-n-1",
+    "href": "chapters/chapter5.html#robustness-to-pb---fail-safe-n-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.15 Robustness to PB - Fail-safe N",
+    "text": "14.15 Robustness to PB - Fail-safe N\nThere are several criticism to the Fail-safe N procedure:\n. . .\n\nis not actually detecting the PB but suggesting the required PB size to remove the effect. A very large N suggest that even with PB, it is unlikely that the results could be completely changed by actually reporting null studies\n\n. . .\n\n\nOrwin (1983) proposed a new method calculating the number of studies required to reduce the effect size to a given target\n\n. . .\n\n\nRosenberg (2005) proposed a method similar to Rosenthal (1979) but combining the (weighted) effect sizes and not the p-values.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#detecting-pb---egger-regression",
+    "href": "chapters/chapter5.html#detecting-pb---egger-regression",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.16 Detecting PB - Egger Regression",
+    "text": "14.16 Detecting PB - Egger Regression\nA basic method to test the funnel plot asymmetry is using an the Egger regression test. Basically we calculate the relationship between \\(y_i\\) and \\(\\sqrt{\\sigma^2_i}\\). In the absence of asimmetry, the line slope should be not different from 0.\nWe can use the metafor::regtest() function:\n\negger &lt;- regtest(fit)\negger\n#&gt; \n#&gt; Regression Test for Funnel Plot Asymmetry\n#&gt; \n#&gt; Model:     fixed-effects meta-regression model\n#&gt; Predictor: standard error\n#&gt; \n#&gt; Test for Funnel Plot Asymmetry: z = -0.3621, p = 0.7173\n#&gt; Limit Estimate (as sei -&gt; 0):   b =  0.3061 (CI: 0.2601, 0.3520)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#publication-bias-pb---egger-regression",
+    "href": "chapters/chapter5.html#publication-bias-pb---egger-regression",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.17 Publication Bias (PB) - Egger Regression",
+    "text": "14.17 Publication Bias (PB) - Egger Regression\n\n\n\n\n\n\n\n\nThis is a standard (meta) regression thus the number of studies, the precision of each study and heterogeneity influence the reliability (power, type-1 error rate, etc.) of the procedure.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#correcting-pb---trim-and-fill",
+    "href": "chapters/chapter5.html#correcting-pb---trim-and-fill",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.18 Correcting PB - Trim and Fill",
+    "text": "14.18 Correcting PB - Trim and Fill\nThe Trim and Fill method (Duval & Tweedie, 2000) is used to impute the hypothetical missing studies according to the funnel plot and recomputing the meta-analysis effect. Shi and Lin (Shi & Lin, 2019) provide an updated overview of the method with some criticisms.\n. . .\n\nset.seed(2023)\nk &lt;- 100 # we increased k to better show the effect\ntheta &lt;- 0.5\ntau2 &lt;- 0.1\nn &lt;- runif(k, 10, 100)\ndat &lt;- sim_studies(k, theta, tau2, n)\ndat &lt;- summary(dat)\ndatpb &lt;- dat[dat$pval &lt;= 0.1 & dat$zi &gt; 0, ]\nfit &lt;- rma(yi, vi, data = datpb, method = \"REML\")",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#correcting-pb---trim-and-fill-1",
+    "href": "chapters/chapter5.html#correcting-pb---trim-and-fill-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.19 Correcting PB - Trim and Fill",
+    "text": "14.19 Correcting PB - Trim and Fill\nNow we can use the metafor::trimfill() function:\n\ntaf &lt;- metafor::trimfill(fit)\ntaf\n#&gt; \n#&gt; Estimated number of missing studies on the left side: 15 (SE = 5.4670)\n#&gt; \n#&gt; Random-Effects Model (k = 84; tau^2 estimator: REML)\n#&gt; \n#&gt; tau^2 (estimated amount of total heterogeneity): 0.0562 (SE = 0.0146)\n#&gt; tau (square root of estimated tau^2 value):      0.2371\n#&gt; I^2 (total heterogeneity / total variability):   61.61%\n#&gt; H^2 (total variability / sampling variability):  2.60\n#&gt; \n#&gt; Test for Heterogeneity:\n#&gt; Q(df = 83) = 210.3501, p-val &lt; .0001\n#&gt; \n#&gt; Model Results:\n#&gt; \n#&gt; estimate      se     zval    pval   ci.lb   ci.ub      \n#&gt;   0.5934  0.0339  17.5084  &lt;.0001  0.5270  0.6598  *** \n#&gt; \n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nThe trim-and-fill estimates that 15 are missing. The new effect size after including the studies is reduced and closer to the simulated value (but in this case still significant).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#correcting-pb---trim-and-fill-2",
+    "href": "chapters/chapter5.html#correcting-pb---trim-and-fill-2",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.20 Correcting PB - Trim and Fill",
+    "text": "14.20 Correcting PB - Trim and Fill\nWe can also visualize the funnel plot highligting the points that are included by the method.\n\nfunnel(taf)\n\n\nCodefunnel(taf)\negg &lt;- regtest(fit)\negg_npb &lt;- regtest(taf)\nse &lt;- seq(0,1.8,length=100)\nlines(coef(egg$fit)[1] + coef(egg$fit)[2]*se, se, lwd=3, col = \"black\")\nlines(coef(egg_npb$fit)[1] + coef(egg_npb$fit)[2]*se, se, lwd=3, col = \"firebrick\")\nlegend(\"topleft\", legend = c(\"Original\", \"Corrected\"), fill = c(\"black\", \"firebrick\"))",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#why-the-funnel-plot-can-be-misleading",
+    "href": "chapters/chapter5.html#why-the-funnel-plot-can-be-misleading",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.21 Why the funnel plot can be misleading?",
+    "text": "14.21 Why the funnel plot can be misleading?\nThis funnel plot show an evident asymmetry on the left side. Is there evidence of publication bias? What do you think?\n\nset.seed(2024)\nk &lt;- 50\nn1 &lt;- round(runif(k, 10, 200))\nn2 &lt;- round(runif(k, 10, 50))\ndat1 &lt;- sim_studies(k, 0, 0, n1, add = list(x = 0))\ndat2 &lt;- sim_studies(k, 0.5, 0.05, n2, add = list(x = 1))\ndat &lt;- rbind(dat1, dat2)\nfit &lt;- rma(yi, vi, dat = dat)\nfunnel(fit)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#why-the-funnel-plot-can-be-misleading-1",
+    "href": "chapters/chapter5.html#why-the-funnel-plot-can-be-misleading-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.22 Why the funnel plot can be misleading?",
+    "text": "14.22 Why the funnel plot can be misleading?\nThe data are of course simulated and this is the code. What do you think now?\n\nset.seed(2024)\nk &lt;- 50\nn1 &lt;- round(runif(k, 10, 200))\nn2 &lt;- round(runif(k, 10, 50))\ndat1 &lt;- sim_studies(k, 0, 0, n1, add = list(x = 0))\ndat2 &lt;- sim_studies(k, 0.5, 0.05, n2, add = list(x = 1))\ndat &lt;- rbind(dat1, dat2)\nfit &lt;- rma(yi, vi, dat = dat)\nfunnel(fit)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#why-the-funnel-plot-can-be-misleading-2",
+    "href": "chapters/chapter5.html#why-the-funnel-plot-can-be-misleading-2",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.23 Why the funnel plot can be misleading?",
+    "text": "14.23 Why the funnel plot can be misleading?\nIn fact, these are two unbiased population of effect sizes. Extra source of heterogeneity could create asymmetry not related to PB.\n\npar(mfrow = c(1, 2))\nfunnel(fit)\nfunnel(fit, col = dat$x + 1)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#why-the-funnel-plot-can-be-misleading-3",
+    "href": "chapters/chapter5.html#why-the-funnel-plot-can-be-misleading-3",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.24 Why the funnel plot can be misleading?",
+    "text": "14.24 Why the funnel plot can be misleading?\nAlso the methods to detect/correct for PB are committing a false alarm:\n\nregtest(fit)\n#&gt; \n#&gt; Regression Test for Funnel Plot Asymmetry\n#&gt; \n#&gt; Model:     mixed-effects meta-regression model\n#&gt; Predictor: standard error\n#&gt; \n#&gt; Test for Funnel Plot Asymmetry: z =  6.2569, p &lt; .0001\n#&gt; Limit Estimate (as sei -&gt; 0):   b = -0.2067 (CI: -0.3460, -0.0675)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#why-the-funnel-plot-can-be-misleading-4",
+    "href": "chapters/chapter5.html#why-the-funnel-plot-can-be-misleading-4",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.25 Why the funnel plot can be misleading?",
+    "text": "14.25 Why the funnel plot can be misleading?\nAlso the methods to detect/correct for PB are committing a false alarm:\n\ntrimfill(fit)\n#&gt; \n#&gt; Estimated number of missing studies on the left side: 32 (SE = 6.3553)\n#&gt; \n#&gt; Random-Effects Model (k = 132; tau^2 estimator: REML)\n#&gt; \n#&gt; tau^2 (estimated amount of total heterogeneity): 0.2183 (SE = 0.0337)\n#&gt; tau (square root of estimated tau^2 value):      0.4672\n#&gt; I^2 (total heterogeneity / total variability):   86.77%\n#&gt; H^2 (total variability / sampling variability):  7.56\n#&gt; \n#&gt; Test for Heterogeneity:\n#&gt; Q(df = 131) = 639.7238, p-val &lt; .0001\n#&gt; \n#&gt; Model Results:\n#&gt; \n#&gt; estimate      se    zval    pval    ci.lb   ci.ub    \n#&gt;   0.0281  0.0457  0.6142  0.5391  -0.0615  0.1177    \n#&gt; \n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#why-the-funnel-plot-can-be-misleading-5",
+    "href": "chapters/chapter5.html#why-the-funnel-plot-can-be-misleading-5",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.26 Why the funnel plot can be misleading?",
+    "text": "14.26 Why the funnel plot can be misleading?\nThe regtest can be applied also with moderators. The idea should be to take into account the moderators effects and then check for asymmetry.\n\nfitm &lt;- rma(yi, vi, mods = ~x, data = dat)\nregtest(fitm)\n#&gt; \n#&gt; Regression Test for Funnel Plot Asymmetry\n#&gt; \n#&gt; Model:     mixed-effects meta-regression model\n#&gt; Predictor: standard error\n#&gt; \n#&gt; Test for Funnel Plot Asymmetry: z = -1.0277, p = 0.3041",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#why-the-funnel-plot-can-be-misleading-6",
+    "href": "chapters/chapter5.html#why-the-funnel-plot-can-be-misleading-6",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.27 Why the funnel plot can be misleading?",
+    "text": "14.27 Why the funnel plot can be misleading?\nIn fact, the funnel plot on the raw dataset and on residuals looks quite different because the asymmetry was caused by the moderator.\n\nCodedat$ri &lt;- residuals(fitm)\nfitr &lt;- rma(ri, vi, data = dat)\npar(mfrow = c(1, 2))\nplot_regtest(fit, main = \"Full model\")\nplot_regtest(fitr, main = \"Residuals\")",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#correcting-pb---selection-models-sm",
+    "href": "chapters/chapter5.html#correcting-pb---selection-models-sm",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.28 Correcting PB - Selection Models (SM)",
+    "text": "14.28 Correcting PB - Selection Models (SM)\nSM are more than a tool for correcting for the PB. SM are formal models of PB that can help us understanding and simulating the PB.\nThe SM are composed by two parts:\n\n\nEffect size model: the unbiased data generation process. In our case basically the sim_studies() function.\n\nSelection model: the assumed process generating the biased selection of effect sizes\n\nSelection models can be based on the p-value (e.g., p-curve or p-uniform) and/or the effect size and variance (Copas model). We will see only models based on the p-value.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#correcting-pb---selection-models-sm-1",
+    "href": "chapters/chapter5.html#correcting-pb---selection-models-sm-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.29 Correcting PB - Selection Models (SM)",
+    "text": "14.29 Correcting PB - Selection Models (SM)\nFormally, the random-effect meta-analysis probability density function (PDF) can be written as (e.g., Citkowicz & Vevea, 2017):\n\\[\nf\\left(y_i \\mid \\beta, \\tau^2 ; \\sigma_i^2\\right)=\\frac{\\phi\\left(\\frac{y_i-\\Delta_i}{\\sqrt{\\sigma_i^2+\\tau^2}}\\right)}{\\int_{-\\infty}^{\\infty}  \\phi\\left(\\frac{Y_i-\\Delta_i}{\\sqrt{\\sigma_i^2+\\tau^2}}\\right) d y_i}\n\\]\nWithout going into details, this is the PDF without any selection process (i.e., the effect sizes model).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#correcting-pb---selection-models-sm-2",
+    "href": "chapters/chapter5.html#correcting-pb---selection-models-sm-2",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.30 Correcting PB - Selection Models (SM)",
+    "text": "14.30 Correcting PB - Selection Models (SM)\nIf we have a function linking the p-value with the probability of publishing (a weight function) \\(w(p_i)\\) we can include it in the previous PDF, creating a weighted PDF.\n\\[\nf\\left(y_i \\mid \\beta, \\tau^2 ; \\sigma_i^2\\right)=\\frac{\\mathrm{w}\\left(p_i\\right) \\phi\\left(\\frac{y_i-\\Delta_i}{\\sqrt{\\sigma_i^2+\\tau^2}}\\right)}{\\int_{-\\infty}^{\\infty} \\mathrm{w}\\left(p_i\\right) \\phi\\left(\\frac{Y_i-\\Delta_i}{\\sqrt{\\sigma_i^2+\\tau^2}}\\right)d y_i}\n\\]\nEssentially, this new model take into account the selection process (the weight function) to estimate a new meta-analysis. In case of no selection (all weigths are the same) the model is the standard random-effects meta-analysis.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#sm---weigth-function",
+    "href": "chapters/chapter5.html#sm---weigth-function",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.31 SM - Weigth function",
+    "text": "14.31 SM - Weigth function\nThe weigth function is a simple function that links the p-value with the probability of publishing. The simple example at the beginning (publishing only significant p-values) is a step weigth function.\n\np &lt;- c(0, 0.05, 0.05, 1)\nw &lt;- c(1, 1, 0, 0)\n\nplot(p, w, type = \"l\", xlab = \"p value\", ylab = \"Probability of Publishing\")",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#sm---weigth-function-1",
+    "href": "chapters/chapter5.html#sm---weigth-function-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.32 SM - Weigth function",
+    "text": "14.32 SM - Weigth function\nWe can add more steps to express a more complex selection process:\n\np &lt;- c(0.001, 0.01, 0.05, 0.1, 0.8, 1)\nw &lt;- c(1, 1, 0.9, 0.5, 0.1, 0.1)\nplot(p, w, type = \"s\", xlab = \"p value\", ylab = \"Probability of Publishing\")",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#sm---weigth-function-2",
+    "href": "chapters/chapter5.html#sm---weigth-function-2",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.33 SM - Weigth function",
+    "text": "14.33 SM - Weigth function\nOr we can draw a smooth function assuming certain parameters:\n\nwbeta &lt;- function(p, a = 1, b = 1) p^(a - 1) * (1 - p)^(b - 1)\npval &lt;- seq(0, 1, 0.01)\n\nplot(pval, wbeta(pval, 1, 1), type = \"l\", ylim = c(0, 1), col = 1, lwd = 2,\n     xlab = \"p value\", ylab = \"Probability of Publishing\")\nlines(pval, wbeta(pval, 1, 2), col = 2, lwd = 2)\nlines(pval, wbeta(pval, 1, 5), col = 3, lwd = 2)\nlines(pval, wbeta(pval, 1, 50), col = 4, lwd = 2)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#sm---weigth-function-3",
+    "href": "chapters/chapter5.html#sm---weigth-function-3",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.34 SM - Weigth function",
+    "text": "14.34 SM - Weigth function\nWhatever the function, the SM estimate the parameters of the function and the meta-analysis parameters taking into account the weigths.\nClearly, in the presence of no bias the two models (with and without weights) are the same while with PB the estimation is different, probably reducing the effect size.\nIf the SM is correct (not possible in reality), the SM estimate the true effect even in the presence of bias. This is the strenght and elegance of the SM.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#sm---weigth-functions",
+    "href": "chapters/chapter5.html#sm---weigth-functions",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.35 SM - Weigth functions",
+    "text": "14.35 SM - Weigth functions\nThere are several weight functions:\n\nthe step model\nthe negative-exponential model\nthe beta model\n…\n\nFor an overview see the metafor documentation https://wviechtb.github.io/metafor/reference/selmodel.html",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#sm---step-model",
+    "href": "chapters/chapter5.html#sm---step-model",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.36 SM - Step model",
+    "text": "14.36 SM - Step model\nThe step model approximate the selection process with thresholds \\(\\alpha\\) and the associated weight \\(w(p_i)\\). For example:\n\nsteps &lt;- c(0.005, 0.01, 0.05, 0.10, 0.25, 0.35, 0.50, 0.65, 0.75, 0.90, 0.95, 0.99, 0.995, 1)\nmoderate_pb &lt;- c(1, 0.99, 0.95, 0.80, 0.75, 0.65, 0.60, 0.55, 0.50, 0.50, 0.50, 0.50, 0.50, 0.50)\nsevere_pb &lt;- c(1, 0.99, 0.90, 0.75, 0.60, 0.50, 0.40, 0.35, 0.30, 0.25, 0.10, 0.10, 0.10, 0.10)\n\npar(mfrow = c(1, 2))\nplot(steps, moderate_pb, type = \"s\", xlab = \"p value\", ylab = \"Probability of Selection\", main = \"Moderate PB\", ylim = c(0, 1))\nabline(v = steps, col = \"grey\")\nplot(steps, severe_pb, type = \"s\", xlab = \"p value\", ylab = \"Probability of Selection\", main = \"Severe PB\", ylim = c(0, 1))\nabline(v = steps, col = \"grey\")",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#sm---negative-exponential",
+    "href": "chapters/chapter5.html#sm---negative-exponential",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.37 SM - Negative-Exponential",
+    "text": "14.37 SM - Negative-Exponential\nThe Negative-Exponential model is very simple and intuitive. The weight function is \\(e^{-\\delta p_i}\\) thus the single parameter \\(\\delta\\) is the amount of bias. When \\(\\delta = 0\\) there is no bias.\n\nwnegexp &lt;- function(p, delta){\n  exp((-delta)*p)\n}\n\n\ncurve(wnegexp(x, 0), ylim = c(0, 1), col = 1, lwd = 2, xlab = \"p value\", ylab = \"Probability of Selection\")\ncurve(wnegexp(x, 1), add = TRUE, col = 2, lwd = 2)\ncurve(wnegexp(x, 5), add = TRUE, col = 3, lwd = 2)\ncurve(wnegexp(x, 30), add = TRUE, col = 4, lwd = 2)\n\nlegend(\"topright\", legend = latex2exp::TeX(sprintf(\"$\\\\delta = %s$\", c(1, 2, 3, 4))), fill = 1:4)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#simulating-data-with-pb",
+    "href": "chapters/chapter5.html#simulating-data-with-pb",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.38 Simulating data with PB",
+    "text": "14.38 Simulating data with PB\nThe strategy to simulate biased data is to sample from the sim_studies() function but to keep the studies using a probabilistic sampling based on the weight function.\n\nset.seed(2024)\n\nk &lt;- 500 # high number to check the results\nes &lt;- 0 # H0 true\ntau2 &lt;- 0.1\ndelta &lt;- 5\ndat &lt;- vector(mode = \"list\", k)\n\ni &lt;- 1\nwhile(i &lt;= k){\n  # generate data\n  n &lt;- runif(1, 10, 100)\n  d &lt;- summary(sim_studies(1, es, tau2, n))\n  # get one-tail p-value\n  pi &lt;- 1 - pnorm(d$zi)\n  # get wi\n  wpi &lt;- wnegexp(pi, delta)\n  keep &lt;- rbinom(1, 1, wpi) == 1\n  if(keep){\n    dat[[i]] &lt;- d\n    i &lt;- i + 1\n  }\n}\n\ndat &lt;- do.call(rbind, dat)\nfit &lt;- rma(yi, vi, data = dat)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#simulating-data-with-pb-1",
+    "href": "chapters/chapter5.html#simulating-data-with-pb-1",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.39 Simulating data with PB",
+    "text": "14.39 Simulating data with PB\nLet’s see some plots:\n\nCodepar(mfrow = c(1, 3))\nhist(dat$yi, breaks = 50, col = \"dodgerblue\")\nhist(1 - pnorm(dat$zi), breaks = 50, col = \"dodgerblue\")\nplot(dat$yi, dat$sei, ylim = c(rev(range(dat$sei)[2]), 0), xlim = c(-1, 2))",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#simulating-data-with-pb-2",
+    "href": "chapters/chapter5.html#simulating-data-with-pb-2",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.40 Simulating data with PB",
+    "text": "14.40 Simulating data with PB\nLet’s see the model result:\n\nfit &lt;- rma(yi, vi, data = dat)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#simulating-data-with-pb-3",
+    "href": "chapters/chapter5.html#simulating-data-with-pb-3",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.41 Simulating data with PB",
+    "text": "14.41 Simulating data with PB\nLet’s see the Egger regression test and the trim-and-fill procedure:\n\nregtest(fit)\n#&gt; \n#&gt; Regression Test for Funnel Plot Asymmetry\n#&gt; \n#&gt; Model:     mixed-effects meta-regression model\n#&gt; Predictor: standard error\n#&gt; \n#&gt; Test for Funnel Plot Asymmetry: z = 4.4739, p &lt; .0001\n#&gt; Limit Estimate (as sei -&gt; 0):   b = 0.2017 (CI: 0.1235, 0.2799)\ntrimfill(fit)\n#&gt; \n#&gt; Estimated number of missing studies on the left side: 106 (SE = 14.6182)\n#&gt; \n#&gt; Random-Effects Model (k = 606; tau^2 estimator: REML)\n#&gt; \n#&gt; tau^2 (estimated amount of total heterogeneity): 0.0474 (SE = 0.0049)\n#&gt; tau (square root of estimated tau^2 value):      0.2176\n#&gt; I^2 (total heterogeneity / total variability):   56.94%\n#&gt; H^2 (total variability / sampling variability):  2.32\n#&gt; \n#&gt; Test for Heterogeneity:\n#&gt; Q(df = 605) = 1399.3991, p-val &lt; .0001\n#&gt; \n#&gt; Model Results:\n#&gt; \n#&gt; estimate      se     zval    pval   ci.lb   ci.ub      \n#&gt;   0.2927  0.0121  24.1497  &lt;.0001  0.2689  0.3164  *** \n#&gt; \n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#simulating-data-with-pb-4",
+    "href": "chapters/chapter5.html#simulating-data-with-pb-4",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.42 Simulating data with PB",
+    "text": "14.42 Simulating data with PB\nThe two methods are detecting the PB but not correcting it appropriately. Let’s see the SM using a negexp method:\n\nsel &lt;- selmodel(fit, type = \"negexp\", alternative = \"greater\")\nsel\n#&gt; \n#&gt; Random-Effects Model (k = 500; tau^2 estimator: ML)\n#&gt; \n#&gt; tau^2 (estimated amount of total heterogeneity): 0.0800 (SE = 0.0118)\n#&gt; tau (square root of estimated tau^2 value):      0.2828\n#&gt; \n#&gt; Test for Heterogeneity:\n#&gt; LRT(df = 1) = 115.9867, p-val &lt; .0001\n#&gt; \n#&gt; Model Results:\n#&gt; \n#&gt; estimate      se    zval    pval    ci.lb   ci.ub    \n#&gt;   0.0519  0.0381  1.3609  0.1735  -0.0228  0.1266    \n#&gt; \n#&gt; Test for Selection Model Parameters:\n#&gt; LRT(df = 1) = 46.6783, p-val &lt; .0001\n#&gt; \n#&gt; Selection Model Results:\n#&gt; \n#&gt; estimate      se     zval    pval   ci.lb   ci.ub      \n#&gt;   4.7526  0.3818  12.4494  &lt;.0001  4.0044  5.5008  *** \n#&gt; \n#&gt; ---\n#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#simulating-data-with-pb-5",
+    "href": "chapters/chapter5.html#simulating-data-with-pb-5",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.43 Simulating data with PB",
+    "text": "14.43 Simulating data with PB\nWe can also plot the results:\n\nplot(sel)",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#pb-sensitivity-analysis",
+    "href": "chapters/chapter5.html#pb-sensitivity-analysis",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.44 PB Sensitivity analysis",
+    "text": "14.44 PB Sensitivity analysis\n\nThe SM is correctly detecting, estimating and correcting the PB. But we simulated a pretty strong bias with \\(k = 500\\) studies. In reality meta-analyses have few studies.\n\nVevea & Woods (2005) proposed to fix the weight function parameters to certain values representing different degree of selection and check how the model changes.\nIf the model parameters are affected after taking into account the SM, this could be considered as an index of PB.\nThis approach is really interesting in general but especially when \\(k\\) is too small for estimating the SM\nsee ?selmodel for information about performing sensitivity analysis with pre-specified weight functions",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/chapter5.html#more-on-sm-and-publication-bias",
+    "href": "chapters/chapter5.html#more-on-sm-and-publication-bias",
+    "title": "\n5  Meta-analysis and publication bias\n",
+    "section": "\n14.45 More on SM and Publication Bias",
+    "text": "14.45 More on SM and Publication Bias\n\nThe SM documentation of metafor::selmodel() https://wviechtb.github.io/metafor/reference/selmodel.html\n\nWolfgang Viechtbauer overview of PB https://www.youtube.com/watch?v=ucmOCuyCk-c\n\n\nHarrer et al. (2021) - Doing Meta-analysis in R - Chapter 9\n\n\nMcShane et al. (2016) for a nice introduction about publication bias and SM\nAnother good overview by Jin et al. (2015)\n\nSee also Guan & Vandekerckhove (2016), Maier et al. (2023) and Bartoš et al. (2022) for Bayesian approaches to PB",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Meta-analysis and publication bias</span>"
     ]
