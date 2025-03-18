@@ -1,5 +1,5 @@
 ---
-bibliography: "/Users/filippogambarota/googledrive/notes/files/references.bib"
+bibliography: "https://raw.githubusercontent.com/filippogambarota/bib-database/main/references.bib"
 crossref: 
     lst-title: Code
     lst-prefix: Code
