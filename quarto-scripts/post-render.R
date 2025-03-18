@@ -1,6 +1,11 @@
 # render the rmd
 rmarkdown::render("README.rmd", clean = TRUE, quiet = TRUE)
 
+# git add README.md
+
+system("git add README.md")
+system("git commit -m 'updating readme'")
+
 # git add all _book, detailed commit on qmd files
 
 system("git add _book/")
