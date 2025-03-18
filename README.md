@@ -56,7 +56,7 @@ integrated.
 
 # Todoget Report
 
-last update: 2024-12-20 (13:19)
+last update: 2025-03-18 (10:50)
 
 ## index.qmd
 
@@ -74,19 +74,11 @@ last update: 2024-12-20 (13:19)
     @sec-contributing section).
   - Line 18: TODO study a little bit how the PR method could work
 
-## chapters/chapter3.qmd
+## chapters/chapter5.qmd
 
-  - Line 249: TODO: review and smooth this section
-  - Line 265: TODO see if the remainder of the section can be shortened,
-    it seems a bit repetitive
-  - Line 356: TODO: review and smooth this section
-  - Line 408: GIOVANNI: i have added a small section and simulation
-    about typeM error by gelman. I think that is interesting because
-    shows the amount of effect size inflation given the sample size when
-    selecting for significance
-  - Line 714: TODO: describe standardized vs unstandardized
-  - Line 718: GIOVANNI: is sigma the residual variance or the effect
-    size sampling variability?
+  - Line 736: TODO fix the image, ggplot version
+  - Line 905: TODO fix the image, ggplot version
+  - Line 932: TODO fix the image, ggplot version
 
 ## chapters/chapter4.qmd
 
@@ -103,12 +95,26 @@ last update: 2024-12-20 (13:19)
   - Line 105: TODO introduce here the notation for effect size and
     sampling variance
 
-## chapters/glossary.qmd
-
-  - Line 0: TODO put better this glossary maybe using the
-    <https://debruine.github.io/quarto-glossary/> package
-
 ## chapters/changelog.qmd
 
   - Line 0: TODO adapt a changelog strategy as lakens
     <https://lakens.github.io/statistical_inferences/changelog.html>
+
+## chapters/chapter3.qmd
+
+  - Line 249: TODO: review and smooth this section
+  - Line 265: TODO see if the remainder of the section can be shortened,
+    it seems a bit repetitive
+  - Line 356: TODO: review and smooth this section
+  - Line 408: GIOVANNI: i have added a small section and simulation
+    about typeM error by gelman. I think that is interesting because
+    shows the amount of effect size inflation given the sample size when
+    selecting for significance
+  - Line 714: TODO: describe standardized vs unstandardized
+  - Line 718: GIOVANNI: is sigma the residual variance or the effect
+    size sampling variability?
+
+## chapters/glossary.qmd
+
+  - Line 0: TODO put better this glossary maybe using the
+    <https://debruine.github.io/quarto-glossary/> package
