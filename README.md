@@ -56,7 +56,7 @@ integrated.
 
 # Todoget Report
 
-last update: 2025-03-18 (10:50)
+last update: 2025-03-23 (17:02)
 
 ## index.qmd
 
@@ -110,8 +110,8 @@ last update: 2025-03-18 (10:50)
     about typeM error by gelman. I think that is interesting because
     shows the amount of effect size inflation given the sample size when
     selecting for significance
-  - Line 714: TODO: describe standardized vs unstandardized
-  - Line 718: GIOVANNI: is sigma the residual variance or the effect
+  - Line 715: TODO: describe standardized vs unstandardized
+  - Line 719: GIOVANNI: is sigma the residual variance or the effect
     size sampling variability?
 
 ## chapters/glossary.qmd
