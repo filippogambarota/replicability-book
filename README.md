@@ -56,7 +56,7 @@ integrated.
 
 # Todoget Report
 
-last update: 2025-05-04 (16:56)
+last update: 2025-05-04 (17:11)
 
 ## index.qmd
 
@@ -101,11 +101,19 @@ last update: 2025-05-04 (16:56)
 
 - Line 0: TODO: table with method (rows), (colums)properties, id exact
   or extension, bayesian or not, open source code, citation
-- Line 11: TODO check the final table and the overall structure of the
+- Line 12: TODO check the final table and the overall structure of the
   paper because it’s great also the references are amazing
-- Line 32: TODO the idea here is also to keep track of the methods
+- Line 33: TODO the idea here is also to keep track of the methods
   providing a clear overview
-- Line 102: While real-world examples are important, to understand the
+- Line 59: An important point is related to the choice of the method
+  when evaluating a replication result. The @Heyard2024-hv work shows
+  the amount of different methods and definitions of replication success
+  without formally comparing them. This is not a problematic aspect
+  because in practice, large scale replication projects such as the TODO
+  add the references used different methods for the same dataset. In
+  this context is important clearly use the method, and the related
+  replication definition, closest to our aim.
+- Line 105: While real-world examples are important, to understand the
   replication methods from a statistical point of view, simulating
   simplified examples is a good strategies. Furthermore, simulating data
   is nowadays considered an important tool to teach and understand
@@ -113,6 +121,7 @@ last update: 2025-05-04 (16:56)
   In additions, Monte Carlo simulations are necessary to estimate
   statistical properties (e.g., statistical power or type-1 error rate)
   of complex models.
+- Line 118: TODO add more notation here
 
 ## chapters/changelog.qmd
 
