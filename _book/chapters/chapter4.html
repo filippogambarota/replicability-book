@@ -233,7 +233,13 @@ window.Quarto = {
   <li><a href="#replication-studies-as-meta-analysis" id="toc-replication-studies-as-meta-analysis" class="nav-link" data-scroll-target="#replication-studies-as-meta-analysis"><span class="header-section-number">4.3</span> Replication studies as meta-analysis</a></li>
   <li><a href="#simulating-data" id="toc-simulating-data" class="nav-link" data-scroll-target="#simulating-data"><span class="header-section-number">4.4</span> Simulating data</a></li>
   <li><a href="#vote-counting-based-on-significance-or-direction" id="toc-vote-counting-based-on-significance-or-direction" class="nav-link" data-scroll-target="#vote-counting-based-on-significance-or-direction"><span class="header-section-number">4.5</span> Vote Counting based on significance or direction</a></li>
-  <li><a href="#confidenceprediction-interval-methods" id="toc-confidenceprediction-interval-methods" class="nav-link" data-scroll-target="#confidenceprediction-interval-methods"><span class="header-section-number">4.6</span> Confidence/prediction interval methods</a></li>
+  <li>
+<a href="#confidenceprediction-interval-methods" id="toc-confidenceprediction-interval-methods" class="nav-link" data-scroll-target="#confidenceprediction-interval-methods"><span class="header-section-number">4.6</span> Confidence/prediction interval methods</a>
+  <ul class="collapse">
+<li><a href="#replication-effect-within-the-original-ci" id="toc-replication-effect-within-the-original-ci" class="nav-link" data-scroll-target="#replication-effect-within-the-original-ci"><span class="header-section-number">4.6.1</span> Replication effect within the original CI</a></li>
+  <li><a href="#original-study-within-replication-ci" id="toc-original-study-within-replication-ci" class="nav-link" data-scroll-target="#original-study-within-replication-ci"><span class="header-section-number">4.6.2</span> Original study within replication CI</a></li>
+  </ul>
+</li>
   <li><a href="#meta-analytic-methods" id="toc-meta-analytic-methods" class="nav-link" data-scroll-target="#meta-analytic-methods"><span class="header-section-number">4.7</span> Meta-analytic methods</a></li>
   <li><a href="#bayes-factor" id="toc-bayes-factor" class="nav-link" data-scroll-target="#bayes-factor"><span class="header-section-number">4.8</span> Bayes factor</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.9</span> References</a></li>
@@ -376,9 +382,9 @@ propose some kind of classification/taxonomy here. for example:
 <span><span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n1</span>, <span class="va">es</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span> <span class="co"># this is the effect size</span></span>
-<span><span class="co">## [1] 0.6472849</span></span>
+<span><span class="co">## [1] 0.07187953</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">/</span><span class="va">n0</span> <span class="co"># this is the sampling variability</span></span>
-<span><span class="co">## [1] 0.06295947</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">## [1] 0.04667782</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -409,16 +415,16 @@ propose some kind of classification/taxonomy here. for example:
 <span><span class="va">sim</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   id          yi         vi n0 n1
-1   1  0.25173931 0.03965765 51 51
-2   2 -0.08177908 0.06500606 32 32
-3   3  0.68836356 0.04644418 34 34
-4   4  0.54927820 0.05894016 41 41
-5   5  0.45378349 0.03914158 49 49
-6   6  0.34509827 0.05023183 44 44
-7   7  0.48707760 0.05684256 37 37
-8   8  0.24956027 0.03234272 40 40
-9   9  0.25702010 0.05291814 40 40
-10 10  0.10842962 0.05450703 34 34</code></pre>
+1   1  0.12504957 0.04085890 41 41
+2   2  0.93968494 0.03897899 40 40
+3   3  0.69795739 0.06190118 38 38
+4   4 -0.05554614 0.05375940 41 41
+5   5  0.89726094 0.04977894 40 40
+6   6  0.38574076 0.06906077 32 32
+7   7  0.30923037 0.04462263 40 40
+8   8  0.81812822 0.03313112 48 48
+9   9  0.45300850 0.04411037 45 45
+10 10  0.78499783 0.04277632 47 47</code></pre>
 </div>
 </div>
 <p>Then we can put everything in a function that can be used to simulate different scenarios.</p>
@@ -426,17 +432,17 @@ propose some kind of classification/taxonomy here. for example:
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>   id        yi         vi       sei n0 n1
-1   1 0.6324991 0.05496362 0.2344432 30 30
-2   2 0.5940536 0.07861609 0.2803856 30 30
-3   3 0.3981183 0.05645836 0.2376097 30 30
-4   4 0.6837086 0.04093500 0.2023240 30 30
-5   5 0.8119503 0.05529349 0.2351457 30 30
-6   6 0.7147561 0.07962822 0.2821847 30 30
-7   7 0.6472384 0.06380607 0.2525986 30 30
-8   8 0.2282466 0.08348952 0.2889455 30 30
-9   9 0.8094785 0.06443810 0.2538466 30 30
-10 10 0.1864012 0.05510704 0.2347489 30 30</code></pre>
+<pre><code>   id          yi         vi       sei n0 n1
+1   1 -0.06768212 0.08276623 0.2876912 30 30
+2   2  1.14207482 0.04302261 0.2074189 30 30
+3   3  0.72321556 0.07073640 0.2659632 30 30
+4   4  0.74955842 0.06039368 0.2457512 30 30
+5   5  0.56957611 0.07628899 0.2762046 30 30
+6   6 -0.15101320 0.06853325 0.2617886 30 30
+7   7  1.05360793 0.06282680 0.2506528 30 30
+8   8  0.62915613 0.07977069 0.2824371 30 30
+9   9  0.35942057 0.08297324 0.2880508 30 30
+10 10  0.69714960 0.07586746 0.2754405 30 30</code></pre>
 </div>
 </div>
 </section><section id="vote-counting-based-on-significance-or-direction" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="vote-counting-based-on-significance-or-direction">
@@ -485,34 +491,34 @@ propose some kind of classification/taxonomy here. for example:
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">reps</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  id        yi         vi       sei n0 n1        zi        pval       ci.lb
-1  1 0.4856457 0.04089962 0.2022365 30 30 2.4013745 0.016333612  0.08926933
-2  2 0.6013880 0.05437467 0.2331838 30 30 2.5790302 0.009907811  0.14435621
-3  3 0.1040835 0.05744154 0.2396696 30 30 0.4342791 0.664085748 -0.36566034
-4  4 0.2831520 0.05774942 0.2403111 30 30 1.1782729 0.238687824 -0.18784903
-5  5 0.5684981 0.07109720 0.2666406 30 30 2.1320765 0.033000561  0.04589217
-6  6 0.6433677 0.07018990 0.2649338 30 30 2.4284095 0.015165211  0.12410702
+<pre><code>  id         yi         vi       sei n0 n1         zi        pval       ci.lb
+1  1  0.5943261 0.04278031 0.2068340 30 30  2.8734444 0.004060226  0.18893883
+2  2 -0.1114840 0.07193848 0.2682135 30 30 -0.4156539 0.677663264 -0.63717280
+3  3  0.4186209 0.06520742 0.2553574 30 30  1.6393527 0.101139826 -0.08187048
+4  4  0.7576611 0.06059939 0.2461694 30 30  3.0778031 0.002085327  0.27517783
+5  5  0.5798602 0.06305166 0.2511009 30 30  2.3092714 0.020928523  0.08771142
+6  6  0.1628634 0.05932456 0.2435663 30 30  0.6686613 0.503711535 -0.31451785
       ci.ub
-1 0.8820220
-2 1.0584198
-3 0.5738274
-4 0.7541531
-5 1.0911041
-6 1.1626283</code></pre>
+1 0.9997133
+2 0.4142048
+3 0.9191123
+4 1.2401443
+5 1.0720089
+6 0.6402446</code></pre>
 </div>
 </div>
 <p>Let’s compute the proportions of replication studies are statistically significant:</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">reps</span><span class="op">$</span><span class="va">pval</span> <span class="op">&lt;=</span> <span class="fl">0.05</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6</code></pre>
+<pre><code>[1] 0.4</code></pre>
 </div>
 </div>
 <p>Let’s compute the proportions of replication studies with the same sign as the original:</p>
 <div class="cell">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sign.html">sign</a></span><span class="op">(</span><span class="va">orig</span><span class="op">$</span><span class="va">yi</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/sign.html">sign</a></span><span class="op">(</span><span class="va">reps</span><span class="op">$</span><span class="va">yi</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
+<pre><code>[1] 0.9</code></pre>
 </div>
 </div>
 <p>We could also perform some statistical tests. See <span class="citation" data-cites="Bushman2009-zv">Bushman &amp; Wang (<a href="chapter5.html#ref-Bushman2009-zv" role="doc-biblioref">2009</a>)</span> and <span class="citation" data-cites="Hedges1980-gd">Hedges &amp; Olkin (<a href="chapter5.html#ref-Hedges1980-gd" role="doc-biblioref">1980</a>)</span> for vote-counting methods in meta-analysis.</p>
@@ -526,10 +532,54 @@ propose some kind of classification/taxonomy here. for example:
 </div>
 </div>
 </div>
-<p>The most problematic aspect of using only the information from the sign of the effect or the p value is completely losing the information about the <strong>size of the effect</strong>.</p>
+<p>The most problematic aspect of using only the information from the sign of the effect or the p value is completely losing the information about the <strong>size of the effect</strong> and the <strong>precision</strong>.</p>
 </section><section id="confidenceprediction-interval-methods" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="confidenceprediction-interval-methods">
 <span class="header-section-number">4.6</span> Confidence/prediction interval methods</h2>
-</section><section id="meta-analytic-methods" class="level2" data-number="4.7"><h2 data-number="4.7" class="anchored" data-anchor-id="meta-analytic-methods">
+<p>The main improvement of confidence/prediction interval methods is taking into account the size of the effect and the precision. The confidence interval represent the sampling uncertainty around the estimated value. It is interpreted as the percentage of confidence intervals under repetition of the same sampling procedure that contains the true value. <!-- TODO check better definition --></p>
+<p>Confidence interval around an estimated effect <span class="math inline">\(\theta_r\)</span> can be written as:</p>
+<p><span class="math display">\[
+95\%\;\mbox{CI} = \hat\theta_r \pm \mbox{SE}_{r} t_{\alpha}
+\]</span></p>
+<p>Where <span class="math inline">\(t_{\alpha}\)</span> is the critical value for the test statistics with a given <span class="math inline">\(\alpha\)</span>. Clearly, this version of the confidence interval is symmetric around the estimated value and the width is a function of the estimation precision.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter4_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="replication-effect-within-the-original-ci" class="level3" data-number="4.6.1"><h3 data-number="4.6.1" class="anchored" data-anchor-id="replication-effect-within-the-original-ci">
+<span class="header-section-number">4.6.1</span> Replication effect within the original CI</h3>
+<p><span class="math display">\[
+\theta_{orig} - \Phi(\alpha/2) \sqrt{\sigma^2_{orig}} &lt; \theta_{rep} &lt; \theta_{orig} + \Phi(\alpha/2) \sqrt{\sigma^2_{orig}}
+\]</span></p>
+<p>::{.pros} - Take into account the size of the effect and the precision of <span class="math inline">\(\theta_{orig}\)</span> ::: :::{.cons} - The original study is assumed to be a reliable estimation - No extension for <em>many-to-one</em> designs - Low precise original studies lead to higher success rate :::</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter4_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>One potential problem of this method regards that low precise original studies are “easier” to replicate due to larger confidence intervals.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter4_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="original-study-within-replication-ci" class="level3" data-number="4.6.2"><h3 data-number="4.6.2" class="anchored" data-anchor-id="original-study-within-replication-ci">
+<span class="header-section-number">4.6.2</span> Original study within replication CI</h3>
+<p>The same approach can be applied checking if the original effect size is contained within the replication confidence interval. Clearly these methods depends on the precision of studies. Formally:</p>
+<p><span class="math display">\[
+\theta_{rep} - \Phi(\alpha/2) \sqrt{\sigma_{rep}^2} &lt; \theta_{orig} &lt; \theta_{rep} + \Phi(\alpha/2) \sqrt{\sigma_{rep}^2}
+\]</span></p>
+<p>The method has the same pros and cons of the previous approach. One advantage is that usually replication studies are more precise (higher sample size) thus the parameter and the % CI is more reliable.</p>
+</section></section><section id="meta-analytic-methods" class="level2" data-number="4.7"><h2 data-number="4.7" class="anchored" data-anchor-id="meta-analytic-methods">
 <span class="header-section-number">4.7</span> Meta-analytic methods</h2>
 </section><section id="bayes-factor" class="level2" data-number="4.8"><h2 data-number="4.8" class="anchored" data-anchor-id="bayes-factor">
 <span class="header-section-number">4.8</span> Bayes factor</h2>
