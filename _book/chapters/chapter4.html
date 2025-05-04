@@ -230,10 +230,9 @@ window.Quarto = {
   <ul>
 <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">4.1</span> Introduction</a></li>
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">4.2</span> Methods</a></li>
-  <li><a href="#worth-mentioning" id="toc-worth-mentioning" class="nav-link" data-scroll-target="#worth-mentioning"><span class="header-section-number">4.3</span> Worth mentioning</a></li>
-  <li><a href="#replication-studies-as-meta-analysis" id="toc-replication-studies-as-meta-analysis" class="nav-link" data-scroll-target="#replication-studies-as-meta-analysis"><span class="header-section-number">4.4</span> Replication studies as meta-analysis</a></li>
-  <li><a href="#simulating-data" id="toc-simulating-data" class="nav-link" data-scroll-target="#simulating-data"><span class="header-section-number">4.5</span> Simulating data</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.6</span> References</a></li>
+  <li><a href="#replication-studies-as-meta-analysis" id="toc-replication-studies-as-meta-analysis" class="nav-link" data-scroll-target="#replication-studies-as-meta-analysis"><span class="header-section-number">4.3</span> Replication studies as meta-analysis</a></li>
+  <li><a href="#simulating-data" id="toc-simulating-data" class="nav-link" data-scroll-target="#simulating-data"><span class="header-section-number">4.4</span> Simulating data</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.5</span> References</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -306,10 +305,10 @@ propose some kind of classification/taxonomy here. for example:
 </ul></section><section id="methods" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="methods">
 <span class="header-section-number">4.2</span> Methods</h2>
 <ul>
-<li>Prediction interval: replication effect in original 95% prediction interval</li>
-<li>Proportion of population effects agreeing in direction with the original</li>
-<li>Bayes Factor: Independent Jeffreys-Zellner-Siow BF test (default BF)</li>
-<li>Bayes Factor: Equality-of-effect- size BF test</li>
+<li><label><input type="checkbox" checked="">Prediction interval: replication effect in original 95% prediction interval</label></li>
+<li><label><input type="checkbox" checked="">Proportion of population effects agreeing in direction with the original</label></li>
+<li><label><input type="checkbox" checked="">Bayes Factor: Independent Jeffreys-Zellner-Siow BF test (default BF)</label></li>
+<li>Bayes Factor: Equality-of-effect-size BF test</li>
 <li>Bayes Factor: Fixed-effect meta-analysis BF Test (Meta-analytic BF) [this probably just a bayesian meta-analysis]</li>
 <li>Bayesian Evidence Synthesis (variant: Meta-Analysis Model-based Assessment of replicability (MAMBA))</li>
 <li>Bayesian mixture model for reproducibility rate</li>
@@ -341,17 +340,12 @@ propose some kind of classification/taxonomy here. for example:
 <li>Externally standardized residuals [idea di calcolare tipo m su effetto stimato]</li>
 <li>Meta-analysis</li>
 <li>Significance criterion (vote counting, two-trials rule, regulatory agreement)</li>
-</ul></section><section id="worth-mentioning" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="worth-mentioning">
-<span class="header-section-number">4.3</span> Worth mentioning</h2>
-<ul>
-<li>RepliCATS [subjective elicitation]</li>
-<li>Text-based machine learning model to estimate reproducibility</li>
-</ul></section><section id="replication-studies-as-meta-analysis" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="replication-studies-as-meta-analysis">
-<span class="header-section-number">4.4</span> Replication studies as meta-analysis</h2>
+</ul></section><section id="replication-studies-as-meta-analysis" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="replication-studies-as-meta-analysis">
+<span class="header-section-number">4.3</span> Replication studies as meta-analysis</h2>
 <p>As introduced by <span class="citation" data-cites="Hedges2019-ry">Hedges &amp; Schauer (<a href="chapter5.html#ref-Hedges2019-ry" role="doc-biblioref">2019</a>)</span> replication studies can be seen from a statistical point of view as meta-analyses. There is a single initial study and one or more attempts to replicate this initial finding. For the simple one-to-one replication design we have a meta-analysis with two studies while in the one-to-many design we have a meta-analysis with <span class="math inline">\(k\)</span> studies. When comes to evaluate the results of the replication studies we can choose between several methods <span class="citation" data-cites="Heyard2024-hv">(see <a href="chapter5.html#ref-Heyard2024-hv" role="doc-biblioref">Heyard et al., 2024</a>)</span> and some of them are specifically meta-analysis based trying to pool togheter evidence from original and replication studies. We consider the meta-analytic thinking crucial to understand the replication studies and methods but not all methods are strictly meta-analyes in the usual sense.</p>
 <p>In fact, while the methodology of the initial or replication studies is important when comes to evaluate the single result, at the aggregated level we evaluate how a certain focal parameter (e.g., the difference between two groups or conditions) vary across replications and id there is evidence, whatever the criteria, for a successful replication. Whatever is the model used in the original studies we can essentially think at the aggregated level without loss of generality loss.</p>
-</section><section id="simulating-data" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="simulating-data">
-<span class="header-section-number">4.5</span> Simulating data</h2>
+</section><section id="simulating-data" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="simulating-data">
+<span class="header-section-number">4.4</span> Simulating data</h2>
 <p>While real-world examples are important, to understand the replication methods from a statistical point of view, simulating simplified examples is a good strategies. Furthermore, simulating data is nowadays considered an important tool to teach and understand statistical methods <!-- TODO add reference about simulating for learning -->. In additions, Monte Carlo simulations are necessary to estimate statistical properties (e.g., statistical power or type-1 error rate) of complex models.</p>
 <p>For the simulated examples we can define the following simulation approach:</p>
 <ul>
@@ -365,8 +359,7 @@ propose some kind of classification/taxonomy here. for example:
 <span class="math inline">\(y_0\)</span>: as the reference group</li>
 <li>
 <span class="math inline">\(y_1\)</span>: as the treated group</li>
-<li>
-</li></ul>
+</ul>
 <p>For example, to simulate a single study we can define the true effect size parameter <span class="math inline">\(\theta_r\)</span> and then generate two independent groups sampled from two normal distributions with variance equal to one. One of the distribution is centered on zero while the other distribution is centered on <span class="math inline">\(\theta_r\)</span>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">theta</span> <span class="op">&lt;-</span> <span class="fl">0.3</span></span>
@@ -377,11 +370,11 @@ propose some kind of classification/taxonomy here. for example:
 <span><span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n1</span>, <span class="va">theta</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span> <span class="co"># this is the effect size</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6187339</code></pre>
+<pre><code>[1] 0.1635249</code></pre>
 </div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">/</span><span class="va">n0</span> <span class="co"># this is the sampling variability</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.04863146</code></pre>
+<pre><code>[1] 0.09255016</code></pre>
 </div>
 </div>
 <p>Now we can simply iterate the process for <span class="math inline">\(R\)</span> studies to create a series of replications with a common true parameter <span class="math inline">\(\theta\)</span>. We can also generate a more realistic set of sample sizes sampling from a probability distribution (e.g., Poisson)</p>
@@ -401,37 +394,52 @@ propose some kind of classification/taxonomy here. for example:
 <span><span class="va">sim</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   id         yi         vi n0 n1
-1   0  0.3532641 0.04550342 38 38
-2   1  0.1186561 0.03306254 47 47
-3   2  0.4914064 0.03716960 39 39
-4   3  0.2925950 0.04974060 39 39
-5   4 -0.1106152 0.05544845 35 35
-6   5  0.2231464 0.05024461 42 42
-7   6  0.1483262 0.04761298 43 43
-8   7  0.1808486 0.03836127 53 53
-9   8  0.7804150 0.04706534 43 43
-10  9  1.0881118 0.06098853 33 33</code></pre>
+1   0 0.02536864 0.05277645 37 37
+2   1 0.51141259 0.04543027 49 49
+3   2 0.33847661 0.06590338 34 34
+4   3 0.39173401 0.05281222 43 43
+5   4 0.30578999 0.07423209 32 32
+6   5 0.90053474 0.03802878 41 41
+7   6 0.06040987 0.03434134 42 42
+8   7 0.28617566 0.07220189 36 36
+9   8 0.12730970 0.04597473 38 38
+10  9 0.20908648 0.04187328 48 48</code></pre>
 </div>
 </div>
 <p>Then, if we want to include variability in the true effects as in the extension framework we can simply sample <span class="math inline">\(R\)</span> <span class="math inline">\(\theta\)</span>’s from a normal distribution with variability <span class="math inline">\(\tau^2\)</span>.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>   id          yi         vi       theta n0 n1
-1   0 -0.39649038 0.05872369 -0.03234403 38 38
-2   1  0.54445448 0.06429456  0.38907175 39 39
-3   2  0.81414123 0.09119564  1.00156301 29 29
-4   3  0.61720984 0.05077028  0.44514699 40 40
-5   4  0.58644841 0.04412951  0.38579191 44 44
-6   5  0.60690253 0.02786455  0.67184539 52 52
-7   6  0.57996490 0.03217499  0.04282356 47 47
-8   7 -0.07146937 0.03853722  0.08042081 42 42
-9   8  0.10722530 0.04775054  0.37461684 33 33
-10  9  0.19747479 0.08542795  0.50550375 31 31</code></pre>
+1   0  0.02720771 0.05506353  0.34510208 37 37
+2   1  0.77436534 0.04861849  0.40635818 45 45
+3   2 -0.05402805 0.03973834 -0.01708349 46 46
+4   3  0.65527998 0.05411933  0.66408986 40 40
+5   4  0.08451628 0.04993665  0.27340203 33 33
+6   5  0.07005127 0.04688373  0.25790109 42 42
+7   6  0.54544233 0.04279792  0.64895797 38 38
+8   7  0.69970290 0.03851244  0.50240308 37 37
+9   8  0.29577465 0.04008666  0.24673054 44 44
+10  9  0.67585013 0.04836146  0.39803679 37 37</code></pre>
 </div>
 </div>
 <p>Then we can put everything in a function that can be used to simulate different scenarios.</p>
-</section><section id="references" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="references">
-<span class="header-section-number">4.6</span> References</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>   id         yi         vi n0 n1
+1   1 0.43384301 0.06411671 30 30
+2   2 0.36032792 0.07177231 30 30
+3   3 0.33653670 0.06842437 30 30
+4   4 0.03981235 0.06372943 30 30
+5   5 0.49997087 0.05769478 30 30
+6   6 0.44373444 0.05245838 30 30
+7   7 0.87399005 0.06915593 30 30
+8   8 0.22499190 0.06096445 30 30
+9   9 0.38080022 0.06665137 30 30
+10 10 0.30412882 0.07308475 30 30</code></pre>
+</div>
+</div>
+</section><section id="references" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="references">
+<span class="header-section-number">4.5</span> References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
