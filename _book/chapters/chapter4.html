@@ -359,6 +359,7 @@ propose some kind of classification/taxonomy here. for example:
 <li>within a study, the two groups are assumed to comes from two normal distributions with unit variance. For one group the mean is centered on zero and for the other group the mean is centered on the value representing the effect size for that specific study.</li>
 <li>the sample size can vary between the two groups</li>
 </ul>
+<p>Using the same notation as <span class="quarto-unresolved-ref">?sec-prob-replication</span></p>
 <p>For example, to simulate a single study we can define the true effect size parameter <span class="math inline">\(\theta_r\)</span> and then generate two independent groups sampled from two normal distributions with variance equal to one. One of the distribution is centered on zero while the other distribution is centered on <span class="math inline">\(\theta_r\)</span>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">theta</span> <span class="op">&lt;-</span> <span class="fl">0.3</span></span>
@@ -369,11 +370,11 @@ propose some kind of classification/taxonomy here. for example:
 <span><span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n1</span>, <span class="va">theta</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span> <span class="co"># this is the effect size</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2157241</code></pre>
+<pre><code>[1] 0.4362425</code></pre>
 </div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">/</span><span class="va">n0</span> <span class="co"># this is the sampling variability</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.09253295</code></pre>
+<pre><code>[1] 0.08168525</code></pre>
 </div>
 </div>
 <p>Now we can simply iterate the process for <span class="math inline">\(R\)</span> studies to create a series of replications with a common true parameter <span class="math inline">\(\theta\)</span>. We can also generate a more realistic set of sample sizes sampling from a probability distribution (e.g., Poisson)</p>
@@ -392,33 +393,33 @@ propose some kind of classification/taxonomy here. for example:
 <span><span class="va">sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="op">(</span><span class="va">R</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>, <span class="va">yi</span>, <span class="va">vi</span>, <span class="va">n0</span>, <span class="va">n1</span><span class="op">)</span></span>
 <span><span class="va">sim</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   id           yi         vi n0 n1
-1   0  0.260608840 0.04203433 42 42
-2   1  0.122600046 0.04043356 48 48
-3   2  0.523146258 0.04106907 49 49
-4   3  0.269288204 0.05174803 42 42
-5   4  0.344999216 0.03879639 47 47
-6   5  0.542907314 0.05554958 41 41
-7   6  0.025869045 0.04603258 39 39
-8   7  0.503778870 0.05494830 40 40
-9   8 -0.006979974 0.03572964 45 45
-10  9  0.577671183 0.04505676 36 36</code></pre>
+<pre><code>   id        yi         vi n0 n1
+1   0 0.4233658 0.04623726 43 43
+2   1 0.4252467 0.05527680 33 33
+3   2 0.4028458 0.06208903 36 36
+4   3 0.2224121 0.06489679 38 38
+5   4 0.2883342 0.05687481 47 47
+6   5 0.4473630 0.04031491 45 45
+7   6 0.3375588 0.03514047 39 39
+8   7 0.1797588 0.07296338 34 34
+9   8 0.5637985 0.04857906 44 44
+10  9 0.1003522 0.04565902 38 38</code></pre>
 </div>
 </div>
 <p>Then, if we want to include variability in the true effects as in the extension framework we can simply sample <span class="math inline">\(R\)</span> <span class="math inline">\(\theta\)</span>’s from a normal distribution with variability <span class="math inline">\(\tau^2\)</span>.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>   id          yi         vi      theta n0 n1
-1   0 -0.54236325 0.04710487 -0.2745274 53 53
-2   1  0.07054390 0.04942768  0.2213323 36 36
-3   2  0.49743175 0.06423854  0.2872230 36 36
-4   3 -0.32157274 0.05562533  0.1105931 35 35
-5   4  0.33763726 0.04501610  0.2935431 45 45
-6   5  1.09247088 0.03394487  0.8480027 47 47
-7   6  0.02608494 0.06208740  0.1820973 35 35
-8   7  0.73466838 0.06763258  0.8986398 36 36
-9   8  0.04700322 0.05125852  0.3093437 42 42
-10  9 -0.06814939 0.06136104  0.2664828 39 39</code></pre>
+<pre><code>   id          yi         vi       theta n0 n1
+1   0  0.27245409 0.07778330  0.38310104 34 34
+2   1  0.01936715 0.05948838  0.06641084 44 44
+3   2 -0.46896749 0.05209882 -0.53831742 36 36
+4   3 -0.01588375 0.04722249 -0.18490807 47 47
+5   4  0.46889838 0.04160837  0.40071277 54 54
+6   5  0.77210318 0.05904731  0.32578386 39 39
+7   6 -0.14712037 0.04474505  0.04448631 43 43
+8   7  1.13657636 0.05867831  0.83819967 39 39
+9   8  0.90955312 0.03893463  0.61255868 35 35
+10  9  0.88812345 0.04551708  0.64463148 44 44</code></pre>
 </div>
 </div>
 <p>Then we can put everything in a function that can be used to simulate different scenarios.</p>
