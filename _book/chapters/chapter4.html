@@ -232,7 +232,11 @@ window.Quarto = {
   <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">4.2</span> Methods</a></li>
   <li><a href="#replication-studies-as-meta-analysis" id="toc-replication-studies-as-meta-analysis" class="nav-link" data-scroll-target="#replication-studies-as-meta-analysis"><span class="header-section-number">4.3</span> Replication studies as meta-analysis</a></li>
   <li><a href="#simulating-data" id="toc-simulating-data" class="nav-link" data-scroll-target="#simulating-data"><span class="header-section-number">4.4</span> Simulating data</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.5</span> References</a></li>
+  <li><a href="#vote-counting-based-on-significance-or-direction" id="toc-vote-counting-based-on-significance-or-direction" class="nav-link" data-scroll-target="#vote-counting-based-on-significance-or-direction"><span class="header-section-number">4.5</span> Vote Counting based on significance or direction</a></li>
+  <li><a href="#confidenceprediction-interval-methods" id="toc-confidenceprediction-interval-methods" class="nav-link" data-scroll-target="#confidenceprediction-interval-methods"><span class="header-section-number">4.6</span> Confidence/prediction interval methods</a></li>
+  <li><a href="#meta-analytic-methods" id="toc-meta-analytic-methods" class="nav-link" data-scroll-target="#meta-analytic-methods"><span class="header-section-number">4.7</span> Meta-analytic methods</a></li>
+  <li><a href="#bayes-factor" id="toc-bayes-factor" class="nav-link" data-scroll-target="#bayes-factor"><span class="header-section-number">4.8</span> Bayes factor</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.9</span> References</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -372,9 +376,9 @@ propose some kind of classification/taxonomy here. for example:
 <span><span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n1</span>, <span class="va">es</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span> <span class="co"># this is the effect size</span></span>
-<span><span class="co">## [1] 0.1770251</span></span>
+<span><span class="co">## [1] -0.2527658</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">/</span><span class="va">n0</span> <span class="co"># this is the sampling variability</span></span>
-<span><span class="co">## [1] 0.06015214</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">## [1] 0.06276777</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -386,43 +390,135 @@ propose some kind of classification/taxonomy here. for example:
 </div>
 <p>Now we can simply iterate the process for <span class="math inline">\(R\)</span> studies to create a series of replications with a common true parameter <span class="math inline">\(\theta\)</span>. We can also generate a more realistic set of sample sizes sampling from a probability distribution (e.g., Poisson). Then, if we want to include variability in the true effects as in the extension framework we can simply sample <span class="math inline">\(k\)</span> <span class="math inline">\(\theta\)</span>’s from a normal distribution with variability <span class="math inline">\(\tau^2\)</span>.</p>
 <div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fl">0.3</span> <span class="co"># average true effect</span></span>
+<span><span class="va">tau2</span> <span class="op">&lt;-</span> <span class="fl">0.1</span> <span class="co"># heterogeneity</span></span>
+<span><span class="va">theta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">k</span>, <span class="va">mu</span>, <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">tau2</span><span class="op">)</span><span class="op">)</span> <span class="co"># true effects for R studies</span></span>
+<span></span>
+<span><span class="va">yi</span> <span class="op">&lt;-</span> <span class="va">vi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="va">k</span><span class="op">)</span></span>
+<span><span class="va">n0</span> <span class="op">&lt;-</span> <span class="va">n1</span> <span class="op">&lt;-</span> <span class="fl">10</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span><span class="op">(</span><span class="va">k</span>, <span class="fl">40</span> <span class="op">-</span> <span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">k</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="va">y0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n0</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span>    <span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n1</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">theta</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span>    <span class="va">yi</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span></span>
+<span>    <span class="va">vi</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span><span class="op">/</span><span class="va">n1</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">/</span><span class="va">n0</span><span class="op">[</span><span class="va">i</span><span class="op">]</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">k</span>, <span class="va">yi</span>, <span class="va">vi</span>, <span class="va">n0</span>, <span class="va">n1</span><span class="op">)</span></span>
+<span><span class="va">sim</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   id           yi         vi n0 n1
-1   1 -0.309182883 0.04721305 40 40
-2   2 -0.007160845 0.05244029 38 38
-3   3  0.400803196 0.02992522 58 58
-4   4  0.598311744 0.05014373 43 43
-5   5  0.261480295 0.06766628 41 41
-6   6  0.449684404 0.05287953 37 37
-7   7  0.346506342 0.05851893 33 33
-8   8  0.317175615 0.05576734 41 41
-9   9  0.640812151 0.04657143 48 48
-10 10  0.347284159 0.06991821 34 34</code></pre>
+<pre><code>   id          yi         vi n0 n1
+1   1  1.06383395 0.04752847 45 45
+2   2  0.05881280 0.04610574 41 41
+3   3  0.01988944 0.04981906 34 34
+4   4 -0.07042052 0.05401286 41 41
+5   5  0.13847689 0.04990939 48 48
+6   6 -0.19374822 0.04057437 44 44
+7   7  0.36186205 0.04385018 40 40
+8   8  0.98427501 0.04925622 40 40
+9   9  0.64993082 0.06250627 37 37
+10 10  0.55322225 0.06562681 33 33</code></pre>
 </div>
 </div>
 <p>Then we can put everything in a function that can be used to simulate different scenarios.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">filor</span><span class="fu">::</span><span class="fu"><a href="https://filippogambarota.github.io/filor/reference/print_fun.html">print_fun</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">funs</span><span class="op">$</span><span class="va">sim_study</span>, <span class="va">funs</span><span class="op">$</span><span class="va">sim_studies</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>   id        yi         vi n0 n1
-1   1 0.7165347 0.05813802 30 30
-2   2 0.6992119 0.04220137 30 30
-3   3 0.4546156 0.05948486 30 30
-4   4 0.9265450 0.05913646 30 30
-5   5 0.2003159 0.06838246 30 30
-6   6 0.7966482 0.07168206 30 30
-7   7 0.5775708 0.05543920 30 30
-8   8 0.3816547 0.05839979 30 30
-9   9 0.3395412 0.06251267 30 30
-10 10 0.3649269 0.06040433 30 30</code></pre>
+<pre><code>   id        yi         vi       sei n0 n1
+1   1 0.3399809 0.07116220 0.2667624 30 30
+2   2 0.4278837 0.04201548 0.2049768 30 30
+3   3 0.2704184 0.06025675 0.2454725 30 30
+4   4 0.5468315 0.06710974 0.2590555 30 30
+5   5 0.4001629 0.06226120 0.2495219 30 30
+6   6 0.2792458 0.05930389 0.2435239 30 30
+7   7 0.7924158 0.07384220 0.2717392 30 30
+8   8 0.6630527 0.06591140 0.2567322 30 30
+9   9 0.4462860 0.05264330 0.2294413 30 30
+10 10 0.3847506 0.07295034 0.2700932 30 30</code></pre>
 </div>
 </div>
-</section><section id="references" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="references">
-<span class="header-section-number">4.5</span> References</h2>
+</section><section id="vote-counting-based-on-significance-or-direction" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="vote-counting-based-on-significance-or-direction">
+<span class="header-section-number">4.5</span> Vote Counting based on significance or direction</h2>
+<p>The simplest method is called <strong>vote counting</strong> <span class="citation" data-cites="Valentine2011-yq Hedges1980-gd">(<a href="chapter5.html#ref-Hedges1980-gd" role="doc-biblioref">Hedges &amp; Olkin, 1980</a>; <a href="chapter5.html#ref-Valentine2011-yq" role="doc-biblioref">Valentine et al., 2011</a>)</span>. A replication attempt <span class="math inline">\(\theta_{rep}\)</span> is considered successful if the result has the same direction of the original study <span class="math inline">\(\theta_{orig}\)</span> and it is statistically significant i.e., <span class="math inline">\(p_{\theta_{rep}} \leq \alpha\)</span>. Similarly we can count the number of replication with the <em>same sign</em> as the original study.</p>
+<div class="pros">
+<ul>
+<li>Easy to understand, communicate and compute</li>
+</ul>
+</div>
+<div class="cons">
+<ul>
+<li>Did not consider the size of the effect</li>
+<li>Depends on the power of <span class="math inline">\(\theta_{rep}\)</span>
+</li>
+</ul>
+</div>
+<p>Let’s simulate an exact replication:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>         yi         vi       sei zi       pval      ci.lb    ci.ub
+1 0.5163978 0.06666667 0.2581989  2 0.04550026 0.01033725 1.022458</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id        yi         vi       sei n0 n1       zi         pval       ci.lb
+1  1 0.7748452 0.04517138 0.2125356 30 30 3.645719 0.0002666449  0.35828303
+2  2 0.5960025 0.06486503 0.2546861 30 30 2.340145 0.0192762482  0.09682686
+3  3 0.4271156 0.05712830 0.2390153 30 30 1.786980 0.0739407040 -0.04134579
+4  4 0.5474998 0.05277577 0.2297298 30 30 2.383234 0.0171612811  0.09723773
+5  5 0.9935108 0.09283679 0.3046913 30 30 3.260713 0.0011113259  0.39632682
+6  6 0.6877208 0.07327784 0.2706988 30 30 2.540539 0.0110681837  0.15716088
+      ci.ub
+1 1.1914073
+2 1.0951781
+3 0.8955769
+4 0.9977619
+5 1.5906948
+6 1.2182806</code></pre>
+</div>
+</div>
+<p>Let’s compute the proportions of replication studies are statistically significant:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6</code></pre>
+</div>
+</div>
+<p>Let’s compute the proportions of replication studies with the same sign as the original:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<p>We could also perform some statistical tests. See <span class="citation" data-cites="Bushman2009-zv">Bushman &amp; Wang (<a href="chapter5.html#ref-Bushman2009-zv" role="doc-biblioref">2009</a>)</span> and <span class="citation" data-cites="Hedges1980-gd">Hedges &amp; Olkin (<a href="chapter5.html#ref-Hedges1980-gd" role="doc-biblioref">1980</a>)</span> for vote-counting methods in meta-analysis.</p>
+<p>An extreme example:</p>
+<p>Let’s imagine an original experiment with <span class="math inline">\(n_{orig} = 30\)</span> and <span class="math inline">\(\hat \theta_{orig} = 0.5\)</span> that is statistically significant <span class="math inline">\(p \approx 0.045\)</span>. Now a direct replication (thus assuming <span class="math inline">\(\tau^2 = 0\)</span>) study with <span class="math inline">\(n_{rep} = 350\)</span> found <span class="math inline">\(\hat \theta_{rep_1} = 0.15\)</span>, that is statistically significant <span class="math inline">\(p\approx 0.047\)</span>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter4_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="confidenceprediction-interval-methods" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="confidenceprediction-interval-methods">
+<span class="header-section-number">4.6</span> Confidence/prediction interval methods</h2>
+</section><section id="meta-analytic-methods" class="level2" data-number="4.7"><h2 data-number="4.7" class="anchored" data-anchor-id="meta-analytic-methods">
+<span class="header-section-number">4.7</span> Meta-analytic methods</h2>
+</section><section id="bayes-factor" class="level2" data-number="4.8"><h2 data-number="4.8" class="anchored" data-anchor-id="bayes-factor">
+<span class="header-section-number">4.8</span> Bayes factor</h2>
+</section><section id="references" class="level2" data-number="4.9"><h2 data-number="4.9" class="anchored" data-anchor-id="references">
+<span class="header-section-number">4.9</span> References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
 <div id="ref-Anderson2024-cx" class="csl-entry" role="listitem">
 Anderson, S. F., &amp; Kelley, K. (2024). Sample size planning for replication studies: The devil is in the design. <em>Psychological Methods</em>, <em>29</em>, 844–867. <a href="https://doi.org/10.1037/met0000520">https://doi.org/10.1037/met0000520</a>
+</div>
+<div id="ref-Bushman2009-zv" class="csl-entry" role="listitem">
+Bushman, B. J., &amp; Wang, M. C. (2009). Vote-counting procedures in meta-analysis. In <em><em>The handbook of research synthesis and meta-analysis</em></em> (pp. 207–220). Russell Sage Foundation.
+</div>
+<div id="ref-Hedges1980-gd" class="csl-entry" role="listitem">
+Hedges, L. V., &amp; Olkin, I. (1980). Vote-counting methods in research synthesis. <em>Psychological Bulletin</em>, <em>88</em>, 359–369. <a href="https://doi.org/10.1037/0033-2909.88.2.359">https://doi.org/10.1037/0033-2909.88.2.359</a>
 </div>
 <div id="ref-Hedges2019-ry" class="csl-entry" role="listitem">
 Hedges, L. V., &amp; Schauer, J. M. (2019). Statistical analyses for studying replication: Meta-analytic perspectives. <em>Psychological Methods</em>, <em>24</em>, 557–570. <a href="https://doi.org/10.1037/met0000189">https://doi.org/10.1037/met0000189</a>
@@ -432,6 +528,9 @@ Heyard, R., Pawel, S., Frese, J., Voelkl, B., Würbel, H., McCann, S., Held, L.,
 </div>
 <div id="ref-Ly2019-ow" class="csl-entry" role="listitem">
 Ly, A., Etz, A., Marsman, M., &amp; Wagenmakers, E.-J. (2019). Replication bayes factors from evidence updating. <em>Behavior Research Methods</em>, <em>51</em>, 2498–2508. <a href="https://doi.org/10.3758/s13428-018-1092-x">https://doi.org/10.3758/s13428-018-1092-x</a>
+</div>
+<div id="ref-Valentine2011-yq" class="csl-entry" role="listitem">
+Valentine, J. C., Biglan, A., Boruch, R. F., Castro, F. G., Collins, L. M., Flay, B. R., Kellam, S., Mościcki, E. K., &amp; Schinke, S. P. (2011). Replication in prevention science. <em>Prevention Science: The Official Journal of the Society for Prevention Research</em>, <em>12</em>, 103–117. <a href="https://doi.org/10.1007/s11121-011-0217-6">https://doi.org/10.1007/s11121-011-0217-6</a>
 </div>
 <div id="ref-Verhagen2014-tx" class="csl-entry" role="listitem">
 Verhagen, J., &amp; Wagenmakers, E.-J. (2014). Bayesian tests to quantify the result of a replication attempt. <em>Journal of Experimental Psychology. General</em>, <em>143</em>, 1457–1475. <a href="https://doi.org/10.1037/a0036731">https://doi.org/10.1037/a0036731</a>
