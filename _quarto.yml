@@ -33,7 +33,7 @@ book:
       affiliation:
         - name: Harvard T.H. Chan School of Public Health
         - name: Dana Farber Cancer Institute
-  date: "11/6/2024"
+  date: last-modified
   chapters:
     - index.qmd
     - chapters/chapter1.qmd
