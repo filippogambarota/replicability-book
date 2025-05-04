@@ -142,7 +142,7 @@ const typesetMath = (el) => {
 window.Quarto = {
   typesetMath
 };
-</script>
+</script><link rel="stylesheet" href="../styles.css">
 </head>
 <body class="nav-sidebar floating">
 
@@ -241,9 +241,17 @@ window.Quarto = {
   </ul>
 </li>
   <li><a href="#prediction-interval-pi" id="toc-prediction-interval-pi" class="nav-link" data-scroll-target="#prediction-interval-pi"><span class="header-section-number">4.7</span> Prediction interval PI</a></li>
-  <li><a href="#meta-analytic-methods" id="toc-meta-analytic-methods" class="nav-link" data-scroll-target="#meta-analytic-methods"><span class="header-section-number">4.8</span> Meta-analytic methods</a></li>
-  <li><a href="#bayes-factor" id="toc-bayes-factor" class="nav-link" data-scroll-target="#bayes-factor"><span class="header-section-number">4.9</span> Bayes factor</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.10</span> References</a></li>
+  <li>
+<a href="#mathur-vanderweele--mathur2020-nw-p_orig" id="toc-mathur-vanderweele--mathur2020-nw-p_orig" class="nav-link" data-scroll-target="#mathur-vanderweele--mathur2020-nw-p_orig"><span class="header-section-number">4.8</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(2020)</span> <span class="math inline">\(p_{orig}\)</span></a>
+  <ul class="collapse">
+<li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">4.8.1</span> Simulation</a></li>
+  <li><a href="#mathur-vanderweele--mathur2020-nw-hat-p_-0" id="toc-mathur-vanderweele--mathur2020-nw-hat-p_-0" class="nav-link" data-scroll-target="#mathur-vanderweele--mathur2020-nw-hat-p_-0"><span class="header-section-number">4.8.2</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(2020)</span> <span class="math inline">\(\hat P_{&gt; 0}\)</span></a></li>
+  <li><a href="#mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q" id="toc-mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q" class="nav-link" data-scroll-target="#mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q"><span class="header-section-number">4.8.3</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(2020)</span> <span class="math inline">\(\hat P_{\gtrless q*}\)</span></a></li>
+  </ul>
+</li>
+  <li><a href="#meta-analytic-methods" id="toc-meta-analytic-methods" class="nav-link" data-scroll-target="#meta-analytic-methods"><span class="header-section-number">4.9</span> Meta-analytic methods</a></li>
+  <li><a href="#bayes-factor" id="toc-bayes-factor" class="nav-link" data-scroll-target="#bayes-factor"><span class="header-section-number">4.10</span> Bayes factor</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">4.11</span> References</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -383,9 +391,9 @@ propose some kind of classification/taxonomy here. for example:
 <span><span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n1</span>, <span class="va">es</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span> <span class="co"># this is the effect size</span></span>
-<span><span class="co">## [1] 0.6830749</span></span>
+<span><span class="co">## [1] 0.7273184</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">/</span><span class="va">n0</span> <span class="co"># this is the sampling variability</span></span>
-<span><span class="co">## [1] 0.05953471</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">## [1] 0.05693932</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -415,17 +423,17 @@ propose some kind of classification/taxonomy here. for example:
 <span><span class="va">sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="va">k</span>, <span class="va">yi</span>, <span class="va">vi</span>, <span class="va">n0</span>, <span class="va">n1</span><span class="op">)</span></span>
 <span><span class="va">sim</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   id          yi         vi n0 n1
-1   1  0.52564057 0.04729126 41 41
-2   2  0.60752648 0.05425719 39 39
-3   3  0.51782972 0.05207815 41 41
-4   4  0.47789504 0.06347844 35 35
-5   5 -0.07767184 0.05477827 39 39
-6   6  0.36781514 0.05406192 33 33
-7   7  0.06819058 0.04267165 48 48
-8   8  0.39912868 0.03548651 50 50
-9   9  0.66281888 0.06343079 43 43
-10 10  0.04119371 0.04989799 33 33</code></pre>
+<pre><code>   id           yi         vi n0 n1
+1   1  0.094827575 0.05175490 39 39
+2   2  0.569307945 0.03404406 41 41
+3   3  0.046080709 0.05471568 39 39
+4   4  0.653351831 0.04574412 44 44
+5   5  0.583733986 0.04422122 41 41
+6   6  0.038323289 0.02998344 43 43
+7   7 -0.027810513 0.05018992 41 41
+8   8 -0.006231221 0.04455744 44 44
+9   9  0.115005172 0.05660626 35 35
+10 10  0.341919132 0.04143174 45 45</code></pre>
 </div>
 </div>
 <p>Then we can put everything in a function that can be used to simulate different scenarios.</p>
@@ -434,16 +442,16 @@ propose some kind of classification/taxonomy here. for example:
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>   id        yi         vi       sei n0 n1
-1   1 0.7284362 0.08795881 0.2965785 30 30
-2   2 0.1214726 0.06496010 0.2548727 30 30
-3   3 0.7646840 0.05361019 0.2315388 30 30
-4   4 0.2182485 0.05265613 0.2294692 30 30
-5   5 0.3031582 0.08449827 0.2906859 30 30
-6   6 0.5162870 0.07478979 0.2734772 30 30
-7   7 0.6255772 0.05447027 0.2333887 30 30
-8   8 0.6445649 0.05000260 0.2236126 30 30
-9   9 0.4460382 0.05631066 0.2372987 30 30
-10 10 0.5795829 0.06304942 0.2510964 30 30</code></pre>
+1   1 0.4142710 0.06730831 0.2594384 30 30
+2   2 0.6341722 0.07235181 0.2689829 30 30
+3   3 0.5703658 0.04569501 0.2137639 30 30
+4   4 0.5478774 0.04862750 0.2205164 30 30
+5   5 1.3364561 0.09798941 0.3130326 30 30
+6   6 0.6712513 0.05068077 0.2251239 30 30
+7   7 0.8841015 0.05977802 0.2444954 30 30
+8   8 0.3416842 0.05749341 0.2397778 30 30
+9   9 0.2871700 0.06718367 0.2591981 30 30
+10 10 0.5277689 0.07194658 0.2682286 30 30</code></pre>
 </div>
 </div>
 </section><section id="vote-counting-based-on-significance-or-direction" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="vote-counting-based-on-significance-or-direction">
@@ -492,34 +500,34 @@ propose some kind of classification/taxonomy here. for example:
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">reps</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  id        yi         vi       sei n0 n1        zi         pval       ci.lb
-1  1 0.2110597 0.06881253 0.2623214 30 30 0.8045842 0.4210596354 -0.30308085
-2  2 0.7260757 0.07684242 0.2772047 30 30 2.6192767 0.0088116449  0.18276455
-3  3 0.6775183 0.06410465 0.2531890 30 30 2.6759391 0.0074520178  0.18127700
-4  4 0.6295504 0.08311686 0.2883000 30 30 2.1836646 0.0289869024  0.06449288
-5  5 0.2961993 0.07127006 0.2669645 30 30 1.1095079 0.2672111228 -0.22704160
-6  6 1.0483745 0.05614472 0.2369488 30 30 4.4244775 0.0000096676  0.58396345
+<pre><code>  id        yi         vi       sei n0 n1        zi        pval       ci.lb
+1  1 0.7359055 0.06843986 0.2616101 30 30 2.8129856 0.004908385  0.22315909
+2  2 0.4580704 0.05257911 0.2293014 30 30 1.9976785 0.045751526  0.00864799
+3  3 0.3770414 0.06126109 0.2475098 30 30 1.5233394 0.127673810 -0.10806885
+4  4 0.4428738 0.06276134 0.2505221 30 30 1.7678030 0.077093843 -0.04814058
+5  5 0.2547986 0.08161188 0.2856779 30 30 0.8919084 0.372442014 -0.30511990
+6  6 0.4906548 0.08931187 0.2988509 30 30 1.6418045 0.100630519 -0.09508224
       ci.ub
-1 0.7252002
-2 1.2693869
-3 1.1737595
-4 1.1946079
-5 0.8194401
-6 1.5127856</code></pre>
+1 1.2486520
+2 0.9074928
+3 0.8621516
+4 0.9338881
+5 0.8147170
+6 1.0763918</code></pre>
 </div>
 </div>
 <p>Let’s compute the proportions of replication studies are statistically significant:</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">reps</span><span class="op">$</span><span class="va">pval</span> <span class="op">&lt;=</span> <span class="fl">0.05</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6</code></pre>
+<pre><code>[1] 0.4</code></pre>
 </div>
 </div>
 <p>Let’s compute the proportions of replication studies with the same sign as the original:</p>
 <div class="cell">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sign.html">sign</a></span><span class="op">(</span><span class="va">orig</span><span class="op">$</span><span class="va">yi</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/sign.html">sign</a></span><span class="op">(</span><span class="va">reps</span><span class="op">$</span><span class="va">yi</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
 </div>
 <p>We could also perform some statistical tests. See <span class="citation" data-cites="Bushman2009-zv">Bushman &amp; Wang (<a href="chapter5.html#ref-Bushman2009-zv" role="doc-biblioref">2009</a>)</span> and <span class="citation" data-cites="Hedges1980-gd">Hedges &amp; Olkin (<a href="chapter5.html#ref-Hedges1980-gd" role="doc-biblioref">1980</a>)</span> for vote-counting methods in meta-analysis.</p>
@@ -626,13 +634,81 @@ propose some kind of classification/taxonomy here. for example:
 <li>Mainly for <em>one-to-one</em> replications design</li>
 </ul>
 </div>
-<p>:::</p>
-</section><section id="meta-analytic-methods" class="level2" data-number="4.8"><h2 data-number="4.8" class="anchored" data-anchor-id="meta-analytic-methods">
-<span class="header-section-number">4.8</span> Meta-analytic methods</h2>
-</section><section id="bayes-factor" class="level2" data-number="4.9"><h2 data-number="4.9" class="anchored" data-anchor-id="bayes-factor">
-<span class="header-section-number">4.9</span> Bayes factor</h2>
-</section><section id="references" class="level2" data-number="4.10"><h2 data-number="4.10" class="anchored" data-anchor-id="references">
-<span class="header-section-number">4.10</span> References</h2>
+</section><section id="mathur-vanderweele--mathur2020-nw-p_orig" class="level2" data-number="4.8"><h2 data-number="4.8" class="anchored" data-anchor-id="mathur-vanderweele--mathur2020-nw-p_orig">
+<span class="header-section-number">4.8</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(<a href="chapter5.html#ref-Mathur2020-nw" role="doc-biblioref">2020</a>)</span> <span class="math inline">\(p_{orig}\)</span>
+</h2>
+<p>Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(<a href="chapter5.html#ref-Mathur2020-nw" role="doc-biblioref">2020</a>)</span> proposed a new method based on the prediction interval to calculate a p value <span class="math inline">\(p_{orig}\)</span> representing the probability that <span class="math inline">\(\theta_{orig}\)</span> is consistent with the replications. This method is suited for <em>many-to-one</em> replication designs. Formally:</p>
+<p><span class="math display">\[
+P_{orig} = 2 \left[ 1 - \Phi \left( \frac{|\hat \theta_{orig} - \hat \mu_{\theta_{rep}}|}{\sqrt{\hat \tau^2 + \sigma^2_{orig} + \hat{SE}^2_{\hat \mu_{\theta_{rep}}}}} \right) \right]
+\]</span></p>
+<ul>
+<li>
+<span class="math inline">\(\mu_{\theta_{rep}}\)</span> is the pooled (i.e., meta-analytic) estimation of the <span class="math inline">\(k\)</span> replications</li>
+<li>
+<span class="math inline">\(\tau^2\)</span> is the variance among replications</li>
+</ul>
+<p>It is interpreted as the probability that <span class="math inline">\(\theta_{orig}\)</span> is equal or more extreme that what observed. A very low <span class="math inline">\(p_{orig}\)</span> suggest that the original study is inconsistent with replications.</p>
+<div class="pros">
+<ul>
+<li>Suited for <em>many-to-one</em> designs</li>
+<li>We take into account all sources of uncertainty</li>
+<li>We have a p-value</li>
+</ul>
+</div>
+<p>The code is implemented in the <code>Replicate</code> and <code>MetaUtility</code> R packages:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5563241</code></pre>
+</div>
+</div>
+<section id="simulation" class="level3" data-number="4.8.1"><h3 data-number="4.8.1" class="anchored" data-anchor-id="simulation">
+<span class="header-section-number">4.8.1</span> Simulation</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter4_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="mathur-vanderweele--mathur2020-nw-hat-p_-0" class="level3" data-number="4.8.2"><h3 data-number="4.8.2" class="anchored" data-anchor-id="mathur-vanderweele--mathur2020-nw-hat-p_-0">
+<span class="header-section-number">4.8.2</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(<a href="chapter5.html#ref-Mathur2020-nw" role="doc-biblioref">2020</a>)</span> <span class="math inline">\(\hat P_{&gt; 0}\)</span>
+</h3>
+<p>Another related metric is the <span class="math inline">\(\hat P_{&gt; 0}\)</span>, representing the proportion of replications following the same direction as the original effect. Before simply computing the proportions we need to adjust the estimated <span class="math inline">\(\theta_{rep_i}\)</span> with a shrinkage factor:</p>
+<p><span class="math display">\[
+\tilde{\theta}_{rep_i} = (\theta_{rep_i} - \mu_{\theta_{rep_i}}) \sqrt{\frac{\hat \tau^2}{\hat \tau^2 + v_{rep_i}}}
+\]</span></p>
+<p>This method is somehow similar to the vote counting but we are adjusting the effects taking into account <span class="math inline">\(\tau^2\)</span>.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.75</code></pre>
+</div>
+</div>
+<p>The authors suggest a bootstrapping approach for making inference on <span class="math inline">\(\hat P_{&gt; 0}\)</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter4_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q" class="level3" data-number="4.8.3"><h3 data-number="4.8.3" class="anchored" data-anchor-id="mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q">
+<span class="header-section-number">4.8.3</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(<a href="chapter5.html#ref-Mathur2020-nw" role="doc-biblioref">2020</a>)</span> <span class="math inline">\(\hat P_{\gtrless q*}\)</span>
+</h3>
+<p>Instead of using 0 as threshold, we can use meaningful effect size to be considered as low but different from 0. <span class="math inline">\(\hat P_{\gtrless q*}\)</span> is the proportion of (calibrated) replications greater or lower than the <span class="math inline">\(q*\)</span> value. This framework is similar to equivalence and minimum effect size testing <span class="citation" data-cites="Lakens2018-ri">(<a href="chapter5.html#ref-Lakens2018-ri" role="doc-biblioref">Lakens et al., 2018</a>)</span>.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>   est        se  lo   hi  bt.mn shapiro.pval
+1 0.35 0.1137901 0.1 0.55 0.3573    0.5224829</code></pre>
+</div>
+</div>
+</section></section><section id="meta-analytic-methods" class="level2" data-number="4.9"><h2 data-number="4.9" class="anchored" data-anchor-id="meta-analytic-methods">
+<span class="header-section-number">4.9</span> Meta-analytic methods</h2>
+</section><section id="bayes-factor" class="level2" data-number="4.10"><h2 data-number="4.10" class="anchored" data-anchor-id="bayes-factor">
+<span class="header-section-number">4.10</span> Bayes factor</h2>
+</section><section id="references" class="level2" data-number="4.11"><h2 data-number="4.11" class="anchored" data-anchor-id="references">
+<span class="header-section-number">4.11</span> References</h2>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
@@ -651,8 +727,14 @@ Hedges, L. V., &amp; Schauer, J. M. (2019). Statistical analyses for studying re
 <div id="ref-Heyard2024-hv" class="csl-entry" role="listitem">
 Heyard, R., Pawel, S., Frese, J., Voelkl, B., Würbel, H., McCann, S., Held, L., Wever, K. E., Hartmann, H., Townsin, L., &amp; Zellers, S. (2024). <em>A scoping review on metrics to quantify reproducibility: A multitude of questions leads to a multitude of metrics</em>. <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;citation_for_view=JAb7P1QAAAAJ:ldfaerwXgEUC">https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;citation_for_view=JAb7P1QAAAAJ:ldfaerwXgEUC</a>
 </div>
+<div id="ref-Lakens2018-ri" class="csl-entry" role="listitem">
+Lakens, D., Scheel, A. M., &amp; Isager, P. M. (2018). Equivalence testing for psychological research: A tutorial. <em>Advances in Methods and Practices in Psychological Science</em>, <em>1</em>, 259–269. <a href="https://doi.org/10.1177/2515245918770963">https://doi.org/10.1177/2515245918770963</a>
+</div>
 <div id="ref-Ly2019-ow" class="csl-entry" role="listitem">
 Ly, A., Etz, A., Marsman, M., &amp; Wagenmakers, E.-J. (2019). Replication bayes factors from evidence updating. <em>Behavior Research Methods</em>, <em>51</em>, 2498–2508. <a href="https://doi.org/10.3758/s13428-018-1092-x">https://doi.org/10.3758/s13428-018-1092-x</a>
+</div>
+<div id="ref-Mathur2020-nw" class="csl-entry" role="listitem">
+Mathur, M. B., &amp; VanderWeele, T. J. (2020). New statistical metrics for multisite replication projects. <em>Journal of the Royal Statistical Society. Series A, (Statistics in Society)</em>, <em>183</em>, 1145–1166. <a href="https://doi.org/10.1111/rssa.12572">https://doi.org/10.1111/rssa.12572</a>
 </div>
 <div id="ref-Valentine2011-yq" class="csl-entry" role="listitem">
 Valentine, J. C., Biglan, A., Boruch, R. F., Castro, F. G., Collins, L. M., Flay, B. R., Kellam, S., Mościcki, E. K., &amp; Schinke, S. P. (2011). Replication in prevention science. <em>Prevention Science: The Official Journal of the Society for Prevention Research</em>, <em>12</em>, 103–117. <a href="https://doi.org/10.1007/s11121-011-0217-6">https://doi.org/10.1007/s11121-011-0217-6</a>
