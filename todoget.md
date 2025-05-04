@@ -1,5 +1,5 @@
 # Todoget Report
-last update: 2025-05-04 (16:01)
+last update: 2025-05-04 (16:53)
 
 ## index.qmd
 
@@ -26,7 +26,7 @@ last update: 2025-05-04 (16:01)
 - Line 0: TODO:  table with method (rows), (colums)properties, id exact or extension, bayesian or not, open source code, citation 
 - Line 11: TODO check the final table and the overall structure of the paper because it's great also the references are amazing 
 - Line 32: TODO the idea here is also to keep track of the methods providing a clear overview 
-- Line 107: While real-world examples are important, to understand the replication methods from a statistical point of view, simulating simplified examples is a good strategies. Furthermore, simulating data is nowadays considered an important tool to teach and understand statistical methods  TODO add reference about simulating for learning . In additions, Monte Carlo simulations are necessary to estimate statistical properties (e.g., statistical power or type-1 error rate) of complex models. 
+- Line 102: While real-world examples are important, to understand the replication methods from a statistical point of view, simulating simplified examples is a good strategies. Furthermore, simulating data is nowadays considered an important tool to teach and understand statistical methods  TODO add reference about simulating for learning . In additions, Monte Carlo simulations are necessary to estimate statistical properties (e.g., statistical power or type-1 error rate) of complex models. 
 
 ## chapters/changelog.qmd
 
