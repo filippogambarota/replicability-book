@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.40">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>4&nbsp; Statistical methods for replication assessment – The three Rs of trustworthy science</title>
+<title>3&nbsp; Statistical methods for replication assessment – The three Rs of trustworthy science</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,7 +80,6 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../chapters/chapter5.html" rel="next">
 <link href="../chapters/chapter3.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -150,7 +149,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapter4.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistical methods for replication assessment</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapter4.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical methods for replication assessment</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -185,38 +184,14 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../chapters/chapter2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Replicability and reproducibility</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../chapters/chapter3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability of Replication</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probability of Replication</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../chapters/chapter4.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistical methods for replication assessment</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/chapter5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Meta-analysis and publication bias</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/chapter6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Improving study robustness</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../chapters/chapter7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Planning a replication study</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical methods for replication assessment</span></span></a>
   </div>
 </li>
     </ul>
@@ -227,43 +202,43 @@ window.Quarto = {
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#how-to-assess-the-replication-outcome" id="toc-how-to-assess-the-replication-outcome" class="nav-link active" data-scroll-target="#how-to-assess-the-replication-outcome"><span class="header-section-number">4.1</span> How to assess the replication outcome?</a></li>
-  <li><a href="#replication-studies-as-meta-analysis" id="toc-replication-studies-as-meta-analysis" class="nav-link" data-scroll-target="#replication-studies-as-meta-analysis"><span class="header-section-number">4.2</span> Replication studies as meta-analysis</a></li>
-  <li><a href="#simulating-data" id="toc-simulating-data" class="nav-link" data-scroll-target="#simulating-data"><span class="header-section-number">4.3</span> Simulating data</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">4.4</span> Methods</a></li>
-  <li><a href="#vote-counting-based-on-significance-or-direction" id="toc-vote-counting-based-on-significance-or-direction" class="nav-link" data-scroll-target="#vote-counting-based-on-significance-or-direction"><span class="header-section-number">4.5</span> Vote Counting based on significance or direction</a></li>
+<li><a href="#how-to-assess-the-replication-outcome" id="toc-how-to-assess-the-replication-outcome" class="nav-link active" data-scroll-target="#how-to-assess-the-replication-outcome"><span class="header-section-number">3.1</span> How to assess the replication outcome?</a></li>
+  <li><a href="#replication-studies-as-meta-analysis" id="toc-replication-studies-as-meta-analysis" class="nav-link" data-scroll-target="#replication-studies-as-meta-analysis"><span class="header-section-number">3.2</span> Replication studies as meta-analysis</a></li>
+  <li><a href="#simulating-data" id="toc-simulating-data" class="nav-link" data-scroll-target="#simulating-data"><span class="header-section-number">3.3</span> Simulating data</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">3.4</span> Methods</a></li>
+  <li><a href="#vote-counting-based-on-significance-or-direction" id="toc-vote-counting-based-on-significance-or-direction" class="nav-link" data-scroll-target="#vote-counting-based-on-significance-or-direction"><span class="header-section-number">3.5</span> Vote Counting based on significance or direction</a></li>
   <li>
-<a href="#confidenceprediction-interval-methods" id="toc-confidenceprediction-interval-methods" class="nav-link" data-scroll-target="#confidenceprediction-interval-methods"><span class="header-section-number">4.6</span> Confidence/prediction interval methods</a>
+<a href="#confidenceprediction-interval-methods" id="toc-confidenceprediction-interval-methods" class="nav-link" data-scroll-target="#confidenceprediction-interval-methods"><span class="header-section-number">3.6</span> Confidence/prediction interval methods</a>
   <ul class="collapse">
-<li><a href="#replication-effect-within-the-original-ci" id="toc-replication-effect-within-the-original-ci" class="nav-link" data-scroll-target="#replication-effect-within-the-original-ci"><span class="header-section-number">4.6.1</span> Replication effect within the original CI</a></li>
-  <li><a href="#original-study-within-replication-ci" id="toc-original-study-within-replication-ci" class="nav-link" data-scroll-target="#original-study-within-replication-ci"><span class="header-section-number">4.6.2</span> Original study within replication CI</a></li>
+<li><a href="#replication-effect-within-the-original-ci" id="toc-replication-effect-within-the-original-ci" class="nav-link" data-scroll-target="#replication-effect-within-the-original-ci"><span class="header-section-number">3.6.1</span> Replication effect within the original CI</a></li>
+  <li><a href="#original-study-within-replication-ci" id="toc-original-study-within-replication-ci" class="nav-link" data-scroll-target="#original-study-within-replication-ci"><span class="header-section-number">3.6.2</span> Original study within replication CI</a></li>
   </ul>
 </li>
-  <li><a href="#prediction-interval-pi" id="toc-prediction-interval-pi" class="nav-link" data-scroll-target="#prediction-interval-pi"><span class="header-section-number">4.7</span> Prediction interval PI</a></li>
+  <li><a href="#prediction-interval-pi" id="toc-prediction-interval-pi" class="nav-link" data-scroll-target="#prediction-interval-pi"><span class="header-section-number">3.7</span> Prediction interval PI</a></li>
   <li>
-<a href="#mathur-vanderweele--mathur2020-nw-p_orig" id="toc-mathur-vanderweele--mathur2020-nw-p_orig" class="nav-link" data-scroll-target="#mathur-vanderweele--mathur2020-nw-p_orig"><span class="header-section-number">4.8</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(2020)</span> <span class="math inline">\(p_{orig}\)</span></a>
+<a href="#mathur-vanderweele--mathur2020-nw-p_orig" id="toc-mathur-vanderweele--mathur2020-nw-p_orig" class="nav-link" data-scroll-target="#mathur-vanderweele--mathur2020-nw-p_orig"><span class="header-section-number">3.8</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(2020)</span> <span class="math inline">\(p_{orig}\)</span></a>
   <ul class="collapse">
-<li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">4.8.1</span> Simulation</a></li>
-  <li><a href="#mathur-vanderweele--mathur2020-nw-hat-p_-0" id="toc-mathur-vanderweele--mathur2020-nw-hat-p_-0" class="nav-link" data-scroll-target="#mathur-vanderweele--mathur2020-nw-hat-p_-0"><span class="header-section-number">4.8.2</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(2020)</span> <span class="math inline">\(\hat P_{&gt; 0}\)</span></a></li>
-  <li><a href="#mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q" id="toc-mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q" class="nav-link" data-scroll-target="#mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q"><span class="header-section-number">4.8.3</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(2020)</span> <span class="math inline">\(\hat P_{\gtrless q*}\)</span></a></li>
+<li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">3.8.1</span> Simulation</a></li>
+  <li><a href="#mathur-vanderweele--mathur2020-nw-hat-p_-0" id="toc-mathur-vanderweele--mathur2020-nw-hat-p_-0" class="nav-link" data-scroll-target="#mathur-vanderweele--mathur2020-nw-hat-p_-0"><span class="header-section-number">3.8.2</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(2020)</span> <span class="math inline">\(\hat P_{&gt; 0}\)</span></a></li>
+  <li><a href="#mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q" id="toc-mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q" class="nav-link" data-scroll-target="#mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q"><span class="header-section-number">3.8.3</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(2020)</span> <span class="math inline">\(\hat P_{\gtrless q*}\)</span></a></li>
   </ul>
 </li>
   <li>
-<a href="#meta-analytic-methods" id="toc-meta-analytic-methods" class="nav-link" data-scroll-target="#meta-analytic-methods"><span class="header-section-number">4.9</span> Meta-analytic methods</a>
+<a href="#meta-analytic-methods" id="toc-meta-analytic-methods" class="nav-link" data-scroll-target="#meta-analytic-methods"><span class="header-section-number">3.9</span> Meta-analytic methods</a>
   <ul class="collapse">
-<li><a href="#fixed-effects-model" id="toc-fixed-effects-model" class="nav-link" data-scroll-target="#fixed-effects-model"><span class="header-section-number">4.9.1</span> Fixed-effects Model</a></li>
-  <li><a href="#random-effects-model" id="toc-random-effects-model" class="nav-link" data-scroll-target="#random-effects-model"><span class="header-section-number">4.9.2</span> Random-Effects model</a></li>
-  <li><a href="#pooling-replications" id="toc-pooling-replications" class="nav-link" data-scroll-target="#pooling-replications"><span class="header-section-number">4.9.3</span> Pooling replications</a></li>
-  <li><a href="#q-statistics" id="toc-q-statistics" class="nav-link" data-scroll-target="#q-statistics"><span class="header-section-number">4.9.4</span> Q Statistics</a></li>
+<li><a href="#fixed-effects-model" id="toc-fixed-effects-model" class="nav-link" data-scroll-target="#fixed-effects-model"><span class="header-section-number">3.9.1</span> Fixed-effects Model</a></li>
+  <li><a href="#random-effects-model" id="toc-random-effects-model" class="nav-link" data-scroll-target="#random-effects-model"><span class="header-section-number">3.9.2</span> Random-Effects model</a></li>
+  <li><a href="#pooling-replications" id="toc-pooling-replications" class="nav-link" data-scroll-target="#pooling-replications"><span class="header-section-number">3.9.3</span> Pooling replications</a></li>
+  <li><a href="#q-statistics" id="toc-q-statistics" class="nav-link" data-scroll-target="#q-statistics"><span class="header-section-number">3.9.4</span> Q Statistics</a></li>
   </ul>
 </li>
-  <li><a href="#small-telescopes-simonsohn2015-kg" id="toc-small-telescopes-simonsohn2015-kg" class="nav-link" data-scroll-target="#small-telescopes-simonsohn2015-kg"><span class="header-section-number">4.10</span> Small Telescopes <span class="citation" data-cites="Simonsohn2015-kg">(Simonsohn, 2015)</span></a></li>
+  <li><a href="#small-telescopes-simonsohn2015-kg" id="toc-small-telescopes-simonsohn2015-kg" class="nav-link" data-scroll-target="#small-telescopes-simonsohn2015-kg"><span class="header-section-number">3.10</span> Small Telescopes <span class="citation" data-cites="Simonsohn2015-kg">(Simonsohn, 2015)</span></a></li>
   <li>
-<a href="#replication-bayes-factor" id="toc-replication-bayes-factor" class="nav-link" data-scroll-target="#replication-bayes-factor"><span class="header-section-number">4.11</span> Replication Bayes factor</a>
+<a href="#replication-bayes-factor" id="toc-replication-bayes-factor" class="nav-link" data-scroll-target="#replication-bayes-factor"><span class="header-section-number">3.11</span> Replication Bayes factor</a>
   <ul class="collapse">
-<li><a href="#bayesian-inference" id="toc-bayesian-inference" class="nav-link" data-scroll-target="#bayesian-inference"><span class="header-section-number">4.11.1</span> Bayesian inference</a></li>
-  <li><a href="#bayes-factor-using-the-sdr" id="toc-bayes-factor-using-the-sdr" class="nav-link" data-scroll-target="#bayes-factor-using-the-sdr"><span class="header-section-number">4.11.2</span> Bayes Factor using the SDR</a></li>
-  <li><a href="#verhagen2014-tx-model" id="toc-verhagen2014-tx-model" class="nav-link" data-scroll-target="#verhagen2014-tx-model"><span class="header-section-number">4.11.3</span> <span class="citation" data-cites="Verhagen2014-tx">Verhagen &amp; Wagenmakers (2014)</span> model</a></li>
+<li><a href="#bayesian-inference" id="toc-bayesian-inference" class="nav-link" data-scroll-target="#bayesian-inference"><span class="header-section-number">3.11.1</span> Bayesian inference</a></li>
+  <li><a href="#bayes-factor-using-the-sdr" id="toc-bayes-factor-using-the-sdr" class="nav-link" data-scroll-target="#bayes-factor-using-the-sdr"><span class="header-section-number">3.11.2</span> Bayes Factor using the SDR</a></li>
+  <li><a href="#verhagen2014-tx-model" id="toc-verhagen2014-tx-model" class="nav-link" data-scroll-target="#verhagen2014-tx-model"><span class="header-section-number">3.11.3</span> <span class="citation" data-cites="Verhagen2014-tx">Verhagen &amp; Wagenmakers (2014)</span> model</a></li>
   </ul>
 </li>
   </ul></nav>
@@ -271,7 +246,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">
-<span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistical methods for replication assessment</span>
+<span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical methods for replication assessment</span>
 </h1>
 </div>
 
@@ -286,11 +261,11 @@ window.Quarto = {
   
 
 
-</header><section id="how-to-assess-the-replication-outcome" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="how-to-assess-the-replication-outcome">
-<span class="header-section-number">4.1</span> How to assess the replication outcome?</h2>
+</header><section id="how-to-assess-the-replication-outcome" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="how-to-assess-the-replication-outcome">
+<span class="header-section-number">3.1</span> How to assess the replication outcome?</h2>
 <p>In the previous chapters we introduced replication from a statistical and theoretical point of view. We purposely omitted defining the outcome of a replication study to dedicate an entire chapter about this part. Similarly to the multiple definitions problem there are several statistical measures for the replication assessment. The existing measures are different from several point of views:</p>
 <!-- TODO define here some points, maybe the columns of the table -->
-<p>In addition to the multitude of methods, the field of replication measures is relatively new and keep growing proposing new metrics, simulation studies, and comparisons between methods. <span class="citation" data-cites="Heyard2024-hv">Heyard et al. (<a href="chapter5.html#ref-Heyard2024-hv" role="doc-biblioref">2024</a>)</span> published an extensive systematic review, supported by an online and keep up-to-date database with all replication measures organized and classified according to a common scheme. The authors reviewed more than 50 different measures.</p>
+<p>In addition to the multitude of methods, the field of replication measures is relatively new and keep growing proposing new metrics, simulation studies, and comparisons between methods. <span class="citation" data-cites="Heyard2024-hv">Heyard et al. (<a href="#ref-Heyard2024-hv" role="doc-biblioref">2024</a>)</span> published an extensive systematic review, supported by an online and keep up-to-date database with all replication measures organized and classified according to a common scheme. The authors reviewed more than 50 different measures.</p>
 <p>The database is avaliable at the following link <a href="http://rachelheyard.com/reproducibility_metrics/">http://rachelheyard.com/reproducibility_metrics/</a>. We decided to make a selection of methods from the database according to the following criteria:</p>
 <ul>
 <li>for similar methods we keep the most recent and general version</li>
@@ -300,12 +275,12 @@ window.Quarto = {
 </ul>
 <p>Beyond the single method, the large scale replication projects such as the <!-- TODO add the references --> used different methods for the same dataset. For this reason, while some methods can be considered clearly more sophisitcated and complete there is no a single best tool to evaluate replication results.</p>
 <!-- TODO adding here something about choosing the method that is more related to your question -->
-</section><section id="replication-studies-as-meta-analysis" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="replication-studies-as-meta-analysis">
-<span class="header-section-number">4.2</span> Replication studies as meta-analysis</h2>
-<p>As introduced by <span class="citation" data-cites="Hedges2019-ry">Hedges &amp; Schauer (<a href="chapter5.html#ref-Hedges2019-ry" role="doc-biblioref">2019c</a>)</span> replication studies can be seen from a statistical point of view as meta-analyses. There is a single initial study and one or more attempts to replicate this initial finding. For the simple one-to-one replication design we have a meta-analysis with two studies while in the one-to-many design we have a meta-analysis with <span class="math inline">\(k\)</span> studies. When comes to evaluate the results of the replication studies we can choose between several methods <span class="citation" data-cites="Heyard2024-hv">(see <a href="chapter5.html#ref-Heyard2024-hv" role="doc-biblioref">Heyard et al., 2024</a>)</span> and some of them are specifically meta-analysis based trying to pool togheter evidence from original and replication studies. We consider the meta-analytic thinking crucial to understand the replication studies and methods but not all methods are strictly meta-analyes in the usual sense.</p>
+</section><section id="replication-studies-as-meta-analysis" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="replication-studies-as-meta-analysis">
+<span class="header-section-number">3.2</span> Replication studies as meta-analysis</h2>
+<p>As introduced by <span class="citation" data-cites="Hedges2019-ry">Hedges &amp; Schauer (<a href="#ref-Hedges2019-ry" role="doc-biblioref">2019c</a>)</span> replication studies can be seen from a statistical point of view as meta-analyses. There is a single initial study and one or more attempts to replicate this initial finding. For the simple one-to-one replication design we have a meta-analysis with two studies while in the one-to-many design we have a meta-analysis with <span class="math inline">\(k\)</span> studies. When comes to evaluate the results of the replication studies we can choose between several methods <span class="citation" data-cites="Heyard2024-hv">(see <a href="#ref-Heyard2024-hv" role="doc-biblioref">Heyard et al., 2024</a>)</span> and some of them are specifically meta-analysis based trying to pool togheter evidence from original and replication studies. We consider the meta-analytic thinking crucial to understand the replication studies and methods but not all methods are strictly meta-analyes in the usual sense.</p>
 <p>In fact, while the methodology of the initial or replication studies is important when comes to evaluate the single result, at the aggregated level we evaluate how a certain focal parameter (e.g., the difference between two groups or conditions) vary across replications and id there is evidence, whatever the criteria, for a successful replication. Whatever is the model used in the original studies we can essentially think at the aggregated level without loss of generality loss.</p>
-</section><section id="simulating-data" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="simulating-data">
-<span class="header-section-number">4.3</span> Simulating data</h2>
+</section><section id="simulating-data" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="simulating-data">
+<span class="header-section-number">3.3</span> Simulating data</h2>
 <p>While real-world examples are important, to understand the replication methods from a statistical point of view, simulating simplified examples is a good strategies. Furthermore, simulating data is nowadays considered an important tool to teach and understand statistical methods <!-- TODO add reference about simulating for learning -->. In additions, Monte Carlo simulations are necessary to estimate statistical properties (e.g., statistical power or type-1 error rate) of complex models.</p>
 <p>For the simulated examples we can define the following simulation approach:</p>
 <ul>
@@ -431,8 +406,8 @@ window.Quarto = {
 10 10 0.5558785 0.09729989 0.3119293 30 30</code></pre>
 </div>
 </div>
-</section><section id="methods" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="methods">
-<span class="header-section-number">4.4</span> Methods</h2>
+</section><section id="methods" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="methods">
+<span class="header-section-number">3.4</span> Methods</h2>
 <p>The database is avaliable at the following link <a href="http://rachelheyard.com/reproducibility_metrics/">http://rachelheyard.com/reproducibility_metrics/</a> can be consulted for a more complete overview. Among the all available methods we selected the following metrics<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> that will be discussed more in details with examples.</p>
 <ul>
 <li>Prediction interval: replication effect in original 95% prediction interval</li>
@@ -470,9 +445,9 @@ window.Quarto = {
 <li>Externally standardized residuals [idea di calcolare tipo m su effetto stimato]</li>
 <li>Meta-analysis</li>
 <li>Significance criterion (vote counting, two-trials rule, regulatory agreement)</li>
-</ul></section><section id="vote-counting-based-on-significance-or-direction" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="vote-counting-based-on-significance-or-direction">
-<span class="header-section-number">4.5</span> Vote Counting based on significance or direction</h2>
-<p>The simplest method is called <strong>vote counting</strong> <span class="citation" data-cites="Valentine2011-yq Hedges1980-gd">(<a href="chapter5.html#ref-Hedges1980-gd" role="doc-biblioref">Hedges &amp; Olkin, 1980</a>; <a href="chapter5.html#ref-Valentine2011-yq" role="doc-biblioref">Valentine et al., 2011</a>)</span>. A replication attempt <span class="math inline">\(\theta_{rep}\)</span> is considered successful if the result has the same direction of the original study <span class="math inline">\(\theta_{orig}\)</span> and it is statistically significant i.e., <span class="math inline">\(p_{\theta_{rep}} \leq \alpha\)</span>. Similarly we can count the number of replication with the <em>same sign</em> as the original study.</p>
+</ul></section><section id="vote-counting-based-on-significance-or-direction" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="vote-counting-based-on-significance-or-direction">
+<span class="header-section-number">3.5</span> Vote Counting based on significance or direction</h2>
+<p>The simplest method is called <strong>vote counting</strong> <span class="citation" data-cites="Valentine2011-yq Hedges1980-gd">(<a href="#ref-Hedges1980-gd" role="doc-biblioref">Hedges &amp; Olkin, 1980</a>; <a href="#ref-Valentine2011-yq" role="doc-biblioref">Valentine et al., 2011</a>)</span>. A replication attempt <span class="math inline">\(\theta_{rep}\)</span> is considered successful if the result has the same direction of the original study <span class="math inline">\(\theta_{orig}\)</span> and it is statistically significant i.e., <span class="math inline">\(p_{\theta_{rep}} \leq \alpha\)</span>. Similarly we can count the number of replication with the <em>same sign</em> as the original study.</p>
 <div class="pros">
 <ul>
 <li>Easy to understand, communicate and compute</li>
@@ -546,7 +521,7 @@ window.Quarto = {
 <pre><code>[1] 1</code></pre>
 </div>
 </div>
-<p>We could also perform some statistical tests. See <span class="citation" data-cites="Bushman2009-zv">Bushman &amp; Wang (<a href="chapter5.html#ref-Bushman2009-zv" role="doc-biblioref">2009</a>)</span> and <span class="citation" data-cites="Hedges1980-gd">Hedges &amp; Olkin (<a href="chapter5.html#ref-Hedges1980-gd" role="doc-biblioref">1980</a>)</span> for vote-counting methods in meta-analysis.</p>
+<p>We could also perform some statistical tests. See <span class="citation" data-cites="Bushman2009-zv">Bushman &amp; Wang (<a href="#ref-Bushman2009-zv" role="doc-biblioref">2009</a>)</span> and <span class="citation" data-cites="Hedges1980-gd">Hedges &amp; Olkin (<a href="#ref-Hedges1980-gd" role="doc-biblioref">1980</a>)</span> for vote-counting methods in meta-analysis.</p>
 <p>An extreme example:</p>
 <p>Let’s imagine an original experiment with <span class="math inline">\(n_{orig} = 30\)</span> and <span class="math inline">\(\hat \theta_{orig} = 0.5\)</span> that is statistically significant <span class="math inline">\(p \approx 0.045\)</span>. Now a direct replication (thus assuming <span class="math inline">\(\tau^2 = 0\)</span>) study with <span class="math inline">\(n_{rep} = 350\)</span> found <span class="math inline">\(\hat \theta_{rep_1} = 0.15\)</span>, that is statistically significant <span class="math inline">\(p\approx 0.047\)</span>.</p>
 <div class="cell">
@@ -558,8 +533,8 @@ window.Quarto = {
 </div>
 </div>
 <p>The most problematic aspect of using only the information from the sign of the effect or the p value is completely losing the information about the <strong>size of the effect</strong> and the <strong>precision</strong>.</p>
-</section><section id="confidenceprediction-interval-methods" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="confidenceprediction-interval-methods">
-<span class="header-section-number">4.6</span> Confidence/prediction interval methods</h2>
+</section><section id="confidenceprediction-interval-methods" class="level2" data-number="3.6"><h2 data-number="3.6" class="anchored" data-anchor-id="confidenceprediction-interval-methods">
+<span class="header-section-number">3.6</span> Confidence/prediction interval methods</h2>
 <p>The main improvement of confidence/prediction interval methods is taking into account the size of the effect and the precision. The confidence interval represent the sampling uncertainty around the estimated value. It is interpreted as the percentage of confidence intervals under repetition of the same sampling procedure that contains the true value. <!-- TODO check better definition --></p>
 <p>Confidence interval around an estimated effect <span class="math inline">\(\theta_r\)</span> can be written as:</p>
 <p><span class="math display">\[
@@ -587,8 +562,8 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="replication-effect-within-the-original-ci" class="level3" data-number="4.6.1"><h3 data-number="4.6.1" class="anchored" data-anchor-id="replication-effect-within-the-original-ci">
-<span class="header-section-number">4.6.1</span> Replication effect within the original CI</h3>
+<section id="replication-effect-within-the-original-ci" class="level3" data-number="3.6.1"><h3 data-number="3.6.1" class="anchored" data-anchor-id="replication-effect-within-the-original-ci">
+<span class="header-section-number">3.6.1</span> Replication effect within the original CI</h3>
 <p><span class="math display">\[
 \theta_{orig} - \Phi(\alpha/2) \sqrt{\sigma^2_{orig}} &lt; \theta_{rep} &lt; \theta_{orig} + \Phi(\alpha/2) \sqrt{\sigma^2_{orig}}
 \]</span></p>
@@ -639,15 +614,15 @@ window.Quarto = {
 </div>
 </div>
 </div>
-</section><section id="original-study-within-replication-ci" class="level3" data-number="4.6.2"><h3 data-number="4.6.2" class="anchored" data-anchor-id="original-study-within-replication-ci">
-<span class="header-section-number">4.6.2</span> Original study within replication CI</h3>
+</section><section id="original-study-within-replication-ci" class="level3" data-number="3.6.2"><h3 data-number="3.6.2" class="anchored" data-anchor-id="original-study-within-replication-ci">
+<span class="header-section-number">3.6.2</span> Original study within replication CI</h3>
 <p>The same approach can be applied checking if the original effect size is contained within the replication confidence interval. Clearly these methods depends on the precision of studies. Formally:</p>
 <p><span class="math display">\[
 \theta_{rep} - \Phi(\alpha/2) \sqrt{\sigma_{rep}^2} &lt; \theta_{orig} &lt; \theta_{rep} + \Phi(\alpha/2) \sqrt{\sigma_{rep}^2}
 \]</span></p>
 <p>The method has the same pros and cons of the previous approach. One advantage is that usually replication studies are more precise (higher sample size) thus the parameter and the % CI is more reliable.</p>
-</section></section><section id="prediction-interval-pi" class="level2" data-number="4.7"><h2 data-number="4.7" class="anchored" data-anchor-id="prediction-interval-pi">
-<span class="header-section-number">4.7</span> Prediction interval PI</h2>
+</section></section><section id="prediction-interval-pi" class="level2" data-number="3.7"><h2 data-number="3.7" class="anchored" data-anchor-id="prediction-interval-pi">
+<span class="header-section-number">3.7</span> Prediction interval PI</h2>
 <p>There is still one missing information from the CI method that is considering the uncertainty only from the original or the replication study. The prediction interval PI express the uncertainty of a future observation (in this case a study) and not on the estimated parameter.</p>
 <p>If we compute the difference between the original and the replication study, the sampling distribution of the difference express the range of values that are expected <em>in absence of other source of variability</em>. In other terms, assuming that <span class="math inline">\(\tau^2 = 0\)</span>.</p>
 <p>If the original and replication studies comes from the same population, the sampling distribution of the difference is centered on 0 with a certain standard error <span class="math inline">\(\theta_{orig} - \theta_{rep_0} \sim \mathcal{N}\left(0, \sqrt{\sigma^2_{\hat \theta_{orig} - \hat \theta_{rep}}} \right)\)</span> (subscript <span class="math inline">\(0\)</span> to indicate that is expected to be sampled from the same population as <span class="math inline">\(\theta_{orig}\)</span>)</p>
@@ -695,10 +670,10 @@ window.Quarto = {
 <li>Mainly for <em>one-to-one</em> replications design</li>
 </ul>
 </div>
-</section><section id="mathur-vanderweele--mathur2020-nw-p_orig" class="level2" data-number="4.8"><h2 data-number="4.8" class="anchored" data-anchor-id="mathur-vanderweele--mathur2020-nw-p_orig">
-<span class="header-section-number">4.8</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(<a href="chapter5.html#ref-Mathur2020-nw" role="doc-biblioref">2020</a>)</span> <span class="math inline">\(p_{orig}\)</span>
+</section><section id="mathur-vanderweele--mathur2020-nw-p_orig" class="level2" data-number="3.8"><h2 data-number="3.8" class="anchored" data-anchor-id="mathur-vanderweele--mathur2020-nw-p_orig">
+<span class="header-section-number">3.8</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(<a href="#ref-Mathur2020-nw" role="doc-biblioref">2020</a>)</span> <span class="math inline">\(p_{orig}\)</span>
 </h2>
-<p>Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(<a href="chapter5.html#ref-Mathur2020-nw" role="doc-biblioref">2020</a>)</span> proposed a new method based on the prediction interval to calculate a p value <span class="math inline">\(p_{orig}\)</span> representing the probability that <span class="math inline">\(\theta_{orig}\)</span> is consistent with the replications. This method is suited for <em>many-to-one</em> replication designs. Formally:</p>
+<p>Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(<a href="#ref-Mathur2020-nw" role="doc-biblioref">2020</a>)</span> proposed a new method based on the prediction interval to calculate a p value <span class="math inline">\(p_{orig}\)</span> representing the probability that <span class="math inline">\(\theta_{orig}\)</span> is consistent with the replications. This method is suited for <em>many-to-one</em> replication designs. Formally:</p>
 <p><span class="math display">\[
 P_{orig} = 2 \left[ 1 - \Phi \left( \frac{|\hat \theta_{orig} - \hat \mu_{\theta_{rep}}|}{\sqrt{\hat \tau^2 + \sigma^2_{orig} + \hat{SE}^2_{\hat \mu_{\theta_{rep}}}}} \right) \right]
 \]</span></p>
@@ -736,8 +711,8 @@ P_{orig} = 2 \left[ 1 - \Phi \left( \frac{|\hat \theta_{orig} - \hat \mu_{\theta
 <pre><code>[1] 0.06692786</code></pre>
 </div>
 </div>
-<section id="simulation" class="level3" data-number="4.8.1"><h3 data-number="4.8.1" class="anchored" data-anchor-id="simulation">
-<span class="header-section-number">4.8.1</span> Simulation</h3>
+<section id="simulation" class="level3" data-number="3.8.1"><h3 data-number="3.8.1" class="anchored" data-anchor-id="simulation">
+<span class="header-section-number">3.8.1</span> Simulation</h3>
 <div class="cell">
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># standard errors assuming same n and variance 1</span></span>
 <span><span class="va">se_orig</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">4</span><span class="op">/</span><span class="op">(</span><span class="va">n_orig</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
@@ -756,8 +731,8 @@ P_{orig} = 2 \left[ 1 - \Phi \left( \frac{|\hat \theta_{orig} - \hat \mu_{\theta
 </div>
 </div>
 </div>
-</section><section id="mathur-vanderweele--mathur2020-nw-hat-p_-0" class="level3" data-number="4.8.2"><h3 data-number="4.8.2" class="anchored" data-anchor-id="mathur-vanderweele--mathur2020-nw-hat-p_-0">
-<span class="header-section-number">4.8.2</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(<a href="chapter5.html#ref-Mathur2020-nw" role="doc-biblioref">2020</a>)</span> <span class="math inline">\(\hat P_{&gt; 0}\)</span>
+</section><section id="mathur-vanderweele--mathur2020-nw-hat-p_-0" class="level3" data-number="3.8.2"><h3 data-number="3.8.2" class="anchored" data-anchor-id="mathur-vanderweele--mathur2020-nw-hat-p_-0">
+<span class="header-section-number">3.8.2</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(<a href="#ref-Mathur2020-nw" role="doc-biblioref">2020</a>)</span> <span class="math inline">\(\hat P_{&gt; 0}\)</span>
 </h3>
 <p>Another related metric is the <span class="math inline">\(\hat P_{&gt; 0}\)</span>, representing the proportion of replications following the same direction as the original effect. Before simply computing the proportions we need to adjust the estimated <span class="math inline">\(\theta_{rep_i}\)</span> with a shrinkage factor:</p>
 <p><span class="math display">\[
@@ -798,10 +773,10 @@ P_{orig} = 2 \left[ 1 - \Phi \left( \frac{|\hat \theta_{orig} - \hat \mu_{\theta
 </div>
 </div>
 </div>
-</section><section id="mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q" class="level3" data-number="4.8.3"><h3 data-number="4.8.3" class="anchored" data-anchor-id="mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q">
-<span class="header-section-number">4.8.3</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(<a href="chapter5.html#ref-Mathur2020-nw" role="doc-biblioref">2020</a>)</span> <span class="math inline">\(\hat P_{\gtrless q*}\)</span>
+</section><section id="mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q" class="level3" data-number="3.8.3"><h3 data-number="3.8.3" class="anchored" data-anchor-id="mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q">
+<span class="header-section-number">3.8.3</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(<a href="#ref-Mathur2020-nw" role="doc-biblioref">2020</a>)</span> <span class="math inline">\(\hat P_{\gtrless q*}\)</span>
 </h3>
-<p>Instead of using 0 as threshold, we can use meaningful effect size to be considered as low but different from 0. <span class="math inline">\(\hat P_{\gtrless q*}\)</span> is the proportion of (calibrated) replications greater or lower than the <span class="math inline">\(q*\)</span> value. This framework is similar to equivalence and minimum effect size testing <span class="citation" data-cites="Lakens2018-ri">(<a href="chapter5.html#ref-Lakens2018-ri" role="doc-biblioref">Lakens et al., 2018</a>)</span>.</p>
+<p>Instead of using 0 as threshold, we can use meaningful effect size to be considered as low but different from 0. <span class="math inline">\(\hat P_{\gtrless q*}\)</span> is the proportion of (calibrated) replications greater or lower than the <span class="math inline">\(q*\)</span> value. This framework is similar to equivalence and minimum effect size testing <span class="citation" data-cites="Lakens2018-ri">(<a href="#ref-Lakens2018-ri" role="doc-biblioref">Lakens et al., 2018</a>)</span>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">q</span> <span class="op">&lt;-</span> <span class="fl">0.2</span> <span class="co"># minimum non zero effect</span></span>
 <span></span>
@@ -822,8 +797,8 @@ P_{orig} = 2 \left[ 1 - \Phi \left( \frac{|\hat \theta_{orig} - \hat \mu_{\theta
 1 0.35 0.1756669  0 0.6 0.35375    0.8137044</code></pre>
 </div>
 </div>
-</section></section><section id="meta-analytic-methods" class="level2" data-number="4.9"><h2 data-number="4.9" class="anchored" data-anchor-id="meta-analytic-methods">
-<span class="header-section-number">4.9</span> Meta-analytic methods</h2>
+</section></section><section id="meta-analytic-methods" class="level2" data-number="3.9"><h2 data-number="3.9" class="anchored" data-anchor-id="meta-analytic-methods">
+<span class="header-section-number">3.9</span> Meta-analytic methods</h2>
 <p>Another approach is to combine the original and replication results (both <em>one-to-one</em> and <em>many-to-one</em>) using a meta-analysis model. Then we can test if the pooled estimate is different from 0 or another meaningful value.</p>
 <div class="pros">
 <ul>
@@ -837,8 +812,8 @@ P_{orig} = 2 \left[ 1 - \Phi \left( \frac{|\hat \theta_{orig} - \hat \mu_{\theta
 <li>For <em>one-to-one</em> designs only a fixed-effects model can be used</li>
 </ul>
 </div>
-<section id="fixed-effects-model" class="level3" data-number="4.9.1"><h3 data-number="4.9.1" class="anchored" data-anchor-id="fixed-effects-model">
-<span class="header-section-number">4.9.1</span> Fixed-effects Model</h3>
+<section id="fixed-effects-model" class="level3" data-number="3.9.1"><h3 data-number="3.9.1" class="anchored" data-anchor-id="fixed-effects-model">
+<span class="header-section-number">3.9.1</span> Fixed-effects Model</h3>
 <div class="cell">
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># fixed-effects</span></span>
 <span><span class="va">fit_fixed</span> <span class="op">&lt;-</span> <span class="fu">rma</span><span class="op">(</span><span class="va">yi</span>, <span class="va">vi</span>, method <span class="op">=</span> <span class="st">"FE"</span><span class="op">)</span></span>
@@ -865,8 +840,8 @@ estimate      se    zval    pval   ci.lb   ci.ub
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
-</section><section id="random-effects-model" class="level3" data-number="4.9.2"><h3 data-number="4.9.2" class="anchored" data-anchor-id="random-effects-model">
-<span class="header-section-number">4.9.2</span> Random-Effects model</h3>
+</section><section id="random-effects-model" class="level3" data-number="3.9.2"><h3 data-number="3.9.2" class="anchored" data-anchor-id="random-effects-model">
+<span class="header-section-number">3.9.2</span> Random-Effects model</h3>
 <div class="cell">
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># fixed-effects</span></span>
 <span><span class="va">fit_random</span> <span class="op">&lt;-</span> <span class="fu">rma</span><span class="op">(</span><span class="va">yi</span>, <span class="va">vi</span>, method <span class="op">=</span> <span class="st">"REML"</span><span class="op">)</span></span>
@@ -895,13 +870,13 @@ estimate      se    zval    pval   ci.lb   ci.ub
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
-</section><section id="pooling-replications" class="level3" data-number="4.9.3"><h3 data-number="4.9.3" class="anchored" data-anchor-id="pooling-replications">
-<span class="header-section-number">4.9.3</span> Pooling replications</h3>
+</section><section id="pooling-replications" class="level3" data-number="3.9.3"><h3 data-number="3.9.3" class="anchored" data-anchor-id="pooling-replications">
+<span class="header-section-number">3.9.3</span> Pooling replications</h3>
 <p>The previous approach can be also implemented combining replications into a single effect and then compare the original with the combined replication study.</p>
 <p>This is similar to using the CI or PI approaches but the replication effect will probably by very precise due to pooling multiple studies.</p>
-</section><section id="q-statistics" class="level3" data-number="4.9.4"><h3 data-number="4.9.4" class="anchored" data-anchor-id="q-statistics">
-<span class="header-section-number">4.9.4</span> Q Statistics</h3>
-<p>An interesting proposal is using the Q statistics <span class="citation" data-cites="Hedges2019-pr Hedges2019-ar Hedges2021-of Schauer2022-mj Schauer2021-ja Schauer2020-tw Hedges2019-ry">(<a href="chapter5.html#ref-Hedges2019-pr" role="doc-biblioref">Hedges &amp; Schauer, 2019a</a>, <a href="chapter5.html#ref-Hedges2019-ar" role="doc-biblioref">2019b</a>, <a href="chapter5.html#ref-Hedges2019-ry" role="doc-biblioref">2019c</a>, <a href="chapter5.html#ref-Hedges2021-of" role="doc-biblioref">2021</a>; <a href="chapter5.html#ref-Schauer2022-mj" role="doc-biblioref">Schauer, 2022</a>; <a href="chapter5.html#ref-Schauer2020-tw" role="doc-biblioref">Schauer &amp; Hedges, 2020</a>; <a href="chapter5.html#ref-Schauer2021-ja" role="doc-biblioref">Schauer &amp; Hedges, 2021</a>)</span>, commonly used in meta-analysis to assess the presence of heterogeneity. Formally:</p>
+</section><section id="q-statistics" class="level3" data-number="3.9.4"><h3 data-number="3.9.4" class="anchored" data-anchor-id="q-statistics">
+<span class="header-section-number">3.9.4</span> Q Statistics</h3>
+<p>An interesting proposal is using the Q statistics <span class="citation" data-cites="Hedges2019-pr Hedges2019-ar Hedges2021-of Schauer2022-mj Schauer2021-ja Schauer2020-tw Hedges2019-ry">(<a href="#ref-Hedges2019-pr" role="doc-biblioref">Hedges &amp; Schauer, 2019a</a>, <a href="#ref-Hedges2019-ar" role="doc-biblioref">2019b</a>, <a href="#ref-Hedges2019-ry" role="doc-biblioref">2019c</a>, <a href="#ref-Hedges2021-of" role="doc-biblioref">2021</a>; <a href="#ref-Schauer2022-mj" role="doc-biblioref">Schauer, 2022</a>; <a href="#ref-Schauer2020-tw" role="doc-biblioref">Schauer &amp; Hedges, 2020</a>; <a href="#ref-Schauer2021-ja" role="doc-biblioref">Schauer &amp; Hedges, 2021</a>)</span>, commonly used in meta-analysis to assess the presence of heterogeneity. Formally:</p>
 <p><span class="math display">\[
 Q = \sum_{i = 1}^{k} \frac{(\theta_i - \bar \theta_w)^2}{\sigma^2_i}
 \]</span></p>
@@ -965,11 +940,11 @@ H0: lambda = 0 </code></pre>
 </div>
 </div>
 </div>
-<section id="q-statistics-for-an-extension" class="level4" data-number="4.9.4.1"><h4 data-number="4.9.4.1" class="anchored" data-anchor-id="q-statistics-for-an-extension">
-<span class="header-section-number">4.9.4.1</span> Q Statistics for an extension</h4>
+<section id="q-statistics-for-an-extension" class="level4" data-number="3.9.4.1"><h4 data-number="3.9.4.1" class="anchored" data-anchor-id="q-statistics-for-an-extension">
+<span class="header-section-number">3.9.4.1</span> Q Statistics for an extension</h4>
 <p>In case of an extension we need to set <span class="math inline">\(\lambda_0\)</span> to a meaningful value but the overall test is the same. The critical <span class="math inline">\(Q\)</span> is no longer evaluated with a central <span class="math inline">\(\chi^2\)</span> but a non-central <span class="math inline">\(\chi^2\)</span> with <span class="math inline">\(\lambda_0\)</span> as non-centrality parameter.</p>
-<p><span class="citation" data-cites="Hedges2019-ry">Hedges &amp; Schauer (<a href="chapter5.html#ref-Hedges2019-ry" role="doc-biblioref">2019c</a>)</span> provide different strategies to choose <span class="math inline">\(\lambda_0\)</span>. They found that under some assumptions, <span class="math inline">\(\lambda = (k - 1) \frac{\tau^2}{\tilde{v}}\)</span></p>
-<p>Given that we introduced the <span class="math inline">\(I^2\)</span> statistics we can derive a <span class="math inline">\(\lambda_0\)</span> based in <span class="math inline">\(I^2\)</span>. <span class="citation" data-cites="Schmidt2014-kw">Schmidt &amp; Hunter (<a href="chapter5.html#ref-Schmidt2014-kw" role="doc-biblioref">2014</a>)</span> proposed that when <span class="math inline">\(\tilde{v}\)</span> is at least 75% of total variance <span class="math inline">\(\tilde{v} + \tau^2\)</span> thus <span class="math inline">\(\tau^2\)</span> could be considered neglegible. This corresponds to a <span class="math inline">\(I^2 = 25%\)</span> and a ratio <span class="math inline">\(\frac{\tau^2}{\tilde{v}} = 1/3\)</span> thus <span class="math inline">\(\lambda_0 = \frac{(k - 1)}{3}\)</span> can be considered a neglegible heterogeneity</p>
+<p><span class="citation" data-cites="Hedges2019-ry">Hedges &amp; Schauer (<a href="#ref-Hedges2019-ry" role="doc-biblioref">2019c</a>)</span> provide different strategies to choose <span class="math inline">\(\lambda_0\)</span>. They found that under some assumptions, <span class="math inline">\(\lambda = (k - 1) \frac{\tau^2}{\tilde{v}}\)</span></p>
+<p>Given that we introduced the <span class="math inline">\(I^2\)</span> statistics we can derive a <span class="math inline">\(\lambda_0\)</span> based in <span class="math inline">\(I^2\)</span>. <span class="citation" data-cites="Schmidt2014-kw">Schmidt &amp; Hunter (<a href="#ref-Schmidt2014-kw" role="doc-biblioref">2014</a>)</span> proposed that when <span class="math inline">\(\tilde{v}\)</span> is at least 75% of total variance <span class="math inline">\(\tilde{v} + \tau^2\)</span> thus <span class="math inline">\(\tau^2\)</span> could be considered neglegible. This corresponds to a <span class="math inline">\(I^2 = 25%\)</span> and a ratio <span class="math inline">\(\frac{\tau^2}{\tilde{v}} = 1/3\)</span> thus <span class="math inline">\(\lambda_0 = \frac{(k - 1)}{3}\)</span> can be considered a neglegible heterogeneity</p>
 <div class="cell">
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
 <span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">sim_studies</span><span class="op">(</span><span class="va">k</span>, <span class="fl">0.5</span>, <span class="fl">0</span>, <span class="fl">50</span>, <span class="fl">50</span><span class="op">)</span></span>
@@ -981,8 +956,8 @@ Q = 93.881 (df = 99), lambda = 0.000, p = 0.989
 H0: lambda &lt; 33 </code></pre>
 </div>
 </div>
-</section></section></section><section id="small-telescopes-simonsohn2015-kg" class="level2" data-number="4.10"><h2 data-number="4.10" class="anchored" data-anchor-id="small-telescopes-simonsohn2015-kg">
-<span class="header-section-number">4.10</span> Small Telescopes <span class="citation" data-cites="Simonsohn2015-kg">(<a href="chapter5.html#ref-Simonsohn2015-kg" role="doc-biblioref">Simonsohn, 2015</a>)</span>
+</section></section></section><section id="small-telescopes-simonsohn2015-kg" class="level2" data-number="3.10"><h2 data-number="3.10" class="anchored" data-anchor-id="small-telescopes-simonsohn2015-kg">
+<span class="header-section-number">3.10</span> Small Telescopes <span class="citation" data-cites="Simonsohn2015-kg">(<a href="#ref-Simonsohn2015-kg" role="doc-biblioref">Simonsohn, 2015</a>)</span>
 </h2>
 <p>The idea is simple but quite powerful and insightful. Let’s assume that an original study found an effect of <span class="math inline">\(y_{orig} = 0.7\)</span> on a two-sample design with <span class="math inline">\(n = 20\)</span> per group.</p>
 <ul>
@@ -1082,17 +1057,17 @@ The replicated effect is smaller than the small effect (0.493), no replication!<
 </div>
 </div>
 </div>
-</section><section id="replication-bayes-factor" class="level2" data-number="4.11"><h2 data-number="4.11" class="anchored" data-anchor-id="replication-bayes-factor">
-<span class="header-section-number">4.11</span> Replication Bayes factor</h2>
-<p><span class="citation" data-cites="Verhagen2014-tx">Verhagen &amp; Wagenmakers (<a href="chapter5.html#ref-Verhagen2014-tx" role="doc-biblioref">2014</a>)</span> proposed a method to estimate the evidence of a <em>replication</em> study. The core topics to understand the method are:</p>
+</section><section id="replication-bayes-factor" class="level2" data-number="3.11"><h2 data-number="3.11" class="anchored" data-anchor-id="replication-bayes-factor">
+<span class="header-section-number">3.11</span> Replication Bayes factor</h2>
+<p><span class="citation" data-cites="Verhagen2014-tx">Verhagen &amp; Wagenmakers (<a href="#ref-Verhagen2014-tx" role="doc-biblioref">2014</a>)</span> proposed a method to estimate the evidence of a <em>replication</em> study. The core topics to understand the method are:</p>
 <ul>
-<li>Bayesian hypothesis testing using the Bayes Factor <span class="citation" data-cites="Rouder2009-jh">(see, <a href="chapter5.html#ref-Rouder2009-jh" role="doc-biblioref">Rouder et al., 2009</a>)</span>
+<li>Bayesian hypothesis testing using the Bayes Factor <span class="citation" data-cites="Rouder2009-jh">(see, <a href="#ref-Rouder2009-jh" role="doc-biblioref">Rouder et al., 2009</a>)</span>
 </li>
-<li>Bayes Factor using the Savage-Dickey density ratio <span class="citation" data-cites="Wagenmakers2010-fj">(SDR, <a href="chapter5.html#ref-Wagenmakers2010-fj" role="doc-biblioref">Wagenmakers et al., 2010</a>)</span>
+<li>Bayes Factor using the Savage-Dickey density ratio <span class="citation" data-cites="Wagenmakers2010-fj">(SDR, <a href="#ref-Wagenmakers2010-fj" role="doc-biblioref">Wagenmakers et al., 2010</a>)</span>
 </li>
 </ul>
-<section id="bayesian-inference" class="level3" data-number="4.11.1"><h3 data-number="4.11.1" class="anchored" data-anchor-id="bayesian-inference">
-<span class="header-section-number">4.11.1</span> Bayesian inference</h3>
+<section id="bayesian-inference" class="level3" data-number="3.11.1"><h3 data-number="3.11.1" class="anchored" data-anchor-id="bayesian-inference">
+<span class="header-section-number">3.11.1</span> Bayesian inference</h3>
 <p>Bayesian inference is the statistical procedure where <strong>prior beliefs</strong> about a phenomenon are combined, using the Bayes theorem, with <strong>evidence from data</strong> to obtain the <strong>posterior beliefs</strong>.</p>
 <p>The interesting part is that the researcher express the prior beliefs in probabilistic terms. Then after collecting data, evidence from the experiment is combined increasing or decreasing the plausibility of prior beliefs.</p>
 <p>Let’s make an (not a very innovative :smile:) example. We need to evaluate the fairness of a coin. The crucial parameter is <span class="math inline">\(\theta\)</span> that is the probability of success (e.g., head). We have our prior belief about the coin (e.g., fair but with some uncertainty). We toss the coin <span class="math inline">\(k\)</span> times and we observe <span class="math inline">\(x\)</span> heads. What are my conclusions?</p>
@@ -1132,9 +1107,9 @@ p(\theta|D) = \frac{p(D|\theta) \; p(\theta)}{p(D)}
 \frac{p(H_0|D)}{p(H_1|D)} = \frac{f(D|H_0)}{f(D|H_1)} \times \frac{p(H_0)}{p(H_1)}
 \]</span></p>
 <p>Where <span class="math inline">\(f\)</span> is the likelihood function, <span class="math inline">\(y\)</span> are the data. The <span class="math inline">\(\frac{p(H_0)}{p(H_1)}\)</span> is the prior odds of the two hypothesis. The Bayes Factor is the ratio between the likelihood of the data under the two hypotheses.</p>
-</section><section id="bayes-factor-using-the-sdr" class="level3" data-number="4.11.2"><h3 data-number="4.11.2" class="anchored" data-anchor-id="bayes-factor-using-the-sdr">
-<span class="header-section-number">4.11.2</span> Bayes Factor using the SDR</h3>
-<p>Calculating the BF can be problematic in some condition. The SDR is a convenient shortcut to calculate the Bayes Factor <span class="citation" data-cites="Wagenmakers2010-fj">(<a href="chapter5.html#ref-Wagenmakers2010-fj" role="doc-biblioref">Wagenmakers et al., 2010</a>)</span>. The idea is that the ratio between the prior and posterior density distribution for the <span class="math inline">\(H_1\)</span> is an estimate of the Bayes factor calculated in the standard way.</p>
+</section><section id="bayes-factor-using-the-sdr" class="level3" data-number="3.11.2"><h3 data-number="3.11.2" class="anchored" data-anchor-id="bayes-factor-using-the-sdr">
+<span class="header-section-number">3.11.2</span> Bayes Factor using the SDR</h3>
+<p>Calculating the BF can be problematic in some condition. The SDR is a convenient shortcut to calculate the Bayes Factor <span class="citation" data-cites="Wagenmakers2010-fj">(<a href="#ref-Wagenmakers2010-fj" role="doc-biblioref">Wagenmakers et al., 2010</a>)</span>. The idea is that the ratio between the prior and posterior density distribution for the <span class="math inline">\(H_1\)</span> is an estimate of the Bayes factor calculated in the standard way.</p>
 <p><span class="math display">\[
 BF_{01} = \frac{p(D|H_0)}{p(D|H_1)} = \frac{p(\theta = x|D, H_1)}{p(\theta = x, H_1)}
 \]</span></p>
@@ -1158,8 +1133,8 @@ BF_{01} = \frac{p(D|H_0)}{p(D|H_1)} = \frac{p(\theta = x|D, H_1)}{p(\theta = x, 
 </div>
 </div>
 </div>
-</section><section id="verhagen2014-tx-model" class="level3" data-number="4.11.3"><h3 data-number="4.11.3" class="anchored" data-anchor-id="verhagen2014-tx-model">
-<span class="header-section-number">4.11.3</span> <span class="citation" data-cites="Verhagen2014-tx">Verhagen &amp; Wagenmakers (<a href="chapter5.html#ref-Verhagen2014-tx" role="doc-biblioref">2014</a>)</span> model<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>
+</section><section id="verhagen2014-tx-model" class="level3" data-number="3.11.3"><h3 data-number="3.11.3" class="anchored" data-anchor-id="verhagen2014-tx-model">
+<span class="header-section-number">3.11.3</span> <span class="citation" data-cites="Verhagen2014-tx">Verhagen &amp; Wagenmakers (<a href="#ref-Verhagen2014-tx" role="doc-biblioref">2014</a>)</span> model<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>
 </h3>
 <p>The idea is using the posterior distribution of the original study as prior for a Bayesian hypothesis testing where:</p>
 <ul>
@@ -1179,7 +1154,7 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Disclaimer:</strong> The actual implementation of <span class="citation" data-cites="Verhagen2014-tx">Verhagen &amp; Wagenmakers (<a href="chapter5.html#ref-Verhagen2014-tx" role="doc-biblioref">2014</a>)</span> is different (they use the <span class="math inline">\(t\)</span> statistics). We implemented a similar model using a Bayesian linear model with <code>rstanarm</code>.</p>
+<p><strong>Disclaimer:</strong> The actual implementation of <span class="citation" data-cites="Verhagen2014-tx">Verhagen &amp; Wagenmakers (<a href="#ref-Verhagen2014-tx" role="doc-biblioref">2014</a>)</span> is different (they use the <span class="math inline">\(t\)</span> statistics). We implemented a similar model using a Bayesian linear model with <code>rstanarm</code>.</p>
 </div>
 </div>
 <p>Let’s assume that the original study (<span class="math inline">\(n = 30\)</span>) estimate a <span class="math inline">\(y_{orig} = 0.4\)</span> and a standard error of <span class="math inline">\(\sigma^2/n\)</span>.</p>
@@ -1378,7 +1353,7 @@ Parameter   |    BF
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-Bushman2009-zv" class="csl-entry" role="listitem">
 Bushman, B. J., &amp; Wang, M. C. (2009). Vote-counting procedures in meta-analysis. In <em><em>The handbook of research synthesis and meta-analysis</em></em> (pp. 207–220). Russell Sage Foundation.
 </div>
@@ -1443,8 +1418,8 @@ Wagenmakers, E.-J., Lodewyckx, T., Kuriyal, H., &amp; Grasman, R. (2010). Bayesi
 </section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
 <li id="fn1"><p>The name of the method corresponds to the first column of the online table<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>The approach has been debated by a series of opinion papers <span class="citation" data-cites="Hedges2019-pr Mathur2019-vh">(see <a href="chapter5.html#ref-Hedges2019-pr" role="doc-biblioref">Hedges &amp; Schauer, 2019a</a>; <a href="chapter5.html#ref-Mathur2019-vh" role="doc-biblioref">Mathur &amp; VanderWeele, 2019</a>)</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>see also <span class="citation" data-cites="Ly2019-ow">Ly et al. (<a href="chapter5.html#ref-Ly2019-ow" role="doc-biblioref">2019</a>)</span> for an improvement<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The approach has been debated by a series of opinion papers <span class="citation" data-cites="Hedges2019-pr Mathur2019-vh">(see <a href="#ref-Hedges2019-pr" role="doc-biblioref">Hedges &amp; Schauer, 2019a</a>; <a href="#ref-Mathur2019-vh" role="doc-biblioref">Mathur &amp; VanderWeele, 2019</a>)</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>see also <span class="citation" data-cites="Ly2019-ow">Ly et al. (<a href="#ref-Ly2019-ow" role="doc-biblioref">2019</a>)</span> for an improvement<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1863,13 +1838,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../chapters/chapter3.html" class="pagination-link" aria-label="Probability of Replication">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability of Replication</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probability of Replication</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../chapters/chapter5.html" class="pagination-link" aria-label="Meta-analysis and publication bias">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Meta-analysis and publication bias</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
