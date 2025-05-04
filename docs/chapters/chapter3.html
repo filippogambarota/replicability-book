@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>2&nbsp; Probability of Replication – The three Rs of trustworthy science</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/chapter4.html" rel="next">
+<link href="../chapters/chapter1.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d536d1a7baed4b06fb80168836a8c311.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script><link rel="stylesheet" href="../styles.css">
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/chapter3.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probability of Replication</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">The three Rs of trustworthy science</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is a replication</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probability of Replication</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/chapter4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical methods for replication assessment</span></span></a>
+  </div>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#key-readings" id="toc-key-readings" class="nav-link active" data-scroll-target="#key-readings">Key Readings</a></li>
+  <li>
+<a href="#formalization" id="toc-formalization" class="nav-link" data-scroll-target="#formalization"><span class="header-section-number">1</span> Formalization</a>
+  <ul class="collapse">
+<li><a href="#the-miller2009-hp-definitions" id="toc-the-miller2009-hp-definitions" class="nav-link" data-scroll-target="#the-miller2009-hp-definitions"><span class="header-section-number">1.1</span> The <span class="citation" data-cites="Miller2009-hp">Miller (2009)</span> definitions</a></li>
+  <li><a href="#notation" id="toc-notation" class="nav-link" data-scroll-target="#notation"><span class="header-section-number">1.2</span> Notation</a></li>
+  <li><a href="#sec-twolevel" id="toc-sec-twolevel" class="nav-link" data-scroll-target="#sec-twolevel"><span class="header-section-number">1.3</span> Two-Level Models</a></li>
+  <li><a href="#multi-level-model" id="toc-multi-level-model" class="nav-link" data-scroll-target="#multi-level-model"><span class="header-section-number">1.4</span> Multi-level Model</a></li>
+  <li><a href="#sec-simple" id="toc-sec-simple" class="nav-link" data-scroll-target="#sec-simple"><span class="header-section-number">1.5</span> Simple Null Hypotheses</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#probability-of-replication-in-exact-replication-experiments" id="toc-probability-of-replication-in-exact-replication-experiments" class="nav-link" data-scroll-target="#probability-of-replication-in-exact-replication-experiments"><span class="header-section-number">2</span> Probability of Replication in Exact Replication Experiments</a>
+  <ul class="collapse">
+<li><a href="#sec-t-test" id="toc-sec-t-test" class="nav-link" data-scroll-target="#sec-t-test"><span class="header-section-number">2.1</span> Two-Sample Design Review</a></li>
+  <li><a href="#sec-calc" id="toc-sec-calc" class="nav-link" data-scroll-target="#sec-calc"><span class="header-section-number">2.2</span> The Calculus of Replication Probabilities</a></li>
+  <li><a href="#sec-arp" id="toc-sec-arp" class="nav-link" data-scroll-target="#sec-arp"><span class="header-section-number">2.3</span> Miller’s Aggregate Replication Probability (ARP)</a></li>
+  <li><a href="#r-code-for-the-aggregate-replication-probability-arp" id="toc-r-code-for-the-aggregate-replication-probability-arp" class="nav-link" data-scroll-target="#r-code-for-the-aggregate-replication-probability-arp"><span class="header-section-number">2.4</span> R Code for the Aggregate replication probability (ARP)</a></li>
+  <li><a href="#millers-individual-replication-probability-irp" id="toc-millers-individual-replication-probability-irp" class="nav-link" data-scroll-target="#millers-individual-replication-probability-irp"><span class="header-section-number">2.5</span> Miller’s Individual replication probability (IRP)</a></li>
+  <li><a href="#bayesian-individual-replication-probability" id="toc-bayesian-individual-replication-probability" class="nav-link" data-scroll-target="#bayesian-individual-replication-probability"><span class="header-section-number">2.6</span> Bayesian Individual Replication Probability</a></li>
+  </ul>
+</li>
+  <li><a href="#selection-and-regression-to-the-mean" id="toc-selection-and-regression-to-the-mean" class="nav-link" data-scroll-target="#selection-and-regression-to-the-mean"><span class="header-section-number">3</span> Selection and Regression to the Mean</a></li>
+  <li>
+<a href="#probability-of-replication-in-extension-experiments" id="toc-probability-of-replication-in-extension-experiments" class="nav-link" data-scroll-target="#probability-of-replication-in-extension-experiments"><span class="header-section-number">4</span> Probability of Replication in Extension Experiments</a>
+  <ul class="collapse">
+<li><a href="#hierarchical-models" id="toc-hierarchical-models" class="nav-link" data-scroll-target="#hierarchical-models"><span class="header-section-number">4.1</span> Hierarchical Models</a></li>
+  </ul>
+</li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">5</span> References</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title"><span id="sec-prob-replication" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Probability of Replication</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="key-readings" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="key-readings">Key Readings</h2>
+<p>Key readings:</p>
+<ul>
+<li>
+<span class="citation" data-cites="Miller2009-hp">Miller (<a href="#ref-Miller2009-hp" role="doc-biblioref">2009</a>)</span> <em>What is the probability of replicating a statistically significant effect?</em>
+</li>
+<li>
+<span class="citation" data-cites="Pawel2020-cm">Pawel &amp; Held (<a href="#ref-Pawel2020-cm" role="doc-biblioref">2020</a>)</span> <em>Probabilistic forecasting of replication studies</em>
+</li>
+</ul>
+<p>Optional readings:</p>
+<ul>
+<li>
+<span class="citation" data-cites="Ulrich2020-rk">Ulrich &amp; Miller (<a href="#ref-Ulrich2020-rk" role="doc-biblioref">2020</a>)</span>: <em>Questionable research practices may have little effect on replicability</em>. A more extended work based on the <span class="citation" data-cites="Miller2009-hp">Miller (<a href="#ref-Miller2009-hp" role="doc-biblioref">2009</a>)</span> model estimating the impact of questionable research practices</li>
+</ul></section><section id="formalization" class="level2" data-number="1"><h2 data-number="1" class="anchored" data-anchor-id="formalization">
+<span class="header-section-number">1</span> Formalization</h2>
+<section id="the-miller2009-hp-definitions" class="level3" data-number="1.1"><h3 data-number="1.1" class="anchored" data-anchor-id="the-miller2009-hp-definitions">
+<span class="header-section-number">1.1</span> The <span class="citation" data-cites="Miller2009-hp">Miller (<a href="#ref-Miller2009-hp" role="doc-biblioref">2009</a>)</span> definitions</h3>
+<p><span class="citation" data-cites="Miller2009-hp">Miller (<a href="#ref-Miller2009-hp" role="doc-biblioref">2009</a>)</span> proposed one of the earliest probabilistic frameworks for estimating the probability of replication. He defines two different senses of replication probabilities:</p>
+<ul>
+<li><p><strong>aggregate replication probability</strong> (ARP): the probability of researchers working on a certain research field finding a statistically significant result in a replication study given a significant original study.</p></li>
+<li><p><strong>individual replication probability</strong> (IRP): the probability of finding a significant effect on a replication study when replicating a specific original study.</p></li>
+</ul>
+<p>In this chapter we will take off from Miller’s definitions and provide a formal framework to answer key questions about replication probabilities.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key questions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>What is the probability of replicating an observed effect in a precise replication experiment?</li>
+<li>What is the probability of replicating experiments of a certain type within a research field?</li>
+<li>How is the probability of replication affected by the experimental design (e.g., sample size, etc.) and by the effect size?</li>
+<li>Is the probability of replication affected by questionable research practices or publication bias?</li>
+</ul>
+</div>
+</div>
+</section><section id="notation" class="level3" data-number="1.2"><h3 data-number="1.2" class="anchored" data-anchor-id="notation">
+<span class="header-section-number">1.2</span> Notation</h3>
+<p>We begin by providing a consistent notation and terminology, and a formal framework for the statistical models and analysis examples throughout the book. The notation is based on the replication model by <span class="citation" data-cites="Pawel2020-cm">Pawel &amp; Held (<a href="#ref-Pawel2020-cm" role="doc-biblioref">2020</a>)</span> and the meta-analytical notation by <span class="citation" data-cites="Hedges2021-of">Hedges &amp; Schauer (<a href="#ref-Hedges2021-of" role="doc-biblioref">2021</a>)</span>, <span class="citation" data-cites="Schauer2021-ja">Schauer &amp; Hedges (<a href="#ref-Schauer2021-ja" role="doc-biblioref">2021</a>)</span>, and <span class="citation" data-cites="Hedges2019-ry">Hedges &amp; Schauer (<a href="#ref-Hedges2019-ry" role="doc-biblioref">2019</a>)</span>.</p>
+<p>We use <span class="math inline">\(x\)</span>’s to denote predictors, treatments, and fixed factors, and <span class="math inline">\(y\)</span>’s to denote outcomes. The subscript <span class="math inline">\(i\)</span> denotes individuals within a study, while <span class="math inline">\(r\)</span> indexes studies. We use <span class="math inline">\(r=0\)</span> to denote the original study, and <span class="math inline">\(r = 1, 2, \ldots, R\)</span> to denote the <span class="math inline">\(R \geq 1\)</span> replication studies.</p>
+<p>We use the greek letter <span class="math inline">\(\theta\)</span>’s to define the true effects for the original and replication study(s). These are population parameters. In particular <span class="math inline">\(\theta_0\)</span> is the effect in original study and <span class="math inline">\(\theta_r\)</span> is the effect in the <span class="math inline">\(r\)</span>-th study. In principle, <span class="math inline">\(\theta\)</span>’s can be vector valued, but for simplicity we will focus on a scalar effect. We will also use other greek letters for parameters specific to individual settings.</p>
+<p>The <em>one-to-one</em> replication design is used when a single replication study is replicating an original experiment. On the other hand, a replication project with <span class="math inline">\(R\)</span> replication studies is called a <em>one-to-many</em> design.</p>
+<p>In <a href="chapter1.html" class="quarto-xref"><span>Chapter 1</span></a> we covered the Machery definition of replication, in which only the randomly drawn subjects differ between the original study and the replications. In a replication of this type, the population of reference remains the same, an therefore <span class="math inline">\(\theta_0 = \theta_1 = \ldots = \theta_R\)</span>. This will be the case with Miller’s original, for example. Generally, in a highly <em>precise replication</em>, this will also be approximately correct.</p>
+<p>On the other hand, if we consider a group of extension experiments, or even more broadly examine an entire field of research, we typically alter fixed factors, and thus consider many different, albeit related, populations. In this case <span class="math inline">\(\theta\)</span>’s are no longer identical. Variation between <span class="math inline">\(\theta\)</span>’s is an important aspect of replicability analysis. We will return to it in several places. For now, consider that this variation depends on the unverse of studies of interest. For example, a group of extension experiments for a specific treatment / outcome combination will generally have smaller variability than a group considering the effect of the same treatment on a variety of outcomes.</p>
+</section><section id="sec-twolevel" class="level3" data-number="1.3"><h3 data-number="1.3" class="anchored" data-anchor-id="sec-twolevel">
+<span class="header-section-number">1.3</span> Two-Level Models</h3>
+<p>One way to think about studying the variation of the <span class="math inline">\(\theta\)</span>’s is to frame the analysis in a two-level model. Within a study, we imagine that subjects are drawn from a population, with each population associated with a specific study design / fixed factors. In turn, then, study designs themselves are seen as draws from a hypothetically vast collection of possible designs. This allows to describe the variation of <span class="math inline">\(\theta\)</span>’s probabilistically. In many examples we will use a Normal distribution to describe the resulting population of effect sizes. This normal distribution will have mean <span class="math inline">\(\mu_{\theta}\)</span> and variance <span class="math inline">\(\tau^2\)</span>.</p>
+<p>Replication is often framed in terms of tests of hypothesis. Parenthetically, several fields of study are making organized attempts at moving scientific reporting away from tests of hypotheses <span class="citation" data-cites="Harrington2019-sw">(<a href="#ref-Harrington2019-sw" role="doc-biblioref">Harrington et al., 2019</a>)</span>. Evidential summaries from hypothesis tests, such as p-values, systematically confound sample size and effect size <span class="citation" data-cites="Wasserstein2016-xv">(<a href="#ref-Wasserstein2016-xv" role="doc-biblioref">Wasserstein &amp; Lazar, 2016</a>)</span>. Better reporting focuses on quantitative effect sizes. Nonetheless, replicability analysis requires explicit consideration of significance, as this remains a factor in determining publication.</p>
+<p>Here we will define the null hypothesis to be that “the effect is too small to be of scientific interest”. Formally, the null hypothesis is true when <span class="math inline">\(|\theta| &lt; h_0\)</span> where <span class="math inline">\(h_0\)</span> is specified by the analyst and defines a so-called <em>region of practical equivalence</em> or ROPE <span class="citation" data-cites="Kruschke2015-ew Kruschke2018-sm">(<a href="#ref-Kruschke2015-ew" role="doc-biblioref">Kruschke, 2015</a>; <a href="#ref-Kruschke2018-sm" role="doc-biblioref">Kruschke &amp; Liddell, 2018</a>)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. In a precise replication, <span class="math inline">\(\theta\)</span> does not change across studies and thus the null hypothesis is either true or not in every study. In contrast, if we consider a group of extension experiments or a whole field, <span class="math inline">\(\theta\)</span>’s vary and the null hypothesis may hold in some studies and not others. We will use <span class="math inline">\(\pi\)</span> to denote the proportion of non-null effect in a population of studies.</p>
+<p><span class="citation" data-cites="Miller2009-hp">Miller (<a href="#ref-Miller2009-hp" role="doc-biblioref">2009</a>)</span> noted that <span class="math inline">\(\pi\)</span> is an unknown quantity that is difficult to estimate from the literature. In Psychology, <span class="citation" data-cites="Wilson2018-aa">Wilson &amp; Wixted (<a href="#ref-Wilson2018-aa" role="doc-biblioref">2018</a>)</span> tried to estimate <span class="math inline">\(\pi\)</span> based on the <span class="citation" data-cites="Collaboration2015-ep">Collaboration &amp; Open Science Collaboration (<a href="#ref-Collaboration2015-ep" role="doc-biblioref">2015</a>)</span> large scale replication project finding different rates for social and cognitive psychology. In a similar vein, <span class="citation" data-cites="Jager2014-nq">Jager &amp; Leek (<a href="#ref-Jager2014-nq" role="doc-biblioref">2014</a>)</span> tried to estimate the false discovery rate across the top medical journals.</p>
+<p>The more precise the replication, the smaller will <span class="math inline">\(\tau\)</span> be. As <span class="math inline">\(\tau\)</span> goes to zero, all <span class="math inline">\(\theta\)</span>’s will concentrate around <span class="math inline">\(\mu_{\theta}\)</span> and <span class="math inline">\(\pi\)</span> will approach either 0 or 1 depending on whether <span class="math inline">\(\mu_{\theta}\)</span> is in the region of practical equivalence.</p>
+<p><a href="#fig-gen-model-simple" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> depicts this simple generating model. The idea is that true effects in a given research area <span class="math inline">\(\theta_r\)</span> comes from a normal distribution with mean <span class="math inline">\(\mu_\theta\)</span> and standard deviation <span class="math inline">\(\tau\)</span>. Within this research area, we have a certain proportion of true <span class="math inline">\(\pi\)</span> and false <span class="math inline">\(1 - \pi\)</span> effects. In case of false effects, we can imagine a ROPE in which the effects are assumed to be equal to zero. Then these true effects <span class="math inline">\(\theta_r\)</span> can be the target of an original study <span class="math inline">\(\hat \theta_0\)</span> and one or more replication studies <span class="math inline">\(\hat \theta_r\)</span> (<span class="math inline">\(r = (1, \ldots, R)\)</span>). If the study is a <em>precise</em> replication study the heterogeneity is expected to be close to zero while in an <em>extension</em> experiment we are expecting more heterogeneity. To simplify, the expected heterogeneity of a very <em>precise</em> replication is zero and all studies are essentially estimating the same original true effect <span class="math inline">\(\theta_0\)</span>. In cases where the heterogeneity is different from zero (i.e., an <em>extension</em>) each replication study is associated with a different underlying true effect <span class="math inline">\(\theta_r\)</span>. The degree of heterogeneity is related to the degree of <em>precision</em>, viz., the number and relevance of changes to fixed factors. This model can be considered similar to a random-effects meta-analysis (described in Chapter XXX). The model can also be used to simulate replication studies as will be shown in Chapter XXX.</p>
+<!-- REVIEW: ask giovanni if using $\hat \tau_r$ or something else to denote the heterogeneity estimated by the replication study -->
+<div id="fig-gen-model-simple" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-gen-model-simple-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../img/generating-model.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gen-model-simple-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: two level generating model
+</figcaption></figure>
+</div>
+</section><section id="multi-level-model" class="level3" data-number="1.4"><h3 data-number="1.4" class="anchored" data-anchor-id="multi-level-model">
+<span class="header-section-number">1.4</span> Multi-level Model</h3>
+<p><a href="#fig-gen-model-simple" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> provides an example of a generating model for a specific research area in the literature, e.g., the distribution of true effects related to psychological treatments for depression. Some treatments in some conditions will have a higher/lower effect and in other conditions they will have a null effect. Extending the same reasoning to multiple effects within a broader literature, we can include another hierarchical layer in the model. <a href="#fig-gen-model-mixture" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> depicts this extended model. To simplify we can have the treatments for depression and anxiety. These research areas have specific average effects <span class="math inline">\(\mu_\theta^1, \mu_\theta^2\)</span>, heterogeneity <span class="math inline">\(\tau^1, \tau^2\)</span> and proportions of true <span class="math inline">\(\pi^1, \pi^2\)</span> and false <span class="math inline">\(1 - \pi^2, 1 - \pi^2\)</span> effects. The combinatons of the two research areas define the broader literature defined as a mixture of the two distributions. Each component (i.e., anxiety and depression distributions) is associated with a weight <span class="math inline">\(\omega^1, \omega^2\)</span> representing the importance (e.g., prevalence of studies) in the final mixture distribution. As a final note, instead of considering <span class="math inline">\(\mu_\theta\)</span> and <span class="math inline">\(\tau\)</span> as fixed, we can sample these values from two distributions generating a more realistic research area contanining a larger set of true effects. In terms of replication, we can apply the same logic of <a href="#fig-gen-model-simple" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> where the degree of <em>precision</em> determines the expected heterogeneity in the replication/extension study.</p>
+<div id="fig-gen-model-mixture" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-gen-model-mixture-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../img/generating-model-mixture.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gen-model-mixture-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Mixture generating model
+</figcaption></figure>
+</div>
+</section><section id="sec-simple" class="level3" data-number="1.5"><h3 data-number="1.5" class="anchored" data-anchor-id="sec-simple">
+<span class="header-section-number">1.5</span> Simple Null Hypotheses</h3>
+<p><span class="citation" data-cites="Miller2009-hp">Miller (<a href="#ref-Miller2009-hp" role="doc-biblioref">2009</a>)</span> and many other works in the literature are concerned with simple null hypotheses. In our notation the null hypothesis is true when <span class="math inline">\(|\theta| = 0\)</span>. The logic of section <a href="#sec-twolevel" class="quarto-xref"><span>Section 2.1.3</span></a> can be cloned for this case as well, as illustrated in Figure <a href="#fig-gen-model-pointnull" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>. Now the distribution of <span class="math inline">\(\theta\)</span> has two components: a continuous component describing the variation of the effect assuming the effect is not zero, and a discrete component at exactly zero. The probability of drawing a nonzero effect will again be <span class="math inline">\(\pi\)</span>, which is also the area under the bell curve in the figure. Thus the point mass at zero is <span class="math inline">\(1-\pi\)</span>. In terms of replication, we can apply the same logic of <a href="#fig-gen-model-simple" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> and <a href="#fig-gen-model-mixture" class="quarto-xref">Figure&nbsp;<span>2.2</span></a> where the degree of <em>precision</em> determines the expected heterogeneity in the replication/extension study.</p>
+<div id="fig-gen-model-pointnull" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-gen-model-pointnull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../img/generating-model-pointnull.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gen-model-pointnull-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Point null generating model
+</figcaption></figure>
+</div>
+</section></section><section id="probability-of-replication-in-exact-replication-experiments" class="level2" data-number="2"><h2 data-number="2" class="anchored" data-anchor-id="probability-of-replication-in-exact-replication-experiments">
+<span class="header-section-number">2</span> Probability of Replication in Exact Replication Experiments</h2>
+<section id="sec-t-test" class="level3" data-number="2.1"><h3 data-number="2.1" class="anchored" data-anchor-id="sec-t-test">
+<span class="header-section-number">2.1</span> Two-Sample Design Review</h3>
+<p>We will often use a two-sample design to make the discussion more concrete. Assuming the homogeneity of variances among the two groups, the <span class="math inline">\(t\)</span> statistic is calculated as follows:</p>
+<p><span id="eq-t"><span class="math display">\[
+t = \frac{\overline{y}_1 - \overline{y}_2}{SE_{\overline{y}_1 - \overline{y}_2}}
+\tag{1}\]</span></span></p>
+<p>where subscripts denote the two groups. The standard error at the denominator is: <span id="eq-t-se"><span class="math display">\[
+\mbox{SE}_{\overline{y}_1 - \overline{y}_2} = s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}
+\tag{2}\]</span></span></p>
+<p>where <span class="math inline">\(s_p\)</span> is the pooled standard deviation: <span id="eq-t-sp"><span class="math display">\[
+s_p = \sqrt{\frac{s^2_{y_1}(n_1 - 1) + s^2_{y_1}{(n_2 - 1)}}{n_1 + n_2 - 2}}
+\tag{3}\]</span></span></p>
+<p>In the case of a simple null hypothesis, the p-value can be calculated from a <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(\nu = n_1 + n_2 - 2\)</span> degrees of freedom.</p>
+<p>More generally, when the true effect size is not zero, the <span class="math inline">\(t\)</span> statistic will follow a non-central Student’s <span class="math inline">\(t\)</span> distribution with <span class="math inline">\(\nu\)</span> degrees of freedom and non-centrality parameter <span class="math inline">\(\lambda\)</span>, calculated as follows: <span id="eq-t-ncp"><span class="math display">\[
+\lambda = \delta \sqrt{\frac{n_1 n_2}{n_1 + n_2}}
+\tag{4}\]</span></span></p>
+<p>where <span class="math inline">\(\delta\)</span> is the true effect size — the true difference between means divided by the true group specific standard error.</p>
+<p>If <span class="math inline">\(F_{t_\nu}\)</span> is the cumulative distribution function of the non-central Student’s <span class="math inline">\(t\)</span> distribution, the statistical power is calculated as:</p>
+<p><span id="eq-t-power"><span class="math display">\[
+1 - \beta = 1 - F_{t_\nu} \left(t_c, \lambda \right) + F_{t_\nu} \left(-t_{c}, \lambda \right)
+\tag{5}\]</span></span></p>
+<p>With this setup, we can easily implement these equations in R, thus creating a flexible set of functions to reproduce and extend the examples from <span class="citation" data-cites="Miller2009-hp">Miller (<a href="#ref-Miller2009-hp" role="doc-biblioref">2009</a>)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">power.t</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">d</span>, <span class="va">n1</span>, <span class="va">n2</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">alpha</span> <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">n2</span><span class="op">)</span><span class="op">)</span> <span class="va">n2</span> <span class="op">&lt;-</span> <span class="va">n1</span></span>
+<span>    <span class="va">df</span>  <span class="op">&lt;-</span> <span class="va">n1</span> <span class="op">+</span> <span class="va">n2</span> <span class="op">-</span> <span class="fl">2</span></span>
+<span>    <span class="va">ncp</span> <span class="op">&lt;-</span> <span class="va">d</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="op">(</span><span class="va">n1</span> <span class="op">*</span> <span class="va">n2</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">n1</span> <span class="op">+</span> <span class="va">n2</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="va">tc</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="va">alpha</span><span class="op">/</span><span class="fl">2</span>, df <span class="op">=</span> <span class="va">df</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="va">tc</span>, df <span class="op">=</span> <span class="va">df</span>, ncp <span class="op">=</span> <span class="va">ncp</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="va">tc</span>, df <span class="op">=</span> <span class="va">df</span>, ncp <span class="op">=</span> <span class="va">ncp</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">power.t</span><span class="op">(</span>d <span class="op">=</span> <span class="fl">0.5</span>, n1 <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span>
+<span><span class="co">## [1] 0.4778965</span></span>
+<span><span class="fu">power.t</span><span class="op">(</span>d <span class="op">=</span> <span class="fl">0.5</span>, n1 <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span><span class="co">## [1] 0.9404272</span></span>
+<span><span class="fu">power.t</span><span class="op">(</span>d <span class="op">=</span> <span class="fl">0.1</span>, n1 <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
+<span><span class="co">## [1] 0.1694809</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When the null hypothesis is a set (section <a href="#sec-twolevel" class="quarto-xref"><span>Section 2.1.3</span></a>) the p-value is calculated conditional on the least favorable case, which occurs when <span class="math inline">\(\theta = h_0\)</span> or <span class="math inline">\(\theta = - h_0\)</span>, so the noncentral <span class="math inline">\(t\)</span> is used to compute both the p-value and the power.</p>
+<p>Another possibility is to use the full ROPE for the statistical test within the so-called equivalence testing framework <span class="citation" data-cites="Lakens2018-ri Goeman2010-nm">(<a href="#ref-Lakens2018-ri" role="doc-biblioref">Lakens et al., 2018</a>; see also <a href="#ref-Goeman2010-nm" role="doc-biblioref">Goeman et al., 2010</a> for the three-sided hypothesis testing)</span>.</p>
+</section><section id="sec-calc" class="level3" data-number="2.2"><h3 data-number="2.2" class="anchored" data-anchor-id="sec-calc">
+<span class="header-section-number">2.2</span> The Calculus of Replication Probabilities</h3>
+<p>Consider the case of strict replication, so the null hypothesis is true or false in both studies at the same time.</p>
+<p>To prepare for <span class="citation" data-cites="Miller2009-hp">Miller (<a href="#ref-Miller2009-hp" role="doc-biblioref">2009</a>)</span>, we look at replication probability by focusing on replicating significance. Given that the original study was significant (that is that <span class="math inline">\(|t_0| &gt; t_{c_0}\)</span>), what is the probability that the second study will also be significant and the effect will be in the same direction as the original study? Formally we express significance in the original study as <span class="math inline">\(|t_0| &gt; t_{c_0}\)</span>, significance in the replication study as <span class="math inline">\(|t_1| &gt; t_{c_1}\)</span>, and concordance of the direction of the effect as <span class="math inline">\(t_0 \cdot t_1 &gt; 0\)</span>.</p>
+<p><span id="eq-rep-ss-compact"><span class="math display">\[
+p_{rep} = \Pr(|t_1| &gt; t_{c_1} \cap t_0 \cdot t_1 &gt;0 \boldsymbol{\mid} |t_0| &gt; t_{c_0})
+\tag{6}\]</span></span></p>
+<p>Using the laws of conditional and total probability in turn, We can express this as</p>
+<p><span id="eq-rep-ss-extended"><span class="math display">\[
+\begin{split}
+p_{rep} &amp;= \Pr(|t_1| \geq t_{c_1} \boldsymbol{\mid} |t_0| \geq t_{c_0}) \\[10pt]
+&amp;= \frac{\Pr(|t_1| \geq t_{c_1} \cap t_0 \cdot t_1 &gt;0 \cap |t_0| \geq t_{c_0})}{\Pr(|t_0| \geq t_{c_0})} \\[10pt]
+\end{split}
+\tag{7}\]</span></span></p>
+<p>Considerering separately the numerator and the denominator, and using the law of total probability, we have:</p>
+<p><span id="eq-rep-num-den"><span class="math display">\[
+\begin{split}
+\mbox{numerator} =&amp; \Pr(H_1) \cdot \Pr(|t_1| \geq t_{c1} \cap t_0 \cdot t_1 &gt;0 \cap |t_0| \geq t_{c_0} \mid H_1) + \\
+&amp; \Pr(H_0) \cdot \Pr(|t_1| \geq t_{c1} \cap t_0 \cdot t_1 &gt;0 \cap |t_0| \geq t_{c0} \mid H_0) \\[10pt]
+\mbox{denominator} =&amp; \Pr(H_1) \cdot \Pr(|t_0| \geq t_{c_0} \mid H_1) + \\
+&amp; \Pr(H_0) \cdot \Pr(|t_0| \geq t_{c_1} \mid H_0).
+\end{split}
+\tag{8}\]</span></span></p>
+<p>These expressions are a bit cumbersome, but they allow us to express the probability of replication as a useful function of power and significance level.</p>
+<p><span id="eq-rep-ss-h0"><span class="math display">\[
+\Pr (|t_0| \geq t_{c_0} | H_0 ) = \alpha_0, \quad \mbox{and} \quad \Pr (|t_0| \geq t_{c_0} \cap t_0 \cdot t_1 &gt;0 | H_0 ) = \alpha_1 / 2
+\tag{9}\]</span></span></p>
+<p>where <span class="math inline">\(\alpha_r\)</span> is the the study-specific significance level. The division by two is because half of the false positive rejections are expected to occur in the discordant direction under the null. Also</p>
+<p><span id="eq-rep-ss-h1"><span class="math display">\[
+\Pr(|t_0| \geq t_{c_0} | H_1) = 1-\beta_0 \quad \mbox{and} \quad \Pr(|t_1| \geq t_{c_1} \cap t_0 \cdot t_1 &gt;0 | H_1) \approx 1-\beta_1
+\tag{10}\]</span></span></p>
+<p>where <span class="math inline">\(1-\beta_r\)</span> is the study specific power. Power is simple to compute when the alternative is also a single point, but it is more complex when, as in section <a href="#sec-twolevel" class="quarto-xref"><span>Section 2.1.3</span></a>, we consider a distribution of non-null effects. For now, think about <span class="math inline">\(1-\beta_r\)</span> as an average power. We will return on this point when we discuss hierarchical models.</p>
+<p>The approximation sign <span class="math inline">\(\approx\)</span> refers to the fact that we are ignoring the probability that the replication study will generate a significant and discordant effect if the true effect is not null and is indeed in the direction identified in the original study. This probability will be small when the sample size is large or the effect size is large, but can be nontrivial in small studies with small effects.</p>
+<p>Rewriting and using independence of the two studies:</p>
+<p><span id="eq-arp12"><span class="math display">\[
+\begin{split}
+p_{rep} &amp; \approx
+\frac{\Pr(H_1) \cdot (1-\beta_0)(1-\beta_1) + (1- \Pr(H_1)) \cdot \alpha_0 \alpha_1 / 2}{\Pr(H_1) \cdot (1-\beta_0) + (1-\Pr(H_1)) \cdot \alpha_0} \\[10pt]
+\end{split}
+\tag{11}\]</span></span></p>
+<p>The key quantity that remains to understand is <span class="math inline">\(\Pr(H_1)\)</span>, the probability that the effect is not null. The interpretation of this probability depends on the context as well as the analysts’ approach. In section <a href="#sec-arp" class="quarto-xref"><span>Section 2.2.3</span></a> we consider Miller’s version, where <span class="math inline">\(\Pr(H_1)\)</span> is essentially <span class="math inline">\(\pi\)</span> from Section <a href="#sec-twolevel" class="quarto-xref"><span>Section 2.1.3</span></a>. Later we will cover an alternative Bayesian interpretation where <span class="math inline">\(\Pr(H_1)\)</span> is specified based on expert knowledge existing prior to the original experiment.</p>
+<p>We take two quick digressions before going back to Miller. First, if <span class="math inline">\(R&gt;1\)</span> we can extend this reasoning to more general expressions. For example if we want to estimate the probability of having successful replications in <span class="math inline">\(R\)</span> experiments we can consider <span id="eq-arp-r"><span class="math display">\[
+\Pr \left( \bigcap_{r=1}^R |t_r| &gt; t_{c_r} \boldsymbol{\mid} |t_0| &gt; t_{c_0} \right).
+\tag{12}\]</span></span></p>
+<p>Second, if you are not familiar with the logic behind Bayes’s rule, we will walk you through it in the remainder of this section. The probability of the event A happening given (<span class="math inline">\(|\)</span>) that B happened is:</p>
+<p><span id="eq-bayes1"><span class="math display">\[
+\Pr(A|B) = \frac{\Pr(A \cap B)}{\Pr(B)}
+\tag{13}\]</span></span></p>
+<p>Where <span class="math inline">\(\Pr(A \cap B)\)</span> is the joint probability that can be calculated as:</p>
+<p><span id="eq-bayes2"><span class="math display">\[
+\Pr(A \cap B) = \Pr(B|A) \cdot \Pr(A)
+\tag{14}\]</span></span></p>
+<p>Then the full equation also known as Bayes rule is:</p>
+<p><span id="eq-bayes3"><span class="math display">\[
+\Pr(A|B) = \frac{\Pr(B|A) \cdot \Pr(A)}{\Pr(B)}
+\tag{15}\]</span></span></p>
+</section><section id="sec-arp" class="level3" data-number="2.3"><h3 data-number="2.3" class="anchored" data-anchor-id="sec-arp">
+<span class="header-section-number">2.3</span> Miller’s Aggregate Replication Probability (ARP)</h3>
+<!-- TODO: review and smooth this section -->
+<p>To recap, <span class="citation" data-cites="Miller2009-hp">Miller (<a href="#ref-Miller2009-hp" role="doc-biblioref">2009</a>)</span> is about replication with the highest <em>precision</em>, because he considers no differences in populations between the experiments. He focuses on tests of hypotheses, and considers replication of experiments with significant testing results, as we did above. He also assumes that power and significance level are the same in the original and replication experiment. He also evaluates power at a single point at a time, effectively assuming that the statistical problem is testing a simple null hypothesis against a simple alternative.</p>
+<p>With regards to <span class="math inline">\(\Pr( H_1)\)</span> he considers a scheme similar to that of section <a href="#sec-twolevel" class="quarto-xref"><span>Section 2.1.3</span></a>. A study design is drawn randomly from the aggregate describing a scientific field of interest, and then replicated with high precision. In what proportion of cases does this exercise lead to a replication? For this calculation <span class="math inline">\(\Pr( H_1)\)</span> is the same as <span class="math inline">\(\pi\)</span> in <a href="#fig-gen-model-simple" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>. Miller calls <span class="math inline">\(\pi\)</span> the <em>strength</em> of a research area. This parameter has also been considered by other authors when evaluating the probability of replication within a research field <span class="citation" data-cites="Ioannidis2005-em Wilson2018-aa">(<a href="#ref-Ioannidis2005-em" role="doc-biblioref">Ioannidis, 2005</a>; <a href="#ref-Wilson2018-aa" role="doc-biblioref">Wilson &amp; Wixted, 2018</a>)</span>.</p>
+<p>In Miller’s setting, the only relevant parameters in the replication model are the type-2 error rate <span class="math inline">\(\beta\)</span> (or equivalently the statistical power <span class="math inline">\(1 - \beta\)</span>), the type-1 error rate <span class="math inline">\(\alpha\)</span> and the proportion of true hypotheses <span class="math inline">\(\pi\)</span> in a certain research field.</p>
+<p>Using formula <a href="#eq-arp12" class="quarto-xref">Equation&nbsp;<span>2.11</span></a>, the probability of replicating an effect in a given research area (ARP), conditional on a significant original experiment, is <span id="eq-arp-miller"><span class="math display">\[
+p_{ARP} \approx \frac
+{\pi \cdot (1 - \beta)^2 + (1 - \pi) \cdot \alpha^2 / 2}
+{\pi \cdot (1 - \beta)   + (1 - \pi) \cdot \alpha}
+\tag{16}\]</span></span></p>
+<!-- TODO see if the remainder of the section can be shortened, it seems a bit repetitive -->
+<p>The denominator is the probability of a significant result in the original study, broken down into the probability of a false positive <span class="math inline">\((1 - \pi) \alpha\)</span> plus the probability of a true positive <span class="math inline">\(\pi (1 - \beta)\)</span>. Now, let’s consider the numerator. This is the probability that both the original and replication studies are significant and also concordant in the sign of their effects.</p>
+<p>A good way to understand the process is by formalizing inference using a contingency table as done in <a href="#tbl-inference" class="quarto-xref">Table&nbsp;<span>2.1</span></a>.</p>
+<div id="tbl-inference" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-layout-align="center">
+<figure class="quarto-float quarto-float-tbl figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-inference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Inferential process formalized using a contingency table
+</figcaption><div aria-describedby="tbl-inference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table" style="font-size: 13px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="2">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; font-weight: bold; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Decision on <span class="math inline">\(H_0\)</span>
+</div>
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+</tr>
+<tr>
+<th style="text-align:center;font-weight: bold;">
+</th>
+<th style="text-align:center;font-weight: bold;">
+</th>
+<th style="text-align:center;font-weight: bold;">
+False
+</th>
+<th style="text-align:center;font-weight: bold;">
+True
+</th>
+<th style="text-align:center;font-weight: bold;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+<span class="math inline">\(\boldsymbol{H_0}\)</span>
+</td>
+<td style="text-align:center;font-weight: bold;">
+False
+</td>
+<td style="text-align:center;">
+True Positive (<span class="math inline">\(1 - \beta\)</span>)
+</td>
+<td style="text-align:center;">
+False Negative (<span class="math inline">\(\beta\)</span>)
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(\pi\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;font-weight: bold;">
+<span class="math inline">\(\boldsymbol{H_0}\)</span>
+</td>
+<td style="text-align:center;font-weight: bold;">
+True
+</td>
+<td style="text-align:center;">
+False Positive (<span class="math inline">\(\alpha\)</span>)
+</td>
+<td style="text-align:center;">
+True Negative (<span class="math inline">\(1 - \alpha\)</span>)
+</td>
+<td style="text-align:center;">
+<span class="math inline">\(1 - \pi\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>For example, the probability that something is significant is the sum of true positives (i.e., the statistical power) and false positives (i.e., type-1 errors) weighted by the prevalence <span class="math inline">\(\pi\)</span>. Thus the numerator <span class="math inline">\(\Pr(|t_1| &gt; t_{c1} \cap |t_0| &gt; t_{c0})\)</span> can be written as the sum between:</p>
+<ul>
+<li>Original study being significant <span class="math inline">\((1 - \beta) \cdot \pi + \alpha \cdot (1 - \pi)\)</span>
+</li>
+<li>Replication study being significant <span class="math inline">\((1 - \beta) + \frac{\alpha}{2}\)</span>
+</li>
+</ul>
+<p>We have <span class="math inline">\(\frac{\alpha}{2}\)</span> in the second expression because we assume that replication success happens when the effect is in the same direction, i.e., we are ignoring false positives with opposite sign.</p>
+<p>An interesting use of <a href="#eq-arp12" class="quarto-xref">Equation&nbsp;<span>2.11</span></a> and <a href="#eq-arp-miller" class="quarto-xref">Equation&nbsp;<span>2.16</span></a> is that we can explore the probability of replication in different scenarios by manipulating the parameters defined above. <span class="citation" data-cites="Ulrich2020-rk">Ulrich &amp; Miller (<a href="#ref-Ulrich2020-rk" role="doc-biblioref">2020</a>)</span> improved and extended <span class="citation" data-cites="Miller2009-hp">Miller (<a href="#ref-Miller2009-hp" role="doc-biblioref">2009</a>)</span>, by estimating the impact of questionable research practices on the probability of replication. They found that the most important parameter negatively impacting replication rates is <span class="math inline">\(\pi\)</span>, with questionable research practices having only a minor impact.</p>
+</section><section id="r-code-for-the-aggregate-replication-probability-arp" class="level3" data-number="2.4"><h3 data-number="2.4" class="anchored" data-anchor-id="r-code-for-the-aggregate-replication-probability-arp">
+<span class="header-section-number">2.4</span> R Code for the Aggregate replication probability (ARP)</h3>
+<p>We implemented the <span class="citation" data-cites="Miller2009-hp">Miller (<a href="#ref-Miller2009-hp" role="doc-biblioref">2009</a>)</span> equations in R (see also <code>?arp</code>):</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">arp</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">R</span>, <span class="va">pi</span>, <span class="va">power</span>, <span class="va">alpha</span><span class="op">)</span> <span class="op">{</span></span>
+<span></span>
+<span>    <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">R</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"number of studies should be equal or greater than 2"</span><span class="op">)</span></span>
+<span></span>
+<span>    <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">power</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">power</span><span class="op">)</span> <span class="op">!=</span> <span class="va">R</span><span class="op">)</span><span class="op">{</span></span>
+<span>      <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"length of power vector should be 1 or R"</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
+<span></span>
+<span>    <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">power</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="va">power</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">power</span>, <span class="va">R</span><span class="op">)</span></span>
+<span></span>
+<span>    <span class="va">num</span> <span class="op">&lt;-</span> <span class="va">pi</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/prod.html">prod</a></span><span class="op">(</span><span class="va">power</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">pi</span><span class="op">)</span> <span class="op">*</span> <span class="va">alpha</span> <span class="op">*</span> <span class="op">(</span><span class="va">alpha</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="op">(</span><span class="va">R</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span>
+<span>    <span class="va">den</span> <span class="op">&lt;-</span> <span class="va">pi</span> <span class="op">*</span> <span class="va">power</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">pi</span><span class="op">)</span> <span class="op">*</span> <span class="va">alpha</span></span>
+<span>    <span class="va">num</span><span class="op">/</span><span class="va">den</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>r</code> is the number of replication studies, <code>pi</code> is <span class="math inline">\(\pi\)</span>, <code>power</code> is <span class="math inline">\(1 - \beta\)</span> and alpha is <span class="math inline">\(\alpha\)</span>.</p>
+<p>The <a href="#fig-arp1" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> depicts how the ARP changes as we vary the theory strength <span class="math inline">\(\pi\)</span> and the power (assumed to be the same for the original and replication experiment).</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-arp1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="768">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-arp1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="chapter3_files/figure-html/fig-arp1-1.png" id="fig-arp1" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-arp1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>The main takeaways from <a href="#fig-arp1" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> are:</p>
+<ul>
+<li>for medium (and probably plausible) levels of theory strength <span class="math inline">\(\pi\)</span>, the replication probabilities are relatively low — even when the power is high</li>
+<li>when <span class="math inline">\(R &gt; 1\)</span>, the replication probabilities are very low — in all conditions</li>
+</ul></section><section id="millers-individual-replication-probability-irp" class="level3" data-number="2.5"><h3 data-number="2.5" class="anchored" data-anchor-id="millers-individual-replication-probability-irp">
+<span class="header-section-number">2.5</span> Miller’s Individual replication probability (IRP)</h3>
+<!-- TODO: review and smooth this section -->
+<p>In contrast to the ARP, which considers a randomly drawn original study from a field, the individual replication probability (IRP) focuses on a specific original study. Miller’s approach is ask what is the probability of a significant and concordant test result in the replication study, pretending that the estimated effect in the original study is correct. The reduces to calculating the power of the replication study conditional at observed effect, that is <span class="math inline">\(p_{IRP} = 1 - \beta(\hat\theta_0)\)</span></p>
+<p>Using the Equations from <a href="#sec-t-test" class="quarto-xref"><span>Section 2.2.1</span></a>, we can reproduce and extend the <span class="citation" data-cites="Miller2009-hp">Miller (<a href="#ref-Miller2009-hp" role="doc-biblioref">2009</a>)</span> figures. Basically, we estimate the IRP assuming that the power (thus the effect size and sample size) of the replication study is the same as that of the original study. The key function is <code>p2d</code>, which returns the power given the effect size for the point estimate and the lower/upper limit of the effect size confidence interval<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p2d</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">p</span>, <span class="va">n</span>, <span class="va">alpha</span> <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="va">df</span> <span class="op">&lt;-</span> <span class="va">n</span><span class="op">*</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">2</span></span>
+<span>    <span class="va">to</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="va">p</span><span class="op">/</span><span class="fl">2</span>, <span class="va">df</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="va">se</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="va">n</span> <span class="op">+</span> <span class="fl">1</span><span class="op">/</span><span class="va">n</span><span class="op">)</span></span>
+<span>    <span class="va">cit</span> <span class="op">&lt;-</span> <span class="fu">effectsize</span><span class="fu">:::</span><span class="fu">.get_ncp_t</span><span class="op">(</span><span class="va">to</span>, <span class="va">df</span><span class="op">)</span></span>
+<span>    <span class="va">lb.t</span> <span class="op">&lt;-</span> <span class="va">cit</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>    <span class="va">ub.t</span> <span class="op">&lt;-</span> <span class="va">cit</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
+<span>    <span class="va">d</span> <span class="op">&lt;-</span> <span class="va">to</span> <span class="op">*</span> <span class="va">se</span></span>
+<span>    <span class="va">lb</span> <span class="op">&lt;-</span> <span class="va">lb.t</span> <span class="op">*</span> <span class="va">se</span></span>
+<span>    <span class="va">ub</span> <span class="op">&lt;-</span> <span class="va">ub.t</span> <span class="op">*</span> <span class="va">se</span></span>
+<span>    <span class="co"># power</span></span>
+<span>    <span class="va">d.power</span> <span class="op">&lt;-</span> <span class="fu">power.t</span><span class="op">(</span>d <span class="op">=</span> <span class="va">d</span>, n1 <span class="op">=</span> <span class="va">n</span>, alpha <span class="op">=</span> <span class="va">alpha</span><span class="op">)</span></span>
+<span>    <span class="va">lb.power</span> <span class="op">&lt;-</span> <span class="fu">power.t</span><span class="op">(</span>d <span class="op">=</span> <span class="va">lb</span>, n1 <span class="op">=</span> <span class="va">n</span>, alpha <span class="op">=</span> <span class="va">alpha</span><span class="op">)</span></span>
+<span>    <span class="va">ub.power</span> <span class="op">&lt;-</span> <span class="fu">power.t</span><span class="op">(</span>d <span class="op">=</span> <span class="va">ub</span>, n1 <span class="op">=</span> <span class="va">n</span>, alpha <span class="op">=</span> <span class="va">alpha</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>t <span class="op">=</span> <span class="va">to</span>, d <span class="op">=</span> <span class="va">d</span>,</span>
+<span>         se <span class="op">=</span> <span class="va">se</span>, df <span class="op">=</span> <span class="va">df</span>,</span>
+<span>         ci.lb <span class="op">=</span> <span class="va">lb</span>, ci.ub <span class="op">=</span> <span class="va">ub</span>,</span>
+<span>         d.power <span class="op">=</span> <span class="va">d.power</span>,</span>
+<span>         lb.power <span class="op">=</span> <span class="va">lb.power</span>,</span>
+<span>         ub.power <span class="op">=</span> <span class="va">ub.power</span>,</span>
+<span>         p <span class="op">=</span> <span class="va">p</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-miller-irp" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-miller-irp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="chapter3_files/figure-html/fig-miller-irp-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-miller-irp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: fig-miller-irp
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>The most important takeaway from <a href="#fig-miller-irp" class="quarto-xref">Figure&nbsp;<span>2.5</span></a> is that the statistical significance of the original experiment alone <span class="math inline">\(p_0 \leq \alpha\)</span> is not enough to reliably estimate the probability of replicating the effect. Only when the p-value is very small is the range of expected power relatively narrow. For significant but higher p-values there is a lot of uncertainty vis-á-vis the IRP. In this context, <span class="citation" data-cites="Perugini2014-bx">Perugini et al. (<a href="#ref-Perugini2014-bx" role="doc-biblioref">2014</a>)</span> have recommended against the use of the point estimate of an effect size to plan a new study (e.g., a replication). A more conservative approach would be to use another value (e.g., the lower bound) of the <span class="math inline">\((1 - \alpha) \cdot 100\)</span> confidence interval. This conservative approach can mitigate the likely overestimation of the original study, thus providing a more realistic estimation of the probability of replication.</p>
+</section><section id="bayesian-individual-replication-probability" class="level3" data-number="2.6"><h3 data-number="2.6" class="anchored" data-anchor-id="bayesian-individual-replication-probability">
+<span class="header-section-number">2.6</span> Bayesian Individual Replication Probability</h3>
+<p>Miller’s IRP has two main limitations: first, the effect size estimated in the original study is subject to sampling variability. This is not considered by Miller. In reality, the effect size could be larger or smaller. Second, in scientific areas where finding large effects is more challenging, the true effect size is more likely to be smaller, relative to those estimated for research areas in which large effects abound. So considering the study in isolation is a limitation. Even at the individual level, we should expect a higher probability of replication for research areas where there are more true effects to be found. Some of these limitations can be mitigated by Bayesian replication probabilities. If you are not familiar with the logic behind Bayesian statistics, <span class="citation" data-cites="Lindley1972-fa">Lindley (<a href="#ref-Lindley1972-fa" role="doc-biblioref">1972</a>)</span> provides an excellent introduction.</p>
+<p>For a simple example, consider specifying <span class="math inline">\(\Pr(H_1)\)</span> for the individual experiment at hand to reflect knowledge exisitng up to the point of the original experiment, but not including the original experiment itself. In the depression treatment example, this may have to to with the strength of the hypothesis, the plausibility of treatment examined, prior experiments in animals if the original experiment is in humans etc. Then one can apply the calculus of Section <a href="#sec-calc" class="quarto-xref"><span>Section 2.2.2</span></a> (and specifically <a href="#eq-arp-miller" class="quarto-xref">Equation&nbsp;<span>2.16</span></a>) to evaluate the individual replication probability. Consideration of the sampling variability in the effect size may be incorporated in the specific way one calculates the average power. Consideration of the strength of the field of study can be embedded in the prior, either informally or through the use of hierarchical models as seen later.</p>
+</section></section><section id="selection-and-regression-to-the-mean" class="level2" data-number="3"><h2 data-number="3" class="anchored" data-anchor-id="selection-and-regression-to-the-mean">
+<span class="header-section-number">3</span> Selection and Regression to the Mean</h2>
+<p>The original effect size estimation could be biased (usually inflated) for several reasons (e.g., publication bias) affecting the actual probability of replication. For example, let’s assume that original studies are published only when they are significant. In addition, let’s assume we are considering a research area with medium strength and with average medium-small effect sizes (a very likely scenario). Finally, let’s assume we are working with sample sizes that are relatively low. Such a research area will tend to be low-powered; and, significant effects will either be inflated (in the best case) or false positives (in the worst case).</p>
+<!-- GIOVANNI: i have added a small section and simulation about typeM error by gelman. I think that is interesting because shows the amount of effect size inflation given the sample size when selecting for significance -->
+<p>When conducting replication studies of these kinds of original studies, we may find significant but substantially smaller estimated effects (or even non significant effects.) For example, the large scale project <span class="citation" data-cites="Collaboration2015-ep">Collaboration &amp; Open Science Collaboration (<a href="#ref-Collaboration2015-ep" role="doc-biblioref">2015</a>)</span> reported that — regardless of significance level — replicated effects were substantially smaller than original effects. Regression to the mean is a good explanation of this phenomenon, since selection of extreme results will produce on average lower estimations (i.e., shrinkage) in later studies. In addition, if the replication study design (i.e., sample size) is based on the original effect size estimation, the inflation can greatly reduce the power. This is related to the concept of the type-M (M for magnitude) error <span class="citation" data-cites="Gelman2014-js">(<a href="#ref-Gelman2014-js" role="doc-biblioref">Gelman &amp; Carlin, 2014</a>)</span>, which quantifies the exent of inflation given the true effect and the sample size.</p>
+<p>In <a href="#lst-typem" class="quarto-xref">Code&nbsp;<span>2.1</span></a>, there is a small simulation showing how to estimate the type-M error for a two-sample design.</p>
+<div class="cell" data-layout-align="center">
+<div id="lst-typem" class="r cell-code listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst" id="lst-typem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Code&nbsp;1: Type-M error simulation for a two-samples design
+</figcaption><div aria-describedby="lst-typem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode" id="lst-typem"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fl">0.3</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
+<span><span class="va">nsim</span> <span class="op">&lt;-</span> <span class="fl">1e4</span></span>
+<span></span>
+<span><span class="va">di</span> <span class="op">&lt;-</span> <span class="va">pi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="va">nsim</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">nsim</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="va">g0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span>    <span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">d</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span>    <span class="va">tt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">g1</span>, <span class="va">g0</span><span class="op">)</span></span>
+<span>    <span class="va">di</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">tt</span><span class="op">$</span><span class="va">statistic</span> <span class="op">*</span> <span class="va">tt</span><span class="op">$</span><span class="va">stderr</span></span>
+<span>    <span class="va">pi</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">tt</span><span class="op">$</span><span class="va">p.value</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">significant</span> <span class="op">&lt;-</span> <span class="va">pi</span> <span class="op">&lt;=</span> <span class="fl">0.05</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">di</span><span class="op">[</span><span class="va">significant</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="va">d</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.748238</code></pre>
+</div>
+</div>
+<p>The type-M error increases as the sample size and/or the true effect size decreases. The <a href="#fig-typem" class="quarto-xref">Figure&nbsp;<span>2.6</span></a> shows the type-M error for different conditions.</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold"><summary>Code</summary><div class="sourceCode" id="lst-typem-large"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">typeM</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">d</span>, <span class="va">n</span>, <span class="va">B</span> <span class="op">=</span> <span class="fl">1e3</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="va">di</span> <span class="op">&lt;-</span> <span class="va">pi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="va">B</span><span class="op">)</span></span>
+<span>    <span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">nsim</span><span class="op">)</span><span class="op">{</span></span>
+<span>        <span class="va">g0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span>        <span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">d</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span>        <span class="va">tt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">g1</span>, <span class="va">g0</span><span class="op">)</span></span>
+<span>        <span class="va">di</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">tt</span><span class="op">$</span><span class="va">statistic</span> <span class="op">*</span> <span class="va">tt</span><span class="op">$</span><span class="va">stderr</span></span>
+<span>        <span class="va">pi</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">tt</span><span class="op">$</span><span class="va">p.value</span></span>
+<span>    <span class="op">}</span></span>
+<span>    <span class="va">significant</span> <span class="op">&lt;-</span> <span class="va">pi</span> <span class="op">&lt;=</span> <span class="fl">0.05</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">di</span><span class="op">[</span><span class="va">significant</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="va">d</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span></span>
+<span>    n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">100</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>    d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.3</span>, <span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>    M <span class="op">=</span> <span class="cn">NA</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">sim</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="va">sim</span><span class="op">$</span><span class="va">M</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">typeM</span><span class="op">(</span><span class="va">sim</span><span class="op">$</span><span class="va">d</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">sim</span><span class="op">$</span><span class="va">n</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-typem" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-typem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="chapter3_files/figure-html/fig-typem-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-typem-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: fig-typem
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-regmean" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> shows the impact of regression to the mean. We simulated two scenarios with a selection for extreme (i.e., significant) values, where the true average effect is zero. In the top panel, we included some heterogeneity — there is a distribution of true effects where the average size is zero. The selection occurs in a hypothetical original study with a sample size of 25. Then, we simulated two other studies with sample sizes 100 and 500, respectively, sampling from the same distribution and with the same true effect. The crucial lesson of <a href="#fig-regmean" class="quarto-xref">Figure&nbsp;<span>2.7</span></a> is that selection of extreme studies will result in replication studies with lower power and smaller estimated effects. This is especially true if the replication study is based on the estimated effect of the original, low-powered study.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-regmean" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-regmean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="chapter3_files/figure-html/fig-regmean-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-regmean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Regression to the mean. Triangles are significant studies at <span class="math inline">\(\alpha = 0.05\)</span> and dots are the non-significant ones. The highlighted effect (in red) is a randomly selected effect that was significant with <span class="math inline">\(n = 25\)</span> participants (original study <span class="math inline">\(\theta_0\)</span>). We simulated <span class="math inline">\(k = 50\)</span> true effects <span class="math inline">\(\theta_k\)</span> (in blue) from a Gaussian distribution with mean <span class="math inline">\(\mu_{\theta = 0}\)</span> and <span class="math inline">\(\tau^2 = 0.05\)</span>. Then we simulated the first experiment as a comparison of two independent groups, with effect size <span class="math inline">\(\theta_k\)</span>. Then we used the same <span class="math inline">\(\theta_k\)</span> to simulate another experiment with <span class="math inline">\(n = 100\)</span> and <span class="math inline">\(n = 500\)</span> participants. Clearly, as <span class="math inline">\(n\)</span> increases, the <span class="math inline">\(\theta_k\)</span> estimation is more precise, with a shrinkage towards the average effect <span class="math inline">\(\mu_\theta\)</span>.
+</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="probability-of-replication-in-extension-experiments" class="level2" data-number="4"><h2 data-number="4" class="anchored" data-anchor-id="probability-of-replication-in-extension-experiments">
+<span class="header-section-number">4</span> Probability of Replication in Extension Experiments</h2>
+<section id="hierarchical-models" class="level3" data-number="4.1"><h3 data-number="4.1" class="anchored" data-anchor-id="hierarchical-models">
+<span class="header-section-number">4.1</span> Hierarchical Models</h3>
+<p><span class="citation" data-cites="Pawel2020-cm">Pawel &amp; Held (<a href="#ref-Pawel2020-cm" role="doc-biblioref">2020</a>)</span> generalize the methodology of <span class="citation" data-cites="Miller2009-hp">Miller (<a href="#ref-Miller2009-hp" role="doc-biblioref">2009</a>)</span>. Miller’s model neglected the possibility of heterogeneity among true effects, assuming that the power (and thus the effect size) is the same when <span class="math inline">\(H_0\)</span> is false. A more sophisticated way to predict the probability of estimating a certain finding is to use the information of the original study and replication study (<em>one-to-one</em> replication) within a hierarchical bayesian model. Here are two main features of this more general modelling approach:</p>
+<ul>
+<li><p>includes the uncertainty of both studies and eventually the between-study heterogeneity <span class="math inline">\(\tau\)</span>. This allows the replication study to be truly different from the original study (e.g., it allows us to take the effects of publication bias into account).</p></li>
+<li><p>includes a shrinkage factor, balancing the strength of the original study and the between-study heterogeneity, which allows us to account for regression to the mean and effect size inflation of the original study.</p></li>
+</ul>
+<p>We adapted the <span class="citation" data-cites="Pawel2020-cm">Pawel &amp; Held (<a href="#ref-Pawel2020-cm" role="doc-biblioref">2020</a>)</span> model, creating a more general version that can be easily adapted to simulating and analyzing data from replication studies as well as predicting the probability of replication given the model parameters. The generalized version of the model is presented in <a href="#fig-general-model" class="quarto-xref">Figure&nbsp;<span>2.8</span></a>. (The actual model will be implemented in Chapter XXX.)</p>
+<p>In the simple case of a two-group study, where <span class="math inline">\(x_{ir}\)</span> denotes whether individual <span class="math inline">\(i\)</span> is in group one, the distribution of the data in study <span class="math inline">\(r\)</span> is as follows:</p>
+<p><span class="math display">\[
+y_{ir}|x_{ir} \sim \mathcal{N}(\mu_r + x_{ir}\theta_r, \sigma_r)
+\]</span></p>
+<p>In this case, <span class="math inline">\(\theta_r\)</span> can be intepreted as the mean difference between the two groups.</p>
+<p>At the effect size level, for example, we may have:</p>
+<p><span class="math display">\[
+\theta_r \sim \mathcal{N}(\mu_\theta, \tau)
+\]</span></p>
+<!-- TODO: describe standardized vs unstandardized -->
+<p><a href="#fig-general-model" class="quarto-xref">Figure&nbsp;<span>2.8</span></a> depicts the hierarchical model. <span class="math inline">\(\mu_\theta\)</span> is the average true effect and <span class="math inline">\(\tau\)</span> is the heterogeneity thus the standard deviation of the true effects. This is very similar to the generating model presented in <a href="#fig-gen-model-simple" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> and can be considered as a standard two-level model (or a random-effects meta-analysis). Both <span class="math inline">\(\mu_\theta\)</span> and <span class="math inline">\(\tau\)</span> can be associated with a prior distribution. In this case <span class="math inline">\(\boldsymbol{\zeta_\theta}\)</span> and <span class="math inline">\(\boldsymbol{\zeta_\tau}\)</span> are vectors of parameters of the prior distributions. A common choice would be a normal distribution for <span class="math inline">\(\mu_\theta\)</span> and an half-cauchy distribution for <span class="math inline">\(\tau\)</span> <span class="citation" data-cites="Williams2018-wu">(<a href="#ref-Williams2018-wu" role="doc-biblioref">Williams et al., 2018</a>)</span>. At the study level, <span class="math inline">\(\theta_r\)</span> is the study-specific slope (i.e., the difference between the groups), <span class="math inline">\(\mu_t\)</span> is the intercept (i.e., expected value for the reference group). <span class="math inline">\(y_{nr}\)</span> and <span class="math inline">\(x_{nr}\)</span> are the response values and the predictors (respectively) for the individual <span class="math inline">\(n\)</span> of the study <span class="math inline">\(r\)</span>.</p>
+<!-- GIOVANNI: is sigma the residual variance or the effect size sampling variability? -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-general-model" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-general-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="chapter3_files/figure-html/fig-general-model-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-general-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Hierarchical baysian model for estimating the replication outcome.
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>The model can be easily implemented in R using the probabilistic programming language STAN <span class="citation" data-cites="Stan_Development_Team2021-zw">(<a href="#ref-Stan_Development_Team2021-zw" role="doc-biblioref">Stan Development Team, 2021</a>)</span> or, under some conditions, using the analytical form as used in <span class="citation" data-cites="Pawel2020-cm">Pawel &amp; Held (<a href="#ref-Pawel2020-cm" role="doc-biblioref">2020</a>)</span>.</p>
+</section></section><section id="references" class="level2" data-number="5"><h2 data-number="5" class="anchored" data-anchor-id="references">
+<span class="header-section-number">5</span> References</h2>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-Collaboration2015-ep" class="csl-entry" role="listitem">
+Collaboration, O. S., &amp; Open Science Collaboration. (2015). Estimating the reproducibility of psychological science. In <em>Science</em> (Vol. 349). <a href="https://doi.org/10.1126/science.aac4716">https://doi.org/10.1126/science.aac4716</a>
+</div>
+<div id="ref-Gelman2014-js" class="csl-entry" role="listitem">
+Gelman, A., &amp; Carlin, J. (2014). Beyond power calculations. In <em>Perspectives on Psychological Science</em> (Vol. 9, pp. 641–651). <a href="https://doi.org/10.1177/1745691614551642">https://doi.org/10.1177/1745691614551642</a>
+</div>
+<div id="ref-Goeman2010-nm" class="csl-entry" role="listitem">
+Goeman, J. J., Solari, A., &amp; Stijnen, T. (2010). Three-sided hypothesis testing: Simultaneous testing of superiority, equivalence and inferiority. <em>Statistics in Medicine</em>, <em>29</em>, 2117–2125. <a href="https://doi.org/10.1002/sim.4002">https://doi.org/10.1002/sim.4002</a>
+</div>
+<div id="ref-Harrington2019-sw" class="csl-entry" role="listitem">
+Harrington, D., D’Agostino, R. B., Sr, Gatsonis, C., Hogan, J. W., Hunter, D. J., Normand, S.-L. T., Drazen, J. M., &amp; Hamel, M. B. (2019). New guidelines for statistical reporting in the journal. <em>The New England Journal of Medicine</em>, <em>381</em>, 285–286. <a href="https://doi.org/10.1056/NEJMe1906559">https://doi.org/10.1056/NEJMe1906559</a>
+</div>
+<div id="ref-Hedges2019-ry" class="csl-entry" role="listitem">
+Hedges, L. V., &amp; Schauer, J. M. (2019). Statistical analyses for studying replication: Meta-analytic perspectives. <em>Psychological Methods</em>, <em>24</em>, 557–570. <a href="https://doi.org/10.1037/met0000189">https://doi.org/10.1037/met0000189</a>
+</div>
+<div id="ref-Hedges2021-of" class="csl-entry" role="listitem">
+Hedges, L. V., &amp; Schauer, J. M. (2021). The design of replication studies. <em>Journal of the Royal Statistical Society. Series A, (Statistics in Society)</em>, <em>184</em>, 868–886. <a href="https://doi.org/10.1111/rssa.12688">https://doi.org/10.1111/rssa.12688</a>
+</div>
+<div id="ref-Ioannidis2005-em" class="csl-entry" role="listitem">
+Ioannidis, J. P. A. (2005). Why most published research findings are false. <em>PLoS Medicine</em>, <em>2</em>, e124. <a href="https://doi.org/10.1371/journal.pmed.0020124">https://doi.org/10.1371/journal.pmed.0020124</a>
+</div>
+<div id="ref-Jager2014-nq" class="csl-entry" role="listitem">
+Jager, L. R., &amp; Leek, J. T. (2014). An estimate of the science-wise false discovery rate and application to the top medical literature. <em>Biostatistics</em>, <em>15</em>, 1–12. <a href="https://academic.oup.com/biostatistics/article-abstract/15/1/1/244509">https://academic.oup.com/biostatistics/article-abstract/15/1/1/244509</a>
+</div>
+<div id="ref-Kruschke2015-ew" class="csl-entry" role="listitem">
+Kruschke, J. K. (2015). Bayesian approaches to testing a point (<span>“null”</span>) hypothesis. In <em>Doing bayesian data analysis</em> (pp. 335–358). Elsevier. <a href="https://doi.org/10.1016/b978-0-12-405888-0.00012-x">https://doi.org/10.1016/b978-0-12-405888-0.00012-x</a>
+</div>
+<div id="ref-Kruschke2018-sm" class="csl-entry" role="listitem">
+Kruschke, J. K., &amp; Liddell, T. M. (2018). The bayesian new statistics: Hypothesis testing, estimation, meta-analysis, and power analysis from a bayesian perspective. <em>Psychonomic Bulletin &amp; Review</em>, <em>25</em>, 178–206. <a href="https://doi.org/10.3758/s13423-016-1221-4">https://doi.org/10.3758/s13423-016-1221-4</a>
+</div>
+<div id="ref-Lakens2018-ri" class="csl-entry" role="listitem">
+Lakens, D., Scheel, A. M., &amp; Isager, P. M. (2018). Equivalence testing for psychological research: A tutorial. <em>Advances in Methods and Practices in Psychological Science</em>, <em>1</em>, 259–269. <a href="https://doi.org/10.1177/2515245918770963">https://doi.org/10.1177/2515245918770963</a>
+</div>
+<div id="ref-Lindley1972-fa" class="csl-entry" role="listitem">
+Lindley, D. V. (1972). Bayesian statistics a review. In <em>Bayesian statistics</em> (pp. 1–74). <a href="https://doi.org/10.1137/1.9781611970654.ch1">https://doi.org/10.1137/1.9781611970654.ch1</a>
+</div>
+<div id="ref-Miller2009-hp" class="csl-entry" role="listitem">
+Miller, J. (2009). What is the probability of replicating a statistically significant effect? <em>Psychonomic Bulletin &amp; Review</em>, <em>16</em>, 617–640. <a href="https://doi.org/10.3758/PBR.16.4.617">https://doi.org/10.3758/PBR.16.4.617</a>
+</div>
+<div id="ref-Pawel2020-cm" class="csl-entry" role="listitem">
+Pawel, S., &amp; Held, L. (2020). Probabilistic forecasting of replication studies. <em>PloS One</em>, <em>15</em>, e0231416. <a href="https://doi.org/10.1371/journal.pone.0231416">https://doi.org/10.1371/journal.pone.0231416</a>
+</div>
+<div id="ref-Perugini2014-bx" class="csl-entry" role="listitem">
+Perugini, M., Gallucci, M., &amp; Costantini, G. (2014). Safeguard power as a protection against imprecise power estimates. <em>Perspectives on Psychological Science: A Journal of the Association for Psychological Science</em>, <em>9</em>, 319–332. <a href="https://doi.org/10.1177/1745691614528519">https://doi.org/10.1177/1745691614528519</a>
+</div>
+<div id="ref-Schauer2021-ja" class="csl-entry" role="listitem">
+Schauer, J. M., &amp; Hedges, L. V. (2021). Reconsidering statistical methods for assessing replication. <em>Psychological Methods</em>, <em>26</em>, 127–139. <a href="https://doi.org/10.1037/met0000302">https://doi.org/10.1037/met0000302</a>
+</div>
+<div id="ref-Stan_Development_Team2021-zw" class="csl-entry" role="listitem">
+Stan Development Team. (2021). <em>Stan: A c++ library for probability and sampling, version 2.26.0</em>. <a href="https://mc-stan.org/">https://mc-stan.org/</a>
+</div>
+<div id="ref-Steiger2004-wg" class="csl-entry" role="listitem">
+Steiger, J. H. (2004). Beyond the f test: Effect size confidence intervals and tests of close fit in the analysis of variance and contrast analysis. <em>Psychological Methods</em>, <em>9</em>, 164–182. <a href="https://doi.org/10.1037/1082-989X.9.2.164">https://doi.org/10.1037/1082-989X.9.2.164</a>
+</div>
+<div id="ref-Ulrich2020-rk" class="csl-entry" role="listitem">
+Ulrich, R., &amp; Miller, J. (2020). Questionable research practices may have little effect on replicability. <em>eLife</em>, <em>9</em>, e58237. <a href="https://doi.org/10.7554/eLife.58237">https://doi.org/10.7554/eLife.58237</a>
+</div>
+<div id="ref-Wasserstein2016-xv" class="csl-entry" role="listitem">
+Wasserstein, R. L., &amp; Lazar, N. A. (2016). The ASA statement on p-values: Context, process, and purpose. <em>The American Statistician</em>, <em>70</em>, 129–133. <a href="https://doi.org/10.1080/00031305.2016.1154108">https://doi.org/10.1080/00031305.2016.1154108</a>
+</div>
+<div id="ref-Williams2018-wu" class="csl-entry" role="listitem">
+Williams, D. R., Rast, P., &amp; Bürkner, P.-. C. (2018). Bayesian meta-analysis with weakly informative prior distributions. <em>PsyArXiv</em>. <a href="https://doi.org/10.31234/osf.io/7tbrm">https://doi.org/10.31234/osf.io/7tbrm</a>
+</div>
+<div id="ref-Wilson2018-aa" class="csl-entry" role="listitem">
+Wilson, B. M., &amp; Wixted, J. T. (2018). The prior odds of testing a true effect in cognitive and social psychology. <em>Advances in Methods and Practices in Psychological Science</em>, <em>1</em>, 186–197. <a href="https://doi.org/10.1177/2515245918767122">https://doi.org/10.1177/2515245918767122</a>
+</div>
+</div>
+</section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+<ol>
+<li id="fn1"><p>To note that the term ROPE refer to the Bayesian version of the equivalence region in the frequentist <em>equivalence testing</em> approach <span class="citation" data-cites="Lakens2018-ri">(<a href="#ref-Lakens2018-ri" role="doc-biblioref">Lakens et al., 2018</a>)</span>. Despite using the Bayesian term, we are just referring to an area where the effect is neglegible and equivalent to a point-null value (e.g, zero).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>To calculate the confidence interval of the effect size we used the so-called pivot method <span class="citation" data-cites="Steiger2004-wg">(<a href="#ref-Steiger2004-wg" role="doc-biblioref">Steiger, 2004</a>)</span> implemented into the <code>effectsize:::.get_ncp_t()</code> function<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../chapters/chapter1.html" class="pagination-link" aria-label="What is a replication">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">What is a replication</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/chapter4.html" class="pagination-link" aria-label="Statistical methods for replication assessment">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistical methods for replication assessment</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

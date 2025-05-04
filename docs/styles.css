@@ -1,0 +1,14 @@
+.pros li::marker {
+  content: "+  "; /* You can replace with any symbol or emoji */
+  color: green;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.cons li::marker {
+  content: "-  "; /* You can replace with any symbol or emoji */
+  color: firebrick;
+  font-weight: bold;
+  font-size: 1.7em;
+}
+
