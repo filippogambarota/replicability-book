@@ -27,7 +27,7 @@ tex <- latex2exp::TeX
 funs <- filor::get_funs(here("R", "prob-replication.R"))
 ```
 
-# Probability of Replication
+# Probability of Replication {#sec-prob-replication}
 
 ## Key Readings {-}
 

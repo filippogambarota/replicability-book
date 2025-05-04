@@ -32,7 +32,7 @@ quick_forest <- function(data, interval = TRUE, weigth = FALSE, size = 20){
   }
 } + {
   if(interval){
-    geom_segment(aes(x = lower, y = id, 
+    geom_segment(aes(x = lower, y = id,
                    xend = upper, yend = id))
   }
 } +
@@ -48,19 +48,19 @@ quick_forest <- function(data, interval = TRUE, weigth = FALSE, size = 20){
 #   with(data, eval(parse(text = expression)))
 # }
 
-# sim_pub_bias <- function(ps, 
+# sim_pub_bias <- function(ps,
 #                          pns,
 #                          criteria,
-#                          k, 
-#                          theta, 
-#                          tau2, 
-#                          min_n, 
+#                          k,
+#                          theta,
+#                          tau2,
+#                          min_n,
 #                          max_n){
-#   
+#
 #   criteria <- deparse(substitute(criteria))
 #   res <- vector(mode = "list", length = k)
 #   i <- 1
-#   
+#
 #   while(i <= k){
 #     n <- round(runif(1, min_n, max_n))
 #     dat_i <- sim_studies(k = 1, theta = 0.5, tau2 = tau2, n0 = n, n1 = n)
@@ -68,7 +68,7 @@ quick_forest <- function(data, interval = TRUE, weigth = FALSE, size = 20){
 #     dat_i <- escalc(yi = yi, vi = vi, sei = sei, data = dat_i)
 #     dat_i <- data.frame(summary(dat_i))
 #     pub_criteria <- parse_pb_criteria(dat_i, criteria)
-#     
+#
 #     if(pub_criteria){
 #       if(rbinom(1, 1, ps) == 1){
 #         res[[i]] <- dat_i
@@ -81,16 +81,16 @@ quick_forest <- function(data, interval = TRUE, weigth = FALSE, size = 20){
 #       }
 #     }
 #   }
-#   
+#
 #   dat <- do.call(rbind, res)
 #   return(dat)
 # }
 
 sim_pub_bias <- function(selmodel,
-                         k, 
-                         theta, 
-                         tau2, 
-                         nmin, 
+                         k,
+                         theta,
+                         tau2,
+                         nmin,
                          nmax){
   selmodel$method <- match.arg(selmodel$method, choices = c("custom", "2step", "beta"))
   res <- vector(mode = "list", length = k)
@@ -101,7 +101,7 @@ sim_pub_bias <- function(selmodel,
     dat_i$n <- n
     dat_i <- metafor::escalc(yi = yi, vi = vi, sei = sei, data = dat_i)
     dat_i <- data.frame(summary(dat_i))
-    
+
     if(selmodel$method == "2step"){
       ppub <- weigth_2step(x = dat_i[[selmodel$param]], th = selmodel$th, side = selmodel$side)
     }else if(selmodel$method == "beta"){
@@ -109,13 +109,13 @@ sim_pub_bias <- function(selmodel,
     }else{
       ppub <- with(dat_i, eval(parse(text = selmodel$operation)))
     }
-    
+
     if(rbinom(1, 1, ppub) == 1){
       res[[i]] <- dat_i
       i <- i + 1
     }
   }
-  
+
   dat <- do.call(rbind, res)
   return(dat)
 }

@@ -1,4 +1,14 @@
-# probability of a replication see @Ulrich2020-rk and @Miller2009-hp
+#' Probability of replication given prior and study characteristics
+#'
+#' @param pi Prior probability that the effect is true
+#' @param power0 Power of the original study
+#' @param power1 Power of the replication study
+#' @param alpha0 Alpha level of the original study
+#' @param alpha1 Alpha level of the replication study
+#'
+#' @return Probability that a significant original study is replicated
+#' @export
+
 rr <- function(pi,
                power0 = 0.8,
                power1 = 0.8,
@@ -9,6 +19,15 @@ rr <- function(pi,
     num / den
 }
 
+#' Power calculation for two-sample t-test
+#'
+#' @param d Effect size (Cohen's d)
+#' @param n1 Sample size in group 1
+#' @param n2 Sample size in group 2 (defaults to n1)
+#' @param alpha Significance level (default 0.05)
+#'
+#' @return Power of the two-sample t-test
+#' @export
 power.t <- function(d, n1, n2 = NULL, alpha = 0.05){
     if(is.null(n2)) n2 <- n1
     df  <- n1 + n2 - 2
@@ -30,20 +49,28 @@ power.t <- function(d, n1, n2 = NULL, alpha = 0.05){
 #' @examples
 #' arp(2, 0.2, 0.8, 0.05) # as reported in Miller (2009) p.619
 arp <- function(R, pi, power, alpha) {
-  
+
     if(any(R < 2)) stop("number of studies should be equal or greater than 2")
-    
+
     if(length(power) != 1 & length(power) != R){
       stop("length of power vector should be 1 or R")
     }
-    
+
     if(length(power) == 1) power <- rep(power, R)
-  
+
     num <- pi * prod(power) + (1 - pi) * alpha * (alpha/2)^(R - 1)
     den <- pi * power[1] + (1 - pi) * alpha
     num/den
 }
 
+#' Convert p-value to Cohens d and estimate power
+#'
+#' @param p Two-tailed p-value
+#' @param n Sample size per group
+#' @param alpha Significance level (default 0.05)
+#'
+#' @return A list with effect size (d), confidence interval, standard error, power estimates
+#' @export
 p2d <- function(p, n, alpha = 0.05){
     df <- n*2 - 2
     to <- abs(qt(p/2, df))

@@ -16,29 +16,29 @@ sim_studies <- function(k, es, tau2 = 0, n1, n2 = NULL, add = NULL){
   if(length(n1) == 1) n1 <- rep(n1, k)
   if(is.null(n2)) n2 <- n1
   if(length(es) == 1) es <- rep(es, k)
-  
+
   yi <- rep(NA, k)
   vi <- rep(NA, k)
-  
+
   # random effects
   deltai <- rnorm(k, 0, sqrt(tau2))
-  
+
   for(i in 1:k){
     g1 <- rnorm(n1[i], 0, 1)
     g2 <- rnorm(n2[i], es[i] + deltai[i], 1)
     yi[i] <- mean(g2) - mean(g1)
     vi[i] <- var(g1)/n1[i] + var(g2)/n2[i]
   }
-  
+
   sim <- data.frame(id = 1:k, yi, vi, n1 = n1, n2 = n2)
-  
+
   if(!is.null(add)){
     sim <- cbind(sim, add)
   }
-  
+
   # convert to escalc for using metafor methods
   sim <- metafor::escalc(yi = yi, vi = vi, data = sim)
-  
+
   return(sim)
 }
 
@@ -55,7 +55,7 @@ sim_vi <- function(k, v1 = 1, v2 = NULL, n1, n2 = NULL){
 qforest <- function(data, interval = TRUE, wi = FALSE, size = 20){
   xlim <- with(data, c(min(ci.lb) - 0.5, max(ci.ub) + 0.5))
   data$id <- factor(data$id, levels = 1:nrow(data), labels = paste("Study", 1:nrow(data)))
-  
+
   ggplot(data) + {
     if(wi){
       geom_point(aes(x = yi, y = id, size = 1/vi),
@@ -68,7 +68,7 @@ qforest <- function(data, interval = TRUE, wi = FALSE, size = 20){
     }
   } + {
     if(interval){
-      geom_segment(aes(x = ci.lb, y = id, 
+      geom_segment(aes(x = ci.lb, y = id,
                        xend = ci.ub, yend = id))
     }
   } +
@@ -95,40 +95,40 @@ all_rma <- function(fit){
 summary_rma <- function(x,
                         b = "intrcpt",
                         extra_params = NULL) {
-  
+
   if(x$model != "rma.uni"){
     stop("The function currently support only rma.uni models")
   }
-  
+
   params <- c("b", "se", "zval", "pval", "ci.lb", "ci.ub")
-  
+
   if(!is.null(extra_params)){
     extra_params <- base::setdiff(extra_params, params)
     params <- c(params, extra_params)
   }
-  
+
   fixefs <- lapply(params, function(p) if(is.numeric(x[p])) as.numeric(x[p]) else x[p])
   names(fixefs) <- params
   fixefs <- data.frame(fixefs)
   fixefs <- fixefs[grepl(b, rownames(fixefs)), ]
   names(fixefs)[1] <- sprintf("%s (%s)", names(fixefs)[1], b)
-  
+
   if (is.null(x$model)) {
     sigmas <- x$sigma2
   } else {
     sigmas <- x$tau2
   }
-  
+
   if(x$model == "rma.uni"){
     fixefs$I2 <- x$I2
   }
-  
+
   if(length(sigmas) > 1){
     names(sigmas) <- paste0("tau2_", 1:length(sigmas))
   }else{
     names(sigmas) <- "tau2"
   }
-  
+
   out <- cbind(fixefs, t(data.frame(sigmas)))
   rownames(out) <- NULL
   return(out)
@@ -172,11 +172,11 @@ wstep <- function(p, delta, steps, ...){
 }
 
 # simulate a (biased) dataset according to a selection model
-sim_biased_studies <- function(k, 
-                               es, 
-                               tau2 = 0, 
-                               nmin, 
-                               nmax = NULL, 
+sim_biased_studies <- function(k,
+                               es,
+                               tau2 = 0,
+                               nmin,
+                               nmax = NULL,
                                type,
                                alternative = "greater",
                                delta,
@@ -185,26 +185,26 @@ sim_biased_studies <- function(k,
   if(is.null(nmax)) nmax <- nmin
   type <- match.arg(type, c("stepfun", "negexp"))
   alternative <- match.arg(alternative, c("less", "greater", "two.sided"))
-  
+
   wfun <- switch(type,
                  "negexp" = wnegexp,
                  "stepfun" = wstep
   )
-  
+
   if(type == "stepfun"){
     if((!all(rev(delta) == delta)) & alternative == "two.sided"){
-      warning("The delta (weights) of the step 
+      warning("The delta (weights) of the step
               function appear to be non-symmetric but alternative = 'two.sided'")
     }
   }
-  
+
   i <- 1
   data <- vector(mode = "list", length = k)
   while(i <= k){
     n <- round(runif(1, nmin, nmax))
     d <- sim_studies(1, es, tau2, n)
     d <- summary(d)
-    
+
     if(alternative == "greater"){
       pval <- 1 - pnorm(d$zi)
     }else if(alternative == "less"){
@@ -212,7 +212,7 @@ sim_biased_studies <- function(k,
     }else{
       pval <- d$pval
     }
-    
+
     w <- wfun(pval, delta, steps)
     keep <- rbinom(1, 1, w) == 1
     if(keep){
@@ -220,10 +220,10 @@ sim_biased_studies <- function(k,
       i = i + 1
     }
   }
-  
+
   data <- do.call(rbind, data)
   return(data)
-  
+
 }
 
 # analytical power analysis

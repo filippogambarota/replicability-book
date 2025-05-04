@@ -26,11 +26,6 @@ get_yaml_params <- function(file){
   yaml::read_yaml(text = lines[yaml_index[1]:yaml_index[2]])
 }
 
-read_all_funs <- function(path = "R"){
-  funs <- list.files("R/", pattern = "*.R", include.dirs = FALSE, full.names = TRUE)
-  filor::get_funs(funs)
-}
-
 ht <- function(x, n = 5){
   if(is.vector(x)) k <- length(x) else k <- nrow(x)
   if(k < n*2){
