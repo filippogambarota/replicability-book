@@ -261,9 +261,7 @@ window.Quarto = {
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">
-<span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability of Replication</span>
-</h1>
+<h1 class="title"><span id="sec-prob-replication" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Probability of Replication</span></span></h1>
 </div>
 
 
@@ -513,7 +511,7 @@ True
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center;font-weight: bold;vertical-align: middle !important;" rowspan="2">
+<td style="text-align:center;font-weight: bold;">
 <span class="math inline">\(\boldsymbol{H_0}\)</span>
 </td>
 <td style="text-align:center;font-weight: bold;">
@@ -530,6 +528,9 @@ False Negative (<span class="math inline">\(\beta\)</span>)
 </td>
 </tr>
 <tr>
+<td style="text-align:center;font-weight: bold;">
+<span class="math inline">\(\boldsymbol{H_0}\)</span>
+</td>
 <td style="text-align:center;font-weight: bold;">
 True
 </td>
@@ -562,15 +563,15 @@ True Negative (<span class="math inline">\(1 - \alpha\)</span>)
 <p>We implemented the <span class="citation" data-cites="Miller2009-hp">Miller (<a href="chapter5.html#ref-Miller2009-hp" role="doc-biblioref">2009</a>)</span> equations in R (see also <code>?arp</code>):</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">arp</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">R</span>, <span class="va">pi</span>, <span class="va">power</span>, <span class="va">alpha</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  </span>
+<span></span>
 <span>    <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">R</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"number of studies should be equal or greater than 2"</span><span class="op">)</span></span>
-<span>    </span>
+<span></span>
 <span>    <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">power</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">power</span><span class="op">)</span> <span class="op">!=</span> <span class="va">R</span><span class="op">)</span><span class="op">{</span></span>
 <span>      <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"length of power vector should be 1 or R"</span><span class="op">)</span></span>
 <span>    <span class="op">}</span></span>
-<span>    </span>
+<span></span>
 <span>    <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">power</span><span class="op">)</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span> <span class="va">power</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">power</span>, <span class="va">R</span><span class="op">)</span></span>
-<span>  </span>
+<span></span>
 <span>    <span class="va">num</span> <span class="op">&lt;-</span> <span class="va">pi</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/prod.html">prod</a></span><span class="op">(</span><span class="va">power</span><span class="op">)</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">pi</span><span class="op">)</span> <span class="op">*</span> <span class="va">alpha</span> <span class="op">*</span> <span class="op">(</span><span class="va">alpha</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="op">(</span><span class="va">R</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span></span>
 <span>    <span class="va">den</span> <span class="op">&lt;-</span> <span class="va">pi</span> <span class="op">*</span> <span class="va">power</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">pi</span><span class="op">)</span> <span class="op">*</span> <span class="va">alpha</span></span>
 <span>    <span class="va">num</span><span class="op">/</span><span class="va">den</span></span>
@@ -580,7 +581,7 @@ True Negative (<span class="math inline">\(1 - \alpha\)</span>)
 <p>The <a href="#fig-arp1" class="quarto-xref">Figure&nbsp;<span>3.4</span></a> depicts how the ARP changes as we vary the theory strength <span class="math inline">\(\pi\)</span> and the power (assumed to be the same for the original and replication experiment).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-arp1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center" width="768">
+<div id="fig-arp1" class="quarto-float quarto-figure quarto-figure-center anchored" width="768" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-arp1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="chapter3_files/figure-html/fig-arp1-1.png" id="fig-arp1" class="img-fluid quarto-figure quarto-figure-center anchored figure-img" width="768">
 </div>
@@ -671,7 +672,7 @@ Code&nbsp;1: Type-M error simulation for a two-samples design
 </figure>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.739501</code></pre>
+<pre><code>[1] 1.748238</code></pre>
 </div>
 </div>
 <p>The type-M error increases as the sample size and/or the true effect size decreases. The <a href="#fig-typem" class="quarto-xref">Figure&nbsp;<span>3.6</span></a> shows the type-M error for different conditions.</p>
