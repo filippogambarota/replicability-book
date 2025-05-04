@@ -302,7 +302,9 @@ propose some kind of classification/taxonomy here. for example:
 <li>we select both bayesian and frequentist methods</li>
 <li>we selected methods more related to inference and also methods more focused on estimation of the effect size</li>
 <li>we selected methods that are not linked to a specific research area or topic. For example in the database there are methods for <em>voxels</em> in fMRI research or methods for metrology.</li>
-</ul></section><section id="methods" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="methods">
+</ul>
+<p>An important point is related to the choice of the method when evaluating a replication result. The <span class="citation" data-cites="Heyard2024-hv">Heyard et al. (<a href="chapter5.html#ref-Heyard2024-hv" role="doc-biblioref">2024</a>)</span> work shows the amount of different methods and definitions of replication success without formally comparing them. This is not a problematic aspect because in practice, large scale replication projects such as the <!-- TODO add the references --> used different methods for the same dataset. In this context is important clearly use the method, and the related replication definition, closest to our aim.</p>
+</section><section id="methods" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="methods">
 <span class="header-section-number">4.2</span> Methods</h2>
 <ul>
 <li><label><input type="checkbox" checked="">Prediction interval: replication effect in original 95% prediction interval</label></li>
@@ -360,82 +362,58 @@ propose some kind of classification/taxonomy here. for example:
 <li>
 <span class="math inline">\(y_1\)</span>: as the treated group</li>
 </ul>
-<p>For example, to simulate a single study we can define the true effect size parameter <span class="math inline">\(\theta_r\)</span> and then generate two independent groups sampled from two normal distributions with variance equal to one. One of the distribution is centered on zero while the other distribution is centered on <span class="math inline">\(\theta_r\)</span>.</p>
+<!-- TODO add more notation here --><p>For example we can simulate a single study:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">theta</span> <span class="op">&lt;-</span> <span class="fl">0.3</span></span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">es</span> <span class="op">&lt;-</span> <span class="fl">0.3</span></span>
 <span><span class="va">n0</span> <span class="op">&lt;-</span> <span class="fl">30</span></span>
 <span><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fl">30</span></span>
 <span></span>
 <span><span class="va">y0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n0</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n1</span>, <span class="va">theta</span>, <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span> <span class="co"># this is the effect size</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7219476</code></pre>
+<span><span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n1</span>, <span class="va">es</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span> <span class="co"># this is the effect size</span></span>
+<span><span class="co">## [1] 0.1770251</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">/</span><span class="va">n0</span> <span class="co"># this is the sampling variability</span></span>
+<span><span class="co">## [1] 0.06015214</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">/</span><span class="va">n0</span> <span class="co"># this is the sampling variability</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.04570848</code></pre>
-</div>
-</div>
-<p>Now we can simply iterate the process for <span class="math inline">\(R\)</span> studies to create a series of replications with a common true parameter <span class="math inline">\(\theta\)</span>. We can also generate a more realistic set of sample sizes sampling from a probability distribution (e.g., Poisson)</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">R</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
-<span><span class="va">yi</span> <span class="op">&lt;-</span> <span class="va">vi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="va">R</span><span class="op">)</span></span>
-<span><span class="va">n0</span> <span class="op">&lt;-</span> <span class="va">n1</span> <span class="op">&lt;-</span> <span class="fl">10</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span><span class="op">(</span><span class="va">R</span>, <span class="fl">40</span> <span class="op">-</span> <span class="fl">10</span><span class="op">)</span></span>
-<span></span>
-<span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">R</span><span class="op">)</span><span class="op">{</span></span>
-<span>    <span class="va">y0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n0</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
-<span>    <span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n1</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="va">theta</span>, <span class="fl">1</span><span class="op">)</span></span>
-<span>    <span class="va">yi</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span></span>
-<span>    <span class="va">vi</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span><span class="op">/</span><span class="va">n1</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">/</span><span class="va">n0</span><span class="op">[</span><span class="va">i</span><span class="op">]</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="va">sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="op">(</span><span class="va">R</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>, <span class="va">yi</span>, <span class="va">vi</span>, <span class="va">n0</span>, <span class="va">n1</span><span class="op">)</span></span>
-<span><span class="va">sim</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   id          yi         vi n0 n1
-1   0  0.45319870 0.05896224 30 30
-2   1  0.75219123 0.04300375 39 39
-3   2  0.48505037 0.05021670 34 34
-4   3 -0.02538025 0.07475703 28 28
-5   4  0.03408793 0.04360755 36 36
-6   5  0.30382729 0.04678444 44 44
-7   6  0.32837823 0.07442270 35 35
-8   7  0.52876249 0.07427798 35 35
-9   8  0.16347147 0.04452318 42 42
-10  9  0.26753467 0.05095639 35 35</code></pre>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter4_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<p>Then, if we want to include variability in the true effects as in the extension framework we can simply sample <span class="math inline">\(R\)</span> <span class="math inline">\(\theta\)</span>’s from a normal distribution with variability <span class="math inline">\(\tau^2\)</span>.</p>
+</div>
+<p>Now we can simply iterate the process for <span class="math inline">\(R\)</span> studies to create a series of replications with a common true parameter <span class="math inline">\(\theta\)</span>. We can also generate a more realistic set of sample sizes sampling from a probability distribution (e.g., Poisson). Then, if we want to include variability in the true effects as in the extension framework we can simply sample <span class="math inline">\(k\)</span> <span class="math inline">\(\theta\)</span>’s from a normal distribution with variability <span class="math inline">\(\tau^2\)</span>.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>   id          yi         vi       theta n0 n1
-1   0  0.23025582 0.02991196 -0.12701687 49 49
-2   1  0.03450965 0.04275686 -0.15888936 43 43
-3   2 -0.15974907 0.05264337 -0.08834685 36 36
-4   3  0.84069792 0.03653456  0.34532322 51 51
-5   4  0.54427307 0.03850827  0.48883364 39 39
-6   5  0.85082587 0.05670523  0.78024036 43 43
-7   6 -0.29223114 0.05542844  0.18416183 38 38
-8   7 -0.31715118 0.05055857 -0.26577465 31 31
-9   8  0.49313340 0.04785534  0.46160076 55 55
-10  9  0.19670947 0.03042870  0.31707221 45 45</code></pre>
+<pre><code>   id           yi         vi n0 n1
+1   1 -0.309182883 0.04721305 40 40
+2   2 -0.007160845 0.05244029 38 38
+3   3  0.400803196 0.02992522 58 58
+4   4  0.598311744 0.05014373 43 43
+5   5  0.261480295 0.06766628 41 41
+6   6  0.449684404 0.05287953 37 37
+7   7  0.346506342 0.05851893 33 33
+8   8  0.317175615 0.05576734 41 41
+9   9  0.640812151 0.04657143 48 48
+10 10  0.347284159 0.06991821 34 34</code></pre>
 </div>
 </div>
 <p>Then we can put everything in a function that can be used to simulate different scenarios.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>   id        yi         vi n0 n1
-1   1 0.5031167 0.07332769 30 30
-2   2 0.6784039 0.04764774 30 30
-3   3 0.7020578 0.08696338 30 30
-4   4 0.2297185 0.05573452 30 30
-5   5 0.3727306 0.05226134 30 30
-6   6 0.5249823 0.06689612 30 30
-7   7 0.4601728 0.05637307 30 30
-8   8 0.3384389 0.07316258 30 30
-9   9 0.6214128 0.06649973 30 30
-10 10 0.5610664 0.10315956 30 30</code></pre>
+1   1 0.7165347 0.05813802 30 30
+2   2 0.6992119 0.04220137 30 30
+3   3 0.4546156 0.05948486 30 30
+4   4 0.9265450 0.05913646 30 30
+5   5 0.2003159 0.06838246 30 30
+6   6 0.7966482 0.07168206 30 30
+7   7 0.5775708 0.05543920 30 30
+8   8 0.3816547 0.05839979 30 30
+9   9 0.3395412 0.06251267 30 30
+10 10 0.3649269 0.06040433 30 30</code></pre>
 </div>
 </div>
 </section><section id="references" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="references">
