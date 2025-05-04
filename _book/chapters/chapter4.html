@@ -376,9 +376,9 @@ propose some kind of classification/taxonomy here. for example:
 <span><span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n1</span>, <span class="va">es</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span> <span class="co"># this is the effect size</span></span>
-<span><span class="co">## [1] -0.2527658</span></span>
+<span><span class="co">## [1] 0.6472849</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">/</span><span class="va">n0</span> <span class="co"># this is the sampling variability</span></span>
-<span><span class="co">## [1] 0.06276777</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">## [1] 0.06295947</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -409,16 +409,16 @@ propose some kind of classification/taxonomy here. for example:
 <span><span class="va">sim</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   id          yi         vi n0 n1
-1   1  1.06383395 0.04752847 45 45
-2   2  0.05881280 0.04610574 41 41
-3   3  0.01988944 0.04981906 34 34
-4   4 -0.07042052 0.05401286 41 41
-5   5  0.13847689 0.04990939 48 48
-6   6 -0.19374822 0.04057437 44 44
-7   7  0.36186205 0.04385018 40 40
-8   8  0.98427501 0.04925622 40 40
-9   9  0.64993082 0.06250627 37 37
-10 10  0.55322225 0.06562681 33 33</code></pre>
+1   1  0.25173931 0.03965765 51 51
+2   2 -0.08177908 0.06500606 32 32
+3   3  0.68836356 0.04644418 34 34
+4   4  0.54927820 0.05894016 41 41
+5   5  0.45378349 0.03914158 49 49
+6   6  0.34509827 0.05023183 44 44
+7   7  0.48707760 0.05684256 37 37
+8   8  0.24956027 0.03234272 40 40
+9   9  0.25702010 0.05291814 40 40
+10 10  0.10842962 0.05450703 34 34</code></pre>
 </div>
 </div>
 <p>Then we can put everything in a function that can be used to simulate different scenarios.</p>
@@ -427,16 +427,16 @@ propose some kind of classification/taxonomy here. for example:
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>   id        yi         vi       sei n0 n1
-1   1 0.3399809 0.07116220 0.2667624 30 30
-2   2 0.4278837 0.04201548 0.2049768 30 30
-3   3 0.2704184 0.06025675 0.2454725 30 30
-4   4 0.5468315 0.06710974 0.2590555 30 30
-5   5 0.4001629 0.06226120 0.2495219 30 30
-6   6 0.2792458 0.05930389 0.2435239 30 30
-7   7 0.7924158 0.07384220 0.2717392 30 30
-8   8 0.6630527 0.06591140 0.2567322 30 30
-9   9 0.4462860 0.05264330 0.2294413 30 30
-10 10 0.3847506 0.07295034 0.2700932 30 30</code></pre>
+1   1 0.6324991 0.05496362 0.2344432 30 30
+2   2 0.5940536 0.07861609 0.2803856 30 30
+3   3 0.3981183 0.05645836 0.2376097 30 30
+4   4 0.6837086 0.04093500 0.2023240 30 30
+5   5 0.8119503 0.05529349 0.2351457 30 30
+6   6 0.7147561 0.07962822 0.2821847 30 30
+7   7 0.6472384 0.06380607 0.2525986 30 30
+8   8 0.2282466 0.08348952 0.2889455 30 30
+9   9 0.8094785 0.06443810 0.2538466 30 30
+10 10 0.1864012 0.05510704 0.2347489 30 30</code></pre>
 </div>
 </div>
 </section><section id="vote-counting-based-on-significance-or-direction" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="vote-counting-based-on-significance-or-direction">
@@ -456,35 +456,61 @@ propose some kind of classification/taxonomy here. for example:
 </div>
 <p>Let’s simulate an exact replication:</p>
 <div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## original study</span></span>
+<span><span class="va">n_orig</span> <span class="op">&lt;-</span> <span class="fl">30</span></span>
+<span><span class="va">theta_orig</span> <span class="op">&lt;-</span> <span class="fu">theta_from_z</span><span class="op">(</span><span class="fl">2</span>, <span class="va">n_orig</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">orig</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  yi <span class="op">=</span> <span class="va">theta_orig</span>,</span>
+<span>  vi <span class="op">=</span> <span class="fl">4</span><span class="op">/</span><span class="op">(</span><span class="va">n_orig</span><span class="op">*</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">orig</span><span class="op">$</span><span class="va">sei</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">orig</span><span class="op">$</span><span class="va">vi</span><span class="op">)</span></span>
+<span><span class="va">orig</span> <span class="op">&lt;-</span> <span class="fu">summary_es</span><span class="op">(</span><span class="va">orig</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">orig</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         yi         vi       sei zi       pval      ci.lb    ci.ub
 1 0.5163978 0.06666667 0.2581989  2 0.04550026 0.01033725 1.022458</code></pre>
 </div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## replications</span></span>
+<span></span>
+<span><span class="va">R</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">reps</span> <span class="op">&lt;-</span> <span class="fu">sim_studies</span><span class="op">(</span>R <span class="op">=</span> <span class="va">R</span>, </span>
+<span>                    mu <span class="op">=</span> <span class="va">theta_orig</span>, </span>
+<span>                    tau2 <span class="op">=</span> <span class="fl">0</span>, </span>
+<span>                    <span class="va">n_orig</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">reps</span> <span class="op">&lt;-</span> <span class="fu">summary_es</span><span class="op">(</span><span class="va">reps</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">reps</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  id        yi         vi       sei n0 n1       zi         pval       ci.lb
-1  1 0.7748452 0.04517138 0.2125356 30 30 3.645719 0.0002666449  0.35828303
-2  2 0.5960025 0.06486503 0.2546861 30 30 2.340145 0.0192762482  0.09682686
-3  3 0.4271156 0.05712830 0.2390153 30 30 1.786980 0.0739407040 -0.04134579
-4  4 0.5474998 0.05277577 0.2297298 30 30 2.383234 0.0171612811  0.09723773
-5  5 0.9935108 0.09283679 0.3046913 30 30 3.260713 0.0011113259  0.39632682
-6  6 0.6877208 0.07327784 0.2706988 30 30 2.540539 0.0110681837  0.15716088
+<pre><code>  id        yi         vi       sei n0 n1        zi        pval       ci.lb
+1  1 0.4856457 0.04089962 0.2022365 30 30 2.4013745 0.016333612  0.08926933
+2  2 0.6013880 0.05437467 0.2331838 30 30 2.5790302 0.009907811  0.14435621
+3  3 0.1040835 0.05744154 0.2396696 30 30 0.4342791 0.664085748 -0.36566034
+4  4 0.2831520 0.05774942 0.2403111 30 30 1.1782729 0.238687824 -0.18784903
+5  5 0.5684981 0.07109720 0.2666406 30 30 2.1320765 0.033000561  0.04589217
+6  6 0.6433677 0.07018990 0.2649338 30 30 2.4284095 0.015165211  0.12410702
       ci.ub
-1 1.1914073
-2 1.0951781
-3 0.8955769
-4 0.9977619
-5 1.5906948
-6 1.2182806</code></pre>
+1 0.8820220
+2 1.0584198
+3 0.5738274
+4 0.7541531
+5 1.0911041
+6 1.1626283</code></pre>
 </div>
 </div>
 <p>Let’s compute the proportions of replication studies are statistically significant:</p>
 <div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">reps</span><span class="op">$</span><span class="va">pval</span> <span class="op">&lt;=</span> <span class="fl">0.05</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6</code></pre>
 </div>
 </div>
 <p>Let’s compute the proportions of replication studies with the same sign as the original:</p>
 <div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sign.html">sign</a></span><span class="op">(</span><span class="va">orig</span><span class="op">$</span><span class="va">yi</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/sign.html">sign</a></span><span class="op">(</span><span class="va">reps</span><span class="op">$</span><span class="va">yi</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
@@ -500,6 +526,7 @@ propose some kind of classification/taxonomy here. for example:
 </div>
 </div>
 </div>
+<p>The most problematic aspect of using only the information from the sign of the effect or the p value is completely losing the information about the <strong>size of the effect</strong>.</p>
 </section><section id="confidenceprediction-interval-methods" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="confidenceprediction-interval-methods">
 <span class="header-section-number">4.6</span> Confidence/prediction interval methods</h2>
 </section><section id="meta-analytic-methods" class="level2" data-number="4.7"><h2 data-number="4.7" class="anchored" data-anchor-id="meta-analytic-methods">
