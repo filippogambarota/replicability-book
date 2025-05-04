@@ -1,5 +1,5 @@
 # Todoget Report
-last update: 2025-05-04 (17:52)
+last update: 2025-05-04 (18:29)
 
 ## index.qmd
 
@@ -29,6 +29,7 @@ last update: 2025-05-04 (17:52)
 - Line 59: An important point is related to the choice of the method when evaluating a replication result. The @Heyard2024-hv work shows the amount of different methods and definitions of replication success without formally comparing them. This is not a problematic aspect because in practice, large scale replication projects such as the  TODO add the references  used different methods for the same dataset. In this context is important clearly use the method, and the related replication definition, closest to our aim. 
 - Line 105: While real-world examples are important, to understand the replication methods from a statistical point of view, simulating simplified examples is a good strategies. Furthermore, simulating data is nowadays considered an important tool to teach and understand statistical methods  TODO add reference about simulating for learning . In additions, Monte Carlo simulations are necessary to estimate statistical properties (e.g., statistical power or type-1 error rate) of complex models. 
 - Line 118: TODO add more notation here 
+- Line 281: The main improvement of confidence/prediction interval methods is taking into account the size of the effect and the precision. The confidence interval represent the sampling uncertainty around the estimated value. It is interpreted as the percentage of confidence intervals under repetition of the same sampling procedure that contains the true value.  TODO check better definition 
 
 ## chapters/changelog.qmd
 
