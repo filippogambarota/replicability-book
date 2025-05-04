@@ -56,7 +56,7 @@ integrated.
 
 # Todoget Report
 
-last update: 2025-05-04 (17:52)
+last update: 2025-05-04 (18:29)
 
 ## index.qmd
 
@@ -122,6 +122,12 @@ last update: 2025-05-04 (17:52)
   statistical properties (e.g., statistical power or type-1 error rate)
   of complex models.
 - Line 118: TODO add more notation here
+- Line 281: The main improvement of confidence/prediction interval
+  methods is taking into account the size of the effect and the
+  precision. The confidence interval represent the sampling uncertainty
+  around the estimated value. It is interpreted as the percentage of
+  confidence intervals under repetition of the same sampling procedure
+  that contains the true value. TODO check better definition
 
 ## chapters/changelog.qmd
 
