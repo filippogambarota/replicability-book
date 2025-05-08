@@ -4,17 +4,7 @@
     "href": "index.html",
     "title": "The three Rs of trustworthy science",
     "section": "",
-    "text": "Welcome\nThe aim of the book is to provide un updated (and continuously evolving) overview of the replication in science from a theoretical and statistical point of view. The book is not supposed to be exaustive but providing a general framework for learning and teaching the problem of replication in the era of the reproducibility and replicability crisis.",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#contents",
-    "href": "index.html#contents",
-    "title": "The three Rs of trustworthy science",
-    "section": "Contents",
-    "text": "Contents",
+    "text": "Welcome\nThe aim of this book is to provide a critical and up-to-date overview of the replication problem in science from theoretical, philosophical, and statistical perspectives. Rather than being exhaustive, the book seeks to offer a general framework for understanding and teaching the replication issue in the context of the current reproducibility and replicability crisis.",
     "crumbs": [
       "Welcome"
     ]
@@ -24,17 +14,7 @@
     "href": "index.html#book-structure",
     "title": "The three Rs of trustworthy science",
     "section": "Book structure",
-    "text": "Book structure\nThe book is written in Quarto. All materials and source code GitHub. The main language used in the statistical part of the book is R. In addition, we wrote several functions used in the examples collected into an R package  used through the book. You are free to fork, share and reuse contents. In addition, we consider the book as a shared resources thus if you have some suggestions, additions or any way to extend or improve the content you can submit a pull request on Github or contact the author (see the Contributing section).",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#sec-contributing",
-    "href": "index.html#sec-contributing",
-    "title": "The three Rs of trustworthy science",
-    "section": "Contributing",
-    "text": "Contributing\nFor contributing submit a PR on Github or write an email to Filippo Gambarota (filippo.gambarota@unipd.it).",
+    "text": "Book structure\nThe book is written in Quarto. All materials and source code GitHub. The main language used in the statistical part of the book is R. In addition, we wrote several functions used in the examples collected into the R folder. You are free to fork, share and reuse contents. If you have suggestions, additions or comments or to improve the content you can submit a pull request on Github or contact Filippo Gambarota (filippo.gambarota@unipd.it).",
     "crumbs": [
       "Welcome"
     ]

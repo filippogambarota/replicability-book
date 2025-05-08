@@ -43,6 +43,13 @@ book:
     - chapters/chapter5.qmd
     - chapters/chapter6.qmd
     - chapters/chapter7.qmd
+  repo-url: https://github.com/filippogambarota/replicability-book
+  issue-url: https://github.com/filippogambarota/replicability-book/issues/new/choose
+  repo-actions: [edit, issue]
+  search: true
+  
+comments:
+  hypothesis: true
 
 bibliography: "https://raw.githubusercontent.com/filippogambarota/bib-database/main/references.bib"
 csl: "https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl"
