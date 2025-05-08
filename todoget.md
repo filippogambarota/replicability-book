@@ -1,12 +1,5 @@
 # Todoget Report
-last update: 2025-05-08 (18:43)
-
-## index.qmd
-
-- Line 4: TODO expand this section a little bit 
-- Line 8: TODO describe book contents and chapters here 
-- Line 12: The book is written in [Quarto](https://quarto.org/). All materials and source code GitHub. The main language used in the statistical part of the book is [R](https://www.r-project.org/). In addition, we wrote several functions used in the examples collected into an R package  TODO put R package name  used through the book. You are free to fork, share and reuse contents. In addition, we consider the book as a shared resources thus if you have some suggestions, additions or any way to extend or improve the content you can submit a pull request on Github or contact the author (see the @sec-contributing section). 
-- Line 18: TODO study a little bit how the PR method could work 
+last update: 2025-05-08 (19:22)
 
 ## chapters/chapter3.qmd
 
@@ -31,13 +24,6 @@ last update: 2025-05-08 (18:43)
 ## chapters/changelog.qmd
 
 - Line 0: TODO adapt a changelog strategy as lakens https://lakens.github.io/statistical_inferences/changelog.html 
-
-## docs/index.html
-
-- Line 243: TODO expand this section a little bit 
-- Line 246: TODO describe book contents and chapters here 
-- Line 250: <p>The book is written in <a href="https://quarto.org/">Quarto</a>. All materials and source code GitHub. The main language used in the statistical part of the book is <a href="https://www.r-project.org/">R</a>. In addition, we wrote several functions used in the examples collected into an R package  TODO put R package name  used through the book. You are free to fork, share and reuse contents. In addition, we consider the book as a shared resources thus if you have some suggestions, additions or any way to extend or improve the content you can submit a pull request on Github or contact the author (see the <a href="sec-contributing" class="quarto-xref"><span>Contributing</span></a> section).</p> 
-- Line 255: TODO study a little bit how the PR method could work 
 
 ## docs/chapters/chapter3.html
 
