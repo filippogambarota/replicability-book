@@ -37,12 +37,12 @@ book:
   chapters:
     - index.qmd
     - chapters/chapter1.qmd
-    #- chapters/chapter2.qmd
+    - chapters/chapter2.qmd
     - chapters/chapter3.qmd
     - chapters/chapter4.qmd
-    #- chapters/chapter5.qmd
-    #- chapters/chapter6.qmd
-    #- chapters/chapter7.qmd
+    - chapters/chapter5.qmd
+    - chapters/chapter6.qmd
+    - chapters/chapter7.qmd
 
 bibliography: "https://raw.githubusercontent.com/filippogambarota/bib-database/main/references.bib"
 csl: "https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl"
@@ -59,3 +59,6 @@ execute:
   message: false
   freeze: auto
 
+crossref: 
+    lst-title: Code
+    lst-prefix: Code

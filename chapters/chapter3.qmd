@@ -1,9 +1,4 @@
----
-bibliography: "https://raw.githubusercontent.com/filippogambarota/bib-database/main/references.bib"
-crossref: 
-    lst-title: Code
-    lst-prefix: Code
----
+# Probability of Replication {#sec-probrep}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(fig.align = "center",
@@ -26,8 +21,6 @@ theme_set(mtheme())
 tex <- latex2exp::TeX
 funs <- filor::get_funs(here("R", "prob-replication.R"))
 ```
-
-# Probability of Replication {#sec-prob-replication}
 
 ## Key Readings {-}
 
@@ -830,4 +823,4 @@ $$
 
 The model can be easily implemented in R using the probabilistic programming language STAN [@Stan_Development_Team2021-zw] or, under some conditions, using the analytical form as used in @Pawel2020-cm.
 
-## References
+## References {.unnumbered}

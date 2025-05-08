@@ -1,1 +1,5 @@
-# Improving study robustness
+# Improving study robustness {#sec-multiverse}
+
+We are working on it! Stay tuned!
+
+![](../img/wip.png)
