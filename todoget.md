@@ -1,5 +1,5 @@
 # Todoget Report
-last update: 2025-05-23 (17:43)
+last update: 2025-05-23 (19:53)
 
 ## chapters/_chapter4-source.qmd
 
@@ -27,9 +27,9 @@ last update: 2025-05-23 (17:43)
 
 ## docs/chapters/chapter3.html
 
-- Line 475: TODO: review and smooth this section 
-- Line 484: TODO see if the remainder of the section can be shortened, it seems a bit repetitive 
-- Line 607: TODO: review and smooth this section 
-- Line 654: GIOVANNI: i have added a small section and simulation about typeM error by gelman. I think that is interesting because shows the amount of effect size inflation given the sample size when selecting for significance 
-- Line 756: TODO: describe standardized vs unstandardized 
-- Line 758: GIOVANNI: is sigma the residual variance or the effect size sampling variability? 
+- Line 476: TODO: review and smooth this section 
+- Line 485: TODO see if the remainder of the section can be shortened, it seems a bit repetitive 
+- Line 608: TODO: review and smooth this section 
+- Line 655: GIOVANNI: i have added a small section and simulation about typeM error by gelman. I think that is interesting because shows the amount of effect size inflation given the sample size when selecting for significance 
+- Line 757: TODO: describe standardized vs unstandardized 
+- Line 759: GIOVANNI: is sigma the residual variance or the effect size sampling variability? 
