@@ -1,3 +1,4 @@
+Y
 # Probability of Replication {#sec-probrep}
 
 ```{r setup, include=FALSE}
@@ -44,7 +45,7 @@ Optional readings:
 
 - **individual replication probability** (IRP): the probability of finding a significant effect on a replication study when replicating a specific original study.
 
-In this chapter we will take off from Miller's definitions and provide a formal framework to answer key questions about replication probabilities.
+In this chapter we will take inspiration from Miller's definitions and provide a formal framework to answer key questions about replication probabilities.
 
 ::: {.callout-note appearance="simple"}
 
@@ -69,9 +70,9 @@ We use the greek letter $\theta$'s to define the true effects for the original a
 The *one-to-one* replication design is used when a single replication study is replicating an original experiment. On the other hand, a replication project with $R$ replication studies is called a *one-to-many* design.
 
 In @sec-rep-theory we covered the Machery definition of replication, in which only the randomly drawn subjects differ between the original study and the replications. In a replication of this type, the population of reference remains the same, an therefore $\theta_0 = \theta_1 = \ldots = \theta_R$.
-This will be the case with Miller's original, for example. Generally, in a highly *precise replication*, this will also be approximately correct. 
+This will be the case with Miller's original models, for example. Generally, in a highly *precise replication*, this will also be approximately correct. 
 
-On the other hand, if we consider a group of extension experiments, or even more broadly examine an entire field of research, we typically alter fixed factors, and thus consider many different, albeit related, populations. In this case $\theta$'s are no longer identical. Variation between $\theta$'s is an important aspect of replicability analysis. We will return to it in several places. For now, consider that this variation depends on the unverse of studies of interest. For example, a group of extension experiments for a specific treatment / outcome combination will generally have smaller variability than a group considering the effect of the same treatment on a variety of outcomes. 
+On the other hand, if we consider a group of extension experiments, or even more broadly examine an entire field of research, we typically alter fixed factors, and thus consider many different, albeit related, populations. In this case, the $\theta$'s will no longer be identical. Variation between $\theta$'s is an important aspect of replicability analysis. We will return to it in several places. For now, keep in mind that this variation depends on the unverse of studies of interest. For example, a group of extension experiments for a specific treatment / outcome combination will generally have smaller variability than a collection of experiments considering the effect of the same treatment on a variety of outcomes. 
 
 ### Two-Level Models {#sec-twolevel}
 
@@ -79,13 +80,13 @@ One way to think about studying the variation of the $\theta$'s is to frame the 
 
 Replication is often framed in terms of tests of hypothesis. Parenthetically, several fields of study are making organized attempts at moving scientific reporting away from tests of hypotheses [@Harrington2019-sw]. Evidential summaries from hypothesis tests, such as p-values, systematically confound sample size and effect size [@Wasserstein2016-xv]. Better reporting focuses on quantitative effect sizes. Nonetheless, replicability analysis requires explicit consideration of significance, as this remains a factor in determining publication. 
 
-Here we will define the null hypothesis to be that "the effect is too small to be of scientific interest". Formally, the null hypothesis is true when $|\theta| < h_0$ where $h_0$ is specified by the analyst and defines a so-called *region of practical equivalence* or ROPE [@Kruschke2015-ew; @Kruschke2018-sm]^[To note that the term ROPE refer to the Bayesian version of the equivalence region in the frequentist *equivalence testing* approach [@Lakens2018-ri]. Despite using the Bayesian term, we are just referring to an area where the effect is neglegible and equivalent to a point-null value (e.g, zero).]. In a precise replication, $\theta$ does not change across studies and thus the null hypothesis is either true or not in every study. In contrast, if we consider a group of extension experiments or a whole field, $\theta$'s vary and the null hypothesis may hold in some studies and not others. We will use $\pi$ to denote the proportion of non-null effect in a population of studies. 
+Here we will define the null hypothesis to be that "the effect is too small to be of scientific interest". Formally, the null hypothesis is true when $|\theta| < h_0$ where $h_0$ is specified by the analyst and defines a so-called *region of practical equivalence* or ROPE [@Kruschke2015-ew; @Kruschke2018-sm]^[To note that the term ROPE refer to the Bayesian version of the equivalence region in the frequentist *equivalence testing* approach [@Lakens2018-ri]. Despite using the Bayesian term, we are just referring to an area where the effect is neglegible and equivalent to a point-null value (e.g, zero).]. In a precise replication, $\theta$ does not change across studies and thus the truth-value of the null hypothesis is invariant across studies. In contrast, if we consider a group of extension experiments or a whole field, the $\theta$'s vary and the null hypothesis may hold in some studies and not others. We will use $\pi$ to denote the proportion of non-null effect in a population of studies. 
 
-@Miller2009-hp noted that $\pi$ is an unknown quantity that is difficult to estimate from the literature. In Psychology, @Wilson2018-aa tried to estimate $\pi$ based on the @Collaboration2015-ep large scale replication project finding different rates for social and cognitive psychology. In a similar vein, @Jager2014-nq tried to estimate the false discovery rate across the top medical journals.
+@Miller2009-hp notes that $\pi$ is an unknown quantity which is difficult to estimate from the literature. In Psychology, @Wilson2018-aa tried to estimate $\pi$ based on the @Collaboration2015-ep large scale replication project, which found different rates for social and cognitive psychology. In a similar vein, @Jager2014-nq tried to estimate the false discovery rate across the top medical journals.
 
-The more precise the replication, the smaller will $\tau$ be. As $\tau$ goes to zero, all $\theta$'s will concentrate around $\mu_{\theta}$ and $\pi$ will approach either 0 or 1 depending on whether $\mu_{\theta}$ is in the region of practical equivalence. 
+The more precise the replication, the smaller the value of $\tau$ will be. As $\tau$ goes to zero, all $\theta$'s will concentrate around $\mu_{\theta}$ and $\pi$ will approach either 0 or 1 depending on whether $\mu_{\theta}$ is in the region of practical equivalence. 
 
-@fig-gen-model-simple depicts this simple generating model. The idea is that true effects in a given research area $\theta_r$ comes from a normal distribution with mean $\mu_\theta$ and standard deviation $\tau$. Within this research area, we have a certain proportion of true $\pi$ and false $1 - \pi$ effects. In case of false effects, we can imagine a ROPE in which the effects are assumed to be equal to zero. Then these true effects $\theta_r$ can be the target of an original study $\hat \theta_0$ and one or more replication studies $\hat \theta_r$ ($r = (1, \ldots, R)$). If the study is a *precise* replication study the heterogeneity is expected to be close to zero while in an *extension* experiment we are expecting more heterogeneity. To simplify, the expected heterogeneity of a very *precise* replication is zero and all studies are essentially estimating the same original true effect $\theta_0$. In cases where the heterogeneity is different from zero (i.e., an *extension*) each replication study is associated with a different underlying true effect $\theta_r$. The degree of heterogeneity is related to the degree of *precision*, viz., the number and relevance of changes to fixed factors. This model can be considered similar to a random-effects meta-analysis (described in Chapter XXX). The model can also be used to simulate replication studies as will be shown in Chapter XXX.
+@fig-gen-model-simple depicts this simple generative model. The idea is that true effects in a given research area $\theta_r$ come from a normal distribution with mean $\mu_\theta$ and standard deviation $\tau$. Within this research area, we have a certain proportion of true $\pi$ and false $1 - \pi$ effects. In the case of false effects, we can imagine a ROPE in which the effects are assumed to be equal to zero. Then the true effects $\theta_r$ can be the target of an original study $\hat \theta_0$ and one or more replication studies $\hat \theta_r$ ($r = (1, \ldots, R)$). If the study is a *precise* replication, the heterogeneity is expected to be close to zero while in an *extension* experiment, we expect to see more heterogeneity. To simplify, the expected heterogeneity of a very *precise* replication is zero and all studies are essentially estimating the same original true effect $\theta_0$. In cases where the heterogeneity is different from zero (i.e., an *extension*) each replication study is associated with a different underlying true effect $\theta_r$. The degree of heterogeneity is related to the degree of *precision*, viz., to the number and relevance of changes to fixed factors. This model is similar to a random-effects meta-analysis (described in @sec-statmethodrep). The model can also be used to simulate replication studies as will be shown in @sec-planning.
 
 <!-- REVIEW: ask giovanni if using $\hat \tau_r$ or something else to denote the heterogeneity estimated by the replication study -->
 
@@ -93,13 +94,13 @@ The more precise the replication, the smaller will $\tau$ be. As $\tau$ goes to 
 
 ### Multi-level Model
 
-@fig-gen-model-simple provides an example of a generating model for a specific research area in the literature, e.g., the distribution of true effects related to psychological treatments for depression.  Some treatments in some conditions will have a higher/lower effect and in other conditions they will have a null effect. Extending the same reasoning to multiple effects within a broader literature, we can include another hierarchical layer in the model. @fig-gen-model-mixture depicts this extended model. To simplify we can have the treatments for depression and anxiety. These research areas have specific average effects $\mu_\theta^1, \mu_\theta^2$, heterogeneity $\tau^1, \tau^2$ and proportions of true $\pi^1, \pi^2$ and false $1 - \pi^2, 1 - \pi^2$ effects. The combinatons of the two research areas define the broader literature defined as a mixture of the two distributions. Each component (i.e., anxiety and depression distributions) is associated with a weight $\omega^1, \omega^2$ representing the importance (e.g., prevalence of studies) in the final mixture distribution. As a final note, instead of considering $\mu_\theta$ and $\tau$ as fixed, we can sample these values from two distributions generating a more realistic research area contanining a larger set of true effects. In terms of replication, we can apply the same logic of @fig-gen-model-simple where the degree of *precision* determines the expected heterogeneity in the replication/extension study.
+@fig-gen-model-simple provides an example of a generating model for a specific research area in the literature, e.g., the distribution of true effects related to psychological treatments for depression.  Some treatments in some conditions will have a higher/lower effect and in other conditions they will have a null effect. Extending the same reasoning to multiple effects within a broader literature, we can include another hierarchical layer in the model. @fig-gen-model-mixture depicts this extended model. For instance, we may be considering treatments for depression and anxiety. These research areas have specific average effects $\mu_\theta^1, \mu_\theta^2$, heterogeneity $\tau^1, \tau^2$ and proportions of true $\pi^1, \pi^2$ and false $1 - \pi^2, 1 - \pi^2$ effects. The combinatons of the two research areas define a broader literature, modeled as a mixture of these two distributions. Each component (i.e., anxiety and depression distributions) is associated with a weight $\omega^1, \omega^2$, representing the importance (e.g., prevalence of studies) in the final mixture distribution. Finally, instead of considering $\mu_\theta$ and $\tau$ as fixed, we can sample these values from two distributions generating a more realistic research area contanining a larger set of true effects. In terms of replication, we can apply the same logic of @fig-gen-model-simple where the degree of *precision* determines the expected heterogeneity in the replication/extension study.
 
 ![Mixture generating model](../img/generating-model-mixture.svg){#fig-gen-model-mixture}
 
 ### Simple Null Hypotheses {#sec-simple}
 
-@Miller2009-hp and many other works in the literature are concerned with simple null hypotheses. In our notation the null hypothesis is true when $|\theta| = 0$. The logic of section @sec-twolevel can be cloned for this case as well, as illustrated in Figure @fig-gen-model-pointnull. Now the distribution of $\theta$ has two components: a continuous component describing the variation of the effect assuming the effect is not zero, and a discrete component at exactly zero. The probability of drawing a nonzero effect will again be $\pi$, which is also the area under the bell curve in the figure. Thus the point mass at zero is $1-\pi$. In terms of replication, we can apply the same logic of @fig-gen-model-simple and @fig-gen-model-mixture where the degree of *precision* determines the expected heterogeneity in the replication/extension study.
+@Miller2009-hp and many other works in the literature are concerned with simple null hypotheses. In our notation the null hypothesis is true when $|\theta| = 0$. The logic of section @sec-twolevel can be adapted to this case, as illustrated in Figure @fig-gen-model-pointnull. Now the distribution of $\theta$ has two components: a continuous component describing the variation of the effect assuming the effect is not zero, and a discrete component at exactly zero. The probability of drawing a nonzero effect will again be $\pi$, which is also the area under the bell curve in the figure. Thus the point mass at zero is $1-\pi$. In terms of replication, we can apply the same logic of @fig-gen-model-simple and @fig-gen-model-mixture where the degree of *precision* determines the expected heterogeneity in the replication/extension study.
 
 ![Point null generating model](../img/generating-model-pointnull.svg){#fig-gen-model-pointnull}
 
@@ -113,7 +114,7 @@ $$
 t = \frac{\overline{y}_1 - \overline{y}_2}{SE_{\overline{y}_1 - \overline{y}_2}}
 $${#eq-t}
 
-where subscripts denote the two groups. The standard error at the denominator is:
+where subscripts denote the two groups. The standard error in the denominator is:
 $$
 \mbox{SE}_{\overline{y}_1 - \overline{y}_2} = s_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}
 $${#eq-t-se}
@@ -159,7 +160,7 @@ Another possibility is to use the full ROPE for the statistical test within the 
 
 ### The Calculus of Replication Probabilities {#sec-calc}
 
-Consider the case of strict replication, so the null hypothesis is true or false in both studies at the same time. 
+Consider the case of strict replication, so the null hypothesis has the same truth-value in both studies. 
 
 To prepare for @Miller2009-hp, we look at replication probability by focusing on replicating significance. Given that the original study was significant (that is that $|t_0| > t_{c_0}$), what is the probability that the second study will also be significant and the effect will be in the same direction as the original study? Formally we express significance in the original study as  $|t_0| > t_{c_0}$, significance in the replication study as $|t_1| > t_{c_1}$, and concordance of the direction of the effect as $t_0 \cdot t_1 > 0$. 
 
@@ -212,7 +213,7 @@ p_{rep} & \approx
 \end{split}
 $${#eq-arp12}
 
-The key quantity that remains to understand is $\Pr(H_1)$, the probability that the effect is not null. The interpretation of this probability depends on the context as well as the analysts' approach. In section @sec-arp we consider Miller's version, where $\Pr(H_1)$ is essentially $\pi$ from Section @sec-twolevel. Later we will cover an alternative Bayesian interpretation where $\Pr(H_1)$ is specified based on expert knowledge existing prior to the original experiment.
+The key quantity that remains to be explained is $\Pr(H_1)$, the probability that the effect is not null. The interpretation of this probability depends on the context as well as the analysts' approach. In section @sec-arp we consider Miller's version, where $\Pr(H_1)$ is essentially $\pi$ from Section @sec-twolevel. Later on, we will discuss an alternative Bayesian interpretation, where $\Pr(H_1)$ is based on expert knowledge existing prior to the original experiment.
 
 We take two quick digressions before going back to Miller. First, if $R>1$ we can extend this reasoning to more general expressions. For example if we want to estimate the probability of having successful replications in $R$ experiments we can consider
 $$
@@ -242,7 +243,7 @@ $${#eq-bayes3}
 
 <!-- TODO: review and smooth this section -->
 
-To recap, @Miller2009-hp is about replication with the highest *precision*, because he considers no differences in populations between the experiments. He focuses on tests of hypotheses, and considers replication of experiments with significant testing results, as we did above. He also assumes that power and significance level are the same in the original and replication experiment. He also evaluates power at a single point at a time, effectively assuming that the statistical problem is testing a simple null hypothesis against a simple alternative.
+To recap, @Miller2009-hp is about replication with the highest *precision*, because he considers no differences in populations between the experiments. He focuses on tests of hypotheses, and considers replication of experiments with significant testing results, as we did above. He also assumes that power and significance level are the same in the original and replication experiment. And, he evaluates power at a single point at a time, effectively assuming that the statistical problem is testing a simple null hypothesis against a simple alternative.
 
 With regards to $\Pr( H_1)$ he considers a scheme similar to that of section @sec-twolevel. A study design is drawn randomly from the aggregate describing a scientific field of interest, and then replicated with high precision. In what proportion of cases does this exercise lead to a replication? For this calculation $\Pr( H_1)$ is the same as $\pi$ in @fig-gen-model-simple. Miller calls $\pi$ the *strength* of a research area. This parameter has also been considered by other authors when evaluating the probability of replication within a research field [@Ioannidis2005-em; @Wilson2018-aa].
 
@@ -295,7 +296,7 @@ dd |>
     cat()
 ```
 
-For example, the probability that something is significant is the sum of true positives (i.e., the statistical power) and false positives (i.e., type-1 errors) weighted by the prevalence $\pi$. Thus the numerator $\Pr(|t_1| > t_{c1} \cap |t_0| > t_{c0})$ can be written as the sum between:
+For example, the probability that something is significant is the sum of true positives (i.e., the statistical power) and false positives (i.e., type-1 errors) weighted by the prevalence $\pi$. Thus the numerator $\Pr(|t_1| > t_{c1} \cap |t_0| > t_{c0})$ can be written as the sum of the following two quantities:
 
 - Original study being significant $(1 - \beta) \cdot \pi + \alpha \cdot (1 - \pi)$
 - Replication study being significant $(1 - \beta) + \frac{\alpha}{2}$
@@ -349,9 +350,9 @@ The main takeaways from @fig-arp1 are:
 
 <!-- TODO: review and smooth this section -->
 
-In contrast to the ARP, which considers a randomly drawn original study from a field, the individual replication probability (IRP) focuses on a specific original study. Miller's approach is ask what is the probability of a significant and concordant test result in the replication study, pretending that the estimated effect in the original study is correct. The reduces to calculating the power of the replication study conditional at observed effect, that is $p_{IRP} = 1 - \beta(\hat\theta_0)$
+In contrast to the ARP, which considers a randomly drawn original study from a field, the individual replication probability (IRP) focuses on a specific original study. Miller's approach is ask what is the probability of a significant and concordant test result in the replication study, supposing that the estimated effect in the original study is correct. This reduces to calculating the power of the replication study, conditional upon the observed effect, that is: $p_{IRP} = 1 - \beta(\hat\theta_0)$
 
-Using the Equations from @sec-t-test, we can reproduce and extend the @Miller2009-hp figures. Basically, we estimate the IRP assuming that the power (thus the effect size and sample size) of the replication study is the same as that of the original study. The key function is `p2d`, which returns the power given the effect size for the point estimate and the lower/upper limit of the effect size confidence interval^[To calculate the confidence interval of the effect size we used the so-called pivot method [@Steiger2004-wg] implemented into the `effectsize:::.get_ncp_t()` function]. 
+Using the Equations from @sec-t-test, we can reproduce and extend the @Miller2009-hp figures. Basically, we estimate the IRP assuming that the power (thus the effect size and sample size) of the replication study is the same as that of the original study. The key function is `p2d`, which returns the power, given the effect size, for the point estimate; and, the lower/upper limit of the effect size confidence interval^[To calculate the confidence interval of the effect size we used the so-called pivot method [@Steiger2004-wg] implemented into the `effectsize:::.get_ncp_t()` function]. 
 
 ```{r}
 #| results: asis
@@ -391,9 +392,9 @@ The most important takeaway from @fig-miller-irp is that the statistical signifi
 
 ### Bayesian Individual Replication Probability
 
-Miller's IRP has two main limitations: first, the effect size estimated in the original study is subject to sampling variability. This is not considered by Miller. In reality, the effect size could be larger or smaller. Second, in scientific areas where finding large effects is more challenging, the true effect size is more likely to be smaller, relative to those estimated for research areas in which large effects abound. So considering the study in isolation is a limitation. Even at the individual level, we should expect a higher probability of replication for research areas where there are more true effects to be found. Some of these limitations can be mitigated by Bayesian replication probabilities. If you are not familiar with the logic behind Bayesian statistics, @Lindley1972-fa provides an excellent introduction.
+Miller's IRP has two main limitations. First, the effect size estimated in the original study is subject to sampling variability. This is not considered by Miller. In reality, the effect size could be larger or smaller. Second, in scientific areas where finding large effects is more challenging, the true effect size is more likely to be smaller, relative to those estimated for research areas in which large effects abound. So, considering a study in isolation is a limitation. Even at the individual level, we should expect a higher probability of replication for research areas where there are more true effects to be found. Some of these limitations can be mitigated by Bayesian replication probabilities. If you are not familiar with the logic behind Bayesian statistics, @Lindley1972-fa provides an excellent introduction.
 
-For a simple example, consider specifying $\Pr(H_1)$ for the individual experiment at hand to reflect knowledge exisitng up to the point of the original experiment, but not including the original experiment itself. In the depression treatment example, this may have to to with the strength of the hypothesis, the plausibility of treatment examined, prior experiments in animals if the original experiment is in humans etc. Then one can apply the calculus of Section @sec-calc (and specifically @eq-arp-miller) to evaluate the individual replication probability. Consideration of the sampling variability in the effect size may be incorporated in the specific way one calculates the average power. Consideration of the strength of the field of study can be embedded in the prior, either informally or through the use of hierarchical models as seen later.
+For a simple example, consider specifying $\Pr(H_1)$ for the individual experiment at hand to reflect knowledge exisitng up to the point of the original experiment, but not including the original experiment itself. In the depression treatment example, this may have to to with the strength of the hypothesis, the plausibility of treatment examined, prior experiments in animals if the original experiment is in humans etc. Then one can apply the calculus of Section @sec-calc (and specifically @eq-arp-miller) to evaluate the individual replication probability. Consideration of the sampling variability in the effect size may be incorporated in the specific way one calculates the average power. Consideration of the strength of the field of study can be embedded in the prior, either informally or through the use of hierarchical models, which we discuss below.
 
 ## Selection and Regression to the Mean
 
@@ -690,7 +691,7 @@ cowplot::plot_grid(ptau20, ptau2, ncol = 1)
 
 - includes a shrinkage factor, balancing the strength of the original study and the between-study heterogeneity, which allows us to account for regression to the mean and effect size inflation of the original study.
 
-We adapted the @Pawel2020-cm model, creating a more general version that can be easily adapted to simulating and analyzing data from replication studies as well as predicting the probability of replication given the model parameters. The generalized version of the model is presented in @fig-general-model. (The actual model will be implemented in Chapter XXX.)
+We adapted the @Pawel2020-cm model, creating a more general version that can be easily adapted to simulating and analyzing data from replication studies as well as predicting the probability of replication given the model parameters. The generalized version of the model is presented in @fig-general-model. (The actual model will be implemented in @sec-statmethodrep.)
 
 In the simple case of a two-group study, where $x_{ir}$ denotes whether individual $i$ is in group one, the distribution of the data in study $r$ is as follows:
 
