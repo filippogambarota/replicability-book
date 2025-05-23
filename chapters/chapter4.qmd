@@ -630,14 +630,12 @@ Qrep(dat$yi, dat$vi, lambda0 = (k - 1)/3)
 ```
 
 ## Small Telescopes [@Simonsohn2015-kg]
-<!---I did not understand this description of the Small Telescopes method/example. Can you clarify?-->
 
-The idea is simple but quite powerful and insightful. Let's assume that an original study found an effect of $\theta_{0} = 0.7$ on a two-sample design with $n = 20$ per group.
+The idea is simple but quite powerful and insightful. An original study $\theta_{0}$ is conducted estimating a certain effect size with a certain sample size. This study has a certain statistical power level assuming a plausible effect size. Then we estimate the effect size that would have a certain low power level (e.g., 33%, $d_{33\%}$). Then we run the replication study $\theta_r$ testing if the replication effect size is lower (one-sided test) than $d_{33\%}$. If upper bound of the confidence interval of the replication study is lower this means that the original study is probably seriously underpowered suggesting evidence of non-replication.
 
-- we define a threshold as the effect size that is associated with a certain low statistical power level e.g., $33\%$ given the sample size i.e. $\theta_{s} = 0.5$
-- the replication study found an effect of $\theta_{r} = 0.2$ with $n = 100$ subjects
+As a practical example, let's assume that an original study found an effect of $\theta_{0} = 0.7$ on a two-sample design with $n = 20$ per group. We define a threshold as the effect size that is associated with a certain low statistical power level e.g., $33\%$ given the sample size i.e. $d_{33\%} = 0.5$. The replication study found an effect of $\theta_{r} = 0.2$ with $n = 100$ subjects.
 
-If the $\theta_{r}$ is lower (i.e., the upper bound of the confidence interval) than the *small effect* ($\theta_{s} = 0.5$) we conclude that the effect is probably so small that could not have been detected by the original study. Thus there is no evidence for a replication.
+If the $\theta_{r}$ is statistically significantly lower than $d_{33\%} = 0.5$ we conclude that the effect is probably so small that could not have been detected by the original study.
     
 We can use the custom `small_telescope()` function on simulated data:
 
@@ -703,6 +701,7 @@ Let's consider a simple example. We need to evaluate the fairness of a coin. The
 $$
 p(\pi|D) = \frac{p(D|\pi) \; p(\pi)}{p(D)}
 $$
+
 Here, $\pi$ is our parameter and $D$ is our data. $p(\pi|D)$ is the posterior distribution, which is the normalized product of $p(D|\pi)$ --- which is called the **likelihood** of the hypothesis $\pi$, relative to the data $D$ ---  and the prior $p(\pi)$. $p(D)$ is the prior probability of the data (aka marginal likelihood) and is necessary for the posterior to be a (proper) probability distribution.
 
 We can "read" the formula as: *The probability of the parameter given the data is the product of the probability of the data given the parameter and the prior probability of the parameter*.
