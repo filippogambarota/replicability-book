@@ -1,1 +1,5 @@
-# Planning a replication study
+# Planning a replication study {#sec-planning}
+
+We are working on it! Stay tuned!
+
+![](../img/wip.png)
