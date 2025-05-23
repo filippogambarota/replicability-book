@@ -824,4 +824,10 @@ $$
 
 The model can be easily implemented in R using the probabilistic programming language STAN [@Stan_Development_Team2021-zw] or, under some conditions, using the analytical form as used in @Pawel2020-cm.
 
+## Key Questions
+
+- How do questionable research practices and publication bias influence our expectations about replication?
+- What is the difference between individual replication probability (IRP) and aggregate replication probability (ARP)?
+- Is there a different scientific value in replications vs exensions?
+
 ## References {.unnumbered}

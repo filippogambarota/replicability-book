@@ -106,4 +106,9 @@ In the remainder of the discussion we will use *precise replication* to denote a
 
 As a final note, one important but often underestimated problem concerns the investigators conducting the replication study or studies. They can legitimately be considered part of the setting in some cases; but, they can be seen as random or irrelevant in others. @Rosenthal1990-cq clearly described the problem of *correlated replicators* and proposed different weighting approaches, based on the design of the replication study, for replication/extension studies conducted from authors that are orthogonal in terms of background theory and methods. Authors sharing a theory or a strict network of co-authorships are likely to create experiments and data that are more similar, as compared to independent authors. A replication or extension study conducted by an independent, and possibly skeptical, researcher should have a greater impact on increasing or decreasing confidence in the original findings, as compared to a follow-up study conducted by the original author.
 
+## Key Questions
+
+- In what ways do replication, robustness, and reproducibility contribute to the trustworthiness of science?
+- When should methodological differences between studies be viewed as a strength rather than a limitation in replication research?
+
 ## References {.unnumbered}

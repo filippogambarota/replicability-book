@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.37">
+<meta name="generator" content="quarto-1.6.40">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>4&nbsp; Statistical methods for replication assessment – The three Rs of trustworthy science</title>
 <style>
@@ -87,10 +87,10 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-7580570a2e354cd56757c689413fca0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-d536d1a7baed4b06fb80168836a8c311.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -261,7 +261,7 @@ window.Quarto = {
 <li><a href="#fixed-effects-model" id="toc-fixed-effects-model" class="nav-link" data-scroll-target="#fixed-effects-model"><span class="header-section-number">4.9.1</span> Fixed-effects Model</a></li>
   <li><a href="#random-effects-model" id="toc-random-effects-model" class="nav-link" data-scroll-target="#random-effects-model"><span class="header-section-number">4.9.2</span> Random-Effects model</a></li>
   <li><a href="#pooling-replications" id="toc-pooling-replications" class="nav-link" data-scroll-target="#pooling-replications"><span class="header-section-number">4.9.3</span> Pooling replications</a></li>
-  <li><a href="#q-statistics" id="toc-q-statistics" class="nav-link" data-scroll-target="#q-statistics"><span class="header-section-number">4.9.4</span> Q Statistics</a></li>
+  <li><a href="#the-q-statistic" id="toc-the-q-statistic" class="nav-link" data-scroll-target="#the-q-statistic"><span class="header-section-number">4.9.4</span> The Q Statistic</a></li>
   </ul>
 </li>
   <li><a href="#small-telescopes-simonsohn2015-kg" id="toc-small-telescopes-simonsohn2015-kg" class="nav-link" data-scroll-target="#small-telescopes-simonsohn2015-kg"><span class="header-section-number">4.10</span> Small Telescopes <span class="citation" data-cites="Simonsohn2015-kg">(Simonsohn, 2015)</span></a></li>
@@ -269,7 +269,7 @@ window.Quarto = {
 <a href="#replication-bayes-factor" id="toc-replication-bayes-factor" class="nav-link" data-scroll-target="#replication-bayes-factor"><span class="header-section-number">4.11</span> Replication Bayes factor</a>
   <ul class="collapse">
 <li><a href="#bayesian-inference" id="toc-bayesian-inference" class="nav-link" data-scroll-target="#bayesian-inference"><span class="header-section-number">4.11.1</span> Bayesian inference</a></li>
-  <li><a href="#bayes-factor-using-the-sdr" id="toc-bayes-factor-using-the-sdr" class="nav-link" data-scroll-target="#bayes-factor-using-the-sdr"><span class="header-section-number">4.11.2</span> Bayes Factor using the SDR</a></li>
+  <li><a href="#calculating-the-bayes-factor-using-the-sdr" id="toc-calculating-the-bayes-factor-using-the-sdr" class="nav-link" data-scroll-target="#calculating-the-bayes-factor-using-the-sdr"><span class="header-section-number">4.11.2</span> Calculating the Bayes Factor using the SDR</a></li>
   <li><a href="#verhagen2014-tx-model" id="toc-verhagen2014-tx-model" class="nav-link" data-scroll-target="#verhagen2014-tx-model"><span class="header-section-number">4.11.3</span> <span class="citation" data-cites="Verhagen2014-tx">Verhagen &amp; Wagenmakers (2014)</span> model</a></li>
   </ul>
 </li>
@@ -295,27 +295,27 @@ window.Quarto = {
 
 </header><section id="how-to-assess-the-replication-outcome" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="how-to-assess-the-replication-outcome">
 <span class="header-section-number">4.1</span> How to assess the replication outcome?</h2>
-<p>In the previous chapters we introduced the idea of replication from a statistical and theoretical point of view. We purposely omitted defining the outcome of a replication study to dedicate an entire chapter about this topic. The problem of having multiple definitions of replication extends to the various ways of assessing the outcomes of replication studies.</p>
-<p>In addition, the field of replication metrics keeps growing. <span class="citation" data-cites="Heyard2024-hv">Heyard et al. (<a href="#ref-Heyard2024-hv" role="doc-biblioref">2024</a>)</span> published an extensive systematic review, supported by an online and keep up-to-date database with more than 50 replication measures organized and classified according to a common scheme.</p>
-<p>The database is available at the following link <a href="http://rachelheyard.com/reproducibility_metrics/">http://rachelheyard.com/reproducibility_metrics/</a>. We decided to make a selection of methods from the database according to the following criteria:</p>
+<p>In earlier chapters, we introduced the concept of replication from both statistical and theoretical perspectives. We now focus on analyzing the outcomes of replication experiments. Just as there are many definitions of replication, there are also multiple ways of assessing the outcomes of replication studies.</p>
+<p>Much of the discussion will focus on replication metrics, which is a burgeoning area of statistics. <span class="citation" data-cites="Heyard2024-hv">Heyard et al. (<a href="#ref-Heyard2024-hv" role="doc-biblioref">2024</a>)</span> published an extensive systematic review, supported by an online catalog. They also maintain an up-to-date database with more than 50 replication measures organized and classified according to a common scheme.</p>
+<p>The database is available at the following link <a href="http://rachelheyard.com/reproducibility_metrics/">http://rachelheyard.com/reproducibility_metrics/</a>. Here, we have selected methods from the database, according to the following criteria:</p>
 <ul>
-<li>for similar methods we keep the most recent and general version</li>
-<li>we included both bayesian and frequentists</li>
-<li>we included methods for answering to the question <em>“Is the study <span class="math inline">\(x\)</span> replicated?”</em> but also methods to combine evidence and estimate the size of the effect without an inferential decision</li>
-<li>we selected methods that are not linked to a specific research area or topic. Some methods are specific for a given area of research or type of experiment such as replicating fMRI studies at the voxel level.</li>
+<li>we have included methods not only for answering the question <em>“Has a study been replicated?”</em>, but also methods which instead combine evidence and estimate the size of the effect</li>
+<li>we have selected methods that are not linked to a specific research area or topic. (Some methods are specific for a given area of research or type of experiment such as replicating fMRI studies at the voxel level.)</li>
+<li>we have included both bayesian and frequentist approaches</li>
+<li>where methods are very similar, we have focused on the most recent or general version</li>
 </ul>
-<p>In general, despite this heterogeneity in methods and definitions choosing a single measure is probably not the best solution. In fact, large-scale replication projects <span class="citation" data-cites="Collaboration2015-ep Errington2021-fb The-Brazilian-Reproducibility-Initiative2025-iw">(e.g., <a href="#ref-Collaboration2015-ep" role="doc-biblioref">Collaboration &amp; Open Science Collaboration, 2015</a>; <a href="#ref-Errington2021-fb" role="doc-biblioref">Errington et al., 2021</a>; <a href="#ref-The-Brazilian-Reproducibility-Initiative2025-iw" role="doc-biblioref">The Brazilian Reproducibility Initiative et al., 2025</a>)</span> always evaluates the results across different metrics.</p>
+<p>In general, choosing a single “measure of replicability” is probably not the best approach Typically, large-scale replication projects <span class="citation" data-cites="Collaboration2015-ep Errington2021-fb The-Brazilian-Reproducibility-Initiative2025-iw">(e.g., <a href="#ref-Collaboration2015-ep" role="doc-biblioref">Collaboration &amp; Open Science Collaboration, 2015</a>; <a href="#ref-Errington2021-fb" role="doc-biblioref">Errington et al., 2021</a>; <a href="#ref-The-Brazilian-Reproducibility-Initiative2025-iw" role="doc-biblioref">The Brazilian Reproducibility Initiative et al., 2025</a>)</span> evaluate results across different metrics.</p>
 </section><section id="replication-studies-as-meta-analysis" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="replication-studies-as-meta-analysis">
 <span class="header-section-number">4.2</span> Replication studies as meta-analysis</h2>
-<p>As introduced by <span class="citation" data-cites="Hedges2019-ry">Hedges &amp; Schauer (<a href="#ref-Hedges2019-ry" role="doc-biblioref">2019c</a>)</span> replication studies can be seen from a statistical point of view as meta-analyses. There is a single initial study and one or more attempts to replicate this initial finding. For the simple one-to-one replication design we have a meta-analysis with two studies while in the one-to-many design we have a meta-analysis with <span class="math inline">\(R\)</span> studies. When it comes to evaluating the results of the replication studies we can choose between several methods <span class="citation" data-cites="Heyard2024-hv">(see <a href="#ref-Heyard2024-hv" role="doc-biblioref">Heyard et al., 2024</a>)</span> and some of them are specifically meta-analysis based trying to pool together evidence from original and replication studies. We consider meta-analytic thinking crucial to understand the replication studies and methods but not all methods are strictly meta-analyses in the usual sense.</p>
-<p>In fact, while the methodology of the initial or replication studies is important when comes to evaluate the single result, at the aggregated level we evaluate how a certain focal parameter (e.g., the difference between two groups or conditions) vary across replications and id there is evidence, whatever the criteria, for a successful replication. Whatever is the model used in the original studies we can essentially think at the aggregated level without loss of generality loss.</p>
+<p><span class="citation" data-cites="Hedges2019-ry">Hedges &amp; Schauer (<a href="#ref-Hedges2019-ry" role="doc-biblioref">2019c</a>)</span> point out that replication studies can be seen — from a statistical point of view — as meta-analyses. Typically, there is a single initial study and one or more attempts to replicate its initial findings. For the simple one-to-one replication design we have a meta-analysis with two studies while in the one-to-many design we have a meta-analysis with <span class="math inline">\(R\)</span> studies. When it comes to evaluating the results of replication studies, we can choose between several methods <span class="citation" data-cites="Heyard2024-hv">(see <a href="#ref-Heyard2024-hv" role="doc-biblioref">Heyard et al., 2024</a>)</span>. Some of these methods will explictly involve meta-analyses, which pool evidence from original and replication studies. While we consider meta-analytic thinking to be crucial for understanding replication, not all methods are (strictly speaking) meta-analyses in the usual sense.</p>
+<p>Specifically, the methodology of the initial and/or replication studies is important when it comes to evaluating a single result. However, at the aggregate level, we evaluate how a certain focal parameter (e.g., the difference between two groups or conditions) varies across replications with an eye toward determining whether there is evidence — whatever the criterion — for a successful replication. In this sense, whatever model happens to be used in the original study, we can (without loss of generality) fruitfully model the situation from the aggregative perspective.</p>
 </section><section id="simulating-data" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="simulating-data">
 <span class="header-section-number">4.3</span> Simulating data</h2>
-<p>While real-world examples are important, to understand the replication methods from a statistical point of view, simulating simplified examples is a good strategy. Furthermore, simulating data is nowadays considered an important tool to teach and understand statistical methods <span class="citation" data-cites="Hardin2015-ss">(<a href="#ref-Hardin2015-ss" role="doc-biblioref">Hardin et al., 2015</a>)</span>. Monte Carlo simulations are also necessary to estimate statistical properties (e.g., statistical power or type-1 error rate) of complex models.</p>
-<p>For the simulated examples we can define the following simulation approach:</p>
+<p>While real-world examples are important, simulating simplified examples (“toy models”) is useful for understanding replication methods from a statistical point of view. Indeed, in general, simulating data is an important technique for teaching and understanding statistical methods <span class="citation" data-cites="Hardin2015-ss">(<a href="#ref-Hardin2015-ss" role="doc-biblioref">Hardin et al., 2015</a>)</span>. Moreover, in practice, Monte Carlo simulations are necessary for estimating statistical properties (e.g., statistical power or type-1 error rate) of complex models.</p>
+<p>For our simulated examples, we adpot the following methodological assumptions:</p>
 <ul>
 <li>primary studies always compare two independent groups on a certain response variable</li>
-<li>within a study, the two groups are assumed to come from two normal distributions with unit variance. For one group <span class="math inline">\(y_0\)</span> the mean is centered on zero and for the other group <span class="math inline">\(y_1\)</span> the mean is centered on the value representing the effect size <span class="math inline">\(\theta_r\)</span> for that specific study.</li>
+<li>within a study, the two groups are assumed to come from two normal distributions with unit variance. For one group <span class="math inline">\(y_0\)</span> the mean is zero and for the other group <span class="math inline">\(y_1\)</span> the mean is the value representing the effect size <span class="math inline">\(\theta_r\)</span> for that specific study.</li>
 <li>the sample size can vary between the two groups</li>
 </ul>
 <p>For example we can simulate a single study:</p>
@@ -328,9 +328,9 @@ window.Quarto = {
 <span><span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n1</span>, <span class="va">theta</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span> <span class="co"># this is the effect size</span></span>
-<span><span class="co">## [1] 0.6006209</span></span>
+<span><span class="co">## [1] 0.6266234</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">/</span><span class="va">n0</span> <span class="co"># this is the sampling variability</span></span>
-<span><span class="co">## [1] 0.07598655</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">## [1] 0.07565714</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">y0</span>, <span class="va">y1</span><span class="op">)</span>,</span>
@@ -345,7 +345,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Now we can simply iterate the process for <span class="math inline">\(R\)</span> studies to create a series of replications with a common true parameter <span class="math inline">\(\mu_{\theta}\)</span>. We can also generate a more realistic set of sample sizes sampling from a probability distribution (e.g., Poisson). Then, if we want to include variability in the true effects as in the extension framework we can simply sample <span class="math inline">\(R\)</span> effects from a normal distribution with variance <span class="math inline">\(\tau^2\)</span>.</p>
+<p>Now we can simply iterate the process for <span class="math inline">\(R\)</span> studies to create a series of replications with a common true parameter <span class="math inline">\(\mu_{\theta}\)</span>. We can also generate a set of different sample sizes by sampling from a probability distribution (e.g., Poisson). Then, if we want to include variability in the true effects (as would be expected in the case of <em>extensions</em> of an experinent), we can sample <span class="math inline">\(R\)</span> effects from, say, a normal distribution with variance <span class="math inline">\(\tau^2\)</span>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">R</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
 <span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fl">0.3</span> <span class="co"># average true effect</span></span>
@@ -366,19 +366,19 @@ window.Quarto = {
 <span><span class="va">sim</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   id          yi         vi n0 n1
-1   1  0.48512788 0.04274283 50 50
-2   2  0.27339358 0.03453032 39 39
-3   3  0.82169855 0.06445129 29 29
-4   4 -0.03499302 0.03082677 51 51
-5   5  0.81318359 0.04637697 42 42
-6   6  0.73877894 0.04780514 44 44
-7   7  0.58633072 0.06484594 39 39
-8   8  0.25708146 0.05066051 37 37
-9   9  0.36428355 0.05013147 39 39
-10 10  0.29304233 0.03588685 43 43</code></pre>
+1   1  0.48028849 0.07186486 30 30
+2   2 -0.09665809 0.04782403 38 38
+3   3  0.35324118 0.06579169 29 29
+4   4 -0.07702323 0.05382421 40 40
+5   5 -0.13602413 0.05129676 47 47
+6   6  0.08043836 0.03698153 43 43
+7   7  0.13757072 0.03872013 44 44
+8   8  0.96331420 0.04830064 37 37
+9   9  0.52297997 0.04848564 38 38
+10 10  0.94638007 0.06902613 33 33</code></pre>
 </div>
 </div>
-<p>Then we can put everything in a function that can be used to simulate different scenarios.</p>
+<p>Here, we put everything into a single function, which can be used to simulate different scenarios.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sim_study</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">theta</span>, <span class="va">n0</span>, <span class="va">n1</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">id</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">{</span></span>
 <span>    <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">n1</span><span class="op">)</span><span class="op">)</span> <span class="va">n1</span> <span class="op">&lt;-</span> <span class="va">n0</span></span>
 <span>    <span class="va">y0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n0</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span></span>
@@ -416,23 +416,23 @@ window.Quarto = {
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">sim_studies</span><span class="op">(</span>R <span class="op">=</span> <span class="fl">10</span>, mu <span class="op">=</span> <span class="fl">0.5</span>, tau2 <span class="op">=</span> <span class="fl">0</span>, n0 <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   id         yi         vi       sei n0 n1
-1   1 0.80626169 0.06757911 0.2599598 30 30
-2   2 0.07120694 0.07427562 0.2725355 30 30
-3   3 0.35172580 0.08255055 0.2873161 30 30
-4   4 0.57126023 0.07388580 0.2718194 30 30
-5   5 0.45379331 0.07732052 0.2780657 30 30
-6   6 0.56832139 0.05782110 0.2404602 30 30
-7   7 0.57729675 0.07727588 0.2779854 30 30
-8   8 0.32115946 0.05785645 0.2405337 30 30
-9   9 0.02710467 0.06642620 0.2577328 30 30
-10 10 0.61524812 0.07488992 0.2736602 30 30</code></pre>
+1   1 0.73346786 0.06939759 0.2634342 30 30
+2   2 0.12739199 0.05924995 0.2434131 30 30
+3   3 0.26911091 0.06295699 0.2509123 30 30
+4   4 0.06089035 0.07242114 0.2691118 30 30
+5   5 0.37396961 0.06160821 0.2482100 30 30
+6   6 0.20731260 0.04404100 0.2098595 30 30
+7   7 0.29403998 0.06482842 0.2546143 30 30
+8   8 0.48189905 0.05869047 0.2422612 30 30
+9   9 0.47577042 0.09434638 0.3071586 30 30
+10 10 0.53507650 0.07269406 0.2696184 30 30</code></pre>
 </div>
 </div>
 </section><section id="methods" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="methods">
 <span class="header-section-number">4.4</span> Methods</h2>
-<p>The database is available at the following link <a href="http://rachelheyard.com/reproducibility_metrics/">http://rachelheyard.com/reproducibility_metrics/</a> can be consulted for a more complete overview. Among the all available methods we selected the following metrics<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> that will be discussed more in detail with examples.</p>
+<p>The database available at the following link <a href="http://rachelheyard.com/reproducibility_metrics/">http://rachelheyard.com/reproducibility_metrics/</a> can be consulted for a more complete overview. Among all the available methods, we have selected the following metrics<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, each of which will be illustrated below, with suitable examples.</p>
 <ul>
-<li>Prediction interval: replication effect in original 95% prediction interval</li>
+<li>Prediction interval: is the replication effect inside the original 95% prediction interval?</li>
 <li>Proportion of population effects agreeing in direction with the original (vote counting)</li>
 <li>Confidence interval (CI): original effect in replication 95% CI</li>
 <li>Confidence interval (CI): replication effect in original 95% CI</li>
@@ -446,7 +446,7 @@ window.Quarto = {
 <li>Meta-analysis and <span class="math inline">\(Q\)</span> statistics</li>
 </ul></section><section id="vote-counting-based-on-significance-or-direction" class="level2" data-number="4.5"><h2 data-number="4.5" class="anchored" data-anchor-id="vote-counting-based-on-significance-or-direction">
 <span class="header-section-number">4.5</span> Vote Counting based on significance or direction</h2>
-<p>The simplest method is called <strong>vote counting</strong> <span class="citation" data-cites="Valentine2011-yq Hedges1980-gd">(<a href="#ref-Hedges1980-gd" role="doc-biblioref">Hedges &amp; Olkin, 1980</a>; <a href="#ref-Valentine2011-yq" role="doc-biblioref">Valentine et al., 2011</a>)</span>. A replication attempt <span class="math inline">\(\theta_{r}\)</span> is considered successful if the result has the same direction of the original study <span class="math inline">\(\theta_{0}\)</span> and is statistically significant i.e., <span class="math inline">\(p_{\theta_{r}} \leq \alpha\)</span>. Similarly we can count the number of replication with the <em>same sign</em> as the original study.</p>
+<p>The simplest method is called <strong>vote counting</strong> <span class="citation" data-cites="Valentine2011-yq Hedges1980-gd">(<a href="#ref-Hedges1980-gd" role="doc-biblioref">Hedges &amp; Olkin, 1980</a>; <a href="#ref-Valentine2011-yq" role="doc-biblioref">Valentine et al., 2011</a>)</span>. A replication attempt <span class="math inline">\(\theta_{r}\)</span> is considered to be successful if the result is is statistically significant i.e., <span class="math inline">\(p_{\theta_{r}} \leq \alpha\)</span> and has the same direction as the original study <span class="math inline">\(\theta_{0}\)</span>. Similarly, we can count the number of replications with the <em>same sign</em> as the original study. This method has the following <span style="color: green;">pros</span> and <span style="color: red;">cons</span>.</p>
 <div class="pros">
 <ul>
 <li>Easy to understand, communicate and compute</li>
@@ -454,12 +454,12 @@ window.Quarto = {
 </div>
 <div class="cons">
 <ul>
-<li>Did not consider the size of the effect</li>
+<li>Does not consider the size of the effect</li>
 <li>Depends on the power of <span class="math inline">\(\theta_{rep}\)</span>
 </li>
 </ul>
 </div>
-<p>Let’s simulate a replication:</p>
+<p>Here is an example which illustrates the vote counting method First, we simulate a replication:</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## original study</span></span>
 <span><span class="va">n_orig</span> <span class="op">&lt;-</span> <span class="fl">30</span></span>
@@ -490,39 +490,39 @@ window.Quarto = {
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">reps</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  id        yi         vi       sei n0 n1       zi        pval         ci.lb
-1  1 0.6156174 0.09402554 0.3066358 30 30 2.007650 0.044680510  0.0146222059
-2  2 0.6065386 0.07744783 0.2782945 30 30 2.179485 0.029295672  0.0610914399
-3  3 0.8976386 0.07469491 0.2733037 30 30 3.284400 0.001021998  0.3619732038
-4  4 0.4881870 0.06182757 0.2486515 30 30 1.963338 0.049606882  0.0008390206
-5  5 0.3736972 0.09661308 0.3108264 30 30 1.202270 0.229259099 -0.2355114611
-6  6 0.7501443 0.07471205 0.2733351 30 30 2.744413 0.006061917  0.2144174895
+<pre><code>  id        yi         vi       sei n0 n1        zi         pval      ci.lb
+1  1 0.4010531 0.07664786 0.2768535 30 30 1.4486111 0.1474462075 -0.1415698
+2  2 0.2329089 0.06470826 0.2543782 30 30 0.9156010 0.3598762109 -0.2656632
+3  3 0.2925283 0.06973105 0.2640664 30 30 1.1077831 0.2679555037 -0.2250323
+4  4 0.8481431 0.05533669 0.2352375 30 30 3.6054755 0.0003115819  0.3870860
+5  5 0.5576306 0.05370252 0.2317380 30 30 2.4062971 0.0161151534  0.1034324
+6  6 0.2115732 0.05091177 0.2256364 30 30 0.9376734 0.3484122558 -0.2306659
       ci.ub
-1 1.2166126
-2 1.1519858
-3 1.4333040
-4 0.9755350
-5 0.9829058
-6 1.2858712</code></pre>
+1 0.9436759
+2 0.7314810
+3 0.8100889
+4 1.3092002
+5 1.0118288
+6 0.6538124</code></pre>
 </div>
 </div>
-<p>Let’s compute the proportions of replication studies are statistically significant:</p>
+<p>Then, we compute the proportions of replication studies that are statistically significant:</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">reps</span><span class="op">$</span><span class="va">pval</span> <span class="op">&lt;=</span> <span class="fl">0.05</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9</code></pre>
+<pre><code>[1] 0.4</code></pre>
 </div>
 </div>
-<p>Let’s compute the proportions of replication studies with the same sign as the original:</p>
+<p>And, the proportions of replication studies with the same sign as the original:</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sign.html">sign</a></span><span class="op">(</span><span class="va">orig</span><span class="op">$</span><span class="va">yi</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/sign.html">sign</a></span><span class="op">(</span><span class="va">reps</span><span class="op">$</span><span class="va">yi</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
 </div>
-<p>We could also perform some statistical tests. See <span class="citation" data-cites="Bushman2009-zv">Bushman &amp; Wang (<a href="#ref-Bushman2009-zv" role="doc-biblioref">2009</a>)</span> and <span class="citation" data-cites="Hedges1980-gd">Hedges &amp; Olkin (<a href="#ref-Hedges1980-gd" role="doc-biblioref">1980</a>)</span> for vote-counting methods in meta-analysis.</p>
-<p>An extreme example:</p>
-<p>Let’s imagine an original experiment with <span class="math inline">\(n_{0} = 30\)</span> and <span class="math inline">\(\hat \theta_{0} = 0.5\)</span> that is statistically significant <span class="math inline">\(p \approx 0.045\)</span>. Now a direct replication (thus assuming <span class="math inline">\(\tau^2 = 0\)</span>) study with <span class="math inline">\(n_{1} = 350\)</span> found <span class="math inline">\(\hat \theta_{1} = 0.15\)</span>, that is statistically significant <span class="math inline">\(p\approx 0.047\)</span>.</p>
+<p>At this stage, we could also perform some statistical tests in order to complement the vote counting approach. See <span class="citation" data-cites="Bushman2009-zv">Bushman &amp; Wang (<a href="#ref-Bushman2009-zv" role="doc-biblioref">2009</a>)</span> and <span class="citation" data-cites="Hedges1980-gd">Hedges &amp; Olkin (<a href="#ref-Hedges1980-gd" role="doc-biblioref">1980</a>)</span> for vote-counting methods in meta-analysis.</p>
+<p>Here is an extreme example:</p>
+<p>Imagine an original experiment with <span class="math inline">\(n_{0} = 30\)</span> and <span class="math inline">\(\hat \theta_{0} = 0.5\)</span> that is statistically significant <span class="math inline">\(p \approx 0.045\)</span>. Now, consider a direct replication study (thus assume <span class="math inline">\(\tau^2 = 0\)</span>) with <span class="math inline">\(n_{1} = 350\)</span> which found <span class="math inline">\(\hat \theta_{1} = 0.15\)</span>, which is statistically significant at <span class="math inline">\(p\approx 0.047\)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -531,15 +531,15 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>The most problematic aspect of using only the information from the sign of the effect or the p value is completely losing the information about the <strong>size of the effect</strong> and the <strong>precision</strong>.</p>
+<p>The most problematic aspect of using only the information about the sign of the effect (or the p value) is that <em>we lose information</em> about the <strong>size of the effect</strong> and the <strong>precision</strong>.</p>
 </section><section id="confidenceprediction-interval-methods" class="level2" data-number="4.6"><h2 data-number="4.6" class="anchored" data-anchor-id="confidenceprediction-interval-methods">
 <span class="header-section-number">4.6</span> Confidence/prediction interval methods</h2>
-<p>The main improvement of confidence/prediction interval methods is taking into account the size of the effect and the precision. The confidence interval represent the sampling uncertainty around the estimated value. It is interpreted as the percentage of confidence intervals under repetition of the same sampling procedure that contains the true value.</p>
-<p>Confidence interval around an estimated effect <span class="math inline">\(\theta_r\)</span> can be written as:</p>
+<p>An advantage of confidence/prediction interval methods is that they take into account the size of the effect and the precision. The confidence interval represents the sampling uncertainty around the estimated value. It is interpreted as the proportion of confidence intervals (under hypothetical repetition of the same sampling procedure) which contain the true value.</p>
+<p>The confidence interval around an estimated effect <span class="math inline">\(\theta_r\)</span> can be written as follows:</p>
 <p><span class="math display">\[
 95\%\;\mbox{CI} = \hat\theta_r \pm t_{\alpha}\sqrt{\sigma^2_{r}}
 \]</span></p>
-<p>Where <span class="math inline">\(t_{\alpha}\)</span> is the critical test statistics for significance level <span class="math inline">\(\alpha\)</span>. Clearly, this version of the confidence interval is symmetric around the estimated value and the width is a function of the estimation precision.</p>
+<p>Here, <span class="math inline">\(t_{\alpha}\)</span> is the critical test statistic for significance level <span class="math inline">\(\alpha\)</span>. This version of the confidence interval is symmetric around the estimated value and its width is a function of the estimation precision.</p>
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fl">0.05</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">50</span>, <span class="fl">100</span>, <span class="fl">500</span><span class="op">)</span></span>
@@ -563,20 +563,22 @@ window.Quarto = {
 </div>
 <section id="replication-effect-within-the-original-ci" class="level3" data-number="4.6.1"><h3 data-number="4.6.1" class="anchored" data-anchor-id="replication-effect-within-the-original-ci">
 <span class="header-section-number">4.6.1</span> Replication effect within the original CI</h3>
+<p>We can check whether a replication effect falls within the original study’s confidence interval. That is, whether the following inequalities are satisfied.</p>
 <p><span class="math display">\[
 \theta_{0} - t_{\alpha} \sqrt{\sigma^2_{0}} &lt; \theta_{r} &lt; \theta_{0} + t_{\alpha} \sqrt{\sigma^2_{0}}
 \]</span></p>
+<p>The <span style="color: green;">pros</span> and <span style="color: red;">cons</span> of this approach include:</p>
 <div class="pros">
 <ul>
-<li>Take into account the size of the effect and the precision of <span class="math inline">\(\theta_{0}\)</span>
+<li>Takes into account the size of the effect and the precision of <span class="math inline">\(\theta_{0}\)</span>
 </li>
 </ul>
 </div>
 <div class="cons">
 <ul>
-<li>The original study is assumed to be a reliable estimation</li>
-<li>No extension for <em>many-to-one</em> designs</li>
-<li>Low precise original studies lead to higher success rate</li>
+<li>Assumes the original study provides a reliable estimate</li>
+<li>Has no extension for <em>many-to-one</em> designs</li>
+<li>Original studies with limited precision will tend to lead to higher success rates (i.e., original studies with wide intervals will be easier to replicate)</li>
 </ul>
 </div>
 <div class="cell">
@@ -604,7 +606,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>One potential problem of this method regards that low precise original studies are “easier” to replicate due to larger confidence intervals.</p>
+<p>Here is an illustration of the last <span style="color: red;">con</span> of this method (i.e., that original studies with wide intervals will be easier to replicate).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -615,20 +617,20 @@ window.Quarto = {
 </div>
 </section><section id="original-study-within-replication-ci" class="level3" data-number="4.6.2"><h3 data-number="4.6.2" class="anchored" data-anchor-id="original-study-within-replication-ci">
 <span class="header-section-number">4.6.2</span> Original study within replication CI</h3>
-<p>The same approach can be applied checking if the original effect size is contained within the replication confidence interval. Clearly these methods depends on the precision of studies. Formally:</p>
+<p>A similar approach is checking whether the original effect size is contained within the replication confidence interval, i.e., whether the following inequalities are satisfied.</p>
 <p><span class="math display">\[
 \theta_{r} - t_{\alpha} \sqrt{\sigma_{r}^2} &lt; \theta_{0} &lt; \theta_{r} + t_{\alpha} \sqrt{\sigma_{r}^2}
 \]</span></p>
-<p>The method has the same pros and cons of the previous approach. One advantage is that usually replication studies are more precise (higher sample size) thus the parameter and the % CI is more reliable.</p>
+<p>This method has the same <span style="color: green;">pros</span> and <span style="color: red;">cons</span> as the previous approach. One advantage of this method is that replication studies are usually more precise (because they tend to have higher sample sizes). As a result, the parameter and the %CI tends to be more reliable.</p>
 </section></section><section id="prediction-interval-pi" class="level2" data-number="4.7"><h2 data-number="4.7" class="anchored" data-anchor-id="prediction-interval-pi">
 <span class="header-section-number">4.7</span> Prediction interval PI</h2>
-<p>There is still one missing information from the CI method that is considering the uncertainty only from the original or the replication study. The prediction interval PI express the uncertainty of a future observation (in this case a study) and not on the estimated parameter.</p>
-<p>If we compute the difference between the original and the replication study, the sampling distribution of the difference express the range of values that are expected <em>in absence of other source of variability</em>. In other terms, assuming that <span class="math inline">\(\tau^2 = 0\)</span>.</p>
-<p>If the original and replication studies comes from the same population, the sampling distribution of the difference is centered on zero with a certain standard error <span class="math inline">\(\theta_{0} - \theta_{r} \sim \mathcal{N}\left(0, \sqrt{\sigma^2_{\hat \theta_{0} - \hat \theta_{r}}} \right)\)</span> (subscript <span class="math inline">\(0\)</span> to indicate that is expected to be sampled from the same population as <span class="math inline">\(\theta_{0}\)</span>)</p>
+<p>The CI methods described so far only take into account uncertainty from either the original or the replication study. The prediction interval PI allows us to account for uncertainty regarding a future observation (in this case, a future study).</p>
+<p>If we compute the difference between the original and the replication study, the sampling distribution of the difference represents the range of values that are expected <em>in the absence of other sources of variability</em>. In other words, assuming that <span class="math inline">\(\tau^2 = 0\)</span>.</p>
+<p>If the original and replication studies come from the same population, the sampling distribution of the difference is centered on zero with a certain standard error <span class="math inline">\(\theta_{0} - \theta_{r} \sim \mathcal{N}\left(0, \sqrt{\sigma^2_{\hat \theta_{0} - \hat \theta_{r}}} \right)\)</span> (the subscript <span class="math inline">\(0\)</span> is to indicate that the effect is expected to be sampled from the same population as <span class="math inline">\(\theta_{0}\)</span>)</p>
 <p><span class="math display">\[
 \hat \theta_{0} \pm t_{\alpha} \sqrt{\sigma^2_{\theta_{0} - \theta_{r}}}
 \]</span></p>
-<p>The new standard error is the sum (assuming that the two studies are independent) of the two standard errors. Thus we are taking into account the estimation uncertainty of the original and replication studies.</p>
+<p>The new standard error is the sum (assuming that the two studies are independent) of the two standard errors. Thus, we are taking into account the estimation uncertainty of the original and replication studies.</p>
 <div class="cell">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
 <span></span>
@@ -657,16 +659,17 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p>The <span style="color: green;">pros</span> and <span style="color: red;">cons</span> of this method include:</p>
 <div class="pros">
 <ul>
-<li>Take into account uncertainty of both studies</li>
-<li>We can plan a replication using the standard deviation of the original study and the expected sample size</li>
+<li>Takes into account uncertainty in both studies</li>
+<li>Allows us to plan a replication using the standard deviation of the original study and the expected sample size of the replication study</li>
 </ul>
 </div>
 <div class="cons">
 <ul>
-<li>Low precision original studies lead to wider PI. For a replication study is difficult to fall outside the PI</li>
-<li>Mainly for <em>one-to-one</em> replications design</li>
+<li>Low precision in original studies leads to wider PI. For a replication study, it is difficult to fall outside the PI</li>
+<li>Mainly useful for <em>one-to-one</em> replication designs</li>
 </ul>
 </div>
 </section><section id="mathur-vanderweele--mathur2020-nw-p_orig" class="level2" data-number="4.8"><h2 data-number="4.8" class="anchored" data-anchor-id="mathur-vanderweele--mathur2020-nw-p_orig">
@@ -674,23 +677,23 @@ window.Quarto = {
 </h2>
 <p>Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(<a href="#ref-Mathur2020-nw" role="doc-biblioref">2020</a>)</span> proposed a new method based on the prediction interval to calculate a p value <span class="math inline">\(p_{orig}\)</span> representing the probability that <span class="math inline">\(\theta_{0}\)</span> is consistent with the replications. This method is suited for <em>many-to-one</em> replication designs. Formally:</p>
 <p><span class="math display">\[
-P_{orig} = 2 \left[ 1 - \Phi \left( \frac{|\hat \theta_{0} - \hat \mu_{\theta_{R}}|}{\sqrt{\hat \tau^2 + \sigma^2_{\theta_{0}} + \hat{SE}^2_{\hat \mu_{\theta_{R}}}}} \right) \right]
+p_{orig} = 2 \left[ 1 - \Phi \left( \frac{|\hat \theta_{0} - \hat \mu_{\theta_{R}}|}{\sqrt{\hat \tau^2 + \sigma^2_{\theta_{0}} + \hat{SE}^2_{\hat \mu_{\theta_{R}}}}} \right) \right]
 \]</span></p>
 <ul>
 <li>
 <span class="math inline">\(\hat \mu_{\theta_{R}}\)</span> is the pooled (i.e., meta-analytic) estimation of the <span class="math inline">\(k\)</span> replications</li>
 <li>
-<span class="math inline">\(\tau^2\)</span> is the variance among replications (i.e., heterogeneity)</li>
+<span class="math inline">\(\tau^2\)</span> is the variance of effects across replications (i.e., heterogeneity)</li>
 </ul>
-<p>It is interpreted as the probability that <span class="math inline">\(\theta_{0}\)</span> is equal or more extreme than what is observed. A very low <span class="math inline">\(p_{orig}\)</span> suggests that the original study is inconsistent with replications.</p>
+<p><span class="math inline">\(p_{orig}\)</span> is interpreted as the probability that <span class="math inline">\(\theta_{0}\)</span> is at least as extreme as what is observed. A low <span class="math inline">\(p_{orig}\)</span> suggests that the original study is inconsistent with replications. This method as three key <span style="color: green;">pros</span>.</p>
 <div class="pros">
 <ul>
 <li>Suited for <em>many-to-one</em> designs</li>
-<li>We take into account all sources of uncertainty</li>
-<li>We have a p-value</li>
+<li>Takes into account all sources of uncertainty</li>
+<li>Provides a p-value (to gauge consistency of the original study with replications)</li>
 </ul>
 </div>
-<p>The code is implemented in the <code>Replicate</code> and <code>MetaUtility</code> R packages:</p>
+<p>The code for this approach is implemented in the <code>Replicate</code> and <code>MetaUtility</code> R packages:</p>
 <div class="cell">
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tau2</span> <span class="op">&lt;-</span> <span class="fl">0.05</span></span>
 <span><span class="va">theta_rep</span> <span class="op">&lt;-</span> <span class="fl">0.2</span></span>
@@ -733,11 +736,11 @@ P_{orig} = 2 \left[ 1 - \Phi \left( \frac{|\hat \theta_{0} - \hat \mu_{\theta_{R
 </section><section id="mathur-vanderweele--mathur2020-nw-hat-p_-0" class="level3" data-number="4.8.2"><h3 data-number="4.8.2" class="anchored" data-anchor-id="mathur-vanderweele--mathur2020-nw-hat-p_-0">
 <span class="header-section-number">4.8.2</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(<a href="#ref-Mathur2020-nw" role="doc-biblioref">2020</a>)</span> <span class="math inline">\(\hat P_{&gt; 0}\)</span>
 </h3>
-<p>Another related metric is the <span class="math inline">\(\hat P_{&gt; 0}\)</span>, representing the proportion of replications following the same direction as the original effect. Before simply computing the proportions we need to adjust the estimated <span class="math inline">\(\theta_{r}\)</span> (<span class="math inline">\(r = 1, \dots, R\)</span>) with a shrinkage factor:</p>
+<p>Another related metric is the <span class="math inline">\(\hat P_{&gt; 0}\)</span>, which represents the proportion of replications having the same direction as the original effect. Note: before computing the proportions, they adjust the estimated <span class="math inline">\(\theta_{r}\)</span> (<span class="math inline">\(r = 1, \dots, R\)</span>) with a shrinkage factor (to account for regression to the mean):</p>
 <p><span class="math display">\[
 \tilde{\theta}_{r} = (\theta_{r} - \mu_{\theta_{r}}) \sqrt{\frac{\hat \tau^2}{\hat \tau^2 + \sigma^2_{r}}}
 \]</span></p>
-<p>Where <span class="math inline">\(\sigma^2_r\)</span> is the sampling variance for the replication effect size <span class="math inline">\(r\)</span>. This method is somehow similar to the vote counting but we are adjusting the effects taking with a shrinkage factor based on <span class="math inline">\(\tau^2\)</span>.</p>
+<p>Here <span class="math inline">\(\sigma^2_r\)</span> is the sampling variance for the replication effect size <span class="math inline">\(r\)</span>. This method is similar to vote counting; but, we are adjusting the effects with a shrinkage factor based on <span class="math inline">\(\tau^2\)</span>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># compute calibrated estimation for the replications</span></span>
 <span><span class="co"># use restricted maximum likelihood to estimate tau2 under the hood</span></span>
@@ -747,7 +750,7 @@ P_{orig} = 2 \left[ 1 - \Phi \left( \frac{|\hat \theta_{0} - \hat \mu_{\theta_{R
 <pre><code>[1] 0.85</code></pre>
 </div>
 </div>
-<p>The authors suggest a bootstrapping approach for making inference on <span class="math inline">\(\hat P_{&gt; 0}\)</span></p>
+<p>The authors suggest a bootstrapping approach for inference on <span class="math inline">\(\hat P_{&gt; 0}\)</span></p>
 <div class="cell">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nboot</span> <span class="op">&lt;-</span> <span class="fl">1e3</span></span>
 <span><span class="va">theta_boot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">0</span>, nrow <span class="op">=</span> <span class="va">nboot</span>, ncol <span class="op">=</span> <span class="va">k</span><span class="op">)</span></span>
@@ -775,7 +778,7 @@ P_{orig} = 2 \left[ 1 - \Phi \left( \frac{|\hat \theta_{0} - \hat \mu_{\theta_{R
 </section><section id="mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q" class="level3" data-number="4.8.3"><h3 data-number="4.8.3" class="anchored" data-anchor-id="mathur-vanderweele--mathur2020-nw-hat-p_gtrless-q">
 <span class="header-section-number">4.8.3</span> Mathur &amp; VanderWeele <span class="citation" data-cites="Mathur2020-nw">(<a href="#ref-Mathur2020-nw" role="doc-biblioref">2020</a>)</span> <span class="math inline">\(\hat P_{\gtrless q*}\)</span>
 </h3>
-<p>Instead of using 0 as threshold, we can use meaningful effect size to be considered as low but different from 0. <span class="math inline">\(\hat P_{\gtrless q*}\)</span> is the proportion of (calibrated) replications greater or lower than the <span class="math inline">\(q*\)</span> value. This framework is similar to equivalence and minimum effect size testing <span class="citation" data-cites="Lakens2018-ri">(<a href="#ref-Lakens2018-ri" role="doc-biblioref">Lakens et al., 2018</a>)</span>.</p>
+<p>Instead of using 0 as threshold, we can use a practically meaningful effect size, considered to be low but different from 0. <span class="math inline">\(\hat P_{\gtrless q*}\)</span> is the proportion of (calibrated) replications greater or lower than the <span class="math inline">\(q*\)</span> value. This framework is similar to equivalence and minimum effect size testing <span class="citation" data-cites="Lakens2018-ri">(<a href="#ref-Lakens2018-ri" role="doc-biblioref">Lakens et al., 2018</a>)</span>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">q</span> <span class="op">&lt;-</span> <span class="fl">0.2</span> <span class="co"># minimum non zero effect</span></span>
 <span></span>
@@ -798,17 +801,17 @@ P_{orig} = 2 \left[ 1 - \Phi \left( \frac{|\hat \theta_{0} - \hat \mu_{\theta_{R
 </div>
 </section></section><section id="meta-analytic-methods" class="level2" data-number="4.9"><h2 data-number="4.9" class="anchored" data-anchor-id="meta-analytic-methods">
 <span class="header-section-number">4.9</span> Meta-analytic methods</h2>
-<p>Another approach is to combine the original and replication results (both <em>one-to-one</em> and <em>many-to-one</em>) using a meta-analysis model. Then we can test if the pooled estimate is different from 0 or another meaningful value.</p>
+<p>Another approach is to combine the original and replication results using a meta-analysis model. This is applicable to both <em>one-to-one</em> and <em>many-to-one</em> designs. In this case, we can test whether the pooled estimate is different from 0 (or another practically relevant value). The meta-analytic approach has the following <span style="color: green;">pros</span> and <span style="color: red;">cons</span>.</p>
 <div class="pros">
 <ul>
-<li>Use all the available information, especially when fitting a random-effects model</li>
-<li>Take into account the precision by inverse-variance weighting</li>
+<li>Uses all the available information, especially when fitting a random-effects model</li>
+<li>Takes into account the precision of individual studies (e.g., via inverse-variance weighting)</li>
 </ul>
 </div>
 <div class="cons">
 <ul>
-<li>Did not consider the publication bias</li>
-<li>For <em>one-to-one</em> designs only a fixed-effects model can be used</li>
+<li>Does not take into account publication bias</li>
+<li>For <em>one-to-one</em> designs, only a fixed-effects model can be used</li>
 </ul>
 </div>
 <section id="fixed-effects-model" class="level3" data-number="4.9.1"><h3 data-number="4.9.1" class="anchored" data-anchor-id="fixed-effects-model">
@@ -871,27 +874,27 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </section><section id="pooling-replications" class="level3" data-number="4.9.3"><h3 data-number="4.9.3" class="anchored" data-anchor-id="pooling-replications">
 <span class="header-section-number">4.9.3</span> Pooling replications</h3>
-<p>The previous approach can be also implemented combining replications into a single effect and then compare the original with the combined replication study.</p>
-<p>This is similar to using the CI or PI approaches but the replication effect will probably by very precise due to pooling multiple studies.</p>
-</section><section id="q-statistics" class="level3" data-number="4.9.4"><h3 data-number="4.9.4" class="anchored" data-anchor-id="q-statistics">
-<span class="header-section-number">4.9.4</span> Q Statistics</h3>
-<p>An interesting proposal is using the Q statistics <span class="citation" data-cites="Hedges2019-pr Hedges2019-ar Hedges2021-of Schauer2022-mj Schauer2021-ja Schauer2020-tw Hedges2019-ry">(<a href="#ref-Hedges2019-pr" role="doc-biblioref">Hedges &amp; Schauer, 2019a</a>, <a href="#ref-Hedges2019-ar" role="doc-biblioref">2019b</a>, <a href="#ref-Hedges2019-ry" role="doc-biblioref">2019c</a>, <a href="#ref-Hedges2021-of" role="doc-biblioref">2021</a>; <a href="#ref-Schauer2022-mj" role="doc-biblioref">Schauer, 2022</a>; <a href="#ref-Schauer2020-tw" role="doc-biblioref">Schauer &amp; Hedges, 2020</a>; <a href="#ref-Schauer2021-ja" role="doc-biblioref">Schauer &amp; Hedges, 2021</a>)</span>, commonly used in meta-analysis to assess the presence of heterogeneity. Formally:</p>
+<p>The previous approach can also incorporate the combination/pooling of replications into a single effect (then comparing the original study and the combined/pooled replication study).</p>
+<p>This is similar to using the CI or PI approaches; but, the replication effect is likely to be more precise, since we are pooling multiple replication studies.</p>
+</section><section id="the-q-statistic" class="level3" data-number="4.9.4"><h3 data-number="4.9.4" class="anchored" data-anchor-id="the-q-statistic">
+<span class="header-section-number">4.9.4</span> The Q Statistic</h3>
+<p>An interesting proposal involves the use of the Q statistic <span class="citation" data-cites="Hedges2019-pr Hedges2019-ar Hedges2021-of Schauer2022-mj Schauer2021-ja Schauer2020-tw Hedges2019-ry">(<a href="#ref-Hedges2019-pr" role="doc-biblioref">Hedges &amp; Schauer, 2019a</a>, <a href="#ref-Hedges2019-ar" role="doc-biblioref">2019b</a>, <a href="#ref-Hedges2019-ry" role="doc-biblioref">2019c</a>, <a href="#ref-Hedges2021-of" role="doc-biblioref">2021</a>; <a href="#ref-Schauer2022-mj" role="doc-biblioref">Schauer, 2022</a>; <a href="#ref-Schauer2020-tw" role="doc-biblioref">Schauer &amp; Hedges, 2020</a>; <a href="#ref-Schauer2021-ja" role="doc-biblioref">Schauer &amp; Hedges, 2021</a>)</span>, which is commonly applied in meta-analysis to assess the presence of heterogeneity. Formally:</p>
 <p><span class="math display">\[
 Q = \sum_{r = 0}^{R} \frac{(\theta_r - \bar \theta_R)^2}{\sigma^2_r}
 \]</span></p>
-<p>Where <span class="math inline">\(\bar \theta_R\)</span> is the inverse-variance weighted average (i.g., fixed-effect model). The <span class="math inline">\(Q\)</span> statistics is essentially a weighted sum of squares. Under the null hypothesis where all studies are equal <span class="math inline">\(\theta_0 = \theta_1, ... = \theta_R\)</span> the <span class="math inline">\(Q\)</span> statistics has a <span class="math inline">\(\chi^2\)</span> distribution with <span class="math inline">\(R - 1\)</span> degrees of freedom. Under the alternative hypothesis the distribution is a non-central <span class="math inline">\(\chi^2\)</span> with non centrality parameter <span class="math inline">\(\lambda\)</span>. The expected value of the <span class="math inline">\(Q\)</span> is <span class="math inline">\(E(Q) = \nu + \lambda\)</span>, where <span class="math inline">\(\nu\)</span> are the degrees of freedom.</p>
-<p>Hedges &amp; Schauer proposed to use the <span class="math inline">\(Q\)</span> statistics to evaluate the consistency of a series of replications:</p>
+<p>where <span class="math inline">\(\bar \theta_R\)</span> is the inverse-variance weighted average (e.g., from a fixed-effect model). The <span class="math inline">\(Q\)</span> statistic is a weighted sum of squares. Under the null hypothesis where all studies are equal <span class="math inline">\(\theta_0 = \theta_1, ... = \theta_R\)</span>, the <span class="math inline">\(Q\)</span> statistic has a <span class="math inline">\(\chi^2\)</span> distribution with <span class="math inline">\(R - 1\)</span> degrees of freedom. Under the alternative hypothesis the distribution is a non-central <span class="math inline">\(\chi^2\)</span> with non centrality parameter <span class="math inline">\(\lambda\)</span>. The expected value of <span class="math inline">\(Q\)</span> is <span class="math inline">\(E(Q) = \nu + \lambda\)</span>, where <span class="math inline">\(\nu\)</span> are the degrees of freedom.</p>
+<p>Hedges &amp; Schauer proposed the use of <span class="math inline">\(Q\)</span> to evaluate the consistency of a series of replications:</p>
 <ul>
 <li>In case of a <strong>replication</strong>, <span class="math inline">\(\lambda = 0\)</span> because <span class="math inline">\(\theta_0 = \theta_1, ... = \theta_R\)</span>.</li>
-<li>In case of an <strong>extension</strong>, <span class="math inline">\(\lambda &lt; \lambda_0\)</span> where <span class="math inline">\(\lambda_0\)</span> is the maximum value considered equivalent to zero. In other terms, <span class="math inline">\(\lambda_0\)</span> is the threshold above which the variability is too high for being considered a neglegible quantity for a replication <span class="citation" data-cites="Machery2020-sv">(in <a href="#ref-Machery2020-sv" role="doc-biblioref">Machery, 2020</a> terms)</span>.</li>
+<li>In case of an <strong>extension</strong>, <span class="math inline">\(\lambda &lt; \lambda_0\)</span> where <span class="math inline">\(\lambda_0\)</span> is the maximum value considered equivalent to zero. In other words, <span class="math inline">\(\lambda_0\)</span> is the threshold above which the variability is too high to be considered negligible for a replication <span class="citation" data-cites="Machery2020-sv">(in the sense of <a href="#ref-Machery2020-sv" role="doc-biblioref">Machery, 2020</a>)</span>.</li>
 </ul>
-<p>This approach is testing the consistency (i.e., homogeneity) of replications. A successful replication should minimize the heterogeneity and the presence of a significant <span class="math inline">\(Q\)</span> statistics would suggest a failed replication attempt. <span class="citation" data-cites="Hedges2019-pr">Hedges &amp; Schauer (<a href="#ref-Hedges2019-pr" role="doc-biblioref">2019a</a>)</span> and <span class="citation" data-cites="Mathur2019-vh">Mathur &amp; VanderWeele (<a href="#ref-Mathur2019-vh" role="doc-biblioref">2019</a>)</span> The discussed extensively this approach.</p>
+<p>This approach is testing the consistency (i.e., homogeneity) of replications. A successful replication should minimize the heterogeneity and the presence of a significant <span class="math inline">\(Q\)</span> statistic would suggest a failed replication attempt. <span class="citation" data-cites="Hedges2019-pr">Hedges &amp; Schauer (<a href="#ref-Hedges2019-pr" role="doc-biblioref">2019a</a>)</span> and <span class="citation" data-cites="Mathur2019-vh">Mathur &amp; VanderWeele (<a href="#ref-Mathur2019-vh" role="doc-biblioref">2019</a>)</span> discuss this approach in detail. Their discussion addresses various issues surrounding the proper use of this method, including:</p>
 <ul>
-<li>to cover different replication setup (burden of proof on replicating vs non-replicating, many-to-one and one-to-one, etc.)</li>
-<li>interpreting and choosing an appropriate <span class="math inline">\(\lambda_0\)</span> parameter</li>
+<li>variations of the apporoach, which cover different replication setups (burden of proof on replicating vs non-replicating, many-to-one and one-to-one, etc.)</li>
+<li>the choice (and interpretation) of the <span class="math inline">\(\lambda_0\)</span> parameter</li>
 <li>evaluating the power and statistical properties under different replication scenarios</li>
 </ul>
-<p>In the case of evaluating a replication we can use the <code>Qrep()</code> function that simply calculates the p-value based on the Q sampling distribution.</p>
+<p>When evaluating a replication, we can use the <code>Qrep()</code> function which calculates the p-value based on the Q sampling distribution.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Qrep</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">yi</span>, <span class="va">vi</span>, <span class="va">lambda0</span> <span class="op">=</span> <span class="fl">0</span>, <span class="va">alpha</span> <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu">metafor</span><span class="fu">::</span><span class="fu"><a href="https://wviechtb.github.io/metafor/reference/rma.uni.html">rma</a></span><span class="op">(</span><span class="va">yi</span>, <span class="va">vi</span><span class="op">)</span></span>
 <span>  <span class="va">k</span> <span class="op">&lt;-</span> <span class="va">fit</span><span class="op">$</span><span class="va">k</span></span>
@@ -937,11 +940,18 @@ H0: lambda = 0 </code></pre>
 </div>
 </div>
 </div>
-<section id="q-statistics-for-an-extension" class="level4" data-number="4.9.4.1"><h4 data-number="4.9.4.1" class="anchored" data-anchor-id="q-statistics-for-an-extension">
-<span class="header-section-number">4.9.4.1</span> Q Statistics for an extension</h4>
-<p>In case of an extension we need to set <span class="math inline">\(\lambda_0\)</span> to a meaningful value but the overall test is the same. The critical <span class="math inline">\(Q\)</span> is no longer evaluated with a central <span class="math inline">\(\chi^2\)</span> but a non-central <span class="math inline">\(\chi^2\)</span> with <span class="math inline">\(\lambda_0\)</span> as non-centrality parameter.</p>
-<p><span class="citation" data-cites="Hedges2019-ry">Hedges &amp; Schauer (<a href="#ref-Hedges2019-ry" role="doc-biblioref">2019c</a>)</span> provides different strategies to choose <span class="math inline">\(\lambda_0\)</span>. They found that under some assumptions, <span class="math inline">\(\lambda = (R - 1) \frac{\tau^2}{\tilde{v}}\)</span></p>
-<p>Given that we introduced the <span class="math inline">\(I^2\)</span> statistics we can derive a <span class="math inline">\(\lambda_0\)</span> based on <span class="math inline">\(I^2\)</span>. <span class="citation" data-cites="Schmidt2014-kw">Schmidt &amp; Hunter (<a href="#ref-Schmidt2014-kw" role="doc-biblioref">2014</a>)</span> proposed that when <span class="math inline">\(\tilde{v}\)</span> is at least 75% of total variance <span class="math inline">\(\tilde{v} + \tau^2\)</span> thus <span class="math inline">\(\tau^2\)</span> could be considered negligible. This corresponds to a <span class="math inline">\(I^2 = 25%\)</span> and a ratio <span class="math inline">\(\frac{\tau^2}{\tilde{v}} = 1/3\)</span> thus <span class="math inline">\(\lambda_0 = \frac{(R - 1)}{3}\)</span> can be considered a neglegible heterogeneity.</p>
+<section id="q-statistic-for-an-extension-study" class="level4" data-number="4.9.4.1"><h4 data-number="4.9.4.1" class="anchored" data-anchor-id="q-statistic-for-an-extension-study">
+<span class="header-section-number">4.9.4.1</span> Q Statistic for an extension study</h4>
+<p>In the case of an extension of an intial experiment, we will need to set <span class="math inline">\(\lambda_0\)</span> to a meaningful value. The critical <span class="math inline">\(Q\)</span> is no longer evaluated with a central <span class="math inline">\(\chi^2\)</span> but is now a non-central <span class="math inline">\(\chi^2\)</span> with non-centrality parameter <span class="math inline">\(\lambda_0\)</span>.</p>
+<p><span class="citation" data-cites="Hedges2019-ry">Hedges &amp; Schauer (<a href="#ref-Hedges2019-ry" role="doc-biblioref">2019c</a>)</span> provide different strategies for choosing <span class="math inline">\(\lambda_0\)</span>. They found that (under some mild assumptions), <span class="math inline">\(\lambda = (R - 1) \frac{\tau^2}{\tilde{v}}\)</span> seems to be a suitable choice.</p>
+<p>Similarly to a meta-analysis, in a many-to-one replication design we have mainly two sources of variability: the true heterogeneity <span class="math inline">\(\tau^2\)</span> and the within-studies veriability <span class="math inline">\(\sigma_i^2\)</span>. The sum of these two quantities is the total variability and the proportion of total variability due to heterogeneity is a relative index of (in)consistency among effects. This proportion is called <span class="math inline">\(I^2\)</span> <span class="citation" data-cites="Higgins2002-fh">(<a href="#ref-Higgins2002-fh" role="doc-biblioref">Higgins &amp; Thompson, 2002</a>)</span> in the meta-analysis literature is calculated as: <span class="math display">\[
+I^2 = 100\% \times \frac{\hat{\tau}^2}{\hat{\tau}^2 + \tilde{v}}
+\]</span></p>
+<p>Where <span class="math inline">\(\tilde{v}\)</span> can be considered as a typical within-study variance value.</p>
+<p><span class="math display">\[
+\tilde{v} = \frac{(k-1) \sum w_i}{(\sum w_i)^2 - \sum w_i^2},
+\]</span></p>
+<p>Having introduced the <span class="math inline">\(I^2\)</span> statistic, we can derive a <span class="math inline">\(\lambda_0\)</span> based on <span class="math inline">\(I^2\)</span>. <span class="citation" data-cites="Schmidt2014-kw">Schmidt &amp; Hunter (<a href="#ref-Schmidt2014-kw" role="doc-biblioref">2014</a>)</span> proposed that when <span class="math inline">\(\tilde{v}\)</span> is at least 75% of the total variance <span class="math inline">\(\tilde{v} + \tau^2\)</span>, <span class="math inline">\(\tau^2\)</span> can be considered to be negligible. This corresponds to a <span class="math inline">\(I^2 = 25%\)</span> and a ratio <span class="math inline">\(\frac{\tau^2}{\tilde{v}} = 1/3\)</span>. Hence, <span class="math inline">\(\lambda_0 = \frac{(R - 1)}{3}\)</span> can be considered to be a negligible amount of heterogeneity.</p>
 <div class="cell">
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
 <span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">sim_studies</span><span class="op">(</span><span class="va">k</span>, <span class="fl">0.5</span>, <span class="fl">0</span>, <span class="fl">50</span>, <span class="fl">50</span><span class="op">)</span></span>
@@ -956,13 +966,9 @@ H0: lambda &lt; 33 </code></pre>
 </section></section></section><section id="small-telescopes-simonsohn2015-kg" class="level2" data-number="4.10"><h2 data-number="4.10" class="anchored" data-anchor-id="small-telescopes-simonsohn2015-kg">
 <span class="header-section-number">4.10</span> Small Telescopes <span class="citation" data-cites="Simonsohn2015-kg">(<a href="#ref-Simonsohn2015-kg" role="doc-biblioref">Simonsohn, 2015</a>)</span>
 </h2>
-<p>The idea is simple but quite powerful and insightful. Let’s assume that an original study found an effect of <span class="math inline">\(\theta_{0} = 0.7\)</span> on a two-sample design with <span class="math inline">\(n = 20\)</span> per group.</p>
-<ul>
-<li>we define a threshold as the effect size that is associated with a certain low statistical power level e.g., <span class="math inline">\(33\%\)</span> given the sample size i.e.&nbsp;<span class="math inline">\(\theta_{s} = 0.5\)</span>
-</li>
-<li>the replication study found an effect of <span class="math inline">\(y_{rep} = 0.2\)</span> with <span class="math inline">\(n = 100\)</span> subjects</li>
-</ul>
-<p>If the <span class="math inline">\(\theta_{r}\)</span> is lower (i.e., the upper bound of the confidence interval) than the <em>small effect</em> (<span class="math inline">\(\theta_{s} = 0.5\)</span>) we conclude that the effect is probably so small that could not have been detected by the original study. Thus there is no evidence for a replication.</p>
+<p>The idea is simple but quite powerful and insightful. An original study <span class="math inline">\(\theta_{0}\)</span> is conducted estimating a certain effect size with a certain sample size. This study has a certain statistical power level assuming a plausible effect size. Then we estimate the effect size that would have a certain low power level (e.g., 33%, <span class="math inline">\(d_{33\%}\)</span>). Then we run the replication study <span class="math inline">\(\theta_r\)</span> testing if the replication effect size is lower (one-sided test) than <span class="math inline">\(d_{33\%}\)</span>. If upper bound of the confidence interval of the replication study is lower this means that the original study is probably seriously underpowered suggesting evidence of non-replication.</p>
+<p>As a practical example, let’s assume that an original study found an effect of <span class="math inline">\(\theta_{0} = 0.7\)</span> on a two-sample design with <span class="math inline">\(n = 20\)</span> per group. We define a threshold as the effect size that is associated with a certain low statistical power level e.g., <span class="math inline">\(33\%\)</span> given the sample size i.e.&nbsp;<span class="math inline">\(d_{33\%} = 0.5\)</span>. The replication study found an effect of <span class="math inline">\(\theta_{r} = 0.2\)</span> with <span class="math inline">\(n = 100\)</span> subjects.</p>
+<p>If the <span class="math inline">\(\theta_{r}\)</span> is statistically significantly lower than <span class="math inline">\(d_{33\%} = 0.5\)</span> we conclude that the effect is probably so small that could not have been detected by the original study.</p>
 <p>We can use the custom <code>small_telescope()</code> function on simulated data:</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">small_telescope</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">or_d</span>,</span>
 <span>                            <span class="va">or_se</span>,</span>
@@ -1045,7 +1051,7 @@ Replication Study: d = 0.214 0.95 CI = [-0.061, 0.490]
 The replicated effect is smaller than the small effect (0.493), no replication!</code></pre>
 </div>
 </div>
-<p>And a (quite over-killed) plot:</p>
+<p>And a plot:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -1065,13 +1071,14 @@ The replicated effect is smaller than the small effect (0.493), no replication!<
 </ul>
 <section id="bayesian-inference" class="level3" data-number="4.11.1"><h3 data-number="4.11.1" class="anchored" data-anchor-id="bayesian-inference">
 <span class="header-section-number">4.11.1</span> Bayesian inference</h3>
-<p>Bayesian inference is the statistical procedure where <strong>prior beliefs</strong> about a phenomenon are combined, using the Bayes theorem, with <strong>evidence from data</strong> to obtain the <strong>posterior beliefs</strong>.</p>
-<p>The interesting part is that the researcher expresses the prior beliefs in probabilistic terms. Then after collecting data, evidence from the experiment is combined, increasing or decreasing the plausibility of prior beliefs.</p>
-<p>Let’s make an (not very innovative :smile:) example. We need to evaluate the fairness of a coin. The crucial parameter is <span class="math inline">\(\pi\)</span> that is the probability of success (e.g., head). We have our prior belief about the coin (e.g., fair but with some uncertainty). We toss the coin <span class="math inline">\(k\)</span> times and we observe <span class="math inline">\(x\)</span> heads. What are my conclusions?</p>
+<p>Bayesian inference is a statistical procedure where <strong>prior beliefs</strong> about a phenomenon are combined, using Bayes’s theorem, with <strong>evidence from data</strong> to obtain <strong>posterior beliefs</strong>.</p>
+<p>If the researcher can express their prior beliefs in probabilistic terms, then evidence from the experiment is taken into account (via Bayesian conditionalization), thus increasing or decreasing the plausibility of prior beliefs.</p>
+<p>Let’s consider a simple example. We need to evaluate the fairness of a coin. The parameter is the probability <span class="math inline">\(\pi\)</span> of success (i.e., heads). We have our prior belief about the coin (e.g., fair but with some uncertainty). We toss the coin <span class="math inline">\(k\)</span> times, and we observe <span class="math inline">\(x\)</span> heads. How should we update our prior beliefs? We apply Bayes’s Theorem, which, in this case, is:</p>
 <p><span class="math display">\[
 p(\pi|D) = \frac{p(D|\pi) \; p(\pi)}{p(D)}
-\]</span> Where <span class="math inline">\(\pi\)</span> is our parameter and <span class="math inline">\(D\)</span> the data. <span class="math inline">\(p(\pi|D)\)</span> is the posterior distribution that is the product between the likelihood <span class="math inline">\(p(D|\pi)\)</span> and the prior <span class="math inline">\(p(\pi)\)</span>. <span class="math inline">\(p(D)\)</span> is the probability of the data (aka marginal likelihood) and is necessary only for the posterior to be a proper probability distribution.</p>
-<p>We can “read” the formula as: <em>The probability of the parameter given the data is the product between the likelihood of the data given the parameter and the prior probability of the parameter</em>.</p>
+\]</span></p>
+<p>Here, <span class="math inline">\(\pi\)</span> is our parameter and <span class="math inline">\(D\)</span> is our data. <span class="math inline">\(p(\pi|D)\)</span> is the posterior distribution, which is the normalized product of <span class="math inline">\(p(D|\pi)\)</span> — which is called the <strong>likelihood</strong> of the hypothesis <span class="math inline">\(\pi\)</span>, relative to the data <span class="math inline">\(D\)</span> — and the prior <span class="math inline">\(p(\pi)\)</span>. <span class="math inline">\(p(D)\)</span> is the prior probability of the data (aka marginal likelihood) and is necessary for the posterior to be a (proper) probability distribution.</p>
+<p>We can “read” the formula as: <em>The probability of the parameter given the data is the product of the probability of the data given the parameter and the prior probability of the parameter</em>.</p>
 <p>Let’s express our <strong>prior</strong> belief in probabilistic terms:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1099,20 +1106,24 @@ p(\pi|D) = \frac{p(D|\pi) \; p(\pi)}{p(D)}
 </div>
 </div>
 </div>
-<p>The idea of the Bayes Factor is computing the evidence of the data under two competing hypotheses, <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span> (~ <span class="math inline">\(\pi\)</span> in our previous example):</p>
+<p>The <strong>Bayes Factor</strong> (BF) — also called the <strong>likelihood ratio</strong>, for obvious reasons — is a measure of the relative support that the evidence provides for two competing hypotheses, <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_1\)</span> (~ <span class="math inline">\(\pi\)</span> in our previous example). It plays a key role in the following <em>odds form</em> of Bayes’s theorem.</p>
 <p><span class="math display">\[
-\frac{p(H_0|D)}{p(H_1|D)} = \frac{f(D|H_0)}{f(D|H_1)} \times \frac{p(H_0)}{p(H_1)}
+\frac{p(H_0|D)}{p(H_1|D)} = \frac{p(D|H_0)}{p(D|H_1)} \times \frac{p(H_0)}{p(H_1)}
 \]</span></p>
-<p>Where <span class="math inline">\(f\)</span> is the likelihood function, <span class="math inline">\(y\)</span> are the data. The <span class="math inline">\(\frac{p(H_0)}{p(H_1)}\)</span> is the prior odds of the two hypotheses. The Bayes Factor is the ratio between the likelihood of the data under the two hypotheses.</p>
-</section><section id="bayes-factor-using-the-sdr" class="level3" data-number="4.11.2"><h3 data-number="4.11.2" class="anchored" data-anchor-id="bayes-factor-using-the-sdr">
-<span class="header-section-number">4.11.2</span> Bayes Factor using the SDR</h3>
-<p>Calculating the BF can be problematic in some conditions. The SDR is a convenient shortcut to calculate the Bayes Factor <span class="citation" data-cites="Wagenmakers2010-fj">(<a href="#ref-Wagenmakers2010-fj" role="doc-biblioref">Wagenmakers et al., 2010</a>)</span>. The idea is that the ratio between the prior and posterior density distribution for the <span class="math inline">\(H_1\)</span> is an estimate of the Bayes factor calculated in the standard way.</p>
+<p>The ratio of the priors <span class="math inline">\(\frac{p(H_0)}{p(H_1)}\)</span> is called the <strong>prior odds</strong> of the hypotheses; and, the ratio of the poosteriors <span class="math inline">\(\frac{p(H_0| D)}{p(H_1 | D)}\)</span> is called the <strong>posterior odds</strong> of the hypotheses. Thus, the above (odds form) of Bayes’s Theorem can be paraphrased as follows</p>
 <p><span class="math display">\[
-BF_{01} = \frac{p(D|H_0)}{p(D|H_1)} = \frac{p(\pi = x|D, H_1)}{p(\pi = x, H_1)}
+\text{posterior odds} = \text{Bayes Factor} \times \text{prior odds}
+\]</span> In this way, it can be seen that the Bayes Factor captures the relative empirical support that the evidence <span class="math inline">\(D\)</span> provides in favor of <span class="math inline">\(H_0\)</span> over <span class="math inline">\(H_1\)</span>. If the Bayes Factor is greater than 1, then <span class="math inline">\(D\)</span> favors <span class="math inline">\(H_0\)</span> over <span class="math inline">\(H_1\)</span>. If the BF is less than one, then <span class="math inline">\(D\)</span> favors <span class="math inline">\(H_1\)</span> over <span class="math inline">\(H_0\)</span>. If the BF is 1, then <span class="math inline">\(D\)</span> is neutral regarding <span class="math inline">\(H_0\)</span> vs <span class="math inline">\(H_1\)</span> <span class="citation" data-cites="Royall1997-ye">(<a href="#ref-Royall1997-ye" role="doc-biblioref">Royall, 1997</a>)</span>. For this reason, the BF is also sometimes called the <strong>weight of evidence</strong> in favor of <span class="math inline">\(H_0\)</span> (<em>vs</em> <span class="math inline">\(H_1\)</span>) <span class="citation" data-cites="Good1950-go">(<a href="#ref-Good1950-go" role="doc-biblioref">Good, 1950</a>)</span>.</p>
+</section><section id="calculating-the-bayes-factor-using-the-sdr" class="level3" data-number="4.11.2"><h3 data-number="4.11.2" class="anchored" data-anchor-id="calculating-the-bayes-factor-using-the-sdr">
+<span class="header-section-number">4.11.2</span> Calculating the Bayes Factor using the SDR</h3>
+<p>The Savage-Dickey density ratio (SDR) is a convenient shortcut to calculate the Bayes Factor <span class="citation" data-cites="Wagenmakers2010-fj Marin2010-oh">(<a href="#ref-Marin2010-oh" role="doc-biblioref">Marin &amp; Robert, 2010</a>; see <a href="#ref-Wagenmakers2010-fj" role="doc-biblioref">Wagenmakers et al., 2010</a>)</span> in a situation where the null hypothesis (<span class="math inline">\(H_0\)</span>) is a single parameter value (e.g., <span class="math inline">\(H_0: \theta = 0\)</span>). With SDR the Bayes Factor can be calculated as the ratio between the prior and posterior density distribution under the alternative hypothesis <span class="math inline">\(H_1\)</span>.</p>
+<p><span class="math display">\[
+BF_{01} = \frac{p(D|H_0)}{p(D|H_1)} \approx \frac{p(\pi = x|D, H_1)}{p(\pi = x | H_1)}
 \]</span></p>
-<p>Where <span class="math inline">\(\pi\)</span> is the parameter of interest and <span class="math inline">\(x\)</span> is the null value under <span class="math inline">\(H_0\)</span> e.g., 0. and <span class="math inline">\(D\)</span> are the data.</p>
-<p>Following the previous example <span class="math inline">\(H_0: \pi = 0.5\)</span>. Under <span class="math inline">\(H_1\)</span> we use a completely uninformative prior by setting <span class="math inline">\(\pi \sim Beta(1, 1)\)</span>.</p>
-<p>We flipped the coin 20 times and we found that <span class="math inline">\(\hat \pi = 0.75\)</span>.</p>
+<p>Where <span class="math inline">\(\pi\)</span> is the parameter of interest and <span class="math inline">\(x\)</span> is the null value under <span class="math inline">\(H_0\)</span> (e.g., 0). and <span class="math inline">\(D\)</span> are the data.</p>
+<p>When there are multiple parameters in play and the null hypothesis is expressed in terms of only one of them, this representation is valid only under the assumption that the prior for any of the other parameters under the null is the same as the conditional prior for those parameters under the alternative.</p>
+<p>Following the previous example <span class="math inline">\(H_0: \pi = 0.5\)</span>. Under <span class="math inline">\(H_1\)</span> we use a vague prior by setting <span class="math inline">\(\pi \sim Beta(1, 1)\)</span>.</p>
+<p>Say we flipped the coin 20 times and we found that <span class="math inline">\(\hat \pi = 0.75\)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -1136,7 +1147,7 @@ BF_{01} = \frac{p(D|H_0)}{p(D|H_1)} = \frac{p(\pi = x|D, H_1)}{p(\pi = x, H_1)}
 <p>The idea is using the posterior distribution of the original study as prior for a Bayesian hypothesis testing where:</p>
 <ul>
 <li>
-<span class="math inline">\(H_0: \theta_{r} = 0\)</span> thus there is no effect in the replication study</li>
+<span class="math inline">\(H_0: \theta_{r} = 0\)</span> meaning that there is no effect in the replication study</li>
 <li>
 <span class="math inline">\(H_1: \theta_{r} \neq 0\)</span> and in particular is distributed as <span class="math inline">\(\delta \sim \mathcal{N}(\theta_{0}, \sigma^2_{0})\)</span> where <span class="math inline">\(\theta_{0}\)</span> and <span class="math inline">\(\sigma^2_{0}\)</span> are the mean and standard error of the original study</li>
 </ul>
@@ -1171,7 +1182,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The assumption of <span class="citation" data-cites="Verhagen2014-tx">Verhagen &amp; Wagenmakers (<a href="#ref-Verhagen2014-tx" role="doc-biblioref">2014</a>)</span> is that the original study performed a Bayesian analysis with a completely flat prior. Thus the confidence interval is the same as the Bayesian credible interval.</p>
+<p>The assumption of <span class="citation" data-cites="Verhagen2014-tx">Verhagen &amp; Wagenmakers (<a href="#ref-Verhagen2014-tx" role="doc-biblioref">2014</a>)</span> is that the original study performed a Bayesian analysis with a flat (unform) prior. Thus, the confidence interval is approximately the same as the Bayesian credible interval.</p>
 </div>
 </div>
 <p>For this reason, the posterior distribution of the original study can be approximated as:</p>
@@ -1252,7 +1263,7 @@ For each parameter, mcse is Monte Carlo standard error, n_eff is a crude measure
 
 Parameter   |    BF
 -------------------
-(Intercept) | 0.265
+(Intercept) | 0.274
 
 * Evidence Against The Null: 0</code></pre>
 </div>
@@ -1350,7 +1361,7 @@ Parameter   |    BF
 </div>
 </section></section><section id="conclusions" class="level2" data-number="4.12"><h2 data-number="4.12" class="anchored" data-anchor-id="conclusions">
 <span class="header-section-number">4.12</span> Conclusions</h2>
-<p>We believe this selection of methods is an appropriate overview of statistical approaches to different definitions of replication. The meta-analytic and <span class="math inline">\(Q\)</span> methods are more focused on accumulating evidence combining original and replication studies. The CI and PI methods are more interested in comparing the original and replication(s) study. The BF method can be considered as an hybrid approach evaluating the evidence of null effect from the posterior distribution of the replication study.</p>
+<p>We hope to have provided a useful overview of statistical approaches to different definitions of replication. The meta-analytic and <span class="math inline">\(Q\)</span> methods are more focused on accumulating evidence combining original and replication studies. The CI and PI methods are more interested in comparing the original and replication(s) study. The BF method constitutes a kind of compromise between these perspectives, by evaluating the weight of evidence in favor of the null — from the point of view of the posterior distribution of the replication study.</p>
 </section><section id="references" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
 
 
@@ -1363,6 +1374,9 @@ Collaboration, O. S., &amp; Open Science Collaboration. (2015). Estimating the r
 </div>
 <div id="ref-Errington2021-fb" class="csl-entry" role="listitem">
 Errington, T. M., Mathur, M., Soderberg, C. K., Denis, A., Perfito, N., Iorns, E., &amp; Nosek, B. A. (2021). Investigating the replicability of preclinical cancer biology. <em>eLife</em>, <em>10</em>. <a href="https://doi.org/10.7554/eLife.71601">https://doi.org/10.7554/eLife.71601</a>
+</div>
+<div id="ref-Good1950-go" class="csl-entry" role="listitem">
+Good, I. J. (1950). <em>Probability and the weighing of evidence</em>. Charles Griffin &amp; Co., Ltd., London; Hafner Publishing Co., New York.
 </div>
 <div id="ref-Hardin2015-ss" class="csl-entry" role="listitem">
 Hardin, J., Hoerl, R., Horton, N. J., Nolan, D., Baumer, B., Hall-Holt, O., Murrell, P., Peng, R., Roback, P., Temple Lang, D., &amp; Ward, M. D. (2015). Data science in statistics curricula: Preparing students to <span>“think with data.”</span> <em>The American Statistician</em>, <em>69</em>, 343–353. <a href="https://doi.org/10.1080/00031305.2015.1077729">https://doi.org/10.1080/00031305.2015.1077729</a>
@@ -1385,6 +1399,9 @@ Hedges, L. V., &amp; Schauer, J. M. (2021). The design of replication studies. <
 <div id="ref-Heyard2024-hv" class="csl-entry" role="listitem">
 Heyard, R., Pawel, S., Frese, J., Voelkl, B., Würbel, H., McCann, S., Held, L., Wever, K. E., Hartmann, H., Townsin, L., &amp; Zellers, S. (2024). <em>A scoping review on metrics to quantify reproducibility: A multitude of questions leads to a multitude of metrics</em>. <a href="https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;citation_for_view=JAb7P1QAAAAJ:ldfaerwXgEUC">https://scholar.google.com/citations?view_op=view_citation&amp;hl=en&amp;citation_for_view=JAb7P1QAAAAJ:ldfaerwXgEUC</a>
 </div>
+<div id="ref-Higgins2002-fh" class="csl-entry" role="listitem">
+Higgins, J. P. T., &amp; Thompson, S. G. (2002). Quantifying heterogeneity in a meta-analysis. <em>Statistics in Medicine</em>, <em>21</em>, 1539–1558. <a href="https://doi.org/10.1002/sim.1186">https://doi.org/10.1002/sim.1186</a>
+</div>
 <div id="ref-Lakens2018-ri" class="csl-entry" role="listitem">
 Lakens, D., Scheel, A. M., &amp; Isager, P. M. (2018). Equivalence testing for psychological research: A tutorial. <em>Advances in Methods and Practices in Psychological Science</em>, <em>1</em>, 259–269. <a href="https://doi.org/10.1177/2515245918770963">https://doi.org/10.1177/2515245918770963</a>
 </div>
@@ -1394,6 +1411,9 @@ Ly, A., Etz, A., Marsman, M., &amp; Wagenmakers, E.-J. (2019). Replication bayes
 <div id="ref-Machery2020-sv" class="csl-entry" role="listitem">
 Machery, E. (2020). What is a replication? <em>Philosophy of Science</em>, <em>87</em>, 545–567. <a href="https://doi.org/10.1086/709701">https://doi.org/10.1086/709701</a>
 </div>
+<div id="ref-Marin2010-oh" class="csl-entry" role="listitem">
+Marin, J.-M., &amp; Robert, C. P. (2010). On resolving the savage–dickey paradox. <em>Electronic Journal of Statistics</em>, <em>4</em>, 643–654. <a href="https://doi.org/10.1214/10-EJS564">https://doi.org/10.1214/10-EJS564</a>
+</div>
 <div id="ref-Mathur2019-vh" class="csl-entry" role="listitem">
 Mathur, M. B., &amp; VanderWeele, T. J. (2019). Challenges and suggestions for defining replication "success" when effects may be heterogeneous: Comment on hedges and schauer (2019). <em>Psychological Methods</em>, <em>24</em>, 571–575. <a href="https://doi.org/10.1037/met0000223">https://doi.org/10.1037/met0000223</a>
 </div>
@@ -1402,6 +1422,9 @@ Mathur, M. B., &amp; VanderWeele, T. J. (2020). New statistical metrics for mult
 </div>
 <div id="ref-Rouder2009-jh" class="csl-entry" role="listitem">
 Rouder, J. N., Speckman, P. L., Sun, D., Morey, R. D., &amp; Iverson, G. (2009). Bayesian t tests for accepting and rejecting the null hypothesis. <em>Psychonomic Bulletin &amp; Review</em>, <em>16</em>, 225–237. <a href="https://doi.org/10.3758/PBR.16.2.225">https://doi.org/10.3758/PBR.16.2.225</a>
+</div>
+<div id="ref-Royall1997-ye" class="csl-entry" role="listitem">
+Royall, R. M. (1997). <em>Statistical evidence: A likelihood paradigm</em> (Vol. 71). Chapman &amp; Hall, London.
 </div>
 <div id="ref-Schauer2022-mj" class="csl-entry" role="listitem">
 Schauer, J. M. (2022). Replicability and meta-analysis. In W. O’Donohue, A. Masuda, &amp; S. Lilienfeld (Eds.), <em>Avoiding questionable research practices in applied psychology</em> (pp. 301–342). Springer International Publishing. <a href="https://doi.org/10.1007/978-3-031-04968-2_14">https://doi.org/10.1007/978-3-031-04968-2_14</a>

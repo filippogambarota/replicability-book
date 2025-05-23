@@ -10,6 +10,11 @@ funs <- read_all_funs()
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Suggested Readings {.unnumbered}
+
+- @Heyard2024-hv
+- @Hedges2019-ry
+
 ## How to assess the replication outcome?
 
 In earlier chapters, we introduced the concept of replication from both statistical and theoretical perspectives. We now focus on analyzing the outcomes of replication experiments. Just as there are many definitions of replication, there are also multiple ways of assessing the outcomes of replication studies.
@@ -991,5 +996,10 @@ ggplot() +
 ## Conclusions
 
 We hope to have provided a useful overview of statistical approaches to different definitions of replication. The meta-analytic and $Q$ methods are more focused on accumulating evidence combining original and replication studies. The CI and PI methods are more interested in comparing the original and replication(s) study. The BF method constitutes a kind of compromise between these perspectives, by evaluating the weight of evidence in favor of the null --- from the point of view of the posterior distribution of the replication study. 
+
+## Key Questions
+
+- How might combining evidence from original and replication studies provide a richer understanding than comparing them separately?
+- Why might different definitions of replication lead to different conclusions about the success of a replication attempt?
 
 ## References {.unnumbered}
