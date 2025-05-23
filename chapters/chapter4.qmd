@@ -569,11 +569,11 @@ Hedges & Schauer proposed to use the $Q$ statistics to evaluate the consistency 
 - In case of a **replication**, $\lambda = 0$ because $\theta_0 = \theta_1, ... = \theta_R$.
 - In case of an **extension**, $\lambda < \lambda_0$ where $\lambda_0$ is the maximum value considered equivalent to zero. In other words, $\lambda_0$ is the threshold above which the variability is too high to be considered negligible for a replication [in @Machery2020-sv terms].
 
-This approach is testing the consistency (i.e., homogeneity) of replications. A successful replication should minimize the heterogeneity and the presence of a significant $Q$ statistics would suggest a failed replication attempt. @Hedges2019-pr and @Mathur2019-vh discuss extensively this approach.
+This approach is testing the consistency (i.e., homogeneity) of replications. A successful replication should minimize the heterogeneity and the presence of a significant $Q$ statistics would suggest a failed replication attempt. @Hedges2019-pr and @Mathur2019-vh discuss extensively this approach highliting some important points:
 
-- to cover different replication setup (burden of proof on replicating vs non-replicating, many-to-one and one-to-one, etc.)
+- facing different replication setup (burden of proof on replicating vs non-replicating, many-to-one and one-to-one, etc.)
 - interpreting and choosing an appropriate $\lambda_0$ parameter
-- evaluating the power and statistical properties under different replication scenarios
+- evaluating the power and statistical properties of replication metrics
 
 When evaluating a replication we can use the `Qrep()` function that calculates the p-value based on the Q sampling distribution.
 
@@ -759,7 +759,7 @@ Where $f$ is the likelihood function, $y$ are the data. The $\frac{p(H_0)}{p(H_1
 
 ### Bayes Factor using the SDR
 
-Calculating the BF can be problematic in some conditions. The SDR is a convenient shortcut to calculate the Bayes Factor [@Wagenmakers2010-fj]. The idea is that the ratio between the prior and posterior density distribution for the $H_1$ is an estimate of the Bayes factor calculated in the standard way.
+The SDR is a convenient shortcut to calculate the Bayes Factor [see @Wagenmakers2010-fj; @Marin2010-oh]. The idea is that the ratio between the prior and posterior density distribution for the $H_1$ is an estimate of the Bayes factor calculated in the standard way.
     
 $$
 BF_{01} = \frac{p(D|H_0)}{p(D|H_1)} = \frac{p(\pi = x|D, H_1)}{p(\pi = x, H_1)}
