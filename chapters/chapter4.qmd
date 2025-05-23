@@ -12,33 +12,33 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## How to assess the replication outcome?
 
-In the previous chapters we introduced the idea of replication from a statistical and theoretical point of view. We purposely omitted defining the outcome of a replication study to dedicate an entire chapter about this topic. The problem of having multiple definitions of replication extends to the various ways of assessing the outcomes of replication studies.
+In earlier chapters we introduced the concept of replication from both statistical and theoretical perspectives. We now focus on analyzing the outcome of replication experiments. Given the many definitions of replication, there are also multiple ways to assess the outcomes of replication studies.
 
-In addition, the field of replication metrics keeps growing. @Heyard2024-hv published an extensive systematic review, supported by an online and keep up-to-date database with more than 50 replication measures organized and classified according to a common scheme.
+Much of the discussion will focus on replication metrics, an area of statistics which keeps growing. @Heyard2024-hv published an extensive systematic review, supported by an online catalog, and maintains an up-to-date database with more than 50 replication measures organized and classified according to a common scheme.
 
-The database is available at the following link [http://rachelheyard.com/reproducibility_metrics/](http://rachelheyard.com/reproducibility_metrics/). We decided to make a selection of methods from the database according to the following criteria:
+The database is available at the following link [http://rachelheyard.com/reproducibility_metrics/](http://rachelheyard.com/reproducibility_metrics/). Here we selected methods from the database according to the following criteria:
 
-- for similar methods we keep the most recent and general version
-- we included both bayesian and frequentists
-- we included methods for answering to the question *"Is the study $x$ replicated?"* but also methods to combine evidence and estimate the size of the effect without an inferential decision
+- we included methods for answering to the question *"Is a study replicated?"* but also methods to combine evidence and estimate the size of the effect without an inferential decision
 - we selected methods that are not linked to a specific research area or topic. Some methods are specific for a given area of research or type of experiment such as replicating fMRI studies at the voxel level.
+- we included both bayesian and frequentist approaches
+- when methods were very similar we focused on the most recent or general version
 
-In general, despite this heterogeneity in methods and definitions choosing a single measure is probably not the best solution. In fact, large-scale replication projects [e.g., @Collaboration2015-ep; @Errington2021-fb; @The-Brazilian-Reproducibility-Initiative2025-iw] always evaluates the results across different metrics.
+In general choosing a single measure is probably not the best solution. In fact, large-scale replication projects [e.g., @Collaboration2015-ep; @Errington2021-fb; @The-Brazilian-Reproducibility-Initiative2025-iw] always evaluates the results across different metrics.
 
 ## Replication studies as meta-analysis
 
-As introduced by @Hedges2019-ry replication studies can be seen from a statistical point of view as meta-analyses. There is a single initial study and one or more attempts to replicate this initial finding. For the simple one-to-one replication design we have a meta-analysis with two studies while in the one-to-many design we have a meta-analysis with $R$ studies. When it comes to evaluating the results of the replication studies we can choose between several methods [see @Heyard2024-hv] and some of them are specifically meta-analysis based trying to pool together evidence from original and replication studies. We consider meta-analytic thinking crucial to understand the replication studies and methods but not all methods are strictly meta-analyses in the usual sense.
+@Hedges2019-ry points out that replication studies can be seen from a statistical point of view as meta-analyses. Typically there is a single initial study and one or more attempts to replicate its initial findings. For the simple one-to-one replication design we have a meta-analysis with two studies while in the one-to-many design we have a meta-analysis with $R$ studies. When it comes to evaluating the results of the replication studies we can choose between several methods [see @Heyard2024-hv] and some of them are specifically meta-analysis based trying to pool  evidence from original and replication studies. We consider meta-analytic thinking to be crucial to understand the replication studies and methods but not all methods are strictly meta-analyses in the usual sense.
 
-In fact, while the methodology of the initial or replication studies is important when comes to evaluate the single result, at the aggregated level we evaluate how a certain focal parameter (e.g., the difference between two groups or conditions) vary across replications and id there is evidence, whatever the criteria, for a successful replication. Whatever is the model used in the original studies we can essentially think at the aggregated level without loss of generality loss.
+In fact, while the methodology of the initial or replication studies is important when it comes to evaluating a single result, at the aggregated level we evaluate how a certain focal parameter (e.g., the difference between two groups or conditions) vary across replications and if there is evidence, whatever the criteria, for a successful replication. Whatever is the model used in the original studies we can essentially think at the aggregated level without loss of generality.
 
 ## Simulating data
 
-While real-world examples are important, to understand the replication methods from a statistical point of view, simulating simplified examples is a good strategy. Furthermore, simulating data is nowadays considered an important tool to teach and understand statistical methods [@Hardin2015-ss]. Monte Carlo simulations are also necessary to estimate statistical properties (e.g., statistical power or type-1 error rate) of complex models.
+While real-world examples are important, simulating simplified examples is a good strategy to understand replication methods from a statistical point of view. Furthermore, simulating data is nowadays considered an important tool to teach and understand statistical methods [@Hardin2015-ss]. Monte Carlo simulations are also necessary to estimate statistical properties (e.g., statistical power or type-1 error rate) of complex models.
 
-For the simulated examples we can define the following simulation approach:
+For the simulated examples we define the following simulation approach:
 
 - primary studies always compare two independent groups on a certain response variable
-- within a study, the two groups are assumed to come from two normal distributions with unit variance. For one group $y_0$ the mean is centered on zero and for the other group $y_1$ the mean is centered on the value representing the effect size $\theta_r$ for that specific study.
+- within a study, the two groups are assumed to come from two normal distributions with unit variance. For one group $y_0$ the mean is zero and for the other group $y_1$ the mean is the value representing the effect size $\theta_r$ for that specific study.
 - the sample size can vary between the two groups
 
 For example we can simulate a single study:
@@ -67,7 +67,7 @@ ggplot(dd, aes(x = x, y = y)) +
 ```
 
 
-Now we can simply iterate the process for $R$ studies to create a series of replications with a common true parameter $\mu_{\theta}$. We can also generate a more realistic set of sample sizes sampling from a probability distribution (e.g., Poisson). Then, if we want to include variability in the true effects as in the extension framework we can simply sample $R$ effects from a normal distribution with variance $\tau^2$.
+Now we can simply iterate the process for $R$ studies to create a series of replications with a common true parameter $\mu_{\theta}$. We can also generate a set of different sample sizes by sampling from a probability distribution (e.g., Poisson). Then, if we want to include variability in the true effects, as in the extension framework, we can sample $R$ effects from, say, a normal distribution with variance $\tau^2$.
 
 ```{r}
 #| echo: true
@@ -91,7 +91,7 @@ sim <- data.frame(id = 1:R, yi, vi, n0, n1)
 sim
 ```
 
-Then we can put everything in a function that can be used to simulate different scenarios.
+We put everything in a function that can be used to simulate different scenarios.
 
 ```{r}
 #| echo: false
@@ -108,7 +108,7 @@ sim_studies(R = 10, mu = 0.5, tau2 = 0, n0 = 30)
 
 The database is available at the following link [http://rachelheyard.com/reproducibility_metrics/](http://rachelheyard.com/reproducibility_metrics/) can be consulted for a more complete overview. Among the all available methods we selected the following metrics^[The name of the method corresponds to the first column of the online table] that will be discussed more in detail with examples.
 
-- Prediction interval: replication effect in original 95% prediction interval
+- Prediction interval: is the replication effect inside the original 95% prediction interval?
 - Proportion of population effects agreeing in direction with the original (vote counting)
 - Confidence interval (CI): original effect in replication 95% CI
 - Confidence interval (CI): replication effect in original 95% CI
@@ -121,14 +121,14 @@ The database is available at the following link [http://rachelheyard.com/reprodu
 
 ## Vote Counting based on significance or direction
 
-The simplest method is called **vote counting** [@Valentine2011-yq; @Hedges1980-gd]. A replication attempt $\theta_{r}$ is considered successful if the result has the same direction of the original study $\theta_{0}$ and is statistically significant i.e., $p_{\theta_{r}} \leq \alpha$. Similarly we can count the number of replication with the *same sign* as the original study.
+The simplest method is called **vote counting** [@Valentine2011-yq; @Hedges1980-gd]. A replication attempt $\theta_{r}$ is considered successful if the result has the same direction of the original study $\theta_{0}$ and is statistically significant i.e., $p_{\theta_{r}} \leq \alpha$. Similarly we can count the number of replications with the *same sign* as the original study.
 
 :::{.pros}
 - Easy to understand, communicate and compute
 :::
 
 :::{.cons}
-- Did not consider the size of the effect
+- Does not consider the size of the effect
 - Depends on the power of $\theta_{rep}$
 :::
 
@@ -163,7 +163,7 @@ reps <- summary_es(reps)
 head(reps)
 ```
 
-Let's compute the proportions of replication studies are statistically significant:
+Let's compute the proportions of replication studies that are statistically significant:
 
 ```{r}
 #| echo: true
@@ -198,7 +198,7 @@ z_rep <- theta_rep/sqrt(4/(n_rep * 2))
 2 * pnorm(z_rep, lower.tail = FALSE)
 ```
 
-Let's imagine an original experiment with $n_{0} = 30$ and $\hat \theta_{0} = 0.5$ that is statistically significant $p \approx 0.045$. Now a direct replication (thus assuming $\tau^2 = 0$) study with $n_{1} = 350$ found $\hat \theta_{1} = 0.15$, that is statistically significant $p\approx 0.047$.
+Let's imagine an original experiment with $n_{0} = 30$ and $\hat \theta_{0} = 0.5$ that is statistically significant $p \approx 0.045$. Now consider a direct replication study (thus assume $\tau^2 = 0$) with $n_{1} = 350$ which found $\hat \theta_{1} = 0.15$, which is statistically significant as $p\approx 0.047$.
 
 ```{r, echo = FALSE}
 se_rep <- sqrt(4/(n_rep*2))
@@ -217,7 +217,7 @@ The most problematic aspect of using only the information from the sign of the e
 
 ## Confidence/prediction interval methods
 
-The main improvement of confidence/prediction interval methods is taking into account the size of the effect and the precision. The confidence interval represent the sampling uncertainty around the estimated value. It is interpreted as the percentage of confidence intervals under repetition of the same sampling procedure that contains the true value.
+The main improvement of confidence/prediction interval methods is taking into account the size of the effect and the precision. The confidence interval represents the sampling uncertainty around the estimated value. It is interpreted as the percentage of confidence intervals under hypothetical repetition of the same sampling procedure that contains the true value.
 
 Confidence interval around an estimated effect $\theta_r$ can be written as:
 
@@ -225,7 +225,7 @@ $$
 95\%\;\mbox{CI} = \hat\theta_r \pm t_{\alpha}\sqrt{\sigma^2_{r}}
 $$
 
-Where $t_{\alpha}$ is the critical test statistics for significance level $\alpha$. Clearly, this version of the confidence interval is symmetric around the estimated value and the width is a function of the estimation precision.
+Where $t_{\alpha}$ is the critical test statistics for significance level $\alpha$. This version of the confidence interval is symmetric around the estimated value and the width is a function of the estimation precision.
 
 ```{r}
 alpha <- 0.05
@@ -254,9 +254,9 @@ $$
 :::
 
 :::{.cons}
-- The original study is assumed to be a reliable estimation
+- The original study is assumed to provide a reliable estimate
 - No extension for *many-to-one* designs
-- Low precise original studies lead to higher success rate
+- Original studies with limited precision lead to higher success rate
 :::
 
 ```{r}
@@ -279,7 +279,7 @@ legend("topleft",
        fill = c("black", "firebrick"))
 ```
 
-One potential problem of this method regards that low precise original studies are "easier" to replicate due to larger confidence intervals. 
+One potential problem of this method is that original studies with wide intervals are easier to replicate. 
 
 ```{r}
 #| echo: false
@@ -325,7 +325,7 @@ legend("topright",
 
 ### Original study within replication CI
 
-The same approach can be applied checking if the original effect size is contained within the replication confidence interval. Clearly these methods depends on the precision of studies. Formally:
+A similar approach is checking if the original effect size is contained within the replication confidence interval. These methods depends on the precision of studies. Formally:
 
 $$
 \theta_{r} - t_{\alpha} \sqrt{\sigma_{r}^2} < \theta_{0} < \theta_{r} + t_{\alpha} \sqrt{\sigma_{r}^2}
@@ -335,11 +335,11 @@ The method has the same pros and cons of the previous approach. One advantage is
 
 ## Prediction interval PI
 
-There is still one missing information from the CI method that is considering the uncertainty only from the original or the replication study. The prediction interval PI express the uncertainty of a future observation (in this case a study) and not on the estimated parameter.
+The CI methods described so far are only considering uncertainty from eithernthe original or the replication study. The prediction interval PI expresses the uncertainty of a future observation (in this case a study) rather than the estimated parameter.
 
-If we compute the difference between the original and the replication study, the sampling distribution of the difference express the range of values that are expected *in absence of other source of variability*. In other terms, assuming that $\tau^2 = 0$.
+If we compute the difference between the original and the replication study, the sampling distribution of the difference represents the range of values that are expected *in absence of other source of variability*. In other terms, assuming that $\tau^2 = 0$.
 
-If the original and replication studies comes from the same population, the sampling distribution of the difference is centered on zero with a certain standard error $\theta_{0} - \theta_{r} \sim \mathcal{N}\left(0, \sqrt{\sigma^2_{\hat \theta_{0} - \hat \theta_{r}}} \right)$ (subscript $0$ to indicate that is expected to be sampled from the same population as $\theta_{0}$)
+If the original and replication studies comes from the same population, the sampling distribution of the difference is centered on zero with a certain standard error $\theta_{0} - \theta_{r} \sim \mathcal{N}\left(0, \sqrt{\sigma^2_{\hat \theta_{0} - \hat \theta_{r}}} \right)$ (subscript $0$ is to indicate that the effect is expected to be sampled from the same population as $\theta_{0}$)
 
 $$
 \hat \theta_{0} \pm t_{\alpha} \sqrt{\sigma^2_{\theta_{0} - \theta_{r}}}
@@ -373,12 +373,12 @@ abline(v = od + qnorm(c(0.025, 0.975)) * se_o_r, lty = "dashed")
 ```
 
 :::{.pros}
-- Take into account uncertainty of both studies
+- Takes into account uncertainty in both studies
 - We can plan a replication using the standard deviation of the original study and the expected sample size
 :::
 
 :::{.cons}
-- Low precision original studies lead to wider PI. For a replication study is difficult to fall outside the PI
+- Low precision in original studies leads to wider PI. For a replication study, it is difficult to fall outside the PI
 - Mainly for *one-to-one* replications design
 :::
 
@@ -391,14 +391,14 @@ P_{orig} = 2 \left[ 1 - \Phi \left( \frac{|\hat \theta_{0} - \hat \mu_{\theta_{R
 $$
 
 - $\hat \mu_{\theta_{R}}$ is the pooled (i.e., meta-analytic) estimation of the $k$ replications
-- $\tau^2$ is the variance among replications (i.e., heterogeneity)
+- $\tau^2$ is the variance of effects across replications (i.e., heterogeneity)
 
 It is interpreted as the probability that $\theta_{0}$ is equal or more extreme than what is observed. A very low $p_{orig}$ suggests that the original study is inconsistent with replications.
 
 :::{.pros}
 - Suited for *many-to-one* designs
-- We take into account all sources of uncertainty
-- We have a p-value
+- Takes into account all sources of uncertainty
+- Provides a p-value
 :::
 
 The code is implemented in the `Replicate` and `MetaUtility` R packages:
@@ -449,13 +449,13 @@ c(se_theta_rep, fit$se)
 
 ### Mathur & VanderWeele [-@Mathur2020-nw] $\hat P_{> 0}$
 
-Another related metric is the $\hat P_{> 0}$, representing the proportion of replications following the same direction as the original effect. Before simply computing the proportions we need to adjust the estimated $\theta_{r}$ ($r = 1, \dots, R$) with a shrinkage factor:
+Another related metric is the $\hat P_{> 0}$, representing the proportion of replications following the same direction as the original effect. Before simply computing the proportions they adjust the estimated $\theta_{r}$ ($r = 1, \dots, R$) with a shrinkage factor:
 
 $$
 \tilde{\theta}_{r} = (\theta_{r} - \mu_{\theta_{r}}) \sqrt{\frac{\hat \tau^2}{\hat \tau^2 + \sigma^2_{r}}}
 $$
 
-Where $\sigma^2_r$ is the sampling variance for the replication effect size $r$. This method is somehow similar to the vote counting but we are adjusting the effects taking with a shrinkage factor based on $\tau^2$.
+Here $\sigma^2_r$ is the sampling variance for the replication effect size $r$. This method is  similar to the vote counting but we are adjusting the effects with a shrinkage factor based on $\tau^2$.
 
 ```{r}
 #| code-fold: false
@@ -465,7 +465,7 @@ theta_sh <- MetaUtility::calib_ests(replications$yi, replications$sei, method = 
 mean(theta_sh > 0)
 ```
 
-The authors suggest a bootstrapping approach for making inference on $\hat P_{> 0}$
+The authors suggest a bootstrapping approach for inference on $\hat P_{> 0}$
 
 ```{r}
 #| code-fold: false
@@ -498,7 +498,7 @@ abline(v = quantile(p_greater_boot, c(0.025, 0.975)))
 
 ### Mathur & VanderWeele [-@Mathur2020-nw] $\hat P_{\gtrless q*}$
 
-Instead of using 0 as threshold, we can use meaningful effect size to be considered as low but different from 0. $\hat P_{\gtrless q*}$ is the proportion of (calibrated) replications greater or lower than the $q*$ value. This framework is similar to equivalence and minimum effect size testing [@Lakens2018-ri].
+Instead of using 0 as threshold, we can use a practically meaningful effect size, considered to be low but different from 0. $\hat P_{\gtrless q*}$ is the proportion of (calibrated) replications greater or lower than the $q*$ value. This framework is similar to equivalence and minimum effect size testing [@Lakens2018-ri].
 
 ```{r}
 #| code-fold: false
@@ -520,15 +520,15 @@ MetaUtility::prop_stronger(q = q,
 
 ## Meta-analytic methods
 
-Another approach is to combine the original and replication results (both *one-to-one* and *many-to-one*) using a meta-analysis model. Then we can test if the pooled estimate is different from 0 or another meaningful value.
+Another approach is to combine the original and replication results using a meta-analysis model. This is applicable to both *one-to-one* and *many-to-one* designs. In this case we can test if the pooled estimate is different from 0 or another practically relevant value.
 
 :::{.pros}
-- Use all the available information, especially when fitting a random-effects model
-- Take into account the precision by inverse-variance weighting
+- Uses all the available information, especially when fitting a random-effects model
+- Takes into account the precision of individual studies, for example by inverse-variance weighting
 :::
 
 :::{.cons}
-- Did not consider the publication bias
+- Does not consider publication bias
 - For *one-to-one* designs only a fixed-effects model can be used
 :::
 
@@ -562,20 +562,20 @@ $$
 Q = \sum_{r = 0}^{R} \frac{(\theta_r - \bar \theta_R)^2}{\sigma^2_r}
 $$
 
-Where $\bar \theta_R$ is the inverse-variance weighted average (i.g., fixed-effect model). The $Q$ statistics is essentially a weighted sum of squares. Under the null hypothesis where all studies are equal $\theta_0 = \theta_1, ... = \theta_R$ the $Q$ statistics has a $\chi^2$ distribution with $R - 1$ degrees of freedom. Under the alternative hypothesis the distribution is a non-central $\chi^2$ with non centrality parameter $\lambda$. The expected value of the $Q$ is $E(Q) = \nu + \lambda$, where $\nu$ are the degrees of freedom.
+where $\bar \theta_R$ is the inverse-variance weighted average, for example from a fixed-effect model. The $Q$ statistics is a weighted sum of squares. Under the null hypothesis where all studies are equal $\theta_0 = \theta_1, ... = \theta_R$ the $Q$ statistics has a $\chi^2$ distribution with $R - 1$ degrees of freedom. Under the alternative hypothesis the distribution is a non-central $\chi^2$ with non centrality parameter $\lambda$. The expected value of the $Q$ is $E(Q) = \nu + \lambda$, where $\nu$ are the degrees of freedom.
 
 Hedges & Schauer proposed to use the $Q$ statistics to evaluate the consistency of a series of replications:
 
 - In case of a **replication**, $\lambda = 0$ because $\theta_0 = \theta_1, ... = \theta_R$.
-- In case of an **extension**, $\lambda < \lambda_0$ where $\lambda_0$ is the maximum value considered equivalent to zero. In other terms, $\lambda_0$ is the threshold above which the variability is too high for being considered a neglegible quantity for a replication [in @Machery2020-sv terms].
+- In case of an **extension**, $\lambda < \lambda_0$ where $\lambda_0$ is the maximum value considered equivalent to zero. In other words, $\lambda_0$ is the threshold above which the variability is too high to be considered negligible for a replication [in @Machery2020-sv terms].
 
-This approach is testing the consistency (i.e., homogeneity) of replications. A successful replication should minimize the heterogeneity and the presence of a significant $Q$ statistics would suggest a failed replication attempt. @Hedges2019-pr and @Mathur2019-vh The discussed extensively this approach.
+This approach is testing the consistency (i.e., homogeneity) of replications. A successful replication should minimize the heterogeneity and the presence of a significant $Q$ statistics would suggest a failed replication attempt. @Hedges2019-pr and @Mathur2019-vh discuss extensively this approach.
 
 - to cover different replication setup (burden of proof on replicating vs non-replicating, many-to-one and one-to-one, etc.)
 - interpreting and choosing an appropriate $\lambda_0$ parameter
 - evaluating the power and statistical properties under different replication scenarios
 
-In the case of evaluating a replication we can use the `Qrep()` function that simply calculates the p-value based on the Q sampling distribution.
+When evaluating a replication we can use the `Qrep()` function that calculates the p-value based on the Q sampling distribution.
 
 ```{r}
 #| echo: false
@@ -598,13 +598,13 @@ Qres <- Qrep(dat$yi, dat$vi)
 plot.Qrep(Qres)
 ```
 
-#### Q Statistics for an extension
+#### Q Statistics for an extension study
 
-In case of an extension we need to set $\lambda_0$ to a meaningful value but the overall test is the same. The critical $Q$ is no longer evaluated with a central $\chi^2$ but a non-central $\chi^2$ with $\lambda_0$ as non-centrality parameter.
+In case of an extension we need to set $\lambda_0$ to a meaningful value but the overall test is the same. The critical $Q$ is no longer evaluated with a central $\chi^2$ but is now a non-central $\chi^2$ with $\lambda_0$ as non-centrality parameter.
 
 @Hedges2019-ry provides different strategies to choose $\lambda_0$. They found that under some assumptions, $\lambda = (R - 1) \frac{\tau^2}{\tilde{v}}$
 
-Given that we introduced the $I^2$ statistics we can derive a $\lambda_0$ based on $I^2$. @Schmidt2014-kw proposed that when $\tilde{v}$ is at least 75% of total variance $\tilde{v} + \tau^2$ thus $\tau^2$ could be considered negligible. This corresponds to a $I^2 = 25%$ and a ratio $\frac{\tau^2}{\tilde{v}} = 1/3$ thus $\lambda_0 = \frac{(R - 1)}{3}$ can be considered a neglegible heterogeneity.
+Having introduced the $I^2$ statistics we can derive a $\lambda_0$ based on $I^2$. @Schmidt2014-kw proposed that when $\tilde{v}$ is at least 75% of total variance $\tilde{v} + \tau^2$ thus $\tau^2$ could be considered negligible. This corresponds to a $I^2 = 25%$ and a ratio $\frac{\tau^2}{\tilde{v}} = 1/3$ thus $\lambda_0 = \frac{(R - 1)}{3}$ can be considered negligible heterogeneity.
 
 ```{r}
 k <- 100
@@ -658,7 +658,7 @@ Here we are using the `pwr::pwr.t.test()` to compute the effect size $\theta_{sm
 small_telescope(or_d, or_se, rep_d, rep_se, d_small, ci = 0.95)
 ```
 
-And a (quite over-killed) plot:
+And a plot:
 
 ```{r}
 #| echo: false
@@ -680,12 +680,12 @@ Bayesian inference is the statistical procedure where **prior beliefs** about a 
 
 The interesting part is that the researcher expresses the prior beliefs in probabilistic terms. Then after collecting data, evidence from the experiment is combined, increasing or decreasing the plausibility of prior beliefs.
 
-Let's make an (not very innovative :smile:) example. We need to evaluate the fairness of a coin. The crucial parameter is $\pi$ that is the probability of success (e.g., head). We have our prior belief about the coin (e.g., fair but with some uncertainty). We toss the coin $k$ times and we observe $x$ heads. What are my conclusions?
+Let's consider a (not very innovative :smile:) example. We need to evaluate the fairness of a coin. The parameter is the probability $\pi$ of success (i.e., head). We have our prior belief about the coin (e.g., fair but with some uncertainty). We toss the coin $k$ times and we observe $x$ heads. What are my conclusions?
 
 $$
 p(\pi|D) = \frac{p(D|\pi) \; p(\pi)}{p(D)}
 $$
-Where $\pi$ is our parameter and $D$ the data. $p(\pi|D)$ is the posterior distribution that is the product between the likelihood $p(D|\pi)$ and the prior $p(\pi)$. $p(D)$ is the probability of the data (aka marginal likelihood) and is necessary only for the posterior to be a proper probability distribution.
+where $\pi$ is our parameter and $D$ the data. $p(\pi|D)$ is the posterior distribution that is the normalized product between the likelihood $p(D|\pi)$ and the prior $p(\pi)$. $p(D)$ is the probability of the data (aka marginal likelihood) and is necessary only for the posterior to be a proper probability distribution.
 
 We can "read" the formula as: *The probability of the parameter given the data is the product between the likelihood of the data given the parameter and the prior probability of the parameter*.
 
@@ -765,11 +765,13 @@ $$
 BF_{01} = \frac{p(D|H_0)}{p(D|H_1)} = \frac{p(\pi = x|D, H_1)}{p(\pi = x, H_1)}
 $$
 
-Where $\pi$ is the parameter of interest and $x$ is the null value under $H_0$ e.g., 0. and $D$ are the data.
+Where $\pi$ is the parameter of interest and $x$ is the null value under $H_0$ e.g., 0. and $D$ are the data. 
 
-Following the previous example $H_0: \pi = 0.5$. Under $H_1$ we use a completely uninformative prior by setting $\pi \sim Beta(1, 1)$.
+When there are multiple parameters in play and the null hypothesis is expressed in terms on one of them only, this representation is valid only under the condition that the prior for any of the other parameters under the null is the same as the conditional prior for those parameters under the alternative. 
 
-We flipped the coin 20 times and we found that $\hat \pi = 0.75$.
+Following the previous example $H_0: \pi = 0.5$. Under $H_1$ we use a vague prior by setting $\pi \sim Beta(1, 1)$.
+
+Say we flipped the coin 20 times and we found that $\hat \pi = 0.75$.
 
 ```{r}
 #| echo: false
@@ -848,7 +850,7 @@ points(0.5, 0, cex = 1, pch = 19, col = "firebrick")
 
 The idea is using the posterior distribution of the original study as prior for a Bayesian hypothesis testing where:
 
-- $H_0: \theta_{r} = 0$ thus there is no effect in the replication study
+- $H_0: \theta_{r} = 0$ meaning that there is no effect in the replication study
 - $H_1: \theta_{r} \neq 0$ and in particular is distributed as $\delta \sim \mathcal{N}(\theta_{0}, \sigma^2_{0})$ where $\theta_{0}$ and $\sigma^2_{0}$ are the mean and standard error of the original study
 
 If $H_0$ is more likely after seeing the data, there is evidence against the replication (i.e., $BF_{r0} > 1$) otherwise there is evidence for a successful replication ($BF_{r1} > 1$).
@@ -869,7 +871,7 @@ se <- sqrt(1/n)
 ```
 
 ::: {.callout-note}
-The assumption of @Verhagen2014-tx is that the original study performed a Bayesian analysis with a completely flat prior. Thus the confidence interval is the same as the Bayesian credible interval.
+The assumption of @Verhagen2014-tx is that the original study performed a Bayesian analysis with a completely flat prior. Thus the confidence interval is approximately the same as the Bayesian credible interval.
 :::
 
 For this reason, the posterior distribution of the original study can be approximated as:
@@ -966,6 +968,6 @@ ggplot() +
 
 ## Conclusions
 
-We believe this selection of methods is an appropriate overview of statistical approaches to different definitions of replication. The meta-analytic and $Q$ methods are more focused on accumulating evidence combining original and replication studies. The CI and PI methods are more interested in comparing the original and replication(s) study. The BF method can be considered as an hybrid approach evaluating the evidence of null effect from the posterior distribution of the replication study. 
+We hope to have provided a useful overview of statistical approaches to different definitions of replication. The meta-analytic and $Q$ methods are more focused on accumulating evidence combining original and replication studies. The CI and PI methods are more interested in comparing the original and replication(s) study. The BF method combines to some extent both perspectives by evaluating the evidence of null effect from the posterior distribution of the replication study. 
 
 ## References {.unnumbered}
