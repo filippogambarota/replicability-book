@@ -14,6 +14,3 @@ system("git commit -m 'updating book'")
 # git add all _freeze/
 system("git add _freeze/")
 system("git commit -m 'updating quarto cache'")
-
-system("git add todoget.md")
-system("git commit -m 'updating todo list'")
