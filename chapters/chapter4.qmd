@@ -729,7 +729,8 @@ plot(p, prior,
      ylim = ylim, 
      lwd = 2, 
      xlab = latex2exp::TeX("$\\pi$"), 
-     ylab = "Probability")
+     ylab = "Probability",
+     col = "darkgreen")
 ```
 
 Now we collect data and we observe $x = 40$ tails out of $k = 50$ trials thus $\hat{\pi} = 0.8$ and compute the *likelihood*:
@@ -757,9 +758,9 @@ plot(p, prior,
      ylim = ylim, 
      lwd = 2, 
      xlab = latex2exp::TeX("$\\pi$"), 
-     ylab = "Probability")
+     ylab = "Probability",
+     col = "darkgreen")
 lines(p, likelihood, col = "black", lwd = 2)
-points(d/k, 0, pch = 19, col = "firebrick", cex = 1.5)
 lines(p, posterior, lwd = 2, col = "dodgerblue")
 legend("topleft", legend = c("Prior", "Likelihood", "Posterior"), fill = c("darkgreen", "black", "dodgerblue"))
 points(d/k, 0, pch = 19, col = "firebrick", cex = 1.5)
