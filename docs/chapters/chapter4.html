@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.37">
+<meta name="generator" content="quarto-1.6.40">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>4&nbsp; Statistical methods for replication assessment – The three Rs of trustworthy science</title>
 <style>
@@ -87,10 +87,10 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-7580570a2e354cd56757c689413fca0c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-d536d1a7baed4b06fb80168836a8c311.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -328,9 +328,9 @@ window.Quarto = {
 <span><span class="va">y1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n1</span>, <span class="va">theta</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span> <span class="co"># this is the effect size</span></span>
-<span><span class="co">## [1] 0.3124905</span></span>
+<span><span class="co">## [1] 0.4048657</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y1</span><span class="op">)</span><span class="op">/</span><span class="va">n1</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">y0</span><span class="op">)</span><span class="op">/</span><span class="va">n0</span> <span class="co"># this is the sampling variability</span></span>
-<span><span class="co">## [1] 0.06729291</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="co">## [1] 0.06077045</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">y0</span>, <span class="va">y1</span><span class="op">)</span>,</span>
@@ -366,16 +366,16 @@ window.Quarto = {
 <span><span class="va">sim</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   id          yi         vi n0 n1
-1   1  0.63874377 0.04520062 45 45
-2   2  0.23782941 0.06936740 38 38
-3   3 -0.06740265 0.04778624 38 38
-4   4  0.53912287 0.03842198 45 45
-5   5 -0.24295687 0.04580758 48 48
-6   6  0.20564200 0.03660452 41 41
-7   7 -0.33969047 0.03965395 34 34
-8   8  0.89939055 0.04193936 42 42
-9   9  0.63237416 0.04299964 39 39
-10 10  0.38058807 0.06116774 39 39</code></pre>
+1   1  0.91324979 0.03545536 54 54
+2   2  0.57243122 0.05862217 30 30
+3   3 -0.04082550 0.05188409 41 41
+4   4  0.29693519 0.05773406 47 47
+5   5  0.05145280 0.04323799 41 41
+6   6  0.34228496 0.03661350 43 43
+7   7  0.77577669 0.04261519 42 42
+8   8  0.19478868 0.05077151 41 41
+9   9  0.11416857 0.04234823 46 46
+10 10  0.04610835 0.04262240 43 43</code></pre>
 </div>
 </div>
 <p>Here, we put everything into a single function, which can be used to simulate different scenarios.</p>
@@ -416,16 +416,16 @@ window.Quarto = {
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">sim_studies</span><span class="op">(</span>R <span class="op">=</span> <span class="fl">10</span>, mu <span class="op">=</span> <span class="fl">0.5</span>, tau2 <span class="op">=</span> <span class="fl">0</span>, n0 <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   id        yi         vi       sei n0 n1
-1   1 0.4408146 0.07333828 0.2708104 30 30
-2   2 0.1785546 0.06331222 0.2516192 30 30
-3   3 0.5347257 0.05654272 0.2377871 30 30
-4   4 0.1401655 0.06275168 0.2505029 30 30
-5   5 0.6394727 0.05365597 0.2316376 30 30
-6   6 0.2307529 0.06660441 0.2580783 30 30
-7   7 0.3016499 0.05941299 0.2437478 30 30
-8   8 0.3790657 0.06405972 0.2531002 30 30
-9   9 0.7010559 0.06280822 0.2506157 30 30
-10 10 0.2818337 0.07783404 0.2789875 30 30</code></pre>
+1   1 0.9153332 0.06160634 0.2482062 30 30
+2   2 0.4323939 0.06089984 0.2467789 30 30
+3   3 0.1203948 0.05644522 0.2375820 30 30
+4   4 0.3011184 0.05846212 0.2417894 30 30
+5   5 0.3352930 0.06318955 0.2513753 30 30
+6   6 0.4729414 0.04859604 0.2204451 30 30
+7   7 0.5366282 0.06058952 0.2461494 30 30
+8   8 0.9290205 0.08303359 0.2881555 30 30
+9   9 0.4394137 0.07047848 0.2654778 30 30
+10 10 0.2689412 0.05788023 0.2405831 30 30</code></pre>
 </div>
 </div>
 </section><section id="methods" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="methods">
@@ -490,27 +490,27 @@ window.Quarto = {
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">reps</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  id        yi         vi       sei n0 n1        zi         pval       ci.lb
-1  1 0.1350394 0.06327803 0.2515512 30 30 0.5368268 0.5913872674 -0.35799194
-2  2 0.7932573 0.05461424 0.2336969 30 30 3.3943855 0.0006878280  0.33521984
-3  3 0.4311028 0.05403582 0.2324561 30 30 1.8545559 0.0636596644 -0.02450274
-4  4 0.9862340 0.08039440 0.2835391 30 30 3.4783002 0.0005046044  0.43050763
-5  5 0.4887127 0.05138508 0.2266828 30 30 2.1559325 0.0310889365  0.04442268
-6  6 0.2393959 0.06987282 0.2643347 30 30 0.9056546 0.3651187014 -0.27869053
+<pre><code>  id        yi         vi       sei n0 n1       zi         pval       ci.lb
+1  1 0.5330210 0.09734288 0.3119982 30 30 1.708410 0.0875602174 -0.07848426
+2  2 0.3517099 0.08506100 0.2916522 30 30 1.205922 0.2278473881 -0.21991786
+3  3 0.9998091 0.08587894 0.2930511 30 30 3.411723 0.0006455372  0.42543952
+4  4 0.8658737 0.05067677 0.2251150 30 30 3.846361 0.0001198850  0.42465635
+5  5 0.5895141 0.06095449 0.2468896 30 30 2.387764 0.0169512344  0.10561933
+6  6 0.5394700 0.07925233 0.2815179 30 30 1.916290 0.0553281500 -0.01229491
       ci.ub
-1 0.6280708
-2 1.2512948
-3 0.8867082
-4 1.5419603
-5 0.9330028
-6 0.7574824</code></pre>
+1 1.1445262
+2 0.9233377
+3 1.5741787
+4 1.3070910
+5 1.0734089
+6 1.0912350</code></pre>
 </div>
 </div>
 <p>Then, we compute the proportions of replication studies that are statistically significant:</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">reps</span><span class="op">$</span><span class="va">pval</span> <span class="op">&lt;=</span> <span class="fl">0.05</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7</code></pre>
+<pre><code>[1] 0.5</code></pre>
 </div>
 </div>
 <p>And, the proportions of replication studies with the same sign as the original:</p>
@@ -1263,7 +1263,7 @@ For each parameter, mcse is Monte Carlo standard error, n_eff is a crude measure
 
 Parameter   |    BF
 -------------------
-(Intercept) | 0.265
+(Intercept) | 0.274
 
 * Evidence Against The Null: 0</code></pre>
 </div>
