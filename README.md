@@ -19,11 +19,11 @@ the required packages used within each chapter.
 
 If you want to render the book the best option is to:
 
-- have R and R Studio installed (not mandatory R Studio but easier)
-- have Quarto installed
-- install the `renv` package within R Studio
-  (`install.packages("renv")`)
-- open the `rep3.Rproj` with R Studio
+  - have R and R Studio installed (not mandatory R Studio but easier)
+  - have Quarto installed
+  - install the `renv` package within R Studio
+    (`install.packages("renv")`)
+  - open the `rep3.Rproj` with R Studio
 
 The `renv` package is a way to manage and install all the R packages
 used in a project and should install all the required packages.
